@@ -20,7 +20,7 @@ const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
 // 🚨 CHANGE THIS TO YOUR GOOGLE EMAIL! 🚨
-const ADMIN_EMAIL = "admin@gsgatare.rw"; 
+const ADMIN_EMAIL = "niyonshutiismael9@gmail.com"; 
 
 // ==========================================
 // 2. THREE.JS 3D BACKGROUND
