@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -909,13 +910,10 @@ document.getElementById("googleSignIn").onclick = async () => {
   if(!firebaseReady) { applySession({ name: "Demo User", email: "demo@local", role: "student" }); return; }
   try {
     const provider = new fb.GoogleAuthProvider();
-    const result = await fb.signInWithPopup(fb.auth, provider);
-    const snap = await fb.getDoc(fb.doc(fb.db, "users", result.user.uid));
-    const role = snap.exists() ? snap.data().role : "student";
-    applySession({ uid: result.user.uid, name: result.user.displayName, email: result.user.email, role });
+    // This is the fix for the COOP warning!
+    await fb.signInWithRedirect(fb.auth, provider);
   } catch(e) { alert(e.message); }
 };
-
 document.getElementById("signinForm").onsubmit = async (e) => {
   e.preventDefault();
   if(!firebaseReady) { applySession({ name: "Demo", email: "demo@local", role: "student" }); return; }
@@ -1079,13 +1077,34 @@ async function refreshMetrics() {
 document.getElementById("year").textContent = new Date().getFullYear();
 (async () => {
   await initFirebase();
-  if(firebaseReady) fb.onAuthStateChanged(fb.auth, async (user) => {
-    if(user) {
-      const snap = await fb.getDoc(fb.doc(fb.db, "users", user.uid));
-      applySession({ uid: user.uid, name: user.displayName || user.email, email: user.email, role: snap.exists() ? snap.data().role : "student" });
-    } else applySession(null);
-  });
-  else applySession(currentUser);
+
+  if (firebaseReady) {
+    // 1. Catch the Google Redirect Result
+    try {
+      const result = await fb.getRedirectResult(fb.auth);
+      if (result && result.user) {
+        const snap = await fb.getDoc(fb.doc(fb.db, "users", result.user.uid));
+        const role = snap.exists() ? snap.data().role : "student";
+        applySession({ uid: result.user.uid, name: result.user.displayName, email: result.user.email, role });
+      }
+    } catch (e) { 
+      console.warn("Redirect login failed", e); 
+    }
+
+    // 2. Listen for Auth Changes
+    fb.onAuthStateChanged(fb.auth, async (user) => {
+      if(user) {
+        const snap = await fb.getDoc(fb.doc(fb.db, "users", user.uid));
+        applySession({ uid: user.uid, name: user.displayName || user.email, email: user.email, role: snap.exists() ? snap.data().role : "student" });
+      } else {
+        applySession(null);
+      }
+    });
+  } else {
+    applySession(currentUser);
+  }
+
+  // 3. Load the website data
   loadNews();
   refreshMetrics();
 })();
