@@ -5,76 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Groupe Scolaire Gatare TSS — Where Discipline Shapes Tomorrow</title>
 <meta name="description" content="G.S. Gatare TSS (Code 250405) — Government-Aided Day School in Nyamagabe, Rwanda. Pre-Primary to Technical Secondary Education: Agriculture & Animal Health (TVET L3–L5)." />
+<meta name="theme-color" content="#0d2b27" />
+<meta property="og:title" content="Groupe Scolaire Gatare TSS" />
+<meta property="og:description" content="Where discipline shapes tomorrow. Pre-Primary to TVET L3–L5 in Nyamagabe, Rwanda." />
+<meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   DESIGN TOKENS
-   ============================================================ */
 :root{
-  --alabaster:#fafaf8;
-  --white:#ffffff;
-  --forest:#0d2b27;
-  --forest-2:#123a34;
-  --gold:#d4a348;
-  --gold-soft:#e8c88a;
-  --ink:#15211f;
-  --ink-soft:#4c5a57;
-  --ink-mute:#8a9694;
-  --hair:rgba(13,43,39,0.08);
-  --hair-strong:rgba(13,43,39,0.14);
-  --shadow-sm:0 1px 2px rgba(13,43,39,0.04), 0 4px 12px -6px rgba(13,43,39,0.06);
-  --shadow-md:0 20px 40px -15px rgba(13,43,39,0.06), 0 4px 12px -6px rgba(13,43,39,0.05);
-  --shadow-lg:0 30px 60px -20px rgba(13,43,39,0.12), 0 8px 20px -8px rgba(13,43,39,0.08);
-  --radius-sm:10px;
-  --radius-md:16px;
-  --radius-lg:24px;
-  --radius-xl:32px;
-  --ease:cubic-bezier(.22,.61,.36,1);
-  --container:1240px;
-  --header-h:76px;
-  --font-body:"Inter","Helvetica Neue",Arial,sans-serif;
-  --font-display:"Fraunces",Georgia,serif;
+  --alabaster:#fafaf8;--white:#ffffff;--forest:#0d2b27;--forest-2:#123a34;
+  --gold:#d4a348;--gold-soft:#e8c88a;--ink:#15211f;--ink-soft:#4c5a57;--ink-mute:#8a9694;
+  --hair:rgba(13,43,39,0.08);--hair-strong:rgba(13,43,39,0.14);
+  --shadow-sm:0 1px 2px rgba(13,43,39,0.04),0 4px 12px -6px rgba(13,43,39,0.06);
+  --shadow-md:0 20px 40px -15px rgba(13,43,39,0.06),0 4px 12px -6px rgba(13,43,39,0.05);
+  --shadow-lg:0 30px 60px -20px rgba(13,43,39,0.12),0 8px 20px -8px rgba(13,43,39,0.08);
+  --radius-sm:10px;--radius-md:16px;--radius-lg:24px;--radius-xl:32px;
+  --ease:cubic-bezier(.22,.61,.36,1);--container:1240px;--header-h:76px;
+  --font-body:"Inter","Helvetica Neue",Arial,sans-serif;--font-display:"Fraunces",Georgia,serif;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{
-  margin:0;
-  font-family:var(--font-body);
-  background:var(--alabaster);
-  color:var(--ink);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
+body{margin:0;font-family:var(--font-body);background:var(--alabaster);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,select,textarea{font-family:inherit;font-size:15px}
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.01em;color:var(--ink);margin:0}
 h1{font-size:clamp(2.6rem,5vw,4.2rem);line-height:1.05;letter-spacing:-0.02em}
 h2{font-size:clamp(1.9rem,3.2vw,2.75rem);line-height:1.15}
-h3{font-size:1.35rem;line-height:1.25}
-p{margin:0}
+h3{font-size:1.35rem;line-height:1.25}p{margin:0}
 .container{max-width:var(--container);margin:0 auto;padding:0 24px}
-.eyebrow{
-  font-size:12px;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);font-weight:600;margin-bottom:14px;
-}
-.eyebrow.dark{color:var(--forest)}
+.eyebrow{font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
 .lede{color:var(--ink-soft);font-size:1.05rem;max-width:62ch}
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 26px;border-radius:999px;
-  font-weight:600;font-size:14.5px;letter-spacing:0.01em;
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .25s;
-  white-space:nowrap;
-}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:14.5px;letter-spacing:0.01em;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .25s;white-space:nowrap}
 .btn svg{width:16px;height:16px;stroke-width:1.75}
 .btn-primary{background:var(--forest);color:#fff;box-shadow:0 12px 24px -12px rgba(13,43,39,0.5)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 32px -12px rgba(13,43,39,0.55)}
@@ -82,103 +46,43 @@ p{margin:0}
 .btn-gold:hover{transform:translateY(-2px);background:var(--gold-soft)}
 .btn-ghost{background:transparent;color:var(--forest);border:1px solid var(--hair-strong)}
 .btn-ghost:hover{border-color:var(--forest);background:rgba(13,43,39,0.03)}
-.btn-white{background:#fff;color:var(--forest)}
-.btn-white:hover{transform:translateY(-2px)}
 
-/* ============================================================
-   STICKY GLASS HEADER
-   ============================================================ */
-.site-header{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  height:var(--header-h);
-  display:flex;align-items:center;
-  transition:height .35s var(--ease), background .35s, backdrop-filter .35s, box-shadow .35s, border-color .35s;
-  border-bottom:1px solid transparent;
-}
-.site-header.scrolled{
-  height:66px;
-  background:rgba(250,250,248,0.72);
-  backdrop-filter:saturate(180%) blur(18px);
-  -webkit-backdrop-filter:saturate(180%) blur(18px);
-  border-bottom-color:var(--hair);
-  box-shadow:0 1px 0 var(--hair), 0 12px 24px -20px rgba(13,43,39,0.15);
-}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);display:flex;align-items:center;transition:height .35s var(--ease),background .35s,backdrop-filter .35s,box-shadow .35s,border-color .35s;border-bottom:1px solid transparent}
+.site-header.scrolled{height:66px;background:rgba(250,250,248,0.72);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom-color:var(--hair);box-shadow:0 1px 0 var(--hair),0 12px 24px -20px rgba(13,43,39,0.15)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:24px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-0.01em}
-.brand-mark{
-  width:38px;height:38px;border-radius:11px;
-  background:var(--forest);color:var(--gold);
-  display:grid;place-items:center;font-family:var(--font-display);font-weight:600;
-  font-size:17px;letter-spacing:-0.02em;
-  box-shadow:inset 0 -2px 0 rgba(0,0,0,0.15), 0 6px 14px -6px rgba(13,43,39,0.5);
-  flex-shrink:0;
-}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:var(--forest);color:var(--gold);display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:17px;letter-spacing:-0.02em;box-shadow:inset 0 -2px 0 rgba(0,0,0,0.15),0 6px 14px -6px rgba(13,43,39,0.5);flex-shrink:0}
 .brand-text{display:flex;flex-direction:column;line-height:1.1}
 .brand-text small{font-size:10px;letter-spacing:0.18em;color:var(--ink-mute);font-weight:600;text-transform:uppercase}
 .brand-text strong{font-size:14.5px;color:var(--forest);font-weight:700}
-
 .nav{display:flex;align-items:center;gap:4px}
-.nav a{
-  position:relative;padding:10px 14px;border-radius:10px;
-  font-size:14px;font-weight:500;color:var(--ink-soft);
-  transition:color .2s, background .2s;
-}
+.nav a{position:relative;padding:10px 14px;border-radius:10px;font-size:14px;font-weight:500;color:var(--ink-soft);transition:color .2s,background .2s}
 .nav a:hover{color:var(--forest);background:rgba(13,43,39,0.04)}
 .nav a.active{color:var(--forest);font-weight:600}
-.nav a.active::after{
-  content:"";position:absolute;left:14px;right:14px;bottom:4px;height:2px;
-  background:var(--gold);border-radius:2px;
-}
+.nav a.active::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:2px;background:var(--gold);border-radius:2px}
 .header-actions{display:flex;align-items:center;gap:10px}
-
-/* Mobile nav */
 .mobile-toggle{display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--hair)}
 .mobile-toggle span{display:block;width:18px;height:2px;background:var(--forest);margin:4px auto;transition:.3s var(--ease)}
 .mobile-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
 .mobile-toggle.open span:nth-child(2){opacity:0}
 .mobile-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
-.mobile-nav{display:none}
+.mobile-nav{position:fixed;inset:var(--header-h) 0 auto 0;background:rgba(250,250,248,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:99;border-bottom:1px solid var(--hair);padding:16px 24px 24px;display:none}
+.mobile-nav.open{display:block;animation:navIn .25s var(--ease)}
+@keyframes navIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mobile-nav a{display:block;padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft);transition:background .2s,color .2s}
+.mobile-nav a:hover,.mobile-nav a:focus{background:rgba(13,43,39,0.05);color:var(--forest)}
 
-/* ============================================================
-   HERO — ASYMMETRICAL SPLIT
-   ============================================================ */
-.hero{
-  position:relative;
-  background:var(--white);
-  padding:calc(var(--header-h) + 40px) 0 80px;
-  overflow:hidden;
-}
+.hero{position:relative;background:var(--white);padding:calc(var(--header-h) + 40px) 0 80px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
-.hero-bg::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 60% 80% at 78% 30%, rgba(212,163,72,0.10), transparent 60%),
-    radial-gradient(ellipse 50% 70% at 20% 90%, rgba(13,43,39,0.05), transparent 60%);
-}
-.hero-bg::after{
-  content:"";position:absolute;inset:0;
-  background-image:linear-gradient(var(--hair) 1px, transparent 1px),
-                   linear-gradient(90deg, var(--hair) 1px, transparent 1px);
-  background-size:80px 80px;
-  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
-  opacity:0.55;
-}
-.hero-grid{
-  position:relative;z-index:2;
-  display:grid;grid-template-columns:1.05fr 1fr;
-  gap:60px;align-items:center;
-}
+.hero-bg::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 78% 30%,rgba(212,163,72,0.10),transparent 60%),radial-gradient(ellipse 50% 70% at 20% 90%,rgba(13,43,39,0.05),transparent 60%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);opacity:0.55}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
 .hero-copy .eyebrow{display:flex;align-items:center;gap:10px}
 .hero-copy .eyebrow::before{content:"";width:24px;height:1.5px;background:var(--gold)}
 .hero-copy h1{margin:0 0 22px;color:var(--forest)}
 .hero-copy h1 em{font-style:italic;color:var(--gold);font-weight:500}
-.hero-motto{
-  font-family:var(--font-display);font-size:1.1rem;font-style:italic;
-  color:var(--ink-soft);margin-bottom:24px;
-  display:flex;align-items:center;gap:12px;
-}
+.hero-motto{font-family:var(--font-display);font-size:1.1rem;font-style:italic;color:var(--ink-soft);margin-bottom:24px;display:flex;align-items:center;gap:12px}
 .hero-motto::before,.hero-motto::after{content:"";height:1px;flex:0 0 24px;background:var(--hair-strong)}
 .hero-motto::after{flex:1}
 .hero-lede{color:var(--ink-soft);font-size:1.05rem;max-width:52ch;margin-bottom:34px}
@@ -188,57 +92,19 @@ p{margin:0}
 .hero-metric .num{font-family:var(--font-display);font-size:1.75rem;font-weight:600;color:var(--forest);line-height:1}
 .hero-metric .lbl{font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mute);margin-top:6px;font-weight:600}
 
-/* 3D Stage Card */
 .hero-stage{position:relative;perspective:1200px;display:flex;justify-content:center}
-.stage-card{
-  position:relative;width:100%;max-width:520px;aspect-ratio:1/1.05;
-  border-radius:var(--radius-xl);
-  background:linear-gradient(180deg,#f4f1ea 0%, #e9e3d4 100%);
-  box-shadow:var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.7);
-  overflow:hidden;transform-style:preserve-3d;
-  transition:transform .5s var(--ease);
-  border:1px solid var(--hair);
-}
-.stage-card::before{
-  content:"";position:absolute;inset:0;
-  background-image:radial-gradient(circle at 1px 1px, rgba(13,43,39,0.06) 1px, transparent 0);
-  background-size:22px 22px;opacity:0.6;pointer-events:none;
-}
+.stage-card{position:relative;width:100%;max-width:520px;aspect-ratio:1/1.05;border-radius:var(--radius-xl);background:linear-gradient(180deg,#f4f1ea 0%,#e9e3d4 100%);box-shadow:var(--shadow-lg),inset 0 1px 0 rgba(255,255,255,0.7);overflow:hidden;transform-style:preserve-3d;transition:transform .5s var(--ease);border:1px solid var(--hair)}
+.stage-card::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(13,43,39,0.06) 1px,transparent 0);background-size:22px 22px;opacity:0.6;pointer-events:none}
 #webgl-canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
-.stage-badge{
-  position:absolute;top:18px;left:18px;z-index:3;
-  display:flex;align-items:center;gap:8px;
-  padding:8px 14px;border-radius:999px;
-  background:rgba(255,255,255,0.72);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);
-  border:1px solid var(--hair);
-}
+.stage-badge{position:absolute;top:18px;left:18px;z-index:3;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:11.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);border:1px solid var(--hair)}
 .stage-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(212,163,72,0.25);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-.stage-caption{
-  position:absolute;left:18px;right:18px;bottom:18px;z-index:3;
-  padding:16px 18px;border-radius:16px;
-  background:rgba(255,255,255,0.78);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--hair);
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-}
+.stage-caption{position:absolute;left:18px;right:18px;bottom:18px;z-index:3;padding:16px 18px;border-radius:16px;background:rgba(255,255,255,0.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between;gap:12px}
 .stage-caption .label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
 .stage-caption strong{display:block;font-family:var(--font-display);font-size:16px;color:var(--forest);font-weight:600;margin-top:2px}
 .stage-caption .school-code{font-family:var(--font-display);font-size:13px;color:var(--gold);font-weight:600;letter-spacing:0.04em}
 
-/* Accreditation strip */
-.accred-strip{
-  position:relative;z-index:2;
-  margin-top:56px;
-  padding:20px 28px;border-radius:var(--radius-lg);
-  background:rgba(255,255,255,0.6);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--hair);
-  box-shadow:var(--shadow-sm);
-  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
-}
+.accred-strip{position:relative;z-index:2;margin-top:56px;padding:20px 28px;border-radius:var(--radius-lg);background:rgba(255,255,255,0.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--hair);box-shadow:var(--shadow-sm);display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .accred-item{display:flex;align-items:center;gap:12px;padding:6px 12px}
 .accred-item + .accred-item{border-left:1px solid var(--hair)}
 .accred-item .ic{width:32px;height:32px;border-radius:9px;background:rgba(13,43,39,0.06);display:grid;place-items:center;color:var(--forest);flex-shrink:0}
@@ -246,53 +112,24 @@ p{margin:0}
 .accred-item .txt small{display:block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
 .accred-item .txt strong{font-size:13px;color:var(--forest);font-weight:600}
 
-/* ============================================================
-   SECTIONS
-   ============================================================ */
 section{position:relative}
 .section{padding:110px 0}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:56px;flex-wrap:wrap}
 .section-head .lede{max-width:52ch}
 .section-head h2{max-width:22ch}
 
-/* ============================================================
-   BENTO ACADEMICS
-   ============================================================ */
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
-.bento-card{
-  position:relative;
-  background:var(--white);
-  border:1px solid var(--hair);
-  border-radius:var(--radius-lg);
-  padding:28px;
-  transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s;
-  overflow:hidden;
-}
-.bento-card::before{
-  content:"";position:absolute;top:0;left:0;width:32px;height:32px;
-  background:var(--gold);opacity:0;transition:opacity .3s;
-  clip-path:polygon(0 0, 100% 0, 100% 12%, 12% 12%, 12% 100%, 0 100%);
-}
+.bento-card{position:relative;background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-lg);padding:28px;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s;overflow:hidden}
+.bento-card::before{content:"";position:absolute;top:0;left:0;width:32px;height:32px;background:var(--gold);opacity:0;transition:opacity .3s;clip-path:polygon(0 0,100% 0,100% 12%,12% 12%,12% 100%,0 100%)}
 .bento-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(13,43,39,0.12)}
 .bento-card:hover::before{opacity:1}
 .bento-card h3{margin-bottom:8px}
 .bento-card .desc{color:var(--ink-soft);font-size:14.5px;margin-bottom:16px}
 .tag-row{display:flex;flex-wrap:wrap;gap:6px}
-.tag{
-  font-size:11px;letter-spacing:0.04em;font-weight:600;
-  padding:5px 10px;border-radius:999px;
-  background:rgba(13,43,39,0.05);color:var(--forest);
-  border:1px solid var(--hair);
-}
+.tag{font-size:11px;letter-spacing:0.04em;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(13,43,39,0.05);color:var(--forest);border:1px solid var(--hair)}
 .tag.gold{background:rgba(212,163,72,0.12);color:#7a5a1e;border-color:rgba(212,163,72,0.3)}
-.card-icon{
-  width:44px;height:44px;border-radius:12px;
-  background:rgba(13,43,39,0.06);color:var(--forest);
-  display:grid;place-items:center;margin-bottom:18px;
-}
+.card-icon{width:44px;height:44px;border-radius:12px;background:rgba(13,43,39,0.06);color:var(--forest);display:grid;place-items:center;margin-bottom:18px}
 .card-icon svg{width:20px;height:20px;stroke-width:1.75}
-
-/* Bento sizing */
 .bento-card.span-3{grid-column:span 3}
 .bento-card.span-2{grid-column:span 2}
 .bento-card.span-4{grid-column:span 4}
@@ -307,25 +144,11 @@ section{position:relative}
 .tvet-half:first-child{border-right:1px solid var(--hair)}
 .tvet-half:hover{background:rgba(13,43,39,0.02)}
 
-/* ============================================================
-   NEWS PRESSROOM
-   ============================================================ */
 .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.news-card{
-  background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-lg);
-  overflow:hidden;cursor:pointer;transition:transform .4s var(--ease), box-shadow .4s var(--ease);
-  display:flex;flex-direction:column;
-}
+.news-card{background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:transform .4s var(--ease),box-shadow .4s var(--ease);display:flex;flex-direction:column}
 .news-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
-.news-card .news-img{
-  height:180px;background:linear-gradient(135deg,#e8e3d4,#f0ebe0);
-  position:relative;overflow:hidden;
-}
-.news-card .news-img::after{
-  content:"";position:absolute;inset:0;
-  background-image:radial-gradient(circle at 1px 1px, rgba(13,43,39,0.06) 1px, transparent 0);
-  background-size:18px 18px;
-}
+.news-card .news-img{height:180px;background:linear-gradient(135deg,#e8e3d4,#f0ebe0);position:relative;overflow:hidden}
+.news-card .news-img::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(13,43,39,0.06) 1px,transparent 0);background-size:18px 18px}
 .news-body{padding:22px;display:flex;flex-direction:column;flex:1}
 .news-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:11.5px;color:var(--ink-mute);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
 .news-cat{padding:4px 10px;border-radius:999px;background:rgba(212,163,72,0.14);color:#7a5a1e;font-size:10.5px;letter-spacing:0.08em}
@@ -335,106 +158,49 @@ section{position:relative}
 .news-card .read svg{width:14px;height:14px;stroke-width:2}
 .news-empty{padding:40px;text-align:center;color:var(--ink-mute);border:1px dashed var(--hair-strong);border-radius:var(--radius-lg);grid-column:1/-1}
 
-/* ============================================================
-   GALLERY / CAMPUS
-   ============================================================ */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.gallery-item{
-  position:relative;border-radius:var(--radius-md);overflow:hidden;
-  aspect-ratio:1/1;cursor:pointer;
-  background:linear-gradient(135deg,#e8e3d4,#f0ebe0);
-  border:1px solid var(--hair);
-  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
-}
+.gallery-item{position:relative;border-radius:var(--radius-md);overflow:hidden;aspect-ratio:1/1;cursor:pointer;background:linear-gradient(135deg,#e8e3d4,#f0ebe0);border:1px solid var(--hair);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .gallery-item:hover{transform:scale(1.02);box-shadow:var(--shadow-md)}
 .gallery-item.wide{grid-column:span 2;aspect-ratio:2/1}
-.gallery-item::before{
-  content:"";position:absolute;inset:0;
-  background-image:radial-gradient(circle at 1px 1px, rgba(13,43,39,0.08) 1px, transparent 0);
-  background-size:20px 20px;
-}
-.gallery-item .cap{
-  position:absolute;left:12px;right:12px;bottom:12px;z-index:2;
-  padding:10px 14px;border-radius:10px;
-  background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);
-  font-size:12.5px;font-weight:600;color:var(--forest);
-  border:1px solid var(--hair);
-  display:flex;align-items:center;justify-content:space-between;
-}
+.gallery-item::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(13,43,39,0.08) 1px,transparent 0);background-size:20px 20px}
+.gallery-item .cap{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);font-size:12.5px;font-weight:600;color:var(--forest);border:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between}
 .gallery-item .cap small{color:var(--ink-mute);font-weight:500;font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase}
 
-/* ============================================================
-   FORMS
-   ============================================================ */
-.form-shell{
-  background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-lg);
-  padding:32px;box-shadow:var(--shadow-sm);
-}
+.form-shell{background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .field{position:relative;display:flex;flex-direction:column;gap:6px}
 .field.full{grid-column:1/-1}
 .field label{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft)}
-.field input,.field select,.field textarea{
-  width:100%;padding:13px 16px;border-radius:12px;
-  border:1px solid var(--hair-strong);background:var(--alabaster);
-  color:var(--ink);font-size:14.5px;
-  transition:border-color .2s, background .2s, box-shadow .2s;
-  outline:none;
-}
-.field input:focus,.field select:focus,.field textarea:focus{
-  border-color:var(--gold);background:#fff;
-  box-shadow:0 0 0 3px rgba(212,163,72,0.15);
-}
+.field input,.field select,.field textarea{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--hair-strong);background:var(--alabaster);color:var(--ink);font-size:14.5px;transition:border-color .2s,background .2s,box-shadow .2s;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(212,163,72,0.15)}
 .field textarea{min-height:120px;resize:vertical}
 .field input::placeholder,.field textarea::placeholder{color:var(--ink-mute)}
 .form-actions{margin-top:22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .form-status{font-size:13px;color:var(--ink-soft);padding:10px 14px;border-radius:10px;background:rgba(13,43,39,0.04);border:1px solid var(--hair)}
+.form-status:empty{display:none}
 .form-status.ok{background:rgba(13,43,39,0.06);color:var(--forest);border-color:rgba(13,43,39,0.15)}
 .form-status.err{background:rgba(176,42,42,0.08);color:#8a1f1f;border-color:rgba(176,42,42,0.2)}
 
-/* ============================================================
-   DASHBOARD SHELL
-   ============================================================ */
 #dashboardShell{display:none;padding:100px 0 60px;min-height:100vh}
 #dashboardShell.active{display:block}
-.dash-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 24px;border-radius:var(--radius-lg);
-  background:var(--white);border:1px solid var(--hair);box-shadow:var(--shadow-sm);
-  margin-bottom:24px;
-}
+.dash-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-radius:var(--radius-lg);background:var(--white);border:1px solid var(--hair);box-shadow:var(--shadow-sm);margin-bottom:24px;gap:16px;flex-wrap:wrap}
 .dash-header .who{display:flex;align-items:center;gap:14px}
-.dash-header .avatar{
-  width:44px;height:44px;border-radius:12px;background:var(--forest);color:var(--gold);
-  display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:16px;
-}
+.dash-header .avatar{width:44px;height:44px;border-radius:12px;background:var(--forest);color:var(--gold);display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:16px}
 .dash-header .who strong{display:block;font-size:15px;color:var(--forest)}
 .dash-header .who small{font-size:12px;color:var(--ink-mute)}
-.tab-switch{display:inline-flex;gap:4px;padding:4px;background:rgba(13,43,39,0.04);border-radius:999px;border:1px solid var(--hair)}
-.tab-switch button{
-  padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink-soft);
-  transition:background .2s, color .2s;
-}
+.tab-switch{display:inline-flex;gap:4px;padding:4px;background:rgba(13,43,39,0.04);border-radius:999px;border:1px solid var(--hair);flex-wrap:wrap}
+.tab-switch button{padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--ink-soft);transition:background .2s,color .2s}
 .tab-switch button.active{background:var(--white);color:var(--forest);box-shadow:var(--shadow-sm)}
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.metric{
-  background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-md);
-  padding:20px 22px;box-shadow:var(--shadow-sm);
-}
+.metric{background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-md);padding:20px 22px;box-shadow:var(--shadow-sm)}
 .metric .label{font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
 .metric .val{font-family:var(--font-display);font-size:2rem;color:var(--forest);font-weight:600;margin-top:4px;line-height:1}
 .metric .delta{font-size:12px;color:var(--ink-soft);margin-top:8px}
 .panel{display:none}
 .panel.active{display:block}
-.panel-card{
-  background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-lg);
-  padding:26px;box-shadow:var(--shadow-sm);
-}
+.panel-card{background:var(--white);border:1px solid var(--hair);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--shadow-sm)}
 .data-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
-.data-table th{
-  text-align:left;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--ink-mute);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--hair);
-}
+.data-table th{text-align:left;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--hair)}
 .data-table td{padding:14px 12px;border-bottom:1px solid var(--hair);color:var(--ink-soft)}
 .data-table tr:last-child td{border-bottom:none}
 .pill{font-size:11px;padding:4px 10px;border-radius:999px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
@@ -443,20 +209,15 @@ section{position:relative}
 .pill.approved{background:rgba(43,120,80,0.12);color:#1e5e3b}
 .pill.rejected{background:rgba(176,42,42,0.1);color:#8a1f1f}
 
-/* ============================================================
-   AUTH MODAL
-   ============================================================ */
-#authModal{
-  position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
-  background:rgba(13,43,39,0.4);backdrop-filter:blur(6px);
-  padding:24px;
-}
+.track-widget{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.track-widget input{flex:1;min-width:200px;padding:12px 16px;border-radius:12px;border:1px solid var(--hair-strong);background:var(--alabaster);font-size:14.5px}
+.track-widget input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,163,72,0.15)}
+.track-result{margin-top:14px;padding:14px 18px;border-radius:12px;background:rgba(13,43,39,0.04);border:1px solid var(--hair);font-size:14px;color:var(--ink-soft)}
+.track-result strong{color:var(--forest)}
+
+#authModal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(13,43,39,0.4);backdrop-filter:blur(6px);padding:24px}
 #authModal.open{display:flex}
-.auth-card{
-  width:100%;max-width:440px;background:var(--white);border-radius:var(--radius-lg);
-  padding:32px;box-shadow:var(--shadow-lg);border:1px solid var(--hair);
-  animation:modalIn .35s var(--ease);
-}
+.auth-card{width:100%;max-width:440px;background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-lg);border:1px solid var(--hair);animation:modalIn .35s var(--ease);position:relative}
 @keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
 .auth-card .close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--ink-soft);border:1px solid var(--hair)}
 .auth-card .close:hover{background:rgba(13,43,39,0.04)}
@@ -467,12 +228,7 @@ section{position:relative}
 .auth-tabs button.active{background:#fff;color:var(--forest);box-shadow:var(--shadow-sm)}
 .auth-form{display:none;flex-direction:column;gap:14px}
 .auth-form.active{display:flex}
-.google-btn{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  padding:12px;border-radius:12px;border:1px solid var(--hair-strong);
-  background:#fff;font-weight:600;font-size:14px;color:var(--forest);
-  transition:background .2s, border-color .2s;
-}
+.google-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:12px;border-radius:12px;border:1px solid var(--hair-strong);background:#fff;font-weight:600;font-size:14px;color:var(--forest);transition:background .2s,border-color .2s}
 .google-btn:hover{background:var(--alabaster);border-color:var(--forest)}
 .google-btn svg{width:18px;height:18px}
 .divider{display:flex;align-items:center;gap:12px;color:var(--ink-mute);font-size:12px;margin:4px 0}
@@ -480,21 +236,16 @@ section{position:relative}
 .auth-footer{font-size:13px;color:var(--ink-soft);text-align:center;margin-top:8px}
 .auth-footer a{color:var(--forest);font-weight:600;cursor:pointer}
 
-/* ============================================================
-   ANNOUNCEMENT READER MODAL
-   ============================================================ */
 .reader-modal{position:fixed;inset:0;z-index:210;display:none;align-items:center;justify-content:center;background:rgba(13,43,39,0.45);backdrop-filter:blur(6px);padding:24px}
 .reader-modal.open{display:flex}
 .reader-card{width:100%;max-width:640px;background:var(--white);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-lg);position:relative;animation:modalIn .35s var(--ease);max-height:85vh;overflow-y:auto}
 .reader-card h2{font-size:1.6rem;margin:14px 0 8px}
 .reader-meta{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--ink-mute);font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
 .reader-body{margin-top:20px;color:var(--ink-soft);font-size:15.5px;line-height:1.7;white-space:pre-wrap}
+.reader-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--ink-soft);border:1px solid var(--hair)}
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
 footer{background:var(--forest);color:#fff;padding:80px 0 32px;margin-top:80px;position:relative;overflow:hidden}
-footer::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 20%, rgba(212,163,72,0.12), transparent 70%);pointer-events:none}
+footer::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 20%,rgba(212,163,72,0.12),transparent 70%);pointer-events:none}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;position:relative;z-index:1}
 .footer-brand{display:flex;flex-direction:column;gap:18px;max-width:320px}
 .footer-brand .brand-text strong{color:#fff}
@@ -506,12 +257,9 @@ footer ul a{font-size:14px;color:rgba(255,255,255,0.75);transition:color .2s}
 footer ul a:hover{color:var(--gold)}
 .footer-bottom{position:relative;z-index:1;margin-top:60px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;gap:16px;font-size:12.5px;color:rgba(255,255,255,0.55);flex-wrap:wrap}
 
-/* ============================================================
-   SCROLL ANIMATION
-   ============================================================ */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease), transform .8s var(--ease)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .reveal.visible{opacity:1;transform:none}
-.reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal-stagger.visible > *{opacity:1;transform:none}
 .reveal-stagger.visible > *:nth-child(1){transition-delay:.05s}
 .reveal-stagger.visible > *:nth-child(2){transition-delay:.12s}
@@ -521,9 +269,6 @@ footer ul a:hover{color:var(--gold)}
 .reveal-stagger.visible > *:nth-child(6){transition-delay:.40s}
 .reveal-stagger.visible > *:nth-child(7){transition-delay:.47s}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:40px}
   .hero-copy{text-align:left}
@@ -574,7 +319,10 @@ footer ul a:hover{color:var(--gold)}
 </head>
 <body>
 
-<!-- ==================== HEADER ==================== -->
+<div id="configBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:300;background:#f4e2b8;color:#6b4a0a;padding:8px 16px;font-size:13px;text-align:center;border-bottom:1px solid rgba(107,74,10,0.2)">
+  Demo mode — Firebase credentials not configured. Data is stored locally in this browser only. See README to enable cloud sign-in.
+</div>
+
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="#home" class="brand" aria-label="G.S. Gatare TSS home">
@@ -609,21 +357,17 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </header>
 
-<!-- Mobile nav drawer -->
-<div class="mobile-nav" id="mobileNav" style="position:fixed;inset:var(--header-h) 0 auto 0;background:rgba(250,250,248,0.98);backdrop-filter:blur(20px);z-index:99;border-bottom:1px solid var(--hair);padding:16px 24px 24px;">
-  <div style="display:flex;flex-direction:column;gap:4px;">
-    <a href="#home" style="padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)">Home</a>
-    <a href="#about" style="padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)">About</a>
-    <a href="#academics" style="padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)">Academics</a>
-    <a href="#tvet" style="padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)">TVET Trades</a>
-    <a href="#admissions" style="padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)">Admissions</a>
-    <a href="#news" style="padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)">News</a>
-    <a href="#campus" style="padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)">Campus</a>
-    <a href="#contact" style="padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)">Contact</a>
-  </div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#academics">Academics</a>
+  <a href="#tvet">TVET Trades</a>
+  <a href="#admissions">Admissions</a>
+  <a href="#news">News</a>
+  <a href="#campus">Campus</a>
+  <a href="#contact">Contact</a>
 </div>
 
-<!-- ==================== HERO ==================== -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="container">
@@ -687,7 +431,6 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ==================== ABOUT ==================== -->
 <section class="section" id="about">
   <div class="container">
     <div class="section-head reveal">
@@ -705,28 +448,24 @@ footer ul a:hover{color:var(--gold)}
         <p class="desc">The history of G.S. Gatare TSS is maintained by the school administration. Verified historical documentation will be published here as it is officially released.</p>
         <div class="tag-row"><span class="tag">Editable</span><span class="tag">Official Source</span></div>
       </article>
-
       <article class="bento-card">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
         <h3>Our Mission</h3>
         <p class="desc">To provide inclusive, disciplined and practical education that prepares every learner for further study, dignified work and responsible citizenship — from Pre-Primary to TVET.</p>
         <div class="tag-row"><span class="tag gold">Core Purpose</span></div>
       </article>
-
       <article class="bento-card">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Our Vision</h3>
         <p class="desc">A flagship technical secondary school in Nyamagabe where academic rigour and hands-on agricultural and veterinary training produce confident, employable graduates.</p>
         <div class="tag-row"><span class="tag gold">Long-Term Goal</span></div>
       </article>
-
       <article class="bento-card span-2">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Core Values</h3>
         <p class="desc">Discipline · Integrity · Practical Excellence · Community · Respect for Life & Land.</p>
         <div class="tag-row"><span class="tag">Discipline</span><span class="tag">Integrity</span><span class="tag">Excellence</span><span class="tag">Community</span><span class="tag">Stewardship</span></div>
       </article>
-
       <article class="bento-card">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
         <h3>School Identity</h3>
@@ -737,7 +476,6 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ==================== ACADEMICS BENTO ==================== -->
 <section class="section" id="academics" style="background:var(--white);">
   <div class="container">
     <div class="section-head reveal">
@@ -755,28 +493,24 @@ footer ul a:hover{color:var(--gold)}
         <p class="desc">Foundational literacy, numeracy and social-emotional development for the youngest learners.</p>
         <div class="tag-row"><span class="tag">Early Childhood</span></div>
       </article>
-
       <article class="bento-card span-2">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
         <h3>Primary (PR)</h3>
         <p class="desc">Competence-based primary education following the REB curriculum across all core subjects.</p>
         <div class="tag-row"><span class="tag">Basic Education</span><span class="tag">REB</span></div>
       </article>
-
       <article class="bento-card span-2">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
         <h3>Ordinary Level (O'Level)</h3>
         <p class="desc">Lower secondary education with strong foundations across sciences, humanities and languages.</p>
         <div class="tag-row"><span class="tag">Lower Secondary</span></div>
       </article>
-
       <article class="bento-card span-3">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <h3>Arts and Humanities (AH)</h3>
         <p class="desc">Advanced Level pathway in the humanities — literature, history, geography, languages — preparing learners for university and public service.</p>
         <div class="tag-row"><span class="tag gold">Advanced Level</span><span class="tag">Humanities</span></div>
       </article>
-
       <article class="bento-card span-3">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 14 18.469V19a2 2 0 1 1-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
         <h3>Mathematics & Science Stream One (MS1)</h3>
@@ -787,7 +521,6 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ==================== TVET ==================== -->
 <section class="section" id="tvet">
   <div class="container">
     <div class="section-head reveal">
@@ -797,7 +530,6 @@ footer ul a:hover{color:var(--gold)}
       </div>
       <p class="lede">Practical, industry-aligned training in agriculture and animal health — delivered in workshops, laboratories and live farms.</p>
     </div>
-
     <div class="bento reveal-stagger">
       <article class="tvet-split bento-card">
         <div class="tvet-half">
@@ -813,14 +545,12 @@ footer ul a:hover{color:var(--gold)}
           <div class="tag-row"><span class="tag gold">TVET L3–L5</span><span class="tag">Veterinary</span><span class="tag">Husbandry</span></div>
         </div>
       </article>
-
       <article class="bento-card span-3 dark">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
         <h3>ANH Level 3 Modules</h3>
         <p class="desc">Ruminant Farming · Concentrate Feeds · Fodder Crops Conservation · Domestic Animal Description · Fodder Growing &amp; Pasture · Minor Surgery · Disease Prevention &amp; Diagnosis · Livestock Health Recording.</p>
         <div class="tag-row"><span class="tag">NESA Standard</span><span class="tag">Level 3</span></div>
       </article>
-
       <article class="bento-card span-3 dark">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.15 0 2.25.22 3.26.62"/></svg></div>
         <h3>ANH Level 4 &amp; 5 Modules</h3>
@@ -831,7 +561,6 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ==================== ADMISSIONS ==================== -->
 <section class="section" id="admissions" style="background:var(--white);">
   <div class="container">
     <div class="section-head reveal">
@@ -841,44 +570,21 @@ footer ul a:hover{color:var(--gold)}
       </div>
       <p class="lede">Complete the form below to submit your application. You will receive a tracking number to follow your application status.</p>
     </div>
-
     <div class="form-shell reveal">
       <form id="admissionForm" novalidate>
         <div class="form-grid">
-          <div class="field full">
-            <label for="studentName">Student Full Name</label>
-            <input type="text" id="studentName" name="studentName" placeholder="e.g. Aline Uwase" required minlength="2" />
-          </div>
-          <div class="field">
-            <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob" required />
-          </div>
-          <div class="field">
-            <label for="gender">Gender</label>
+          <div class="field full"><label for="studentName">Student Full Name</label><input type="text" id="studentName" name="studentName" placeholder="e.g. Aline Uwase" required minlength="2" /></div>
+          <div class="field"><label for="dob">Date of Birth</label><input type="date" id="dob" name="dob" required /></div>
+          <div class="field"><label for="gender">Gender</label>
             <select id="gender" name="gender" required>
-              <option value="">Select gender</option>
-              <option>Female</option>
-              <option>Male</option>
+              <option value="">Select gender</option><option>Female</option><option>Male</option>
             </select>
           </div>
-          <div class="field">
-            <label for="parentName">Parent / Guardian Name</label>
-            <input type="text" id="parentName" name="parentName" required minlength="2" />
-          </div>
-          <div class="field">
-            <label for="parentPhone">Parent Telephone</label>
-            <input type="tel" id="parentPhone" name="parentPhone" placeholder="+250 ..." required pattern="[\d+\s()-]{7,}" />
-          </div>
-          <div class="field">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required />
-          </div>
-          <div class="field">
-            <label for="previousSchool">Previous School</label>
-            <input type="text" id="previousSchool" name="previousSchool" required />
-          </div>
-          <div class="field full">
-            <label for="program">Selected Academic Program</label>
+          <div class="field"><label for="parentName">Parent / Guardian Name</label><input type="text" id="parentName" name="parentName" required minlength="2" /></div>
+          <div class="field"><label for="parentPhone">Parent Telephone</label><input type="tel" id="parentPhone" name="parentPhone" placeholder="+250 ..." required pattern="[\d+\s()-]{7,}" /></div>
+          <div class="field"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="you@example.com" required /></div>
+          <div class="field"><label for="previousSchool">Previous School</label><input type="text" id="previousSchool" name="previousSchool" required /></div>
+          <div class="field full"><label for="program">Selected Academic Program</label>
             <select id="program" name="program" required>
               <option value="">Select program</option>
               <option>Pre-Primary (PPR)</option>
@@ -890,10 +596,7 @@ footer ul a:hover{color:var(--gold)}
               <option>Animal Health (ANH) — TVET L3–L5</option>
             </select>
           </div>
-          <div class="field full">
-            <label for="documents">Supporting Document (PDF or image, max 5 MB)</label>
-            <input type="file" id="documents" name="documents" accept=".pdf,image/*" />
-          </div>
+          <div class="field full"><label for="documents">Supporting Document (PDF or image, max 5 MB)</label><input type="file" id="documents" name="documents" accept=".pdf,image/*" /></div>
         </div>
         <div class="form-actions">
           <button type="submit" class="btn btn-primary">
@@ -907,7 +610,6 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ==================== NEWS ==================== -->
 <section class="section" id="news">
   <div class="container">
     <div class="section-head reveal">
@@ -917,14 +619,10 @@ footer ul a:hover{color:var(--gold)}
       </div>
       <p class="lede">School announcements, academic calendar notices and event updates — published by the administration.</p>
     </div>
-
-    <div id="homepageNewsGrid" class="news-grid reveal-stagger">
-      <!-- Filled by JS from Firestore or localStorage -->
-    </div>
+    <div id="homepageNewsGrid" class="news-grid reveal-stagger"></div>
   </div>
 </section>
 
-<!-- ==================== CAMPUS ==================== -->
 <section class="section" id="campus" style="background:var(--white);">
   <div class="container">
     <div class="section-head reveal">
@@ -934,7 +632,6 @@ footer ul a:hover{color:var(--gold)}
       </div>
       <p class="lede">Photographs below are labelled placeholders. Genuine campus photographs will be added by the school administration.</p>
     </div>
-
     <div class="gallery reveal-stagger">
       <div class="gallery-item wide"><div class="cap"><span>School Environment</span><small>Placeholder</small></div></div>
       <div class="gallery-item"><div class="cap"><span>Classrooms</span><small>Placeholder</small></div></div>
@@ -947,7 +644,6 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ==================== CONTACT ==================== -->
 <section class="section" id="contact">
   <div class="container">
     <div class="section-head reveal">
@@ -957,8 +653,7 @@ footer ul a:hover{color:var(--gold)}
       </div>
       <p class="lede">Reach us by phone, email or WhatsApp — or send a message using the form below.</p>
     </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:32px;" class="reveal">
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1.2fr;gap:32px;">
       <div style="display:flex;flex-direction:column;gap:16px;">
         <a href="tel:+250785486933" class="bento-card" style="display:flex;align-items:center;gap:14px;padding:20px;">
           <span class="card-icon" style="margin:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
@@ -977,7 +672,6 @@ footer ul a:hover{color:var(--gold)}
           <div><small style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:600">Address</small><div style="font-weight:600;color:var(--forest);font-size:14px;line-height:1.5">Gashasha Cell, Gatare Sector,<br/>Nyamagabe District, Southern Province, Rwanda</div></div>
         </div>
       </div>
-
       <div class="form-shell">
         <form id="contactForm" novalidate>
           <div class="form-grid">
@@ -999,7 +693,6 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ==================== DASHBOARD SHELL ==================== -->
 <section id="dashboardShell">
   <div class="container">
     <div class="dash-header">
@@ -1027,15 +720,22 @@ footer ul a:hover{color:var(--gold)}
       <div class="metric"><div class="label">Session</div><div class="val" id="metricSession">Guest</div><div class="delta">Current role</div></div>
     </div>
 
-    <!-- Overview -->
     <div class="panel active" id="panel-overview">
       <div class="panel-card">
         <h3 style="margin-bottom:14px;">Welcome</h3>
         <p style="color:var(--ink-soft)">This portal adapts to your role. Students see announcements and admission status; teachers publish learning resources and notices; administrators manage the school.</p>
+
+        <div style="margin-top:22px;padding-top:22px;border-top:1px solid var(--hair);">
+          <h4 style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;margin-bottom:10px;">Track Your Application</h4>
+          <div class="track-widget">
+            <input id="trackInput" type="text" placeholder="Enter tracking number (e.g. GAT-2026-ABCDEF)" />
+            <button class="btn btn-primary" id="trackBtn" type="button">Track</button>
+          </div>
+          <div class="track-result" id="trackResult" style="display:none;"></div>
+        </div>
       </div>
     </div>
 
-    <!-- Records -->
     <div class="panel" id="panel-records">
       <div class="panel-card">
         <h3 style="margin-bottom:14px;">Recent Applications</h3>
@@ -1048,10 +748,12 @@ footer ul a:hover{color:var(--gold)}
       </div>
     </div>
 
-    <!-- Manage -->
     <div class="panel" id="panel-manage">
       <div class="panel-card">
         <h3 style="margin-bottom:14px;">Publish Announcement</h3>
+        <div id="publishGuard" style="display:none;padding:14px 18px;border-radius:12px;background:rgba(176,42,42,0.08);color:#8a1f1f;border:1px solid rgba(176,42,42,0.2);font-size:14px;margin-bottom:14px;">
+          Only administrators and teachers can publish announcements. Your current role does not permit this action.
+        </div>
         <form id="publishNewsForm" style="display:flex;flex-direction:column;gap:12px;">
           <div class="form-grid">
             <div class="field"><label for="newsTitle">Title</label><input id="newsTitle" type="text" required /></div>
@@ -1072,11 +774,9 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </section>
 
-<!-- ==================== ADMIN / STUDENT PANELS (hidden containers) ==================== -->
 <div id="adminPanel" style="display:none" aria-hidden="true"></div>
 <div id="studentPanel" style="display:none" aria-hidden="true"></div>
 
-<!-- ==================== FOOTER ==================== -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -1124,9 +824,8 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </footer>
 
-<!-- ==================== AUTH MODAL ==================== -->
 <div id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-  <div class="auth-card" style="position:relative;">
+  <div class="auth-card">
     <button class="close" id="authClose" aria-label="Close">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
@@ -1169,10 +868,9 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </div>
 
-<!-- ==================== NEWS READER MODAL ==================== -->
 <div class="reader-modal" id="readerModal" role="dialog" aria-modal="true">
   <div class="reader-card">
-    <button class="close" id="readerClose" aria-label="Close" style="position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--ink-soft);border:1px solid var(--hair)">
+    <button class="reader-close" id="readerClose" aria-label="Close">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="reader-meta"><span class="news-cat" id="readerCat">Announcement</span><span id="readerDate"></span></div>
@@ -1181,54 +879,47 @@ footer ul a:hover{color:var(--gold)}
   </div>
 </div>
 
-<!-- ==================== SCRIPTS ==================== -->
 <script type="module">
-/* ============================================================
-   1. CONFIG — replace with your Firebase project settings
-   ============================================================ */
 const firebaseConfig = {
-  apiKey:            "YOUR_API_KEY",
-  authDomain:        "YOUR_PROJECT.firebaseapp.com",
-  projectId:         "YOUR_PROJECT_ID",
-  storageBucket:     "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId:             "YOUR_APP_ID"
+  apiKey: "AIzaSyCk5pHtd2a9P74pVQUd_PIaHvaYVFzqrfw",
+  authDomain: "gs-gatare-portal.firebaseapp.com",
+  projectId: "gs-gatare-portal",
+  storageBucket: "gs-gatare-portal.firebasestorage.app",
+  messagingSenderId: "995142418810",
+  appId: "1:995142418810:web:cf1cb0d971541a362cd6c3"
 };
+function isConfigPlaceholder(cfg){
+  return Object.values(cfg).some(v => !v || /YOUR_|placeholder|example\.com/i.test(String(v)));
+}
 
-/* ============================================================
-   2. FIREBASE INIT — graceful fallback to localStorage
-   ============================================================ */
 let firebaseReady = false;
 let fb = null;
 
 async function initFirebase(){
+  if (isConfigPlaceholder(firebaseConfig)){
+    console.info("[GS Gatare] Firebase config contains placeholders — running in localStorage demo mode.");
+    document.getElementById("configBanner").style.display = "block";
+    document.body.style.paddingTop = "34px";
+    return;
+  }
   try{
     const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
-    const { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider,
-            createUserWithEmailAndPassword, signInWithEmailAndPassword,
-            signOut, sendPasswordResetEmail, updateProfile } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js");
-    const { getFirestore, collection, addDoc, getDocs, query, orderBy, limit,
-            serverTimestamp, doc, getDoc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
+    const authMod = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js");
+    const fireMod = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
 
     const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db   = getFirestore(app);
-    fb = { app, auth, db, onAuthStateChanged, signInWithPopup, GoogleAuthProvider,
-           createUserWithEmailAndPassword, signInWithEmailAndPassword,
-           signOut, sendPasswordResetEmail, updateProfile,
-           collection, addDoc, getDocs, query, orderBy, limit, serverTimestamp,
-           doc, getDoc, setDoc };
+    const auth = authMod.getAuth(app);
+    const db   = fireMod.getFirestore(app);
+    fb = { app, auth, db, ...authMod, ...fireMod };
     firebaseReady = true;
     console.info("[GS Gatare] Firebase initialized.");
   }catch(err){
-    console.warn("[GS Gatare] Firebase unavailable — running in localStorage demo mode.", err?.message);
-    firebaseReady = false;
+    console.warn("[GS Gatare] Firebase init failed — running in localStorage demo mode.", err?.message);
+    document.getElementById("configBanner").style.display = "block";
+    document.body.style.paddingTop = "34px";
   }
 }
 
-/* ============================================================
-   3. LOCAL STORAGE FALLBACK STORE
-   ============================================================ */
 const LS = {
   get(key, fallback){ try{ return JSON.parse(localStorage.getItem(key)) ?? fallback; }catch{ return fallback; } },
   set(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch{} }
@@ -1245,9 +936,6 @@ const store = {
   clearSession(){ localStorage.removeItem("gs_session"); }
 };
 
-/* ============================================================
-   4. AUTH STATE + UI
-   ============================================================ */
 let currentUser = store.getSession();
 
 const authModal      = document.getElementById("authModal");
@@ -1261,6 +949,7 @@ const signinForm     = document.getElementById("signinForm");
 const signupForm     = document.getElementById("signupForm");
 const signinStatus   = document.getElementById("signinStatus");
 const signupStatus   = document.getElementById("signupStatus");
+const publishStatus  = document.getElementById("publishStatus");
 
 function openAuth(){ authModal.classList.add("open"); }
 function closeAuth(){ authModal.classList.remove("open"); }
@@ -1276,33 +965,51 @@ document.querySelectorAll(".auth-tabs button").forEach(btn=>{
     const target = btn.dataset.form;
     signinForm.classList.toggle("active", target === "signin");
     signupForm.classList.toggle("active", target === "signup");
+    setStatus(signinStatus, "");
+    setStatus(signupStatus, "");
   });
 });
 
-function applySession(user){
+function applySession(user, opts = { scroll: false }){
   currentUser = user;
-  store.setSession(user);
+  if (user) store.setSession(user); else store.clearSession();
   const signedIn = !!user;
   dashShell.classList.toggle("active", signedIn);
   document.getElementById("dashName").textContent  = signedIn ? (user.name || user.email || "User") : "Guest";
   document.getElementById("dashRole").textContent  = signedIn ? (user.role || "student") : "Sign in required";
   document.getElementById("dashAvatar").textContent = signedIn ? (user.name || user.email || "G").charAt(0).toUpperCase() : "G";
   document.getElementById("metricSession").textContent = signedIn ? (user.role || "student") : "Guest";
-  if (signedIn) { closeAuth(); document.getElementById("dashboardShell").scrollIntoView({behavior:"smooth"}); }
+
+  const canPublish = signedIn && (user.role === "admin" || user.role === "teacher");
+  document.getElementById("publishNewsForm").style.display = canPublish ? "flex" : "none";
+  document.getElementById("publishGuard").style.display = canPublish ? "none" : "block";
+
+  if (signedIn && opts.scroll) {
+    closeAuth();
+    dashShell.scrollIntoView({ behavior: "smooth" });
+  }
   refreshMetrics();
 }
 
-function setStatus(el, msg, type=""){ if(!el) return; el.textContent = msg; el.className = "form-status " + type; }
+function setStatus(el, msg, type=""){
+  if (!el) return;
+  el.textContent = msg;
+  el.className = "form-status" + (type ? " " + type : "");
+}
 
-/* Google sign-in */
 googleBtn?.addEventListener("click", async ()=>{
   if (!firebaseReady){
     setStatus(signinStatus, "Cloud sign-in is not configured. Using local demo session.", "err");
-    applySession({ name: "Demo Guest", email: "demo@local", role: "student" });
+    applySession({ name: "Demo Guest", email: "demo@local", role: "student" }, { scroll: true });
     return;
   }
   try{
     const provider = new fb.GoogleAuthProvider();
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile && fb.signInWithRedirect){
+      await fb.signInWithRedirect(fb.auth, provider);
+      return;
+    }
     const result = await fb.signInWithPopup(fb.auth, provider);
     const userRef = fb.doc(fb.db, "users", result.user.uid);
     const snap = await fb.getDoc(userRef);
@@ -1310,13 +1017,22 @@ googleBtn?.addEventListener("click", async ()=>{
     if (!snap.exists()){
       await fb.setDoc(userRef, { email: result.user.email, name: result.user.displayName || "", role: "student", createdAt: fb.serverTimestamp() });
     } else { role = snap.data().role || "student"; }
-    applySession({ uid: result.user.uid, name: result.user.displayName, email: result.user.email, role });
+    applySession({ uid: result.user.uid, name: result.user.displayName, email: result.user.email, role }, { scroll: true });
   }catch(err){
+    if (err?.code === "auth/popup-blocked" && fb.signInWithRedirect){
+      try{
+        const provider = new fb.GoogleAuthProvider();
+        await fb.signInWithRedirect(fb.auth, provider);
+        return;
+      }catch(e2){
+        setStatus(signinStatus, "Google sign-in failed: " + (e2?.message || "unknown"), "err");
+        return;
+      }
+    }
     setStatus(signinStatus, "Google sign-in failed: " + (err?.message || "unknown"), "err");
   }
 });
 
-/* Email sign-up */
 signupForm?.addEventListener("submit", async (e)=>{
   e.preventDefault();
   const name  = document.getElementById("signupName").value.trim();
@@ -1327,22 +1043,19 @@ signupForm?.addEventListener("submit", async (e)=>{
 
   if (!firebaseReady){
     setStatus(signupStatus, "Cloud not configured — creating local demo account.", "ok");
-    applySession({ name, email, role });
+    applySession({ name, email, role }, { scroll: true });
     return;
   }
   try{
     const cred = await fb.createUserWithEmailAndPassword(fb.auth, email, pass);
     await fb.updateProfile(cred.user, { displayName: name });
-    await fb.setDoc(fb.doc(fb.db, "users", cred.user.uid), {
-      email, name, role, createdAt: fb.serverTimestamp()
-    });
-    applySession({ uid: cred.user.uid, name, email, role });
+    await fb.setDoc(fb.doc(fb.db, "users", cred.user.uid), { email, name, role, createdAt: fb.serverTimestamp() });
+    applySession({ uid: cred.user.uid, name, email, role }, { scroll: true });
   }catch(err){
     setStatus(signupStatus, "Registration failed: " + (err?.message || "unknown"), "err");
   }
 });
 
-/* Email sign-in */
 signinForm?.addEventListener("submit", async (e)=>{
   e.preventDefault();
   const email = document.getElementById("signinEmail").value.trim();
@@ -1351,43 +1064,37 @@ signinForm?.addEventListener("submit", async (e)=>{
 
   if (!firebaseReady){
     setStatus(signinStatus, "Cloud not configured — signing in with local demo session.", "ok");
-    applySession({ name: email.split("@")[0], email, role: "student" });
+    applySession({ name: email.split("@")[0], email, role: "student" }, { scroll: true });
     return;
   }
   try{
     const cred = await fb.signInWithEmailAndPassword(fb.auth, email, pass);
     const snap = await fb.getDoc(fb.doc(fb.db, "users", cred.user.uid));
     const role = snap.exists() ? (snap.data().role || "student") : "student";
-    applySession({ uid: cred.user.uid, name: cred.user.displayName || email, email, role });
+    applySession({ uid: cred.user.uid, name: cred.user.displayName || email, email, role }, { scroll: true });
   }catch(err){
     setStatus(signinStatus, "Sign-in failed: " + (err?.message || "unknown"), "err");
   }
 });
 
-/* Forgot password */
 document.getElementById("forgotLink")?.addEventListener("click", async ()=>{
   const email = document.getElementById("signinEmail").value.trim();
   if (!email){ setStatus(signinStatus, "Enter your email first.", "err"); return; }
   if (!firebaseReady){ setStatus(signinStatus, "Password reset requires Firebase configuration.", "err"); return; }
   try{
     await fb.sendPasswordResetEmail(fb.auth, email);
-    setStatus(signinStatus, "Password reset email sent.", "ok");
+    setStatus(signinStatus, "If that email exists, a reset link has been requested.", "ok");
   }catch(err){
-    setStatus(signinStatus, "Reset failed: " + (err?.message || "unknown"), "err");
+    setStatus(signinStatus, "Reset request failed: " + (err?.message || "unknown"), "err");
   }
 });
 
-/* Logout */
 logoutBtn?.addEventListener("click", async ()=>{
   if (firebaseReady){ try{ await fb.signOut(fb.auth); }catch{} }
   store.clearSession();
   applySession(null);
-  dashShell.classList.remove("active");
 });
 
-/* ============================================================
-   5. ADMISSION FORM
-   ============================================================ */
 const admissionForm = document.getElementById("admissionForm");
 const admissionStatus = document.getElementById("admissionStatus");
 
@@ -1428,16 +1135,13 @@ admissionForm?.addEventListener("submit", async (e)=>{
     }
     setStatus(admissionStatus, `Application received. Your tracking number is ${data.tracking}.`, "ok");
     admissionForm.reset();
-    refreshMetrics();
-    loadNews();
+    try { await refreshMetrics(); } catch {}
+    try { await loadNews(); } catch {}
   }catch(err){
     setStatus(admissionStatus, "Submission failed: " + (err?.message || "unknown"), "err");
   }
 });
 
-/* ============================================================
-   6. CONTACT FORM
-   ============================================================ */
 const contactForm = document.getElementById("contactForm");
 const contactStatus = document.getElementById("contactStatus");
 contactForm?.addEventListener("submit", async (e)=>{
@@ -1460,26 +1164,23 @@ contactForm?.addEventListener("submit", async (e)=>{
     }
     setStatus(contactStatus, "Message received. The school will respond shortly.", "ok");
     contactForm.reset();
-    refreshMetrics();
+    try { await refreshMetrics(); } catch {}
   }catch(err){
     setStatus(contactStatus, "Submission failed: " + (err?.message || "unknown"), "err");
   }
 });
 
-/* ============================================================
-   7. NEWS — loading + publishing
-   ============================================================ */
 const newsGrid = document.getElementById("homepageNewsGrid");
 
 async function loadNews(){
   let items = [];
-  try{
-    if (firebaseReady){
+  if (firebaseReady){
+    try{
       const q = fb.query(fb.collection(fb.db, "announcements"), fb.orderBy("createdAt","desc"), fb.limit(6));
       const snap = await fb.getDocs(q);
       snap.forEach(d => items.push({ id: d.id, ...d.data() }));
-    }
-  }catch{ /* fall through to local */ }
+    }catch(err){ console.warn("[GS Gatare] Firestore news read failed:", err?.message); }
+  }
   if (items.length === 0) items = store.getNews();
   renderNews(items);
 }
@@ -1512,7 +1213,6 @@ function renderNews(items){
       openReader(items[idx]);
     });
   });
-  newsGrid._items = items;
 }
 
 function formatDate(v){
@@ -1524,7 +1224,6 @@ function formatDate(v){
 }
 function escapeHtml(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
 
-/* Reader modal */
 const readerModal = document.getElementById("readerModal");
 const readerClose = document.getElementById("readerClose");
 function openReader(n){
@@ -1538,12 +1237,13 @@ function openReader(n){
 readerClose?.addEventListener("click", ()=> readerModal.classList.remove("open"));
 readerModal?.addEventListener("click", (e)=>{ if(e.target === readerModal) readerModal.classList.remove("open"); });
 
-/* Publish news form */
-const publishForm = document.getElementById("publishNewsForm");
-const publishStatus = document.getElementById("publishStatus");
-publishForm?.addEventListener("submit", async (e)=>{
+document.getElementById("publishNewsForm")?.addEventListener("submit", async (e)=>{
   e.preventDefault();
   if (!currentUser){ setStatus(publishStatus, "Sign in to publish announcements.", "err"); return; }
+  if (currentUser.role !== "admin" && currentUser.role !== "teacher"){
+    setStatus(publishStatus, "Only administrators and teachers can publish announcements.", "err");
+    return;
+  }
   const data = {
     title:    document.getElementById("newsTitle").value.trim(),
     category: document.getElementById("newsCategory").value,
@@ -1561,17 +1261,14 @@ publishForm?.addEventListener("submit", async (e)=>{
       const list = store.getNews(); list.unshift(data); store.setNews(list);
     }
     setStatus(publishStatus, "Announcement published.", "ok");
-    publishForm.reset();
+    document.getElementById("publishNewsForm").reset();
     await loadNews();
-    refreshMetrics();
+    await refreshMetrics();
   }catch(err){
     setStatus(publishStatus, "Publish failed: " + (err?.message || "unknown"), "err");
   }
 });
 
-/* ============================================================
-   8. DASHBOARD TABS + METRICS
-   ============================================================ */
 document.querySelectorAll("#dashTabs button").forEach(btn=>{
   btn.addEventListener("click", ()=>{
     document.querySelectorAll("#dashTabs button").forEach(b=>b.classList.remove("active"));
@@ -1581,53 +1278,115 @@ document.querySelectorAll("#dashTabs button").forEach(btn=>{
   });
 });
 
-function refreshMetrics(){
-  const news = store.getNews();
-  const apps = store.getApps();
-  const inq  = store.getInquiries();
-  document.getElementById("metricNotices").textContent   = news.length;
-  document.getElementById("metricApps").textContent      = apps.length;
-  document.getElementById("metricInquiries").textContent = inq.length;
+async function refreshMetrics(){
+  let newsCount = 0, appsCount = 0, inqCount = 0, appsList = [];
+
+  if (firebaseReady){
+    try{
+      const [nSnap, aSnap, iSnap] = await Promise.all([
+        fb.getDocs(fb.collection(fb.db, "announcements")),
+        fb.query(fb.collection(fb.db, "admissions"), fb.orderBy("createdAt","desc"), fb.limit(8)),
+        fb.getDocs(fb.collection(fb.db, "inquiries"))
+      ]);
+      newsCount = nSnap.size;
+      inqCount  = iSnap.size;
+      const allAppsSnap = await fb.getDocs(fb.collection(fb.db, "admissions"));
+      appsCount = allAppsSnap.size;
+      aSnap.forEach(d => appsList.push({ id: d.id, ...d.data() }));
+    }catch(err){
+      console.warn("[GS Gatare] Firestore metric read failed:", err?.message);
+    }
+  }
+  if (!firebaseReady || (appsCount === 0 && newsCount === 0 && inqCount === 0)){
+    const localNews = store.getNews();
+    const localApps = store.getApps();
+    const localInq  = store.getInquiries();
+    if (!firebaseReady || localNews.length + localApps.length + localInq.length > 0){
+      newsCount = localNews.length;
+      appsCount = localApps.length;
+      inqCount  = localInq.length;
+      appsList  = localApps.slice(0,8);
+    }
+  }
+
+  document.getElementById("metricNotices").textContent   = newsCount;
+  document.getElementById("metricApps").textContent      = appsCount;
+  document.getElementById("metricInquiries").textContent = inqCount;
 
   const body = document.getElementById("recordsBody");
   if (!body) return;
-  if (apps.length === 0){
+  if (appsList.length === 0){
     body.innerHTML = `<tr><td colspan="4" style="text-align:center;color:var(--ink-mute)">No records yet.</td></tr>`;
     return;
   }
-  body.innerHTML = apps.slice(0,8).map(a => `
+  body.innerHTML = appsList.slice(0,8).map(a => `
     <tr>
       <td><code style="font-size:12px">${escapeHtml(a.tracking || "—")}</code></td>
       <td>${escapeHtml(a.studentName || "")}</td>
       <td>${escapeHtml(a.program || "")}</td>
-      <td><span class="pill ${(a.status||"submitted")}">${escapeHtml(a.status||"submitted")}</span></td>
+      <td><span class="pill ${escapeHtml(a.status||"submitted")}">${escapeHtml(a.status||"submitted")}</span></td>
     </tr>
   `).join("");
 }
 
-/* ============================================================
-   9. SCROLL HEADER + NAV + REVEAL
-   ============================================================ */
+document.getElementById("trackBtn")?.addEventListener("click", async ()=>{
+  const input = document.getElementById("trackInput").value.trim().toUpperCase();
+  const result = document.getElementById("trackResult");
+  if (!input){ result.style.display="block"; result.innerHTML = "Please enter a tracking number."; return; }
+
+  let found = null;
+  if (firebaseReady){
+    try{
+      const q = fb.query(fb.collection(fb.db, "admissions"), fb.where("tracking","==",input));
+      const snap = await fb.getDocs(q);
+      snap.forEach(d => { found = { id: d.id, ...d.data() }; });
+    }catch(err){
+      console.warn("[GS Gatare] Tracking lookup failed:", err?.message);
+    }
+  }
+  if (!found){
+    found = store.getApps().find(a => (a.tracking||"").toUpperCase() === input) || null;
+  }
+  result.style.display = "block";
+  if (!found){
+    result.innerHTML = `No application found for <strong>${escapeHtml(input)}</strong>.`;
+    return;
+  }
+  result.innerHTML = `Tracking <strong>${escapeHtml(found.tracking)}</strong> — ${escapeHtml(found.studentName||"")} · ${escapeHtml(found.program||"")} · Status: <span class="pill ${escapeHtml(found.status||"submitted")}">${escapeHtml(found.status||"submitted")}</span>`;
+});
+
 const header = document.getElementById("siteHeader");
 const mobileToggle = document.getElementById("mobileToggle");
 const mobileNav = document.getElementById("mobileNav");
-mobileNav.style.display = "none";
 
 window.addEventListener("scroll", ()=>{
   header.classList.toggle("scrolled", window.scrollY > 40);
   highlightNav();
 }, { passive: true });
 
-mobileToggle?.addEventListener("click", ()=>{
-  const open = mobileToggle.classList.toggle("open");
-  mobileToggle.setAttribute("aria-expanded", String(open));
-  mobileNav.style.display = open ? "block" : "none";
-});
-mobileNav?.querySelectorAll("a").forEach(a => a.addEventListener("click", ()=>{
+function openMobileNav(){
+  mobileNav.classList.add("open");
+  mobileToggle.classList.add("open");
+  mobileToggle.setAttribute("aria-expanded","true");
+  mobileNav.querySelector("a")?.focus();
+}
+function closeMobileNav(){
+  mobileNav.classList.remove("open");
   mobileToggle.classList.remove("open");
   mobileToggle.setAttribute("aria-expanded","false");
-  mobileNav.style.display = "none";
-}));
+}
+mobileToggle?.addEventListener("click", ()=>{
+  if (mobileNav.classList.contains("open")) closeMobileNav(); else openMobileNav();
+});
+mobileNav?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
+
+document.addEventListener("keydown", (e)=>{
+  if (e.key === "Escape"){
+    if (mobileNav.classList.contains("open")) closeMobileNav();
+    if (authModal.classList.contains("open")) closeAuth();
+    if (readerModal.classList.contains("open")) readerModal.classList.remove("open");
+  }
+});
 
 function highlightNav(){
   const sections = ["home","about","academics","tvet","news","campus","contact"];
@@ -1650,15 +1409,12 @@ const io = new IntersectionObserver((entries)=>{
 }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
 document.querySelectorAll(".reveal, .reveal-stagger").forEach(el => io.observe(el));
 
-/* ============================================================
-   10. THREE.JS 3D CREST — lightweight, mousemove tilt
-   ============================================================ */
 async function initThree(){
   const canvas = document.getElementById("webgl-canvas");
   const stage = document.getElementById("stage");
   if (!canvas || !stage) return;
   try{
-    const THREE = await import("https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js");
+    const THREE = await import("https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js");
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(stage.clientWidth, stage.clientHeight, false);
@@ -1667,27 +1423,21 @@ async function initThree(){
     const camera = new THREE.PerspectiveCamera(42, stage.clientWidth / stage.clientHeight, 0.1, 100);
     camera.position.set(0, 0.4, 4.2);
 
-    // Lighting
     scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-    const key = new THREE.DirectionalLight(0xfff6e0, 1.1);
-    key.position.set(3, 5, 4); scene.add(key);
-    const rim = new THREE.DirectionalLight(0xd4a348, 0.5);
-    rim.position.set(-4, -2, -3); scene.add(rim);
+    const key = new THREE.DirectionalLight(0xfff6e0, 1.1); key.position.set(3,5,4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xd4a348, 0.5); rim.position.set(-4,-2,-3); scene.add(rim);
 
-    // Central crest — icosahedron with gold edges
     const core = new THREE.Mesh(
       new THREE.IcosahedronGeometry(1.05, 1),
       new THREE.MeshStandardMaterial({ color: 0x0d2b27, roughness: 0.35, metalness: 0.4, flatShading: true })
     );
     scene.add(core);
-
     const edges = new THREE.LineSegments(
       new THREE.EdgesGeometry(core.geometry),
       new THREE.LineBasicMaterial({ color: 0xd4a348, transparent: true, opacity: 0.65 })
     );
     core.add(edges);
 
-    // Orbiting gold particles
     const particleCount = 60;
     const positions = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount; i++){
@@ -1700,19 +1450,14 @@ async function initThree(){
     }
     const pGeo = new THREE.BufferGeometry();
     pGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    const pMat = new THREE.PointsMaterial({ color: 0xd4a348, size: 0.05, transparent: true, opacity: 0.85 });
-    const points = new THREE.Points(pGeo, pMat);
+    const points = new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0xd4a348, size: 0.05, transparent: true, opacity: 0.85 }));
     scene.add(points);
 
-    // Mouse tilt
-    let targetX = 0, targetY = 0;
-    let currentX = 0, currentY = 0;
+    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
     stage.addEventListener("mousemove", (e)=>{
       const rect = stage.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top)  / rect.height - 0.5;
-      targetX = px * 0.35;
-      targetY = py * 0.35;
+      targetX = ((e.clientX - rect.left) / rect.width  - 0.5) * 0.35;
+      targetY = ((e.clientY - rect.top)  / rect.height - 0.5) * 0.35;
     });
     stage.addEventListener("mouseleave", ()=>{ targetX = 0; targetY = 0; });
 
@@ -1733,25 +1478,31 @@ async function initThree(){
     }
     animate();
 
-    const onResize = ()=>{
+    window.addEventListener("resize", ()=>{
       const w = stage.clientWidth, h = stage.clientHeight;
       renderer.setSize(w, h, false);
       camera.aspect = w / h; camera.updateProjectionMatrix();
-    };
-    window.addEventListener("resize", onResize);
+    });
   }catch(err){
     console.warn("[GS Gatare] 3D scene could not load; showing gradient fallback.", err?.message);
   }
 }
 
-/* ============================================================
-   11. INIT
-   ============================================================ */
 (async function boot(){
   document.getElementById("year").textContent = new Date().getFullYear();
   await initFirebase();
 
   if (firebaseReady){
+    if (fb.getRedirectResult){
+      try{
+        const r = await fb.getRedirectResult(fb.auth);
+        if (r?.user){
+          const snap = await fb.getDoc(fb.doc(fb.db, "users", r.user.uid));
+          const role = snap.exists() ? (snap.data().role || "student") : "student";
+          applySession({ uid: r.user.uid, name: r.user.displayName, email: r.user.email, role });
+        }
+      }catch{}
+    }
     fb.onAuthStateChanged(fb.auth, async (user)=>{
       if (!user){ applySession(null); return; }
       try{
@@ -1767,7 +1518,7 @@ async function initThree(){
   }
 
   await loadNews();
-  refreshMetrics();
+  await refreshMetrics();
   initThree();
 })();
 </script>
