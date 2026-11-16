@@ -532,8 +532,11 @@ document.getElementById("googleSignIn").onclick = async () => {
   if(!firebaseReady) return alert("Firebase is not connected.");
   try {
     const provider = new fb.GoogleAuthProvider();
-    await fb.signInWithPopup(fb.auth, provider);
-  } catch(e) { alert("Google Sign-In Error: " + e.message); }
+    // Changed from Popup to Redirect to fix the error
+    await fb.signInWithRedirect(fb.auth, provider);
+  } catch(e) { 
+    alert("Google Sign-In Error: " + e.message); 
+  }
 };
 
 document.getElementById("signinForm").onsubmit = async (e) => {
@@ -566,9 +569,20 @@ document.getElementById("signupForm").onsubmit = async (e) => {
     document.getElementById("signupStatus").className = "form-status err";
   }
 };
-
 async function setupAuthListener() {
   if (!firebaseReady) return;
+
+  // 1. CATCH THE REDIRECT RESULT (New code for Redirect)
+  try {
+    const result = await fb.getRedirectResult(fb.auth);
+    if (result && result.user) {
+      console.log("Successfully logged in via Google Redirect!");
+    }
+  } catch (error) {
+    console.error("Redirect Error:", error.message);
+  }
+
+  // 2. LISTEN FOR AUTH STATE CHANGES (Your existing code)
   fb.onAuthStateChanged(fb.auth, async (user) => {
     if(user) {
       const docRef = fb.doc(fb.db, "users", user.uid);
