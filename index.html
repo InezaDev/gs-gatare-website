@@ -453,7 +453,6 @@ const observer = new IntersectionObserver((entries) => { entries.forEach(entry =
 </script>
 
 <script type="module">
-// YOUR ACTUAL FIREBASE CONFIG IS PASTED HERE
 const firebaseConfig = {
   apiKey: "AIzaSyCk5pHtd2a9P74pVQUd_PIaHvaYVFzqrfw",
   authDomain: "gs-gatare-portal.firebaseapp.com",
@@ -479,9 +478,6 @@ async function initFirebase() {
   } catch(e) { console.error("Firebase init failed", e); }
 }
 
-// ==========================================
-// MAIN APP LOGIC (NO DEMO MODE)
-// ==========================================
 let currentUser = null;
 const publicSite = document.getElementById("publicSite");
 const portalContainer = document.getElementById("portalContainer");
@@ -533,10 +529,10 @@ function applySession(user) {
 // FIREBASE AUTHENTICATION
 // ==========================================
 document.getElementById("googleSignIn").onclick = async () => {
-  if(!firebaseReady) return alert("Firebase is not connected. Check your config.");
+  if(!firebaseReady) return alert("Firebase is not connected.");
   try {
     const provider = new fb.GoogleAuthProvider();
-    await fb.signInWithRedirect(fb.auth, provider);
+    await fb.signInWithPopup(fb.auth, provider);
   } catch(e) { alert("Google Sign-In Error: " + e.message); }
 };
 
@@ -571,14 +567,8 @@ document.getElementById("signupForm").onsubmit = async (e) => {
   }
 };
 
-// Listen for Auth State Changes
 async function setupAuthListener() {
   if (!firebaseReady) return;
-  
-  try {
-    await fb.getRedirectResult(fb.auth);
-  } catch(e) { console.warn("Redirect error", e); }
-
   fb.onAuthStateChanged(fb.auth, async (user) => {
     if(user) {
       const docRef = fb.doc(fb.db, "users", user.uid);
@@ -594,7 +584,6 @@ async function setupAuthListener() {
       if(docSnap.exists()) {
         userData = { ...userData, ...docSnap.data() };
       } else {
-        // Create doc if it doesn't exist (e.g. first Google login)
         await fb.setDoc(docRef, { name: userData.name, email: userData.email, role: "student" });
       }
       applySession(userData);
@@ -605,7 +594,7 @@ async function setupAuthListener() {
 }
 
 // ==========================================
-// DATABASE OPERATIONS (STRICT FIREBASE)
+// DATABASE OPERATIONS
 // ==========================================
 async function dbGet(collection) {
   if (!firebaseReady) return [];
@@ -682,8 +671,17 @@ async function renderAdminAdmissions() {
     <div class="dash-header glass-panel"><h3 style="margin:0;">Admissions Pipeline</h3></div>
     <div class="glass-panel table-wrap" style="padding:24px;">
       <table class="data-table">
-        <thead><tr><th>Applicant</th><th>Program</th><th>Status</th></tr></thead>
-        <tbody>${apps.map(a => `<tr><td>${a.studentName}</td><td>${a.program}</td><td><span class="pill">${a.status}</span></td></tr>`).join('')}</tbody>
+        <thead><tr><th>Applicant</th><th>Program</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+          ${apps.map(a => `
+            <tr>
+              <td>${a.studentName}</td>
+              <td>${a.program}</td>
+              <td><span class="pill ${a.status==='Admitted'?'success':''}">${a.status || 'Pending'}</span></td>
+              <td>${a.status === 'Pending' ? `<button onclick="openEnroll('${a.id}', '${a.studentName}')" class="btn btn-primary" style="padding:6px 12px; font-size:11px;">Approve</button>` : 'Done'}</td>
+            </tr>
+          `).join('')}
+        </tbody>
       </table>
     </div>
   `;
@@ -703,30 +701,108 @@ async function renderAdminUsers() {
 }
 
 async function renderTeacherGradebook() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Gradebook Entry</h3></div><p>Gradebook functionality ready.</p>`;
+  const students = (await dbGet('users')).filter(u => u.role === 'student');
+  const grades = await dbGet('grades');
+  mainContent.innerHTML = `
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Gradebook</h3></div>
+    <div class="glass-panel" style="padding:24px; margin-bottom:24px;">
+      <div class="form-grid">
+        <div class="field"><label>Select Student</label><select id="gradeStudent">${students.map(s => `<option value="${s.uid}">${s.name}</option>`).join('')}</select></div>
+        <div class="field"><label>Subject</label><input type="text" id="gradeSubject" placeholder="e.g. Mathematics" /></div>
+        <div class="field"><label>CAT (out of 30)</label><input type="number" id="gradeCat" value="0" /></div>
+        <div class="field"><label>Exam (out of 70)</label><input type="number" id="gradeExam" value="0" /></div>
+      </div>
+      <button onclick="saveGrade()" class="btn btn-primary" style="margin-top:16px;">Save Mark</button>
+    </div>
+    <div class="glass-panel table-wrap" style="padding:24px;">
+      <table class="data-table"><thead><tr><th>Student ID</th><th>Subject</th><th>CAT</th><th>Exam</th><th>Total</th><th>Grade</th></tr></thead>
+      <tbody>${grades.map(g => `<tr><td>${g.studentId}</td><td>${g.subject}</td><td>${g.cat}</td><td>${g.exam}</td><td>${g.total}</td><td><span class="pill">${g.grade}</span></td></tr>`).join('')}</tbody></table>
+    </div>
+  `;
 }
+
 async function renderTeacherAttendance() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Attendance</h3></div><p>Attendance functionality ready.</p>`;
+  const students = (await dbGet('users')).filter(u => u.role === 'student');
+  mainContent.innerHTML = `
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Daily Attendance</h3></div>
+    <div class="glass-panel" style="padding:24px;">
+      <div class="form-grid">
+        <div class="field"><label>Date</label><input type="date" id="attDate" value="${new Date().toISOString().split('T')[0]}" /></div>
+        <div class="field"><label>Student</label><select id="attStudent">${students.map(s => `<option value="${s.uid}">${s.name}</option>`).join('')}</select></div>
+        <div class="field"><label>Status</label><select id="attStatus"><option>Present</option><option>Absent</option><option>Late</option></select></div>
+      </div>
+      <button onclick="saveAttendance()" class="btn btn-primary" style="margin-top:16px;">Log Attendance</button>
+    </div>
+  `;
 }
+
 async function renderStudentID() {
   mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Digital ID Card</h3></div>
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Digital ID Card</h3><button onclick="window.print()" class="btn btn-primary" style="padding:8px 16px; font-size:12px;">Print ID</button></div>
     <div class="id-card glass-panel">
       <div class="avatar">${(currentUser.name || 'S').charAt(0)}</div>
       <h3>${currentUser.name}</h3>
       <p>${currentUser.email}</p>
-      <p style="color:var(--gold); margin-top:16px; font-weight:bold;">Role: ${currentUser.role.toUpperCase()}</p>
+      <div style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.2); padding-top:16px; display:flex; justify-content:space-between;">
+        <span style="font-size:12px; color:var(--text-muted);">School Code</span>
+        <span style="font-weight:700; color:var(--gold);">250405</span>
+      </div>
     </div>
   `;
 }
+
 async function renderStudentReport() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Report Card</h3></div><p>Your marks will appear here once published by teachers.</p>`;
+  const grades = (await dbGet('grades')).filter(g => g.studentId === currentUser.uid);
+  mainContent.innerHTML = `
+    <div class="dash-header glass-panel"><h3 style="margin:0;">My Report Card</h3><button onclick="window.print()" class="btn btn-primary" style="padding:8px 16px; font-size:12px;">Print Report</button></div>
+    <div class="print-header" style="display:none;"><h2>G.S. GATARE TSS (Code: 250405)</h2><p>Termly Report Card</p></div>
+    <div class="glass-panel" style="padding:32px;">
+      <table class="data-table">
+        <thead><tr><th>Subject</th><th>CAT (30)</th><th>Exam (70)</th><th>Total</th><th>Grade</th></tr></thead>
+        <tbody>${grades.map(g => `<tr><td>${g.subject}</td><td>${g.cat}</td><td>${g.exam}</td><td>${g.total}</td><td><span class="pill">${g.grade}</span></td></tr>`).join('')}</tbody>
+      </table>
+    </div>
+  `;
 }
+
 async function renderParentDash() {
   mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Child's Progress</h3></div><p>Linked child data will appear here.</p>`;
 }
 
-// INIT
+// ==========================================
+// ACTIONS & INIT
+// ==========================================
+window.saveGrade = async () => {
+  const sid = document.getElementById('gradeStudent').value;
+  const sub = document.getElementById('gradeSubject').value;
+  const cat = parseInt(document.getElementById('gradeCat').value);
+  const exam = parseInt(document.getElementById('gradeExam').value);
+  const total = cat + exam;
+  let grade = total >= 80 ? 'A' : total >= 70 ? 'B' : total >= 60 ? 'C' : 'D';
+  await dbAdd('grades', { studentId: sid, subject: sub, cat, exam, total, grade });
+  navPortal('teacher-grade', document.querySelector('.portal-sidebar button.active'));
+};
+
+window.saveAttendance = async () => {
+  await dbAdd('attendance', { studentId: document.getElementById('attStudent').value, date: document.getElementById('attDate').value, status: document.getElementById('attStatus').value });
+  alert('Attendance saved!');
+};
+
+document.getElementById("admissionForm").onsubmit = async (e) => {
+  e.preventDefault();
+  const data = {
+    studentName: document.getElementById("studentName").value,
+    program: document.getElementById("program").value,
+    email: document.getElementById("email").value,
+    tracking: "GAT-" + Math.random().toString(36).substring(2,8).toUpperCase(),
+    status: "Pending"
+  };
+  await dbAdd('admissions', data);
+  document.getElementById("admissionStatus").textContent = `Success! Tracking Number: ${data.tracking}`;
+  document.getElementById("admissionStatus").className = "form-status ok";
+  e.target.reset();
+};
+
 (async () => {
   await initFirebase();
   await setupAuthListener();
