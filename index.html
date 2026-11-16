@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   DESIGN TOKENS & CORE VARIABLES
+   DESIGN TOKENS & CORE VARIABLES (PRESERVED)
    ============================================================ */
 :root{
   --navy-deep:#06191a; --navy-soft:#102d2a;
@@ -24,15 +24,11 @@
   --glass-shadow:0 25px 50px -12px rgba(0,0,0,0.5);
   --font-display:"Fraunces", Georgia, serif;
   --font-body:"Manrope", sans-serif;
-  --font-alt:"DM Sans", sans-serif;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{
-  margin:0; font-family:var(--font-body); background-color:var(--navy-deep); color:var(--text-main);
-  line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;
-}
+body{margin:0; font-family:var(--font-body); background-color:var(--navy-deep); color:var(--text-main); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
 img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,select,textarea{font-family:inherit;font-size:15px}
@@ -41,53 +37,33 @@ h1{font-size:clamp(3rem,6vw,5.5rem);line-height:1.05;letter-spacing:-0.02em}
 h2{font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.1;margin-bottom:20px}
 p{margin:0}
 
-/* ============================================================
-   PERSISTENT 3D CANVAS
-   ============================================================ */
-#webgl-canvas {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
-  pointer-events: none; background: radial-gradient(circle at center, #102d2a 0%, #06191a 100%);
-  transition: opacity 0.5s ease;
-}
+/* PERSISTENT 3D CANVAS */
+#webgl-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; background: radial-gradient(circle at center, #102d2a 0%, #06191a 100%); transition: opacity 0.5s ease; }
 #webgl-canvas.hidden { opacity: 0; }
 
 .container{max-width:1280px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
 .eyebrow{font-size:13px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:12px}
 .eyebrow::before{content:"";width:30px;height:2px;background:var(--gold)}
 
-/* GLASSMORPHISM & 3D CARDS */
-.glass-panel {
-  background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); border-radius: 24px;
-}
+/* GLASSMORPHISM */
+.glass-panel { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); border-radius: 24px; }
 .tilt-card { transform-style: preserve-3d; transition: transform 0.1s ease-out, box-shadow 0.3s ease; will-change: transform; }
 .tilt-card:hover { box-shadow: 0 30px 60px -12px rgba(228, 184, 94, 0.15), 0 0 20px rgba(228, 184, 94, 0.1); z-index: 10; }
 .tilt-card-inner { transform: translateZ(30px); transition: transform 0.3s ease; }
 
-/* HEADER & 3D NAVIGATION */
+/* HEADER & NAVIGATION (PUBLIC) */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: all 0.4s var(--ease); }
 .site-header.scrolled { padding: 10px 0; background: rgba(6, 25, 26, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; }
 .brand { display: flex; align-items: center; gap: 16px; text-decoration: none; perspective: 800px; }
-.brand-mark {
-  width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg, var(--emerald), var(--navy-deep));
-  border: 1px solid var(--gold); display: grid; place-items: center; font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--gold);
-  box-shadow: inset 0 0 10px rgba(228,184,94,0.2), 0 5px 15px rgba(0,0,0,0.5); transform: rotateY(15deg) translateZ(10px); transition: transform 0.3s;
-}
-.brand:hover .brand-mark { transform: rotateY(0deg) translateZ(20deg) scale(1.05); }
+.brand-mark { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg, var(--emerald), var(--navy-deep)); border: 1px solid var(--gold); display: grid; place-items: center; font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--gold); box-shadow: inset 0 0 10px rgba(228,184,94,0.2), 0 5px 15px rgba(0,0,0,0.5); }
 .brand-text strong { display: block; font-size: 16px; letter-spacing: 0.05em; color: var(--alabaster); }
 .brand-text small { font-size: 11px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
 .nav { display: flex; gap: 8px; perspective: 1000px; }
-.nav a {
-  position: relative; padding: 10px 18px; border-radius: 100px; font-size: 14px; font-weight: 600; color: var(--text-muted);
-  transition: all 0.3s var(--ease); transform-style: preserve-3d;
-}
-.nav a:hover, .nav a.active {
-  color: var(--gold-light); background: rgba(228, 184, 94, 0.1); transform: translateZ(10px) rotateX(5deg);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 0 10px rgba(228,184,94,0.1); border: 1px solid rgba(228, 184, 94, 0.3);
-}
+.nav a { position: relative; padding: 10px 18px; border-radius: 100px; font-size: 14px; font-weight: 600; color: var(--text-muted); transition: all 0.3s var(--ease); }
+.nav a:hover, .nav a.active { color: var(--gold-light); background: rgba(228, 184, 94, 0.1); transform: translateZ(10px) rotateX(5deg); border: 1px solid rgba(228, 184, 94, 0.3); }
 
-/* HERO SECTION */
+/* HERO */
 .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .hero-copy h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
@@ -95,15 +71,12 @@ p{margin:0}
 .hero-motto::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
 .hero-lede { font-size: 1.1rem; color: var(--text-muted); max-width: 50ch; margin-bottom: 40px; }
 .hero-actions { display: flex; gap: 16px; margin-bottom: 50px; }
-.btn {
-  display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 100px;
-  font-weight: 700; font-size: 15px; transition: all 0.3s var(--ease); text-transform: uppercase; letter-spacing: 0.05em;
-}
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 100px; font-weight: 700; font-size: 15px; transition: all 0.3s var(--ease); text-transform: uppercase; letter-spacing: 0.05em; }
 .btn-primary { background: var(--gold); color: var(--navy-deep); box-shadow: 0 10px 30px -10px rgba(228,184,94,0.5); }
 .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 15px 40px -10px rgba(228,184,94,0.7); }
 .btn-ghost { background: transparent; color: var(--alabaster); border: 1px solid rgba(255,255,255,0.2); }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); background: rgba(228,184,94,0.05); }
-
+.btn-danger { background: #b02a2a; color: #fff; }
 .hero-crest { padding: 40px; border-radius: 30px; text-align: center; position: relative; }
 .crest-badge { position: absolute; padding: 10px 20px; border-radius: 100px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: rgba(6,25,26,0.8); border: 1px solid var(--emerald); backdrop-filter: blur(10px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 .crest-badge.top-right { top: -20px; right: -20px; transform: translateZ(50px); border-color: var(--gold); color: var(--gold); }
@@ -130,33 +103,29 @@ p{margin:0}
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field.full { grid-column: 1 / -1; }
 .field label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); }
-.field input, .field select, .field textarea {
-  padding: 14px 18px; border-radius: 12px; background: rgba(0,0,0,0.2);
-  border: 1px solid rgba(255,255,255,0.1); color: var(--alabaster); font-size: 15px; transition: all 0.3s;
-}
+.field input, .field select, .field textarea { padding: 14px 18px; border-radius: 12px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--alabaster); font-size: 15px; transition: all 0.3s; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(228,184,94,0.1); background: rgba(0,0,0,0.4); }
 .form-status { font-size: 13px; padding: 12px; border-radius: 8px; display: none; margin-top: 16px; }
 .form-status.ok { display: block; background: rgba(40,99,77,0.4); border: 1px solid var(--emerald); color: #a7f3d0; }
 .form-status.err { display: block; background: rgba(176,42,42,0.2); border: 1px solid #b02a2a; color: #fca5a5; }
 
 /* ============================================================
-   PORTAL SYSTEM
+   PORTAL SYSTEM (UPGRADED)
    ============================================================ */
 #publicSite { transition: opacity 0.4s ease; }
 #publicSite.hidden { display: none; }
-
-#portalContainer {
-  position: fixed; inset: 0; z-index: 500; background: var(--navy-deep);
-  display: none; flex-direction: column; overflow-y: auto;
-}
+#portalContainer { position: fixed; inset: 0; z-index: 500; background: var(--navy-deep); display: none; flex-direction: column; overflow-y: auto; }
 #portalContainer.active { display: flex; }
-
-.portal-header {
-  background: rgba(16, 45, 42, 0.95); border-bottom: 1px solid var(--glass-border);
-  padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10;
-  backdrop-filter: blur(10px);
-}
+.portal-header { background: rgba(16, 45, 42, 0.95); border-bottom: 1px solid var(--glass-border); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); }
 .portal-content { padding: 40px 32px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+/* Portal Internal Tabs */
+.portal-tabs { display: flex; gap: 10px; margin-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; overflow-x: auto; }
+.portal-tabs button { padding: 10px 20px; border-radius: 8px; font-weight: 600; color: var(--text-muted); transition: all 0.3s; white-space: nowrap; }
+.portal-tabs button.active { background: var(--gold); color: var(--navy-deep); }
+.tab-pane { display: none; animation: fadeIn 0.3s ease; }
+.tab-pane.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Dashboard UI */
 .dash-header { display: flex; justify-content: space-between; align-items: center; padding: 24px 32px; border-radius: 20px; margin-bottom: 32px; }
@@ -168,8 +137,8 @@ p{margin:0}
 .data-table th { text-align: left; padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--gold-light); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
 .data-table td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); }
 .pill { padding: 6px 12px; border-radius: 100px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: rgba(228,184,94,0.1); color: var(--gold); }
-.pill.approved { background: rgba(74, 222, 128, 0.1); color: #4ade80; }
-.pill.rejected { background: rgba(248, 113, 113, 0.1); color: #f87171; }
+.pill.paid { background: rgba(74, 222, 128, 0.1); color: #4ade80; }
+.pill.unpaid { background: rgba(248, 113, 113, 0.1); color: #f87171; }
 
 /* Digital ID Card */
 .id-card { max-width: 400px; margin: 0 auto; padding: 32px; border-radius: 24px; text-align: center; position: relative; overflow: hidden; border: 2px solid var(--gold); background: linear-gradient(135deg, var(--navy-soft), var(--emerald)); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
@@ -201,16 +170,13 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
 </head>
 <body>
 
-<!-- PERSISTENT 3D CANVAS -->
 <canvas id="webgl-canvas"></canvas>
 
 <div id="configBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:999;background:#e4b85e;color:#06191a;padding:8px;font-size:13px;text-align:center;font-weight:700;">
   Demo Mode: Paste your Firebase config to enable real login.
 </div>
 
-<!-- ============================================================
-     PUBLIC SITE
-     ============================================================ -->
+<!-- ================= PUBLIC SITE ================= -->
 <main id="publicSite">
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
@@ -270,96 +236,37 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
         <h2>An educational journey grounded in discipline.</h2>
       </div>
       <div class="grid-3">
-        <div class="card glass-panel tilt-card reveal">
-          <div class="tilt-card-inner">
-            <div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg></div>
-            <h3>Our Mission</h3>
-            <p>To provide inclusive, disciplined and practical education that prepares every learner for dignified work and responsible citizenship.</p>
-          </div>
-        </div>
-        <div class="card glass-panel tilt-card reveal">
-          <div class="tilt-card-inner">
-            <div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></div>
-            <h3>Our Vision</h3>
-            <p>A flagship technical secondary school where academic rigour and hands-on training produce confident, employable graduates.</p>
-          </div>
-        </div>
-        <div class="card glass-panel tilt-card reveal">
-          <div class="tilt-card-inner">
-            <div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
-            <h3>Core Values</h3>
-            <p>Discipline · Integrity · Practical Excellence · Community · Respect for Life & Land.</p>
-          </div>
-        </div>
+        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg></div><h3>Our Mission</h3><p>To provide inclusive, disciplined and practical education that prepares every learner for dignified work.</p></div></div>
+        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></div><h3>Our Vision</h3><p>A flagship technical secondary school where academic rigour produces confident, employable graduates.</p></div></div>
+        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div><h3>Core Values</h3><p>Discipline · Integrity · Practical Excellence · Community · Respect for Life & Land.</p></div></div>
       </div>
     </div>
   </section>
 
   <section class="section" id="academics">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">Academic Levels</div>
-        <h2>A continuous path to mastery.</h2>
-      </div>
+      <div class="section-header reveal"><div class="eyebrow">Academic Levels</div><h2>A continuous path to mastery.</h2></div>
       <div class="grid-3">
-        <div class="card glass-panel tilt-card reveal">
-          <div class="tilt-card-inner">
-            <h3>Pre-Primary & Primary</h3>
-            <p>Foundational literacy, numeracy and social-emotional development following the REB curriculum.</p>
-            <div class="tag">Foundation</div>
-          </div>
-        </div>
-        <div class="card glass-panel tilt-card reveal">
-          <div class="tilt-card-inner">
-            <h3>Ordinary Level (O'Level)</h3>
-            <p>Lower secondary education with strong foundations across sciences, humanities and languages.</p>
-            <div class="tag">O'Level</div>
-          </div>
-        </div>
-        <div class="card glass-panel tilt-card reveal">
-          <div class="tilt-card-inner">
-            <h3>Advanced Level (A'Level)</h3>
-            <p>Pathways in Arts & Humanities (AH) and Mathematics & Science (MS1) preparing for university.</p>
-            <div class="tag">A'Level</div>
-          </div>
-        </div>
+        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><h3>Pre-Primary & Primary</h3><p>Foundational literacy, numeracy and social-emotional development.</p><div class="tag">Foundation</div></div></div>
+        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><h3>Ordinary Level (O'Level)</h3><p>Lower secondary education with strong foundations.</p><div class="tag">O'Level</div></div></div>
+        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><h3>Advanced Level (A'Level)</h3><p>Pathways in AH and MS1 preparing for university.</p><div class="tag">A'Level</div></div></div>
       </div>
     </div>
   </section>
 
   <section class="section" id="tvet">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">Technical Secondary Education</div>
-        <h2>Accredited TVET trades at Levels 3, 4 and 5.</h2>
-      </div>
+      <div class="section-header reveal"><div class="eyebrow">Technical Secondary Education</div><h2>Accredited TVET trades at Levels 3, 4 and 5.</h2></div>
       <div class="grid-2">
-        <div class="card glass-panel tilt-card reveal">
-          <div class="tilt-card-inner">
-            <div class="card-icon" style="color:#a7f3d0; border-color:#a7f3d0; background:rgba(167,243,208,0.1);"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg></div>
-            <h3>Agriculture (AGR)</h3>
-            <p>Crop production, soil management, agricultural technology, agribusiness and sustainable farming practices.</p>
-            <div class="tag">TVET L3–L5</div>
-          </div>
-        </div>
-        <div class="card glass-panel tilt-card reveal">
-          <div class="tilt-card-inner">
-            <div class="card-icon" style="color:#fca5a5; border-color:#fca5a5; background:rgba(252,165,165,0.1);"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></div>
-            <h3>Animal Health (ANH)</h3>
-            <p>Livestock management, animal health, veterinary assistance and animal husbandry practicals.</p>
-            <div class="tag">TVET L3–L5</div>
-          </div>
-        </div>
+        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><div class="card-icon" style="color:#a7f3d0; border-color:#a7f3d0; background:rgba(167,243,208,0.1);"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg></div><h3>Agriculture (AGR)</h3><p>Crop production, soil management, agricultural technology, agribusiness.</p><div class="tag">TVET L3–L5</div></div></div>
+        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><div class="card-icon" style="color:#fca5a5; border-color:#fca5a5; background:rgba(252,165,165,0.1);"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></div><h3>Animal Health (ANH)</h3><p>Livestock management, animal health, veterinary assistance.</p><div class="tag">TVET L3–L5</div></div></div>
       </div>
     </div>
   </section>
 
   <section class="section" id="admissions">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">Online Admissions</div>
-        <h2>Apply to G.S. Gatare TSS.</h2>
-      </div>
+      <div class="section-header reveal"><div class="eyebrow">Online Admissions</div><h2>Apply to G.S. Gatare TSS.</h2></div>
       <div class="form-shell glass-panel reveal">
         <form id="admissionForm" novalidate>
           <div class="form-grid">
@@ -370,19 +277,9 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
             <div class="field"><label>Parent Telephone</label><input type="tel" id="parentPhone" required /></div>
             <div class="field"><label>Email Address</label><input type="email" id="email" required /></div>
             <div class="field"><label>Previous School</label><input type="text" id="previousSchool" required /></div>
-            <div class="field full"><label>Program Choice</label>
-              <select id="program" required>
-                <option value="">Select program...</option>
-                <option>Pre-Primary (PPR)</option><option>Primary (PR)</option><option>Ordinary Level (O'Level)</option>
-                <option>Arts and Humanities (AH)</option><option>Mathematics and Science (MS1)</option>
-                <option>Agriculture (AGR) — TVET L3–L5</option><option>Animal Health (ANH) — TVET L3–L5</option>
-              </select>
-            </div>
+            <div class="field full"><label>Program Choice</label><select id="program" required><option value="">Select program...</option><option>Pre-Primary (PPR)</option><option>Primary (PR)</option><option>Ordinary Level (O'Level)</option><option>Arts and Humanities (AH)</option><option>Mathematics and Science (MS1)</option><option>Agriculture (AGR) — TVET L3–L5</option><option>Animal Health (ANH) — TVET L3–L5</option></select></div>
           </div>
-          <div style="margin-top:24px; display:flex; gap:16px; align-items:center;">
-            <button type="submit" class="btn btn-primary">Submit Application</button>
-            <span class="form-status" id="admissionStatus"></span>
-          </div>
+          <div style="margin-top:24px; display:flex; gap:16px; align-items:center;"><button type="submit" class="btn btn-primary">Submit Application</button><span class="form-status" id="admissionStatus"></span></div>
         </form>
       </div>
     </div>
@@ -390,22 +287,14 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
 
   <section class="section" id="news">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">Pressroom</div>
-        <h2>Announcements & Updates</h2>
-      </div>
-      <div id="homepageNewsGrid" class="grid-3 reveal">
-        <!-- Filled by JS -->
-      </div>
+      <div class="section-header reveal"><div class="eyebrow">Pressroom</div><h2>Announcements & Updates</h2></div>
+      <div id="homepageNewsGrid" class="grid-3 reveal"></div>
     </div>
   </section>
 
   <section class="section" id="contact">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">Contact & Location</div>
-        <h2>Get in touch with the school.</h2>
-      </div>
+      <div class="section-header reveal"><div class="eyebrow">Contact & Location</div><h2>Get in touch with the school.</h2></div>
       <div class="grid-2">
         <div class="glass-panel card reveal" style="display:flex; flex-direction:column; justify-content:center;">
           <h3 style="margin-bottom:24px;">Reach Us</h3>
@@ -420,10 +309,7 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
               <div class="field full"><label>Email</label><input type="email" id="contactEmail" required /></div>
               <div class="field full"><label>Message</label><textarea id="contactMessage" required minlength="10"></textarea></div>
             </div>
-            <div style="margin-top:24px;">
-              <button type="submit" class="btn btn-primary">Send Message</button>
-              <span class="form-status" id="contactStatus"></span>
-            </div>
+            <div style="margin-top:24px;"><button type="submit" class="btn btn-primary">Send Message</button><span class="form-status" id="contactStatus"></span></div>
           </form>
         </div>
       </div>
@@ -439,37 +325,77 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
 </main>
 
 <!-- ============================================================
-     PORTAL CONTAINER
+     PORTAL CONTAINER (MULTI-TAB ARCHITECTURE)
      ============================================================ -->
 <div id="portalContainer">
   <header class="portal-header">
     <div style="display:flex; align-items:center; gap:16px;">
       <div class="brand-mark" style="width:40px; height:40px; font-size:16px;">GS</div>
       <div>
-        <h2 style="font-size:1.2rem; margin:0;" id="portalWelcome">Portal Dashboard</h2>
-        <p style="font-size:12px; color:var(--gold); margin:0;" id="portalRoleBadge">Admin</p>
+        <h2 style="font-size:1.2rem; margin:0;" id="portalWelcome">Portal</h2>
+        <p style="font-size:12px; color:var(--gold); margin:0;" id="portalRoleBadge">Role</p>
       </div>
     </div>
     <div style="display:flex; gap:16px; align-items:center;">
       <button class="btn btn-ghost" style="padding:8px 16px; font-size:12px;" onclick="exitPortal()">← Back to Website</button>
-      <button class="btn btn-primary" style="padding:8px 16px; font-size:12px; background:#b02a2a; color:#fff; border:none;" id="portalLogoutBtn">Sign Out</button>
+      <button class="btn btn-danger" style="padding:8px 16px; font-size:12px;" id="portalLogoutBtn">Sign Out</button>
     </div>
   </header>
   
   <div class="portal-content">
-    <!-- ADMIN PORTAL -->
+    
+    <!-- ================= 1. ADMIN PORTAL ================= -->
     <div id="adminView" class="portal-view" style="display:none;">
-      <div class="dash-header glass-panel">
-        <div>
-          <h3 style="margin:0;">Administrator Control Center</h3>
-          <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">Manage school content, users, and inquiries.</p>
+      <div class="portal-tabs">
+        <button class="active" onclick="switchPortalTab('admin', 'overview')">Overview</button>
+        <button onclick="switchPortalTab('admin', 'admissions')">Admissions</button>
+        <button onclick="switchPortalTab('admin', 'users')">Users & Roles</button>
+        <button onclick="switchPortalTab('admin', 'content')">News & Content</button>
+      </div>
+
+      <!-- Admin: Overview -->
+      <div id="admin-overview" class="tab-pane active">
+        <div class="metrics">
+          <div class="metric glass-panel"><div class="label">Total Users</div><div class="val" id="adminStatUsers">0</div></div>
+          <div class="metric glass-panel"><div class="label">Applications</div><div class="val" id="adminStatApps">0</div></div>
+          <div class="metric glass-panel"><div class="label">Inquiries</div><div class="val" id="adminStatInq">0</div></div>
+          <div class="metric glass-panel"><div class="label">System Status</div><div class="val" style="font-size:1.5rem; color:#4ade80;">Online</div></div>
+        </div>
+        <div class="glass-panel" style="padding:32px;">
+          <h4 style="color:var(--gold); margin-bottom:16px;">Recent Contact Inquiries</h4>
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Message</th></tr></thead>
+            <tbody id="adminInquiriesBody"><tr><td colspan="3" style="text-align:center;">Loading...</td></tr></tbody>
+          </table>
         </div>
       </div>
-      
-      <div class="grid-2">
-        <!-- News Management -->
+
+      <!-- Admin: Admissions -->
+      <div id="admin-admissions" class="tab-pane">
+        <div class="glass-panel" style="padding:32px; overflow-x:auto;">
+          <h4 style="color:var(--gold); margin-bottom:16px;">Admissions Manager</h4>
+          <table class="data-table">
+            <thead><tr><th>Student</th><th>Program</th><th>Status</th></tr></thead>
+            <tbody id="adminApplicationsBody"><tr><td colspan="3" style="text-align:center;">Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin: Users -->
+      <div id="admin-users" class="tab-pane">
+        <div class="glass-panel" style="padding:32px; overflow-x:auto;">
+          <h4 style="color:var(--gold); margin-bottom:16px;">User Directory</h4>
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Role</th></tr></thead>
+            <tbody id="adminUsersBody"><tr><td colspan="3" style="text-align:center;">Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin: Content -->
+      <div id="admin-content" class="tab-pane">
         <div class="glass-panel" style="padding:32px;">
-          <h4 style="color:var(--gold); margin-bottom:16px;">Publish News</h4>
+          <h4 style="color:var(--gold); margin-bottom:16px;">Publish News / Announcement</h4>
           <form id="adminNewsForm">
             <div class="field"><label>Title</label><input type="text" id="adminNewsTitle" required /></div>
             <div class="field" style="margin-top:12px;"><label>Category</label><select id="adminNewsCategory"><option>Announcement</option><option>Academic</option><option>Event</option></select></div>
@@ -478,93 +404,144 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
             <span class="form-status" id="adminNewsStatus"></span>
           </form>
         </div>
-
-        <!-- Inquiries Hub -->
-        <div class="glass-panel" style="padding:32px; overflow-x:auto;">
-          <h4 style="color:var(--gold); margin-bottom:16px;">Recent Applications</h4>
-          <table class="data-table">
-            <thead><tr><th>Tracking</th><th>Student</th><th>Status</th></tr></thead>
-            <tbody id="adminApplicationsBody"><tr><td colspan="3" style="text-align:center;">Loading...</td></tr></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- User Directory -->
-      <div class="glass-panel" style="padding:32px; margin-top:24px; overflow-x:auto;">
-        <h4 style="color:var(--gold); margin-bottom:16px;">User Directory & Roles</h4>
-        <table class="data-table">
-          <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Action</th></tr></thead>
-          <tbody id="adminUsersBody"><tr><td colspan="4" style="text-align:center;">Loading...</td></tr></tbody>
-        </table>
       </div>
     </div>
 
-    <!-- TEACHER PORTAL -->
+    <!-- ================= 2. TEACHER PORTAL ================= -->
     <div id="teacherView" class="portal-view" style="display:none;">
-      <div class="dash-header glass-panel">
-        <div>
-          <h3 style="margin:0;">Teacher Workspace</h3>
-          <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">Post assignments and manage student marks.</p>
-        </div>
+      <div class="portal-tabs">
+        <button class="active" onclick="switchPortalTab('teacher', 'assignments')">Assignments</button>
+        <button onclick="switchPortalTab('teacher', 'gradebook')">Gradebook</button>
+        <button onclick="switchPortalTab('teacher', 'attendance')">Attendance</button>
       </div>
-      <div class="grid-2">
+
+      <!-- Teacher: Assignments -->
+      <div id="teacher-assignments" class="tab-pane active">
         <div class="glass-panel" style="padding:32px;">
           <h4 style="color:var(--gold); margin-bottom:16px;">Post Assignment / Note</h4>
           <form id="teacherAssignmentForm">
-            <div class="field"><label>Title / Subject</label><input type="text" id="assignTitle" required /></div>
+            <div class="field"><label>Subject / Title</label><input type="text" id="assignTitle" required /></div>
             <div class="field" style="margin-top:12px;"><label>Content / Instructions</label><textarea id="assignBody" required></textarea></div>
-            <button type="submit" class="btn btn-primary" style="margin-top:16px; width:100%;">Publish Material</button>
+            <button type="submit" class="btn btn-primary" style="margin-top:16px;">Publish Material</button>
             <span class="form-status" id="assignStatus"></span>
           </form>
         </div>
+      </div>
+
+      <!-- Teacher: Gradebook -->
+      <div id="teacher-gradebook" class="tab-pane">
         <div class="glass-panel" style="padding:32px;">
-          <h4 style="color:var(--gold); margin-bottom:16px;">Staff Noticeboard</h4>
-          <p style="color:var(--text-muted); font-size:14px;">Memos from the Headmaster will appear here. There are currently no new memos.</p>
+          <h4 style="color:var(--gold); margin-bottom:16px;">Record Student Marks</h4>
+          <form id="teacherGradeForm">
+            <div class="field"><label>Select Student</label><select id="gradeStudentSelect" required><option value="">Loading...</option></select></div>
+            <div class="field" style="margin-top:12px;"><label>Subject</label><input type="text" id="gradeSubject" required placeholder="e.g. Mathematics" /></div>
+            <div class="field" style="margin-top:12px;"><label>Score (0-100)</label><input type="number" id="gradeScore" required min="0" max="100" /></div>
+            <button type="submit" class="btn btn-primary" style="margin-top:16px;">Save Mark</button>
+            <span class="form-status" id="gradeStatus"></span>
+          </form>
+        </div>
+      </div>
+
+      <!-- Teacher: Attendance -->
+      <div id="teacher-attendance" class="tab-pane">
+        <div class="glass-panel" style="padding:32px;">
+          <h4 style="color:var(--gold); margin-bottom:16px;">Log Daily Attendance</h4>
+          <form id="teacherAttendanceForm">
+            <div class="field"><label>Select Student</label><select id="attendStudentSelect" required><option value="">Loading...</option></select></div>
+            <div class="field" style="margin-top:12px;"><label>Date</label><input type="date" id="attendDate" required /></div>
+            <div class="field" style="margin-top:12px;"><label>Status</label><select id="attendStatus"><option>Present</option><option>Absent</option><option>Late</option></select></div>
+            <button type="submit" class="btn btn-primary" style="margin-top:16px;">Log Attendance</button>
+            <span class="form-status" id="attendLogStatus"></span>
+          </form>
         </div>
       </div>
     </div>
 
-    <!-- STUDENT PORTAL -->
+    <!-- ================= 3. STUDENT PORTAL ================= -->
     <div id="studentView" class="portal-view" style="display:none;">
-      <div class="dash-header glass-panel">
-        <div>
-          <h3 style="margin:0;">Student Portal</h3>
-          <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">Welcome back to your academic dashboard.</p>
-        </div>
+      <div class="portal-tabs">
+        <button class="active" onclick="switchPortalTab('student', 'idcard')">My ID & Profile</button>
+        <button onclick="switchPortalTab('student', 'grades')">My Grades</button>
+        <button onclick="switchPortalTab('student', 'tasks')">Assignments</button>
       </div>
-      <div class="grid-2">
-        <!-- Digital ID Card -->
-        <div>
+
+      <!-- Student: ID Card -->
+      <div id="student-idcard" class="tab-pane active">
+        <div style="max-width:400px; margin:0 auto;">
           <div class="id-card glass-panel">
             <div class="avatar" id="studentAvatar">S</div>
             <h3 id="studentName" style="color:#fff; margin-bottom:4px;">Student Name</h3>
             <p id="studentEmail" style="color:var(--gold-light); font-size:14px; margin-bottom:16px;">email@gsgatare.rw</p>
-            <div style="background:rgba(0,0,0,0.3); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.1);">
-              <p style="font-size:12px; text-transform:uppercase; color:var(--text-muted);">Level / Trade</p>
-              <h4 style="color:var(--gold); font-size:1.2rem; margin-top:4px;">O'Level (Pending Assignment)</h4>
+            
+            <div style="background:rgba(0,0,0,0.3); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); text-align:left;">
+              <label style="font-size:11px; text-transform:uppercase; color:var(--text-muted);">Update Level / Trade</label>
+              <div style="display:flex; gap:8px; margin-top:8px;">
+                <input type="text" id="studentLevelInput" value="O'Level" style="flex:1; padding:8px; border-radius:6px; background:rgba(0,0,0,0.5); border:1px solid var(--gold); color:#fff;">
+                <button onclick="updateStudentLevel()" class="btn btn-primary" style="padding:8px 12px; border-radius:6px; font-size:12px;">Save</button>
+              </div>
             </div>
+            
             <div style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.2); padding-top:16px; display:flex; justify-content:space-between;">
               <span style="font-size:12px; color:var(--text-muted);">School Code</span>
               <span style="font-weight:700; color:var(--gold);">250405</span>
             </div>
           </div>
         </div>
-        
-        <!-- Materials & Results -->
-        <div style="display:flex; flex-direction:column; gap:24px;">
-          <div class="glass-panel" style="padding:32px;">
-            <h4 style="color:var(--gold); margin-bottom:16px;">Latest Assignments</h4>
-            <div id="studentAssignmentsList">
-              <p style="color:var(--text-muted); font-size:14px;">No new assignments posted yet.</p>
-            </div>
-          </div>
-          <div class="glass-panel" style="padding:32px;">
-            <h4 style="color:var(--gold); margin-bottom:16px;">Academic Progress</h4>
-            <p style="color:var(--text-muted); font-size:14px;">Your term marks and attendance records will appear here once published by teachers.</p>
+      </div>
+
+      <!-- Student: Grades -->
+      <div id="student-grades" class="tab-pane">
+        <div class="glass-panel" style="padding:32px;">
+          <h4 style="color:var(--gold); margin-bottom:16px;">My Report Card</h4>
+          <table class="data-table">
+            <thead><tr><th>Subject</th><th>Score</th></tr></thead>
+            <tbody id="studentGradesBody"><tr><td colspan="2" style="text-align:center; color:var(--text-muted);">No grades published yet.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Student: Assignments -->
+      <div id="student-tasks" class="tab-pane">
+        <div class="glass-panel" style="padding:32px;">
+          <h4 style="color:var(--gold); margin-bottom:16px;">Latest Assignments</h4>
+          <div id="studentAssignmentsList">
+            <p style="color:var(--text-muted); font-size:14px;">No new assignments posted yet.</p>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- ================= 4. PARENT PORTAL ================= -->
+    <div id="parentView" class="portal-view" style="display:none;">
+      <div class="portal-tabs">
+        <button class="active" onclick="switchPortalTab('parent', 'overview')">Child's Overview</button>
+        <button onclick="switchPortalTab('parent', 'fees')">Fees & Payments</button>
+      </div>
+
+      <!-- Parent: Overview -->
+      <div id="parent-overview" class="tab-pane active">
+        <div class="glass-panel" style="padding:32px;">
+          <h4 style="color:var(--gold); margin-bottom:16px;">Child's Academic Progress</h4>
+          <table class="data-table">
+            <thead><tr><th>Subject</th><th>Score</th></tr></thead>
+            <tbody id="parentGradesBody"><tr><td colspan="2" style="text-align:center;">No grades published yet.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Parent: Fees -->
+      <div id="parent-fees" class="tab-pane">
+        <div class="glass-panel" style="padding:32px;">
+          <h4 style="color:var(--gold); margin-bottom:16px;">Fee Status</h4>
+          <div class="metric glass-panel" style="background:rgba(0,0,0,0.2);">
+            <div class="label">Current Term Balance</div>
+            <div class="val" style="color:#f87171;">Unpaid</div>
+            <p style="font-size:13px; margin-top:8px; color:var(--text-muted);">Please visit the school bursar to clear the balance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -594,6 +571,10 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
       <div class="field"><label>Full Name</label><input type="text" id="signupName" required /></div>
       <div class="field"><label>Email</label><input type="email" id="signupEmail" required /></div>
       <div class="field"><label>Password</label><input type="password" id="signupPassword" required minlength="6" /></div>
+      <div class="field" id="parentChildLinkField" style="display:none; margin-top:12px;">
+        <label>Child's Registered Email (For Parents)</label>
+        <input type="email" id="signupChildEmail" placeholder="student@email.com" />
+      </div>
       <button type="submit" class="btn btn-primary" style="justify-content:center;">Create Account</button>
       <span class="form-status" id="signupStatus"></span>
     </form>
@@ -610,9 +591,7 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
   </div>
 </div>
 
-<!-- ============================================================
-     THREE.JS 3D SCENE
-     ============================================================ -->
+<!-- THREE.JS SCENE (PRESERVED) -->
 <script type="importmap">
 {
   "imports": {
@@ -623,166 +602,45 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
 </script>
 <script type="module">
 import * as THREE from 'three';
-
 const canvas = document.getElementById('webgl-canvas');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
-
 const scene = new THREE.Scene();
 scene.fog = new THREE.FogExp2(0x06191a, 0.015);
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(0, 0, 15);
-
 scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-const keyLight = new THREE.DirectionalLight(0xe4b85e, 2);
-keyLight.position.set(10, 10, 10); scene.add(keyLight);
-const fillLight = new THREE.DirectionalLight(0x28634d, 1);
-fillLight.position.set(-10, -5, 5); scene.add(fillLight);
-
+const keyLight = new THREE.DirectionalLight(0xe4b85e, 2); keyLight.position.set(10, 10, 10); scene.add(keyLight);
+const fillLight = new THREE.DirectionalLight(0x28634d, 1); fillLight.position.set(-10, -5, 5); scene.add(fillLight);
 const goldMat = new THREE.MeshStandardMaterial({ color: 0xe4b85e, metalness: 0.9, roughness: 0.2 });
 const emeraldMat = new THREE.MeshStandardMaterial({ color: 0x28634d, metalness: 0.5, roughness: 0.4 });
 const wireframeMat = new THREE.MeshBasicMaterial({ color: 0xe4b85e, wireframe: true, transparent: true, opacity: 0.3 });
-
-const worldGroup = new THREE.Group();
-scene.add(worldGroup);
-
+const worldGroup = new THREE.Group(); scene.add(worldGroup);
 const sculptures = [];
-function createSculpture(name, mesh, position) {
-  mesh.position.copy(position);
-  mesh.userData.basePos = position.clone();
-  worldGroup.add(mesh);
-  sculptures.push({ name, mesh });
-  return mesh;
-}
-
-const homeGroup = new THREE.Group();
-const core = new THREE.Mesh(new THREE.IcosahedronGeometry(2, 1), goldMat);
-const coreWire = new THREE.Mesh(new THREE.IcosahedronGeometry(2.1, 1), wireframeMat);
-homeGroup.add(core, coreWire);
-const ring1 = new THREE.Mesh(new THREE.TorusGeometry(3.5, 0.02, 16, 100), emeraldMat); ring1.rotation.x = Math.PI / 2;
-const ring2 = new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.02, 16, 100), goldMat); ring2.rotation.y = Math.PI / 3;
-homeGroup.add(ring1, ring2);
-createSculpture('home', homeGroup, new THREE.Vector3(0, 0, 0));
-
-const aboutGroup = new THREE.Group();
-const r1 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), emeraldMat);
-const r2 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), goldMat);
-const r3 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), emeraldMat);
-r1.rotation.x = Math.PI / 2; r2.rotation.y = Math.PI / 3; r3.rotation.y = -Math.PI / 3;
-aboutGroup.add(r1, r2, r3);
-createSculpture('about', aboutGroup, new THREE.Vector3(-15, -10, -10));
-
-const acadGroup = new THREE.Group();
-for(let i=0; i<3; i++) {
-  const cone = new THREE.Mesh(new THREE.ConeGeometry(1.5, 2, 4), i%2===0 ? emeraldMat : goldMat);
-  cone.position.set((i-1)*3, 0, 0); acadGroup.add(cone);
-}
-createSculpture('academics', acadGroup, new THREE.Vector3(15, -10, -10));
-
-const tvetGroup = new THREE.Group();
-const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.5, 0.4, 100, 16), goldMat);
-const knotWire = new THREE.Mesh(new THREE.TorusKnotGeometry(1.7, 0.45, 100, 16), wireframeMat);
-tvetGroup.add(knot, knotWire);
-createSculpture('tvet', tvetGroup, new THREE.Vector3(-15, -20, -20));
-
-const admGroup = new THREE.Group();
-for(let i=0; i<4; i++) {
-  const gate = new THREE.Mesh(new THREE.TorusGeometry(2.5 - i*0.4, 0.05, 16, 100), i%2===0 ? emeraldMat : goldMat);
-  gate.position.z = -i * 1.5; admGroup.add(gate);
-}
-createSculpture('admissions', admGroup, new THREE.Vector3(15, -20, -20));
-
-const newsGroup = new THREE.Group();
-const beacon = new THREE.Mesh(new THREE.DodecahedronGeometry(1.5, 0), emeraldMat);
-const beaconWire = new THREE.Mesh(new THREE.DodecahedronGeometry(2, 0), wireframeMat);
-newsGroup.add(beacon, beaconWire);
-createSculpture('news', newsGroup, new THREE.Vector3(-15, -30, -30));
-
-const contactGroup = new THREE.Group();
-const globe = new THREE.Mesh(new THREE.SphereGeometry(2, 32, 16), wireframeMat);
-const eqRing = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.05, 16, 100), goldMat); eqRing.rotation.x = Math.PI / 2;
-contactGroup.add(globe, eqRing);
-createSculpture('contact', contactGroup, new THREE.Vector3(15, -30, -30));
-
-const views = {
-  home:      { pos: new THREE.Vector3(0, 0, 15), look: new THREE.Vector3(0, 0, 0) },
-  about:     { pos: new THREE.Vector3(-15, -10, 0), look: new THREE.Vector3(-15, -10, -10) },
-  academics: { pos: new THREE.Vector3(15, -10, 0), look: new THREE.Vector3(15, -10, -10) },
-  tvet:      { pos: new THREE.Vector3(-15, -20, -10), look: new THREE.Vector3(-15, -20, -20) },
-  admissions:{ pos: new THREE.Vector3(15, -20, -10), look: new THREE.Vector3(15, -20, -20) },
-  news:      { pos: new THREE.Vector3(-15, -30, -20), look: new THREE.Vector3(-15, -30, -30) },
-  contact:   { pos: new THREE.Vector3(15, -30, -20), look: new THREE.Vector3(15, -30, -30) }
-};
-let targetCameraPos = views.home.pos.clone();
-let targetLookAt = views.home.look.clone();
-window.navigate3D = (section) => {
-  if(views[section]) {
-    targetCameraPos.copy(views[section].pos);
-    targetLookAt.copy(views[section].look);
-  }
-};
-
+function createSculpture(name, mesh, position) { mesh.position.copy(position); mesh.userData.basePos = position.clone(); worldGroup.add(mesh); sculptures.push({ name, mesh }); return mesh; }
+const homeGroup = new THREE.Group(); const core = new THREE.Mesh(new THREE.IcosahedronGeometry(2, 1), goldMat); const coreWire = new THREE.Mesh(new THREE.IcosahedronGeometry(2.1, 1), wireframeMat); homeGroup.add(core, coreWire); const ring1 = new THREE.Mesh(new THREE.TorusGeometry(3.5, 0.02, 16, 100), emeraldMat); ring1.rotation.x = Math.PI / 2; const ring2 = new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.02, 16, 100), goldMat); ring2.rotation.y = Math.PI / 3; homeGroup.add(ring1, ring2); createSculpture('home', homeGroup, new THREE.Vector3(0, 0, 0));
+const aboutGroup = new THREE.Group(); const r1 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), emeraldMat); const r2 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), goldMat); const r3 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), emeraldMat); r1.rotation.x = Math.PI / 2; r2.rotation.y = Math.PI / 3; r3.rotation.y = -Math.PI / 3; aboutGroup.add(r1, r2, r3); createSculpture('about', aboutGroup, new THREE.Vector3(-15, -10, -10));
+const acadGroup = new THREE.Group(); for(let i=0; i<3; i++) { const cone = new THREE.Mesh(new THREE.ConeGeometry(1.5, 2, 4), i%2===0 ? emeraldMat : goldMat); cone.position.set((i-1)*3, 0, 0); acadGroup.add(cone); } createSculpture('academics', acadGroup, new THREE.Vector3(15, -10, -10));
+const tvetGroup = new THREE.Group(); const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.5, 0.4, 100, 16), goldMat); const knotWire = new THREE.Mesh(new THREE.TorusKnotGeometry(1.7, 0.45, 100, 16), wireframeMat); tvetGroup.add(knot, knotWire); createSculpture('tvet', tvetGroup, new THREE.Vector3(-15, -20, -20));
+const admGroup = new THREE.Group(); for(let i=0; i<4; i++) { const gate = new THREE.Mesh(new THREE.TorusGeometry(2.5 - i*0.4, 0.05, 16, 100), i%2===0 ? emeraldMat : goldMat); gate.position.z = -i * 1.5; admGroup.add(gate); } createSculpture('admissions', admGroup, new THREE.Vector3(15, -20, -20));
+const newsGroup = new THREE.Group(); const beacon = new THREE.Mesh(new THREE.DodecahedronGeometry(1.5, 0), emeraldMat); const beaconWire = new THREE.Mesh(new THREE.DodecahedronGeometry(2, 0), wireframeMat); newsGroup.add(beacon, beaconWire); createSculpture('news', newsGroup, new THREE.Vector3(-15, -30, -30));
+const contactGroup = new THREE.Group(); const globe = new THREE.Mesh(new THREE.SphereGeometry(2, 32, 16), wireframeMat); const eqRing = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.05, 16, 100), goldMat); eqRing.rotation.x = Math.PI / 2; contactGroup.add(globe, eqRing); createSculpture('contact', contactGroup, new THREE.Vector3(15, -30, -30));
+const views = { home: { pos: new THREE.Vector3(0, 0, 15), look: new THREE.Vector3(0, 0, 0) }, about: { pos: new THREE.Vector3(-15, -10, 0), look: new THREE.Vector3(-15, -10, -10) }, academics: { pos: new THREE.Vector3(15, -10, 0), look: new THREE.Vector3(15, -10, -10) }, tvet: { pos: new THREE.Vector3(-15, -20, -10), look: new THREE.Vector3(-15, -20, -20) }, admissions:{ pos: new THREE.Vector3(15, -20, -10), look: new THREE.Vector3(15, -20, -20) }, news: { pos: new THREE.Vector3(-15, -30, -20), look: new THREE.Vector3(-15, -30, -30) }, contact: { pos: new THREE.Vector3(15, -30, -20), look: new THREE.Vector3(15, -30, -30) } };
+let targetCameraPos = views.home.pos.clone(); let targetLookAt = views.home.look.clone();
+window.navigate3D = (section) => { if(views[section]) { targetCameraPos.copy(views[section].pos); targetLookAt.copy(views[section].look); } };
 const clock = new THREE.Clock();
-function animate() {
-  const delta = clock.getDelta();
-  const elapsedTime = clock.getElapsedTime();
-  camera.position.lerp(targetCameraPos, delta * 3);
-  camera.lookAt(targetLookAt);
-  sculptures.forEach(s => {
-    s.mesh.rotation.x = elapsedTime * 0.2;
-    s.mesh.rotation.y = elapsedTime * 0.3;
-    s.mesh.position.y = s.mesh.userData.basePos.y + Math.sin(elapsedTime * 2) * 0.5;
-  });
-  renderer.render(scene, camera);
-  requestAnimationFrame(animate);
-}
-animate();
-
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// Tilt Cards
-document.querySelectorAll('.tilt-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-    card.style.transform = `perspective(1000px) rotateX(${((y-rect.height/2)/rect.height)* -10}deg) rotateY(${((x-rect.width/2)/rect.width)* 10}deg) scale3d(1.02, 1.02, 1.02)`;
-  });
-  card.addEventListener('mouseleave', () => card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)`);
-});
-
-// Scroll Nav
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  const header = document.getElementById('siteHeader');
-  if(window.scrollY > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-  sections.forEach(section => {
-    if(scrollY >= section.offsetTop - 150) current = section.getAttribute('id');
-  });
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if(link.getAttribute('href') === `#${current}`) link.classList.add('active');
-  });
-  if(current && window.navigate3D) window.navigate3D(current);
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+function animate() { const delta = clock.getDelta(); const elapsedTime = clock.getElapsedTime(); camera.position.lerp(targetCameraPos, delta * 3); camera.lookAt(targetLookAt); sculptures.forEach(s => { s.mesh.rotation.x = elapsedTime * 0.2; s.mesh.rotation.y = elapsedTime * 0.3; s.mesh.position.y = s.mesh.userData.basePos.y + Math.sin(elapsedTime * 2) * 0.5; }); renderer.render(scene, camera); requestAnimationFrame(animate); } animate();
+window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+document.querySelectorAll('.tilt-card').forEach(card => { card.addEventListener('mousemove', e => { const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; card.style.transform = `perspective(1000px) rotateX(${((y-rect.height/2)/rect.height)* -10}deg) rotateY(${((x-rect.width/2)/rect.width)* 10}deg) scale3d(1.02, 1.02, 1.02)`; }); card.addEventListener('mouseleave', () => card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)`); });
+const sections = document.querySelectorAll('section[id]'); const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => { let current = ''; const header = document.getElementById('siteHeader'); if(window.scrollY > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled'); sections.forEach(section => { if(scrollY >= section.offsetTop - 150) current = section.getAttribute('id'); }); navLinks.forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === `#${current}`) link.classList.add('active'); }); if(current && window.navigate3D) window.navigate3D(current); });
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 }); document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-<!-- ============================================================
-     FIREBASE & PORTAL LOGIC
-     ============================================================ -->
+<!-- FIREBASE & APPLICATION LOGIC -->
 <script type="module">
- const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCk5pHtd2a9P74pVQUd_PIaHvaYVFzqrfw",
   authDomain: "gs-gatare-portal.firebaseapp.com",
   projectId: "gs-gatare-portal",
@@ -790,6 +648,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   messagingSenderId: "995142418810",
   appId: "1:995142418810:web:cf1cb0d971541a362cd6c3"
 };
+
 let firebaseReady = false;
 let fb = null;
 
@@ -807,19 +666,15 @@ async function initFirebase() {
   } catch(e) { console.warn("Firebase init failed", e); }
 }
 
-// Fallback Store
 const store = {
   getNews(){ try{ return JSON.parse(localStorage.getItem("gs_news")) || []; }catch{ return []; } },
   setNews(l){ localStorage.setItem("gs_news", JSON.stringify(l)); },
-  getApps(){ try{ return JSON.parse(localStorage.getItem("gs_apps")) || []; }catch{ return []; } },
-  setApps(l){ localStorage.setItem("gs_apps", JSON.stringify(l)); },
   getSession(){ try{ return JSON.parse(localStorage.getItem("gs_session")); }catch{ return null; } },
   setSession(s){ localStorage.setItem("gs_session", JSON.stringify(s)); },
   clearSession(){ localStorage.removeItem("gs_session"); }
 };
 let currentUser = store.getSession();
 
-// DOM Elements
 const publicSite = document.getElementById("publicSite");
 const portalContainer = document.getElementById("portalContainer");
 const authModal = document.getElementById("authModal");
@@ -834,15 +689,14 @@ window.switchAuthTab = (tab) => {
   document.querySelectorAll(".auth-form").forEach(f => f.classList.remove("active"));
   event.target.classList.add("active");
   document.getElementById(tab + "Form").classList.add("active");
+  document.getElementById("parentChildLinkField").style.display = tab === 'signup' ? 'block' : 'none';
 };
 
 window.exitPortal = () => {
   portalContainer.classList.remove("active");
   publicSite.classList.remove("hidden");
   canvas.classList.remove("hidden");
-  if(!currentUser) {
-    window.location.reload(); 
-  }
+  if(!currentUser) window.location.reload(); 
 };
 
 document.getElementById("portalLogoutBtn").onclick = () => {
@@ -852,6 +706,14 @@ document.getElementById("portalLogoutBtn").onclick = () => {
   window.exitPortal();
 };
 
+window.switchPortalTab = (portal, tab) => {
+  document.querySelectorAll(`#${portal}View .tab-pane`).forEach(p => p.classList.remove('active'));
+  document.querySelectorAll(`#${portal}View .portal-tabs button`).forEach(b => b.classList.remove('active'));
+  document.getElementById(`${portal}-${tab}`).classList.add('active');
+  event.target.classList.add('active');
+};
+
+// ================= PORTAL ROUTING =================
 function applySession(user) {
   currentUser = user;
   if(user) store.setSession(user); else store.clearSession();
@@ -872,11 +734,17 @@ function applySession(user) {
       loadAdminData();
     } else if(user.role === 'teacher') {
       document.getElementById('teacherView').style.display = 'block';
+      loadTeacherData();
+    } else if(user.role === 'parent') {
+      document.getElementById('parentView').style.display = 'block';
+      loadParentData(user.childEmail);
     } else {
       document.getElementById('studentView').style.display = 'block';
       document.getElementById('studentName').textContent = user.name;
       document.getElementById('studentEmail').textContent = user.email;
       document.getElementById('studentAvatar').textContent = (user.name || "S").charAt(0).toUpperCase();
+      document.getElementById('studentLevelInput').value = user.level || "O'Level";
+      loadStudentData(user.email);
     }
   } else {
     publicSite.classList.remove("hidden");
@@ -885,13 +753,10 @@ function applySession(user) {
   }
 }
 
-// AUTHENTICATION
+// ================= AUTHENTICATION =================
 document.getElementById("googleSignIn").onclick = async () => {
   if(!firebaseReady) { applySession({ name: "Demo User", email: "demo@local", role: "admin" }); return; }
-  try {
-    const provider = new fb.GoogleAuthProvider();
-    await fb.signInWithRedirect(fb.auth, provider);
-  } catch(e) { alert(e.message); }
+  try { const provider = new fb.GoogleAuthProvider(); await fb.signInWithRedirect(fb.auth, provider); } catch(e) { alert(e.message); }
 };
 
 document.getElementById("signinForm").onsubmit = async (e) => {
@@ -900,196 +765,163 @@ document.getElementById("signinForm").onsubmit = async (e) => {
   try {
     const cred = await fb.signInWithEmailAndPassword(fb.auth, document.getElementById("signinEmail").value, document.getElementById("signinPassword").value);
     const snap = await fb.getDoc(fb.doc(fb.db, "users", cred.user.uid));
-    const role = snap.exists() ? snap.data().role : "student";
-    applySession({ uid: cred.user.uid, name: cred.user.displayName || cred.user.email, email: cred.user.email, role });
-  } catch(e) { 
-    document.getElementById("signinStatus").textContent = e.message; 
-    document.getElementById("signinStatus").className = "form-status err"; 
-  }
+    const data = snap.exists() ? snap.data() : { role: "student" };
+    applySession({ uid: cred.user.uid, name: cred.user.displayName || cred.user.email, email: cred.user.email, role: data.role, level: data.level, childEmail: data.childEmail });
+  } catch(e) { document.getElementById("signinStatus").textContent = e.message; document.getElementById("signinStatus").className = "form-status err"; }
 };
 
 document.getElementById("signupForm").onsubmit = async (e) => {
   e.preventDefault();
   const name = document.getElementById("signupName").value;
   const email = document.getElementById("signupEmail").value;
+  const childEmail = document.getElementById("signupChildEmail").value;
   if(!firebaseReady) { applySession({ name, email, role: "student" }); return; }
   try {
     const cred = await fb.createUserWithEmailAndPassword(fb.auth, email, document.getElementById("signupPassword").value);
     await fb.updateProfile(cred.user, { displayName: name });
-    await fb.setDoc(fb.doc(fb.db, "users", cred.user.uid), { email, name, role: "student" });
-    applySession({ uid: cred.user.uid, name, email, role: "student" });
-  } catch(e) { 
-    document.getElementById("signupStatus").textContent = e.message; 
-    document.getElementById("signupStatus").className = "form-status err"; 
-  }
+    const role = childEmail ? "parent" : "student";
+    await fb.setDoc(fb.doc(fb.db, "users", cred.user.uid), { email, name, role: role, level: "O'Level", childEmail: childEmail });
+    applySession({ uid: cred.user.uid, name, email, role: role, level: "O'Level", childEmail: childEmail });
+  } catch(e) { document.getElementById("signupStatus").textContent = e.message; document.getElementById("signupStatus").className = "form-status err"; }
 };
 
-// ADMIN LOGIC
+// ================= ADMIN LOGIC =================
 async function loadAdminData() {
   if(!firebaseReady) return;
-  
-  // Load Applications
   try {
-    const appSnap = await fb.getDocs(fb.query(fb.collection(fb.db, "admissions"), fb.limit(5)));
-    const appBody = document.getElementById("adminApplicationsBody");
-    if(appSnap.empty) appBody.innerHTML = "<tr><td colspan='3' style='text-align:center;'>No applications yet.</td></tr>";
-    else appBody.innerHTML = appSnap.docs.map(d => {
-      const data = d.data();
-      return `<tr><td>${data.tracking}</td><td>${data.studentName}</td><td><span class="pill">${data.status || 'Pending'}</span></td></tr>`;
-    }).join("");
-  } catch(e) { console.warn(e); }
-
-  // Load Users
+    const snap = await fb.getDocs(fb.query(fb.collection(fb.db, "admissions")));
+    document.getElementById("adminStatApps").textContent = snap.size;
+    const body = document.getElementById("adminApplicationsBody");
+    if(!snap.empty) body.innerHTML = snap.docs.map(d => { const data = d.data(); return `<tr><td>${data.studentName}</td><td>${data.program}</td><td><select onchange="updateAppStatus('${d.id}', this.value)" style="padding:4px; border-radius:4px; background:var(--navy-deep); color:#fff; border:1px solid var(--glass-border);"><option value="Pending" ${data.status==='Pending'?'selected':''}>Pending</option><option value="Admitted" ${data.status==='Admitted'?'selected':''}>Admitted</option><option value="Rejected" ${data.status==='Rejected'?'selected':''}>Rejected</option></select></td></tr>`; }).join("");
+  } catch(e) {}
   try {
-    const userSnap = await fb.getDocs(fb.collection(fb.db, "users"));
-    const userBody = document.getElementById("adminUsersBody");
-    userBody.innerHTML = userSnap.docs.map(d => {
-      const u = d.data();
-      return `<tr>
-        <td>${u.name || 'N/A'}</td>
-        <td>${u.email}</td>
-        <td><span class="pill ${u.role}">${u.role}</span></td>
-        <td>
-          <select onchange="updateUserRole('${d.id}', this.value)" style="padding:6px; border-radius:6px; background:var(--navy-deep); color:#fff; border:1px solid var(--glass-border);">
-            <option value="student" ${u.role==='student'?'selected':''}>Student</option>
-            <option value="teacher" ${u.role==='teacher'?'selected':''}>Teacher</option>
-            <option value="admin" ${u.role==='admin'?'selected':''}>Admin</option>
-          </select>
-        </td>
-      </tr>`;
-    }).join("");
-  } catch(e) { console.warn(e); }
+    const snap = await fb.getDocs(fb.collection(fb.db, "users"));
+    document.getElementById("adminStatUsers").textContent = snap.size;
+    document.getElementById("adminUsersBody").innerHTML = snap.docs.map(d => { const u = d.data(); return `<tr><td>${u.name || 'N/A'}</td><td>${u.email}</td><td><select onchange="updateUserRole('${d.id}', this.value)" style="padding:4px; border-radius:4px; background:var(--navy-deep); color:#fff; border:1px solid var(--glass-border);"><option value="student" ${u.role==='student'?'selected':''}>Student</option><option value="teacher" ${u.role==='teacher'?'selected':''}>Teacher</option><option value="parent" ${u.role==='parent'?'selected':''}>Parent</option><option value="admin" ${u.role==='admin'?'selected':''}>Admin</option></select></td></tr>`; }).join("");
+  } catch(e) {}
+  try {
+    const snap = await fb.getDocs(fb.collection(fb.db, "inquiries"));
+    document.getElementById("adminStatInq").textContent = snap.size;
+    document.getElementById("adminInquiriesBody").innerHTML = snap.docs.map(d => { const u = d.data(); return `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.message}</td></tr>`; }).join("");
+  } catch(e) {}
 }
-
-window.updateUserRole = async (uid, newRole) => {
-  if(!firebaseReady) return;
-  try {
-    await fb.updateDoc(fb.doc(fb.db, "users", uid), { role: newRole });
-    alert("Role updated successfully! The user will see changes when they next log in.");
-  } catch(e) { alert("Failed to update role: " + e.message); }
-};
+window.updateAppStatus = async (id, status) => { await fb.updateDoc(fb.doc(fb.db, "admissions", id), { status }); alert("Status updated!"); };
+window.updateUserRole = async (uid, newRole) => { await fb.updateDoc(fb.doc(fb.db, "users", uid), { role: newRole }); alert("Role updated! The user will see changes on next login."); };
 
 document.getElementById("adminNewsForm").onsubmit = async (e) => {
   e.preventDefault();
-  const data = {
-    title: document.getElementById("adminNewsTitle").value,
-    category: document.getElementById("adminNewsCategory").value,
-    body: document.getElementById("adminNewsBody").value,
-    createdAt: new Date().toISOString()
-  };
+  const data = { title: document.getElementById("adminNewsTitle").value, category: document.getElementById("adminNewsCategory").value, body: document.getElementById("adminNewsBody").value, createdAt: new Date().toISOString() };
   try {
-    if(firebaseReady) await fb.addDoc(fb.collection(fb.db, "news"), { ...data, createdAt: fb.serverTimestamp() });
-    else { const l = store.getNews(); l.unshift(data); store.setNews(l); }
-    document.getElementById("adminNewsStatus").textContent = "Published successfully!";
-    document.getElementById("adminNewsStatus").className = "form-status ok";
-    e.target.reset();
-    loadNews(); 
+    await fb.addDoc(fb.collection(fb.db, "news"), { ...data, createdAt: fb.serverTimestamp() });
+    document.getElementById("adminNewsStatus").textContent = "Published!"; document.getElementById("adminNewsStatus").className = "form-status ok"; e.target.reset(); loadNews();
   } catch(err) { alert(err.message); }
 };
 
-// PUBLIC FORMS
+// ================= TEACHER LOGIC =================
+async function loadTeacherData() {
+  if(!firebaseReady) return;
+  try {
+    const snap = await fb.getDocs(fb.query(fb.collection(fb.db, "users"), fb.where("role", "==", "student")));
+    const opts = '<option value="">Select a student...</option>' + snap.docs.map(d => `<option value="${d.data().email}">${d.data().name}</option>`).join("");
+    document.getElementById("gradeStudentSelect").innerHTML = opts;
+    document.getElementById("attendStudentSelect").innerHTML = opts;
+  } catch(e) {}
+}
+document.getElementById("teacherAssignmentForm").onsubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await fb.addDoc(fb.collection(fb.db, "assignments"), { title: document.getElementById("assignTitle").value, body: document.getElementById("assignBody").value, teacher: currentUser.name, createdAt: fb.serverTimestamp() });
+    document.getElementById("assignStatus").textContent = "Assignment Published!"; document.getElementById("assignStatus").className = "form-status ok"; e.target.reset();
+  } catch(err) { alert(err.message); }
+};
+document.getElementById("teacherGradeForm").onsubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await fb.addDoc(fb.collection(fb.db, "grades"), { studentEmail: document.getElementById("gradeStudentSelect").value, subject: document.getElementById("gradeSubject").value, score: document.getElementById("gradeScore").value, teacher: currentUser.name, createdAt: fb.serverTimestamp() });
+    document.getElementById("gradeStatus").textContent = "Mark saved successfully!"; document.getElementById("gradeStatus").className = "form-status ok"; e.target.reset();
+  } catch(err) { alert(err.message); }
+};
+document.getElementById("teacherAttendanceForm").onsubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await fb.addDoc(fb.collection(fb.db, "attendance"), { studentEmail: document.getElementById("attendStudentSelect").value, date: document.getElementById("attendDate").value, status: document.getElementById("attendStatus").value, teacher: currentUser.name, createdAt: fb.serverTimestamp() });
+    document.getElementById("attendLogStatus").textContent = "Attendance Logged!"; document.getElementById("attendLogStatus").className = "form-status ok"; e.target.reset();
+  } catch(err) { alert(err.message); }
+};
+
+// ================= STUDENT & PARENT LOGIC =================
+async function loadStudentData(email) {
+  if(!firebaseReady) return;
+  try {
+    const snap = await fb.getDocs(fb.query(fb.collection(fb.db, "grades"), fb.where("studentEmail", "==", email)));
+    document.getElementById("studentGradesBody").innerHTML = snap.empty ? "<tr><td colspan='2' style='text-align:center;'>No grades yet.</td></tr>" : snap.docs.map(d => `<tr><td>${d.data().subject}</td><td><strong style="color:var(--gold)">${d.data().score} / 100</strong></td></tr>`).join("");
+  } catch(e) {}
+  try {
+    const snap = await fb.getDocs(fb.query(fb.collection(fb.db, "assignments"), fb.orderBy("createdAt", "desc"), fb.limit(5)));
+    document.getElementById("studentAssignmentsList").innerHTML = snap.empty ? "<p>No assignments yet.</p>" : snap.docs.map(d => `<div style="margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;"><strong style="color:var(--gold-light); display:block;">${d.data().title}</strong><p style="font-size:13px; color:var(--text-muted);">${d.data().body}</p></div>`).join("");
+  } catch(e) {}
+}
+window.updateStudentLevel = async () => {
+  const newLevel = document.getElementById("studentLevelInput").value;
+  if(!firebaseReady) return;
+  try { await fb.updateDoc(fb.doc(fb.db, "users", currentUser.uid), { level: newLevel }); currentUser.level = newLevel; store.setSession(currentUser); alert("Profile updated!"); } catch(e) { alert(e.message); }
+};
+async function loadParentData(childEmail) {
+  if(!firebaseReady || !childEmail) { document.getElementById("parentGradesBody").innerHTML = "<tr><td colspan='2'>No child linked. Contact Admin.</td></tr>"; return; }
+  try {
+    const snap = await fb.getDocs(fb.query(fb.collection(fb.db, "grades"), fb.where("studentEmail", "==", childEmail)));
+    document.getElementById("parentGradesBody").innerHTML = snap.empty ? "<tr><td colspan='2' style='text-align:center;'>No grades published yet.</td></tr>" : snap.docs.map(d => `<tr><td>${d.data().subject}</td><td><strong style="color:var(--gold)">${d.data().score} / 100</strong></td></tr>`).join("");
+  } catch(e) {}
+}
+
+// ================= PUBLIC FORMS =================
 document.getElementById("admissionForm").onsubmit = async (e) => {
   e.preventDefault();
-  const status = document.getElementById("admissionStatus");
-  const data = {
-    studentName: document.getElementById("studentName").value,
-    dob: document.getElementById("dob").value,
-    gender: document.getElementById("gender").value,
-    parentName: document.getElementById("parentName").value,
-    parentPhone: document.getElementById("parentPhone").value,
-    email: document.getElementById("email").value,
-    previousSchool: document.getElementById("previousSchool").value,
-    program: document.getElementById("program").value,
-    tracking: "GAT-" + Math.random().toString(36).substring(2,8).toUpperCase(),
-    status: "Pending",
-    createdAt: new Date().toISOString()
-  };
+  const data = { studentName: document.getElementById("studentName").value, dob: document.getElementById("dob").value, gender: document.getElementById("gender").value, parentName: document.getElementById("parentName").value, parentPhone: document.getElementById("parentPhone").value, email: document.getElementById("email").value, previousSchool: document.getElementById("previousSchool").value, program: document.getElementById("program").value, tracking: "GAT-" + Math.random().toString(36).substring(2,8).toUpperCase(), status: "Pending", createdAt: new Date().toISOString() };
   try {
     if(firebaseReady) await fb.addDoc(fb.collection(fb.db, "admissions"), { ...data, createdAt: fb.serverTimestamp() });
-    else { const apps = store.getApps(); apps.unshift(data); store.setApps(apps); }
-    status.textContent = `Success! Tracking Number: ${data.tracking}`;
-    status.className = "form-status ok";
-    e.target.reset();
-  } catch(err) { status.textContent = err.message; status.className = "form-status err"; }
+    document.getElementById("admissionStatus").textContent = `Success! Tracking Number: ${data.tracking}`; document.getElementById("admissionStatus").className = "form-status ok"; e.target.reset();
+  } catch(err) { document.getElementById("admissionStatus").textContent = err.message; document.getElementById("admissionStatus").className = "form-status err"; }
 };
-
 document.getElementById("contactForm").onsubmit = async (e) => {
   e.preventDefault();
-  const status = document.getElementById("contactStatus");
-  const data = {
-    name: document.getElementById("contactName").value,
-    email: document.getElementById("contactEmail").value,
-    message: document.getElementById("contactMessage").value,
-    createdAt: new Date().toISOString()
-  };
+  const data = { name: document.getElementById("contactName").value, email: document.getElementById("contactEmail").value, message: document.getElementById("contactMessage").value, createdAt: new Date().toISOString() };
   try {
     if(firebaseReady) await fb.addDoc(fb.collection(fb.db, "inquiries"), { ...data, createdAt: fb.serverTimestamp() });
-    status.textContent = "Message sent successfully.";
-    status.className = "form-status ok";
-    e.target.reset();
-  } catch(err) { status.textContent = err.message; status.className = "form-status err"; }
+    document.getElementById("contactStatus").textContent = "Message sent successfully."; document.getElementById("contactStatus").className = "form-status ok"; e.target.reset();
+  } catch(err) { document.getElementById("contactStatus").textContent = err.message; document.getElementById("contactStatus").className = "form-status err"; }
 };
 
-// NEWS (Public)
 async function loadNews() {
   let items = store.getNews();
   if(firebaseReady) {
-    try {
-      const snap = await fb.getDocs(fb.query(fb.collection(fb.db, "news"), fb.orderBy("createdAt", "desc"), fb.limit(6)));
-      if(!snap.empty) items = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    } catch(e) {}
+    try { const snap = await fb.getDocs(fb.query(fb.collection(fb.db, "news"), fb.orderBy("createdAt", "desc"), fb.limit(6))); if(!snap.empty) items = snap.docs.map(d => ({ id: d.id, ...d.data() })); } catch(e) {}
   }
-  
   const grid = document.getElementById("homepageNewsGrid");
   if(items.length === 0) { grid.innerHTML = '<p style="color:var(--text-muted); grid-column:1/-1; text-align:center;">No announcements yet.</p>'; return; }
-  
-  grid.innerHTML = items.map((n, i) => `
-    <div class="card glass-panel tilt-card reveal visible" onclick="openReader(${i})">
-      <div class="tilt-card-inner">
-        <div style="margin-bottom:16px;"><span class="tag">${n.category || "News"}</span></div>
-        <h3>${n.title}</h3>
-        <p style="margin-top:8px; font-size:12px; color:var(--gold);">${new Date(n.createdAt).toLocaleDateString()}</p>
-      </div>
-    </div>
-  `).join("");
+  grid.innerHTML = items.map((n, i) => `<div class="card glass-panel tilt-card reveal visible" onclick="openReader(${i})"><div class="tilt-card-inner"><div style="margin-bottom:16px;"><span class="tag">${n.category || "News"}</span></div><h3>${n.title}</h3><p style="margin-top:8px; font-size:12px; color:var(--gold);">${new Date(n.createdAt).toLocaleDateString()}</p></div></div>`).join("");
   window._newsItems = items;
 }
-
-window.openReader = (i) => {
-  const n = window._newsItems[i];
-  document.getElementById("readerTitle").textContent = n.title;
-  document.getElementById("readerBody").textContent = n.body;
-  document.getElementById("readerCat").textContent = n.category || "News";
-  document.getElementById("readerDate").textContent = new Date(n.createdAt).toLocaleDateString();
-  document.getElementById("readerModal").classList.add("open");
-};
+window.openReader = (i) => { const n = window._newsItems[i]; document.getElementById("readerTitle").textContent = n.title; document.getElementById("readerBody").textContent = n.body; document.getElementById("readerCat").textContent = n.category || "News"; document.getElementById("readerDate").textContent = new Date(n.createdAt).toLocaleDateString(); document.getElementById("readerModal").classList.add("open"); };
 
 // INIT
 document.getElementById("year").textContent = new Date().getFullYear();
 (async () => {
   await initFirebase();
-  
   if (firebaseReady) {
     try {
       const result = await fb.getRedirectResult(fb.auth);
       if (result && result.user) {
         const snap = await fb.getDoc(fb.doc(fb.db, "users", result.user.uid));
-        const role = snap.exists() ? snap.data().role : "student";
-        applySession({ uid: result.user.uid, name: result.user.displayName, email: result.user.email, role });
+        const data = snap.exists() ? snap.data() : { role: "student" };
+        applySession({ uid: result.user.uid, name: result.user.displayName, email: result.user.email, role: data.role, level: data.level, childEmail: data.childEmail });
       }
     } catch (e) { console.warn("Redirect login failed", e); }
-
     fb.onAuthStateChanged(fb.auth, async (user) => {
-      if(user) {
-        const snap = await fb.getDoc(fb.doc(fb.db, "users", user.uid));
-        applySession({ uid: user.uid, name: user.displayName || user.email, email: user.email, role: snap.exists() ? snap.data().role : "student" });
-      } else {
-        applySession(null);
-      }
+      if(user) { const snap = await fb.getDoc(fb.doc(fb.db, "users", user.uid)); const data = snap.exists() ? snap.data() : { role: "student" }; applySession({ uid: user.uid, name: user.displayName || user.email, email: user.email, role: data.role, level: data.level, childEmail: data.childEmail }); }
+      else { applySession(null); }
     });
-  } else {
-    applySession(currentUser);
-  }
+  } else { applySession(currentUser); }
   loadNews();
 })();
 </script>
