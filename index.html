@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   DESIGN TOKENS & CORE VARIABLES (PRESERVED)
+   DESIGN TOKENS & CORE VARIABLES
    ============================================================ */
 :root{
   --navy-deep:#06191a; --navy-soft:#102d2a;
@@ -109,9 +109,7 @@ p{margin:0}
 .form-status.ok { display: block; background: rgba(40,99,77,0.4); border: 1px solid var(--emerald); color: #a7f3d0; }
 .form-status.err { display: block; background: rgba(176,42,42,0.2); border: 1px solid #b02a2a; color: #fca5a5; }
 
-/* ============================================================
-   PORTAL SYSTEM (FULL SMIS)
-   ============================================================ */
+/* PORTAL SYSTEM (FULL SMIS) */
 #publicSite { transition: opacity 0.4s ease; }
 #publicSite.hidden { display: none; }
 #portalContainer { position: fixed; inset: 0; z-index: 500; background: var(--navy-deep); display: none; flex-direction: column; overflow-y: auto; }
@@ -125,10 +123,6 @@ p{margin:0}
 .portal-sidebar button.active { background: var(--gold); color: var(--navy-deep); }
 .portal-sidebar button:hover:not(.active) { background: rgba(255,255,255,0.05); color: #fff; }
 .portal-content { flex: 1; padding: 32px; max-width: 1200px; margin: 0 auto; width: 100%; }
-
-.tab-pane { display: none; animation: fadeIn 0.3s ease; }
-.tab-pane.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Dashboard UI */
 .dash-header { display: flex; justify-content: space-between; align-items: center; padding: 24px 32px; border-radius: 20px; margin-bottom: 32px; }
@@ -150,18 +144,16 @@ p{margin:0}
 @keyframes rotate { 100% { transform: rotate(360deg); } }
 .id-card .avatar { width: 80px; height: 80px; border-radius: 50%; background: #fff; color: var(--navy-soft); font-size: 32px; display: grid; place-items: center; margin: 0 auto 16px; font-weight: 700; border: 3px solid var(--gold); }
 
-/* Print Styles for Report Cards & ID */
+/* Print Styles */
 @media print {
   body { background: #fff !important; color: #000 !important; }
   #webgl-canvas, #publicSite, .portal-header, .portal-sidebar, .no-print { display: none !important; }
   #portalContainer { position: static; background: #fff; display: block !important; }
   .portal-content { padding: 0; }
-  .tab-pane { display: none !important; }
-  .tab-pane.active { display: block !important; }
   .glass-panel { border: 1px solid #ccc !important; box-shadow: none !important; background: #fff !important; color: #000 !important; }
   .id-card { border: 2px solid #000 !important; background: #fff !important; box-shadow: none !important; }
   .id-card::before { display: none; }
-  .id-card h3, .id-card p, .id-card span { color: #000 !important; }
+  .id-card h3, .id-card p, .id-card span, .id-card h4 { color: #000 !important; }
   .data-table th, .data-table td { color: #000 !important; border-bottom: 1px solid #000 !important; }
   h2, h3, h4 { color: #000 !important; }
   .print-header { display: block !important; text-align: center; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 10px; }
@@ -349,9 +341,7 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
   </footer>
 </main>
 
-<!-- ============================================================
-     PORTAL SYSTEM (DASHBOARD)
-     ============================================================ -->
+<!-- PORTAL SYSTEM -->
 <div id="portalContainer">
   <header class="portal-header">
     <div style="display:flex; align-items:center; gap:16px;">
@@ -368,15 +358,8 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
   </header>
   
   <div class="portal-layout">
-    <!-- SIDEBAR NAVIGATION -->
-    <aside class="portal-sidebar" id="portalSidebar">
-      <!-- Rendered via JS based on role -->
-    </aside>
-
-    <!-- MAIN PORTAL CONTENT -->
-    <main class="portal-content" id="portalMainContent">
-      <!-- Render via JS -->
-    </main>
+    <aside class="portal-sidebar" id="portalSidebar"></aside>
+    <main class="portal-content" id="portalMainContent"></main>
   </div>
 </div>
 
@@ -450,9 +433,7 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
   </div>
 </div>
 
-<!-- ============================================================
-     THREE.JS SCENE (PRESERVED)
-     ============================================================ -->
+<!-- THREE.JS SCENE -->
 <script type="importmap">
 {
   "imports": {
@@ -499,9 +480,7 @@ window.addEventListener('scroll', () => { let current = ''; const header = docum
 const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 }); document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-<!-- ============================================================
-     FIREBASE & PORTAL LOGIC (DATA ENGINE)
-     ============================================================ -->
+<!-- FIREBASE & DATA ENGINE -->
 <script type="module">
 const firebaseConfig = {
   apiKey: "AIzaSyCk5pHtd2a9P74pVQUd_PIaHvaYVFzqrfw",
@@ -511,7 +490,6 @@ const firebaseConfig = {
   messagingSenderId: "995142418810",
   appId: "1:995142418810:web:cf1cb0d971541a362cd6c3"
 };
-
 let firebaseReady = false;
 let fb = null;
 
@@ -531,8 +509,10 @@ async function initFirebase() {
 }
 
 // ==========================================
-// 1. DEMO DATA (Pre-loaded for Out-of-the-Box)
+// 1. DEMO DATA (Pre-loaded)
 // ==========================================
+const DB_VERSION = 'v3.0'; // Forces browser to clear old, broken cache
+
 const DEFAULT_DATA = {
   users: [
     { id: 'u1', name: 'Admin (Headteacher)', email: 'admin@gsgatare.rw', role: 'admin' },
@@ -562,20 +542,19 @@ const DEFAULT_DATA = {
     { id: 'f1', studentId: 's1', term: 'Term 1', totalFees: 50000, amountPaid: 50000, balance: 0, status: 'Paid' },
     { id: 'f2', studentId: 's2', term: 'Term 1', totalFees: 50000, amountPaid: 20000, balance: 30000, status: 'Partial' }
   ],
-  discipline: [
-    { id: 'd1', studentId: 's1', type: 'Commendation', note: 'Helped lead the agriculture practical farm clean-up.', date: '2024-03-01' }
-  ],
   assignments: [
     { id: 'as1', teacherId: 't1', title: 'Farm Tool Identification', body: 'List 10 farm tools and explain their uses.', dueDate: '2024-03-10' }
   ]
 };
 
 // ==========================================
-// 2. STATE & STORAGE ENGINE (Fallback to LS)
+// 2. STORAGE ENGINE (Versioned Reset)
 // ==========================================
 function initLocalStorage() {
-  if (!localStorage.getItem('gs_data')) {
+  if (localStorage.getItem('gs_data_version') !== DB_VERSION) {
     localStorage.setItem('gs_data', JSON.stringify(DEFAULT_DATA));
+    localStorage.setItem('gs_data_version', DB_VERSION);
+    console.log("Database reset to version", DB_VERSION);
   }
 }
 function getDB() { return JSON.parse(localStorage.getItem('gs_data')); }
@@ -583,40 +562,41 @@ function saveDB(db) { localStorage.setItem('gs_data', JSON.stringify(db)); }
 
 async function dbGet(collection) {
   if (firebaseReady) {
-    const snap = await fb.getDocs(fb.collection(fb.db, collection));
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    try {
+      const snap = await fb.getDocs(fb.collection(fb.db, collection));
+      return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    } catch (e) { console.warn("Firebase read error, falling back to local.", e); return getDB()[collection] || []; }
   } else {
     return getDB()[collection] || [];
   }
 }
 async function dbAdd(collection, data) {
   if (firebaseReady) {
-    return await fb.addDoc(fb.collection(fb.db, collection), { ...data, createdAt: fb.serverTimestamp() });
-  } else {
-    const db = getDB();
-    if(!db[collection]) db[collection] = [];
-    data.id = 'local_' + Math.random().toString(36).substr(2, 9);
-    db[collection].push(data);
-    saveDB(db);
-    return data;
+    try { return await fb.addDoc(fb.collection(fb.db, collection), { ...data, createdAt: fb.serverTimestamp() }); } 
+    catch (e) { console.warn("Firebase add error", e); }
   }
+  const db = getDB();
+  if(!db[collection]) db[collection] = [];
+  data.id = 'local_' + Math.random().toString(36).substr(2, 9);
+  db[collection].push(data);
+  saveDB(db);
+  return data;
 }
 async function dbUpdate(collection, id, data) {
   if (firebaseReady) {
-    await fb.updateDoc(fb.doc(fb.db, collection, id), data);
-  } else {
-    const db = getDB();
-    const idx = db[collection].findIndex(x => x.id === id);
-    if (idx > -1) { db[collection][idx] = { ...db[collection][idx], ...data }; saveDB(db); }
+    try { await fb.updateDoc(fb.doc(fb.db, collection, id), data); return; } 
+    catch (e) { console.warn("Firebase update error", e); }
   }
+  const db = getDB();
+  const idx = db[collection].findIndex(x => x.id === id);
+  if (idx > -1) { db[collection][idx] = { ...db[collection][idx], ...data }; saveDB(db); }
 }
 
 // ==========================================
-// 3. APP LOGIC & PORTAL ROUTING
+// 3. APP LOGIC
 // ==========================================
 initLocalStorage();
 let currentUser = null;
-
 const publicSite = document.getElementById("publicSite");
 const portalContainer = document.getElementById("portalContainer");
 const authModal = document.getElementById("authModal");
@@ -643,10 +623,11 @@ window.exitPortal = () => {
 };
 
 window.demoLogin = (role) => {
-  if(role === 'admin') currentUser = getDB().users[0];
-  if(role === 'teacher') currentUser = getDB().users[1];
-  if(role === 'student') currentUser = getDB().users[2];
-  if(role === 'parent') currentUser = getDB().users[4];
+  const users = getDB().users;
+  if(role === 'admin') currentUser = users[0];
+  if(role === 'teacher') currentUser = users[1];
+  if(role === 'student') currentUser = users[2];
+  if(role === 'parent') currentUser = users[4];
   applySession(currentUser);
 };
 
@@ -667,35 +648,48 @@ function applySession(user) {
   }
 }
 
+// Login Fallbacks for Demo
+document.getElementById("googleSignIn").onclick = () => {
+  if(!firebaseReady) {
+    alert("Firebase not configured. Logging you in as Demo Admin.");
+    demoLogin('admin');
+    return;
+  }
+  // Firebase login logic here...
+};
+
+document.getElementById("signinForm").onsubmit = (e) => {
+  e.preventDefault();
+  if(!firebaseReady) {
+    demoLogin('student'); // Default to student for manual login
+    return;
+  }
+  // Firebase login logic here...
+};
+
+document.getElementById("signupForm").onsubmit = (e) => {
+  e.preventDefault();
+  if(!firebaseReady) {
+    alert("Account created in Demo Mode! Logging you in as a new Student.");
+    demoLogin('student');
+    return;
+  }
+  // Firebase signup logic here...
+};
+
 // ==========================================
 // 4. UI RENDERERS
 // ==========================================
 function renderSidebar() {
   let links = [];
   if(currentUser.role === 'admin') {
-    links = [
-      { id: 'admin-dash', label: 'Dashboard' },
-      { id: 'admin-admissions', label: 'Admissions' },
-      { id: 'admin-users', label: 'User Directory' },
-      { id: 'admin-fees', label: 'Fees Ledger' }
-    ];
+    links = [{ id: 'admin-dash', label: 'Dashboard' }, { id: 'admin-admissions', label: 'Admissions' }, { id: 'admin-users', label: 'User Directory' }, { id: 'admin-fees', label: 'Fees Ledger' }];
   } else if(currentUser.role === 'teacher') {
-    links = [
-      { id: 'teacher-grade', label: 'Gradebook' },
-      { id: 'teacher-attend', label: 'Attendance' },
-      { id: 'teacher-assign', label: 'Assignments' }
-    ];
+    links = [{ id: 'teacher-grade', label: 'Gradebook' }, { id: 'teacher-attend', label: 'Attendance' }, { id: 'teacher-assign', label: 'Assignments' }];
   } else if(currentUser.role === 'student') {
-    links = [
-      { id: 'student-id', label: 'Digital ID' },
-      { id: 'student-report', label: 'Report Card' },
-      { id: 'student-tasks', label: 'Assignments' }
-    ];
+    links = [{ id: 'student-id', label: 'Digital ID' }, { id: 'student-report', label: 'Report Card' }, { id: 'student-tasks', label: 'Assignments' }];
   } else if(currentUser.role === 'parent') {
-    links = [
-      { id: 'parent-dash', label: "Child's Progress" },
-      { id: 'parent-fees', label: 'Fees Status' }
-    ];
+    links = [{ id: 'parent-dash', label: "Child's Progress" }, { id: 'parent-fees', label: 'Fees Status' }];
   }
 
   sidebar.innerHTML = links.map((l, i) => `<button onclick="navPortal('${l.id}', this)" class="${i===0?'active':''}">${l.label}</button>`).join("");
@@ -707,22 +701,22 @@ window.navPortal = async (view, btn) => {
     document.querySelectorAll('.portal-sidebar button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   }
-  
-  if (view === 'admin-dash') await renderAdminDash();
-  if (view === 'admin-admissions') await renderAdminAdmissions();
-  if (view === 'admin-users') await renderAdminUsers();
-  if (view === 'admin-fees') await renderAdminFees();
-  
-  if (view === 'teacher-grade') await renderTeacherGradebook();
-  if (view === 'teacher-attend') await renderTeacherAttendance();
-  if (view === 'teacher-assign') await renderTeacherAssignments();
-
-  if (view === 'student-id') await renderStudentID();
-  if (view === 'student-report') await renderStudentReport();
-  if (view === 'student-tasks') await renderStudentTasks();
-
-  if (view === 'parent-dash') await renderParentDash();
-  if (view === 'parent-fees') await renderParentFees();
+  try {
+    if (view === 'admin-dash') await renderAdminDash();
+    if (view === 'admin-admissions') await renderAdminAdmissions();
+    if (view === 'admin-users') await renderAdminUsers();
+    if (view === 'admin-fees') await renderAdminFees();
+    if (view === 'teacher-grade') await renderTeacherGradebook();
+    if (view === 'teacher-attend') await renderTeacherAttendance();
+    if (view === 'teacher-assign') await renderTeacherAssignments();
+    if (view === 'student-id') await renderStudentID();
+    if (view === 'student-report') await renderStudentReport();
+    if (view === 'student-tasks') await renderStudentTasks();
+    if (view === 'parent-dash') await renderParentDash();
+    if (view === 'parent-fees') await renderParentFees();
+  } catch(e) {
+    mainContent.innerHTML = `<div class="glass-panel" style="padding:24px; color:#f87171;">Error loading view: ${e.message}</div>`;
+  }
 };
 
 // ==========================================
@@ -732,11 +726,8 @@ async function renderAdminDash() {
   const users = await dbGet('users');
   const apps = await dbGet('admissions');
   const pending = apps.filter(a => a.status === 'Pending').length;
-  
   mainContent.innerHTML = `
-    <div class="dash-header glass-panel">
-      <div><h3 style="margin:0;">School Overview</h3><p style="font-size:13px; color:var(--text-muted); margin-top:4px;">Live metrics for G.S. Gatare TSS</p></div>
-    </div>
+    <div class="dash-header glass-panel"><div><h3 style="margin:0;">School Overview</h3></div></div>
     <div class="metrics">
       <div class="metric glass-panel"><div class="label">Total Users</div><div class="val">${users.length}</div></div>
       <div class="metric glass-panel"><div class="label">Pending Apps</div><div class="val" style="color:#f87171;">${pending}</div></div>
@@ -759,9 +750,7 @@ async function renderAdminAdmissions() {
               <td>${a.studentName}</td>
               <td>${a.program}</td>
               <td><span class="pill ${a.status==='Admitted'?'success':''}">${a.status}</span></td>
-              <td>
-                ${a.status === 'Pending' ? `<button onclick="openEnroll('${a.id}', '${a.studentName}')" class="btn btn-primary" style="padding:6px 12px; font-size:11px;">Approve</button>` : 'Done'}
-              </td>
+              <td>${a.status === 'Pending' ? `<button onclick="openEnroll('${a.id}', '${a.studentName}')" class="btn btn-primary" style="padding:6px 12px; font-size:11px;">Approve</button>` : 'Done'}</td>
             </tr>
           `).join('')}
         </tbody>
@@ -781,10 +770,8 @@ window.approveEnrollment = async () => {
   const level = document.getElementById('enrollLevel').value;
   const apps = await dbGet('admissions');
   const app = apps.find(a => a.id === id);
-  
   await dbUpdate('admissions', id, { status: 'Admitted' });
   await dbAdd('users', { name: app.studentName, email: app.email || 'student@gsgatare.rw', role: 'student', level: level, regNumber: 'GAT-' + Math.floor(Math.random()*10000) });
-  
   document.getElementById('enrollModal').classList.remove('open');
   navPortal('admin-admissions', null);
 };
@@ -795,14 +782,8 @@ async function renderAdminUsers() {
     <div class="dash-header glass-panel"><h3 style="margin:0;">User Directory</h3></div>
     <div class="glass-panel table-wrap" style="padding:24px;">
       <table class="data-table">
-        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Level/Trade</th></tr></thead>
-        <tbody>
-          ${users.map(u => `
-            <tr>
-              <td>${u.name}</td><td>${u.email}</td><td><span class="pill">${u.role}</span></td><td>${u.level || '-'}</td>
-            </tr>
-          `).join('')}
-        </tbody>
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Level</th></tr></thead>
+        <tbody>${users.map(u => `<tr><td>${u.name}</td><td>${u.email}</td><td><span class="pill">${u.role}</span></td><td>${u.level || '-'}</td></tr>`).join('')}</tbody>
       </table>
     </div>
   `;
@@ -817,10 +798,7 @@ async function renderAdminFees() {
       <table class="data-table">
         <thead><tr><th>Student</th><th>Term</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead>
         <tbody>
-          ${fees.map(f => {
-            const s = users.find(u => u.id === f.studentId);
-            return `<tr><td>${s ? s.name : 'Unknown'}</td><td>${f.term}</td><td>${f.totalFees}</td><td>${f.amountPaid}</td><td>${f.balance}</td><td><span class="pill ${f.status==='Paid'?'success':'danger'}">${f.status}</span></td></tr>`;
-          }).join('')}
+          ${fees.map(f => { const s = users.find(u => u.id === f.studentId); return `<tr><td>${s ? s.name : 'Unknown'}</td><td>${f.term}</td><td>${f.totalFees}</td><td>${f.amountPaid}</td><td>${f.balance}</td><td><span class="pill ${f.status==='Paid'?'success':'danger'}">${f.status}</span></td></tr>`; }).join('')}
         </tbody>
       </table>
     </div>
@@ -844,8 +822,7 @@ async function renderTeacherGradebook() {
       <button onclick="saveGrade()" class="btn btn-primary" style="margin-top:16px;">Save Mark</button>
     </div>
     <div class="glass-panel table-wrap" style="padding:24px;">
-      <table class="data-table"><thead><tr><th>Student</th><th>Subject</th><th>CAT</th><th>Exam</th><th>Total</th><th>Grade</th></tr></thead>
-      <tbody id="gradeTableBody"></tbody></table>
+      <table class="data-table"><thead><tr><th>Student</th><th>Subject</th><th>CAT</th><th>Exam</th><th>Total</th><th>Grade</th></tr></thead><tbody id="gradeTableBody"></tbody></table>
     </div>
   `;
   await refreshGradeTable();
@@ -853,10 +830,7 @@ async function renderTeacherGradebook() {
 async function refreshGradeTable() {
   const grades = await dbGet('grades');
   const users = await dbGet('users');
-  document.getElementById('gradeTableBody').innerHTML = grades.map(g => {
-    const s = users.find(u => u.id === g.studentId);
-    return `<tr><td>${s?s.name:'Unknown'}</td><td>${g.subject}</td><td>${g.cat}</td><td>${g.exam}</td><td>${g.total}</td><td><span class="pill">${g.grade}</span></td></tr>`;
-  }).join('');
+  document.getElementById('gradeTableBody').innerHTML = grades.map(g => { const s = users.find(u => u.id === g.studentId); return `<tr><td>${s?s.name:'Unknown'}</td><td>${g.subject}</td><td>${g.cat}</td><td>${g.exam}</td><td>${g.total}</td><td><span class="pill">${g.grade}</span></td></tr>`; }).join('');
 }
 window.saveGrade = async () => {
   const sid = document.getElementById('gradeStudent').value;
@@ -884,10 +858,7 @@ async function renderTeacherAttendance() {
   `;
 }
 window.saveAttendance = async () => {
-  const sid = document.getElementById('attStudent').value;
-  const date = document.getElementById('attDate').value;
-  const status = document.getElementById('attStatus').value;
-  await dbAdd('attendance', { studentId: sid, date, status });
+  await dbAdd('attendance', { studentId: document.getElementById('attStudent').value, date: document.getElementById('attDate').value, status: document.getElementById('attStatus').value });
   alert('Attendance saved successfully!');
 };
 
@@ -951,9 +922,7 @@ async function renderStudentReport() {
       </div>
       <table class="data-table">
         <thead><tr><th>Subject</th><th>CAT (30)</th><th>Exam (70)</th><th>Total</th><th>Grade</th><th>Remarks</th></tr></thead>
-        <tbody>
-          ${grades.map(g => `<tr><td>${g.subject}</td><td>${g.cat}</td><td>${g.exam}</td><td>${g.total}</td><td><span class="pill">${g.grade}</span></td><td>${g.remarks}</td></tr>`).join('')}
-        </tbody>
+        <tbody>${grades.map(g => `<tr><td>${g.subject}</td><td>${g.cat}</td><td>${g.exam}</td><td>${g.total}</td><td><span class="pill">${g.grade}</span></td><td>${g.remarks}</td></tr>`).join('')}</tbody>
       </table>
     </div>
   `;
@@ -974,10 +943,16 @@ async function renderStudentTasks() {
 // ==========================================
 async function renderParentDash() {
   const childrenIds = currentUser.children || [];
-  if (childrenIds.length === 0) return mainContent.innerHTML = "<h3>No children linked. Contact Admin.</h3>";
+  if (childrenIds.length === 0) return mainContent.innerHTML = "<h3 style='padding:20px;'>No children linked. Contact Admin.</h3>";
   
   const allUsers = await dbGet('users');
   const child = allUsers.find(u => u.id === childrenIds[0]);
+  
+  // FIX: Check if child exists before accessing properties
+  if (!child) {
+    return mainContent.innerHTML = `<div class="glass-panel" style="padding:24px; color:#f87171;">Error: Linked child profile not found in database. Please contact the school administrator.</div>`;
+  }
+
   const grades = (await dbGet('grades')).filter(g => g.studentId === child.id);
   
   mainContent.innerHTML = `
@@ -1000,6 +975,7 @@ async function renderParentDash() {
 window.loadChildData = async (childId) => {
   const allUsers = await dbGet('users');
   const child = allUsers.find(u => u.id === childId);
+  if (!child) return alert("Child not found.");
   const grades = (await dbGet('grades')).filter(g => g.studentId === child.id);
   document.getElementById('parentReportCard').innerHTML = `
     <h4 style="color:var(--gold); margin-bottom:16px;">Report for ${child.name}</h4>
@@ -1023,6 +999,7 @@ async function renderParentFees() {
         <tbody>
           ${childrenIds.map(cid => {
             const c = allUsers.find(u => u.id === cid);
+            if(!c) return '';
             const fees = allFees.filter(f => f.studentId === cid);
             return fees.map(f => `<tr><td>${c.name}</td><td>${f.term}</td><td>${f.totalFees}</td><td>${f.amountPaid}</td><td>${f.balance}</td><td><span class="pill ${f.status==='Paid'?'success':'danger'}">${f.status}</span></td></tr>`).join('');
           }).join('')}
@@ -1056,7 +1033,6 @@ document.getElementById("admissionForm").onsubmit = async (e) => {
 // INIT
 (async () => {
   await initFirebase();
-  // Check for existing Firebase session here if needed, otherwise demo.
 })();
 </script>
 </body>
