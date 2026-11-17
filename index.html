@@ -532,12 +532,15 @@ document.getElementById("googleSignIn").onclick = async () => {
   if(!firebaseReady) return alert("Firebase is not connected.");
   try {
     const provider = new fb.GoogleAuthProvider();
-    // Changed from Popup to Redirect to fix the error
-    await fb.signInWithRedirect(fb.auth, provider);
-  } catch(e) { 
-    alert("Google Sign-In Error: " + e.message); 
-  }
-};
+import { signInWithPopup } from "firebase/auth";
+// ...
+try {
+  const result = await signInWithPopup(auth, provider);
+  // You can handle the logged-in user here
+  const user = result.user;
+} catch (error) {
+  console.error("Popup sign-in error:", error);
+}
 
 document.getElementById("signinForm").onsubmit = async (e) => {
   e.preventDefault();
