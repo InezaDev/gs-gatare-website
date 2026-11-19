@@ -398,6 +398,9 @@ async function initFirebase() {
     
     const app = initializeApp(firebaseConfig);
     fb = { auth: authMod.getAuth(app), db: fireMod.getFirestore(app), ...authMod, ...fireMod };
+authMod.setPersistence(fb.auth, authMod.browserLocalPersistence).catch((error) => {
+  console.error("Persistence error:", error);
+});
     firebaseReady = true;
     console.log("Firebase Connected Successfully!");
   } catch(e) { console.error("Firebase init failed", e); }
@@ -503,37 +506,51 @@ document.getElementById("signupForm").onsubmit = async (e) => {
     document.getElementById("signupStatus").className = "form-status err";
   }
 };
-
 async function setupAuthListener() {
   if (!firebaseReady) return;
-
-  try {
-    await fb.getRedirectResult(fb.auth);
-  } catch (error) {
-    console.error("Redirect Error:", error.message);
-  }
+  
+  // Show a loading state (prevents the homepage from flashing)
+  portalContainer.classList.add("active");
+  publicSite.classList.add("hidden");
+  canvas.classList.add("hidden");
+  mainContent.innerHTML = `<div style="padding: 50px; text-align: center;"><h3>Loading your portal...</h3></div>`;
 
   fb.onAuthStateChanged(fb.auth, async (user) => {
     if(user) {
-      const docRef = fb.doc(fb.db, "users", user.uid);
-      const docSnap = await fb.getDoc(docRef);
-      
-      let userData = {
-        uid: user.uid,
-        name: user.displayName || user.email,
-        email: user.email,
-        role: "student",
-        subRole: null
-      };
-
-      if(docSnap.exists()) {
-        userData = { ...userData, ...docSnap.data() };
-      } else {
-        await fb.setDoc(docRef, { name: userData.name, email: userData.email, role: "student", subRole: null });
+      try {
+        const docSnap = await fb.getDoc(fb.doc(fb.db, "users", user.uid));
+        let userData = { 
+          uid: user.uid, 
+          name: user.displayName || user.email, 
+          email: user.email, 
+          role: "student", 
+          subRole: null, 
+          children: [] 
+        };
+        
+        if(docSnap.exists()) {
+          userData = { ...userData, ...docSnap.data() };
+        } else {
+          // If they don't have a document yet, create it
+          await fb.setDoc(fb.doc(fb.db, "users", user.uid), {
+            name: userData.name,
+            email: userData.email,
+            role: "student",
+            subRole: null
+          });
+        }
+        
+        // This opens the portal
+        applySession(userData);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        // If Firestore fails (like Rules blocking it), send back to home
+        applySession(null);
+        alert("Error loading profile. Check Firestore Rules.");
       }
-      applySession(userData);
-    } else {
-      applySession(null);
+    } else { 
+      // If not logged in, show homepage
+      applySession(null); 
     }
   });
 }
