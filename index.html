@@ -6,7 +6,6 @@
 <title>Groupe Scolaire Gatare TSS — Where Discipline Shapes Tomorrow</title>
 <meta name="description" content="G.S. Gatare TSS (Code 250405) — Government-Aided Day School in Nyamagabe, Rwanda." />
 <meta name="theme-color" content="#06191a" />
-<!-- FAVICON FIX (Stops the 404 error) -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +38,6 @@ h1{font-size:clamp(3rem,6vw,5.5rem);line-height:1.05;letter-spacing:-0.02em}
 h2{font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.1;margin-bottom:20px}
 p{margin:0}
 
-/* PERSISTENT 3D CANVAS */
 #webgl-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; background: radial-gradient(circle at center, #102d2a 0%, #06191a 100%); transition: opacity 0.5s ease; }
 #webgl-canvas.hidden { opacity: 0; }
 
@@ -47,13 +45,11 @@ p{margin:0}
 .eyebrow{font-size:13px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:12px}
 .eyebrow::before{content:"";width:30px;height:2px;background:var(--gold)}
 
-/* GLASSMORPHISM */
 .glass-panel { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); border-radius: 24px; }
 .tilt-card { transform-style: preserve-3d; transition: transform 0.1s ease-out, box-shadow 0.3s ease; will-change: transform; }
 .tilt-card:hover { box-shadow: 0 30px 60px -12px rgba(228, 184, 94, 0.15), 0 0 20px rgba(228, 184, 94, 0.1); z-index: 10; }
 .tilt-card-inner { transform: translateZ(30px); transition: transform 0.3s ease; }
 
-/* HEADER & NAVIGATION */
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: all 0.4s var(--ease); }
 .site-header.scrolled { padding: 10px 0; background: rgba(6, 25, 26, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; }
@@ -65,7 +61,6 @@ p{margin:0}
 .nav a { position: relative; padding: 10px 18px; border-radius: 100px; font-size: 14px; font-weight: 600; color: var(--text-muted); transition: all 0.3s var(--ease); }
 .nav a:hover, .nav a.active { color: var(--gold-light); background: rgba(228, 184, 94, 0.1); transform: translateZ(10px) rotateX(5deg); border: 1px solid rgba(228, 184, 94, 0.3); }
 
-/* HERO */
 .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .hero-copy h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
@@ -87,7 +82,6 @@ p{margin:0}
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
 .hero-crest h3 { font-size: 2.2rem; margin-bottom: 8px; color: var(--gold); }
 
-/* SECTIONS & CARDS */
 .section { padding: 120px 0; }
 .section-header { text-align: center; margin-bottom: 60px; display: flex; flex-direction: column; align-items: center; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -99,7 +93,6 @@ p{margin:0}
 .card p { color: var(--text-muted); font-size: 0.95rem; }
 .tag { display: inline-block; padding: 6px 14px; border-radius: 100px; background: rgba(40,99,77,0.3); border: 1px solid var(--emerald); font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: #a7f3d0; margin-top: 16px; }
 
-/* FORMS */
 .form-shell { padding: 40px; border-radius: 24px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .field { display: flex; flex-direction: column; gap: 8px; }
@@ -111,7 +104,6 @@ p{margin:0}
 .form-status.ok { display: block; background: rgba(40,99,77,0.4); border: 1px solid var(--emerald); color: #a7f3d0; }
 .form-status.err { display: block; background: rgba(176,42,42,0.2); border: 1px solid #b02a2a; color: #fca5a5; }
 
-/* PORTAL SYSTEM */
 #publicSite { transition: opacity 0.4s ease; }
 #publicSite.hidden { display: none; }
 #portalContainer { position: fixed; inset: 0; z-index: 500; background: var(--navy-deep); display: none; flex-direction: column; overflow-y: auto; }
@@ -142,22 +134,6 @@ p{margin:0}
 @keyframes rotate { 100% { transform: rotate(360deg); } }
 .id-card .avatar { width: 80px; height: 80px; border-radius: 50%; background: #fff; color: var(--navy-soft); font-size: 32px; display: grid; place-items: center; margin: 0 auto 16px; font-weight: 700; border: 3px solid var(--gold); }
 
-/* Print Styles */
-@media print {
-  body { background: #fff !important; color: #000 !important; }
-  #webgl-canvas, #publicSite, .portal-header, .portal-sidebar, .no-print { display: none !important; }
-  #portalContainer { position: static; background: #fff; display: block !important; }
-  .portal-content { padding: 0; }
-  .glass-panel { border: 1px solid #ccc !important; box-shadow: none !important; background: #fff !important; color: #000 !important; }
-  .id-card { border: 2px solid #000 !important; background: #fff !important; box-shadow: none !important; }
-  .id-card::before { display: none; }
-  .id-card h3, .id-card p, .id-card span, .id-card h4 { color: #000 !important; }
-  .data-table th, .data-table td { color: #000 !important; border-bottom: 1px solid #000 !important; }
-  h2, h3, h4 { color: #000 !important; }
-  .print-header { display: block !important; text-align: center; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 10px; }
-}
-
-/* Modals */
 #authModal, .reader-modal, #enrollModal { position: fixed; inset: 0; z-index: 600; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); padding: 24px; }
 #authModal.open, .reader-modal.open, #enrollModal.open { display: flex; }
 .auth-card, .reader-card, .modal-card { width: 100%; max-width: 460px; background: var(--navy-soft); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; box-shadow: var(--glass-shadow); position: relative; }
@@ -252,18 +228,6 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
     </div>
   </section>
 
-  <section class="section" id="academics">
-    <div class="container">
-      <div class="section-header reveal"><div class="eyebrow">Academic Levels</div><h2>A continuous path to mastery.</h2></div>
-      <div class="grid-2">
-        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><h3>Pre-Primary & Primary</h3><p>Foundational literacy, numeracy and social-emotional development.</p><div class="tag">Foundation</div></div></div>
-        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><h3>Ordinary Level (O'Level)</h3><p>Lower secondary education with strong foundations.</p><div class="tag">O'Level</div></div></div>
-        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><h3>Advanced Level (A'Level)</h3><p>Pathways in AH and MS1 preparing for university.</p><div class="tag">A'Level</div></div></div>
-        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><h3>Technical Secondary (TVET)</h3><p>Levels 3, 4, 5 in Agriculture (AGR) and Animal Health (ANH).</p><div class="tag">TVET</div></div></div>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="admissions">
     <div class="container">
       <div class="section-header reveal"><div class="eyebrow">Online Admissions</div><h2>Apply to G.S. Gatare TSS.</h2></div>
@@ -288,37 +252,6 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
           </div>
           <div style="margin-top:24px; display:flex; gap:16px; align-items:center;"><button type="submit" class="btn btn-primary">Submit Application</button><span class="form-status" id="admissionStatus"></span></div>
         </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="news">
-    <div class="container">
-      <div class="section-header reveal"><div class="eyebrow">Pressroom</div><h2>Announcements & Updates</h2></div>
-      <div id="homepageNewsGrid" class="grid-3 reveal"></div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-header reveal"><div class="eyebrow">Contact & Location</div><h2>Get in touch with the school.</h2></div>
-      <div class="grid-2">
-        <div class="glass-panel card reveal" style="display:flex; flex-direction:column; justify-content:center;">
-          <h3 style="margin-bottom:24px;">Reach Us</h3>
-          <p style="margin-bottom:16px; display:flex; align-items:center; gap:12px;"><svg width="20" height="20" fill="none" stroke="var(--gold)" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Gashasha Cell, Gatare Sector, Nyamagabe</p>
-          <p style="margin-bottom:16px; display:flex; align-items:center; gap:12px;"><svg width="20" height="20" fill="none" stroke="var(--gold)" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg> +250 785 486 933</p>
-          <p style="display:flex; align-items:center; gap:12px;"><svg width="20" height="20" fill="none" stroke="var(--gold)" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> gsgatare@gmail.com</p>
-        </div>
-        <div class="form-shell glass-panel reveal">
-          <form id="contactForm" novalidate>
-            <div class="form-grid">
-              <div class="field full"><label>Your Name</label><input type="text" id="contactName" required /></div>
-              <div class="field full"><label>Email</label><input type="email" id="contactEmail" required /></div>
-              <div class="field full"><label>Message</label><textarea id="contactMessage" required minlength="10"></textarea></div>
-            </div>
-            <div style="margin-top:24px;"><button type="submit" class="btn btn-primary">Send Message</button><span class="form-status" id="contactStatus"></span></div>
-          </form>
-        </div>
       </div>
     </div>
   </section>
@@ -388,23 +321,13 @@ footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-ali
   <div class="modal-card">
     <button class="modal-close" onclick="document.getElementById('enrollModal').classList.remove('open')">✕</button>
     <h3 style="margin-bottom:20px;">Enroll Applicant</h3>
-    <p style="color:var(--text-muted); font-size:14px; margin-bottom:16px;">Create a student portal account for <strong id="enrollStudentName">Applicant</strong>.</p>
+    <p style="color:var(--text-muted); font-size:14px; margin-bottom:16px;">Create a portal account for <strong id="enrollStudentName">Applicant</strong>.</p>
     <div class="field" style="margin-bottom:16px;"><label>Assign Level / Trade</label>
       <select id="enrollLevel">
         <option>Primary</option><option>O'Level</option><option>A'Level (AH)</option><option>A'Level (MS1)</option><option>TVET AGR L3</option><option>TVET AGR L4</option><option>TVET ANH L3</option>
       </select>
     </div>
     <button onclick="approveEnrollment()" class="btn btn-primary" style="width:100%; justify-content:center;">Approve & Enroll</button>
-  </div>
-</div>
-
-<div class="reader-modal" id="readerModal">
-  <div class="reader-card">
-    <button class="reader-close" id="readerClose">✕</button>
-    <div style="margin-bottom:16px;"><span class="tag" id="readerCat">Announcement</span></div>
-    <h2 id="readerTitle" style="font-size:1.8rem; margin-bottom:12px;"></h2>
-    <p id="readerDate" style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:24px;"></p>
-    <div id="readerBody" style="color:var(--text-muted); line-height:1.8; white-space:pre-wrap;"></div>
   </div>
 </div>
 
@@ -518,7 +441,11 @@ function applySession(user) {
     portalContainer.classList.add("active");
     authModal.classList.remove("open");
     document.getElementById("portalWelcome").textContent = `Welcome, ${user.name || user.email}`;
-    document.getElementById("portalRoleBadge").textContent = (user.role || 'student').toUpperCase();
+    
+    // Set the Badge to show Role and SubRole
+    const subText = user.subRole ? ` (${user.subRole.replace('_', ' ').toUpperCase()})` : '';
+    document.getElementById("portalRoleBadge").textContent = (user.role || 'student').toUpperCase() + subText;
+    
     renderSidebar();
   } else {
     publicSite.classList.remove("hidden");
@@ -564,7 +491,13 @@ document.getElementById("signupForm").onsubmit = async (e) => {
   try {
     const cred = await fb.createUserWithEmailAndPassword(fb.auth, email, pass);
     await fb.updateProfile(cred.user, { displayName: name });
-    await fb.setDoc(fb.doc(fb.db, "users", cred.user.uid), { name: name, email: email, role: "student" });
+    // Default new registrations to "student" role
+    await fb.setDoc(fb.doc(fb.db, "users", cred.user.uid), { 
+      name: name, 
+      email: email, 
+      role: "student", 
+      subRole: null 
+    });
   } catch(e) { 
     document.getElementById("signupStatus").textContent = e.message; 
     document.getElementById("signupStatus").className = "form-status err";
@@ -575,10 +508,7 @@ async function setupAuthListener() {
   if (!firebaseReady) return;
 
   try {
-    const result = await fb.getRedirectResult(fb.auth);
-    if (result && result.user) {
-      console.log("Successfully logged in via Google Redirect!");
-    }
+    await fb.getRedirectResult(fb.auth);
   } catch (error) {
     console.error("Redirect Error:", error.message);
   }
@@ -592,13 +522,14 @@ async function setupAuthListener() {
         uid: user.uid,
         name: user.displayName || user.email,
         email: user.email,
-        role: "student" 
+        role: "student",
+        subRole: null
       };
 
       if(docSnap.exists()) {
         userData = { ...userData, ...docSnap.data() };
       } else {
-        await fb.setDoc(docRef, { name: userData.name, email: userData.email, role: "student" });
+        await fb.setDoc(docRef, { name: userData.name, email: userData.email, role: "student", subRole: null });
       }
       applySession(userData);
     } else {
@@ -629,23 +560,42 @@ async function dbUpdate(collection, id, data) {
 }
 
 // ==========================================
-// UI RENDERERS
+// UI RENDERERS & SIDEBAR ROUTING
 // ==========================================
 function renderSidebar() {
   let links = [];
   const role = currentUser.role || 'student';
+  const subRole = currentUser.subRole || '';
+
   if(role === 'admin') {
-    links = [{ id: 'admin-dash', label: 'Dashboard' }, { id: 'admin-admissions', label: 'Admissions' }, { id: 'admin-users', label: 'User Directory' }];
+    links.push({ id: 'admin-dash', label: 'Dashboard' });
+    if(subRole === 'headteacher' || subRole === 'secretary') links.push({ id: 'admin-admissions', label: 'Admissions Registry' });
+    if(subRole === 'headteacher' || subRole === 'dos') links.push({ id: 'admin-academics', label: 'Academics & Exams' });
+    if(subRole === 'headteacher' || subRole === 'dod') links.push({ id: 'admin-discipline', label: 'Discipline & Conduct' });
+    if(subRole === 'headteacher' || subRole === 'bursar') links.push({ id: 'admin-fees', label: 'Fees & Bursar' });
+    if(subRole === 'headteacher') links.push({ id: 'admin-users', label: 'Staff & Role Directory' });
   } else if(role === 'teacher') {
-    links = [{ id: 'teacher-grade', label: 'Gradebook' }, { id: 'teacher-attend', label: 'Attendance' }];
+    if(subRole === 'class_teacher') links.push({ id: 'teacher-class', label: 'My Homeroom Class' });
+    if(subRole === 'subject_teacher' || subRole === 'class_teacher') links.push({ id: 'teacher-grade', label: 'Enter Marks' });
+    if(subRole === 'class_teacher' || subRole === 'subject_teacher') links.push({ id: 'teacher-attend', label: 'Take Attendance' });
+    if(subRole === 'hod') links.push({ id: 'hod-moderation', label: 'HOD Mark Moderation' });
   } else if(role === 'student') {
-    links = [{ id: 'student-id', label: 'Digital ID' }, { id: 'student-report', label: 'Report Card' }];
+    links = [
+      { id: 'student-id', label: 'Digital ID' },
+      { id: 'student-marks', label: 'My Marks & Rank' },
+      { id: 'student-attend', label: 'My Attendance' },
+      { id: 'student-fees', label: 'Fee Status' }
+    ];
   } else if(role === 'parent') {
-    links = [{ id: 'parent-dash', label: "Child's Progress" }];
+    links = [
+      { id: 'parent-dash', label: "Child's Progress" },
+      { id: 'parent-fees', label: 'Fee Balance' },
+      { id: 'parent-comms', label: 'Contact Teachers' }
+    ];
   }
 
   sidebar.innerHTML = links.map((l, i) => `<button onclick="navPortal('${l.id}', this)" class="${i===0?'active':''}">${l.label}</button>`).join("");
-  navPortal(links[0].id, sidebar.querySelector('button'));
+  if(links.length > 0) navPortal(links[0].id, sidebar.querySelector('button'));
 }
 
 window.navPortal = async (view, btn) => {
@@ -656,17 +606,32 @@ window.navPortal = async (view, btn) => {
   try {
     if (view === 'admin-dash') await renderAdminDash();
     if (view === 'admin-admissions') await renderAdminAdmissions();
+    if (view === 'admin-academics') await renderAdminAcademics();
+    if (view === 'admin-discipline') await renderAdminDiscipline();
+    if (view === 'admin-fees') await renderAdminFees();
     if (view === 'admin-users') await renderAdminUsers();
+    
+    if (view === 'teacher-class') await renderTeacherClass();
     if (view === 'teacher-grade') await renderTeacherGradebook();
     if (view === 'teacher-attend') await renderTeacherAttendance();
+    if (view === 'hod-moderation') await renderHODModeration();
+
     if (view === 'student-id') await renderStudentID();
-    if (view === 'student-report') await renderStudentReport();
+    if (view === 'student-marks') await renderStudentMarks();
+    if (view === 'student-attend') await renderStudentAttendance();
+    if (view === 'student-fees') await renderStudentFees();
+
     if (view === 'parent-dash') await renderParentDash();
+    if (view === 'parent-fees') await renderParentFees();
+    if (view === 'parent-comms') await renderParentComms();
   } catch(e) {
     mainContent.innerHTML = `<div class="glass-panel" style="padding:24px; color:#f87171;">Error: ${e.message}</div>`;
   }
 };
 
+// ==========================================
+// ADMIN VIEWS
+// ==========================================
 async function renderAdminDash() {
   const users = await dbGet('users');
   const apps = await dbGet('admissions');
@@ -682,7 +647,7 @@ async function renderAdminDash() {
 async function renderAdminAdmissions() {
   const apps = await dbGet('admissions');
   mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Admissions Pipeline</h3></div>
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Admissions Registry</h3></div>
     <div class="glass-panel table-wrap" style="padding:24px;">
       <table class="data-table">
         <thead><tr><th>Applicant</th><th>Program</th><th>Status</th><th>Action</th></tr></thead>
@@ -701,24 +666,64 @@ async function renderAdminAdmissions() {
   `;
 }
 
-async function renderAdminUsers() {
-  const users = await dbGet('users');
+async function renderAdminAcademics() {
+  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Academics & Timetables</h3></div><p>DOS Module: Manage curriculum, subject-to-teacher allocations, and exam locks here.</p>`;
+}
+
+async function renderAdminDiscipline() {
+  const logs = await dbGet('discipline');
   mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">User Directory</h3></div>
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Discipline Logs</h3></div>
     <div class="glass-panel table-wrap" style="padding:24px;">
       <table class="data-table">
-        <thead><tr><th>Name</th><th>Email</th><th>Role</th></tr></thead>
-        <tbody>${users.map(u => `<tr><td>${u.name}</td><td>${u.email}</td><td><span class="pill">${u.role}</span></td></tr>`).join('')}</tbody>
+        <thead><tr><th>Student ID</th><th>Incident</th><th>Severity</th><th>Action Taken</th></tr></thead>
+        <tbody>${logs.map(l => `<tr><td>${l.studentId}</td><td>${l.incident}</td><td>${l.severity}</td><td>${l.action}</td></tr>`).join('')}</tbody>
       </table>
     </div>
   `;
 }
 
+async function renderAdminFees() {
+  const fees = await dbGet('fees');
+  const users = await dbGet('users');
+  mainContent.innerHTML = `
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Bursar Ledger</h3></div>
+    <div class="glass-panel table-wrap" style="padding:24px;">
+      <table class="data-table">
+        <thead><tr><th>Student</th><th>Term</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead>
+        <tbody>
+          ${fees.map(f => { const s = users.find(u => u.uid === f.studentId); return `<tr><td>${s ? s.name : 'Unknown'}</td><td>${f.term}</td><td>${f.totalFees}</td><td>${f.amountPaid}</td><td>${f.balance}</td><td><span class="pill ${f.status==='Paid'?'success':'danger'}">${f.status}</span></td></tr>`; }).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+async function renderAdminUsers() {
+  const users = await dbGet('users');
+  mainContent.innerHTML = `
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Staff & Role Directory</h3></div>
+    <div class="glass-panel table-wrap" style="padding:24px;">
+      <table class="data-table">
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>SubRole</th></tr></thead>
+        <tbody>${users.map(u => `<tr><td>${u.name}</td><td>${u.email}</td><td><span class="pill">${u.role}</span></td><td>${u.subRole || '-'}</td></tr>`).join('')}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+// ==========================================
+// TEACHER VIEWS
+// ==========================================
+async function renderTeacherClass() {
+  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">My Homeroom Class</h3></div><p>Class Teacher Module: Manage class roster, behavior, and parent communications.</p>`;
+}
+
 async function renderTeacherGradebook() {
   const students = (await dbGet('users')).filter(u => u.role === 'student');
-  const grades = await dbGet('grades');
+  const grades = await dbGet('marks');
   mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Gradebook</h3></div>
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Subject Marks Entry</h3></div>
     <div class="glass-panel" style="padding:24px; margin-bottom:24px;">
       <div class="form-grid">
         <div class="field"><label>Select Student</label><select id="gradeStudent">${students.map(s => `<option value="${s.uid}">${s.name}</option>`).join('')}</select></div>
@@ -750,9 +755,16 @@ async function renderTeacherAttendance() {
   `;
 }
 
+async function renderHODModeration() {
+  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">HOD Mark Moderation</h3></div><p>Review submitted subject marks before DOS lock here.</p>`;
+}
+
+// ==========================================
+// STUDENT VIEWS
+// ==========================================
 async function renderStudentID() {
   mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Digital ID Card</h3><button onclick="window.print()" class="btn btn-primary" style="padding:8px 16px; font-size:12px;">Print ID</button></div>
+    <div class="dash-header glass-panel"><h3 style="margin:0;">Digital ID Card</h3></div>
     <div class="id-card glass-panel">
       <div class="avatar">${(currentUser.name || 'S').charAt(0)}</div>
       <h3>${currentUser.name}</h3>
@@ -765,11 +777,10 @@ async function renderStudentID() {
   `;
 }
 
-async function renderStudentReport() {
-  const grades = (await dbGet('grades')).filter(g => g.studentId === currentUser.uid);
+async function renderStudentMarks() {
+  const grades = (await dbGet('marks')).filter(g => g.studentId === currentUser.uid);
   mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">My Report Card</h3><button onclick="window.print()" class="btn btn-primary" style="padding:8px 16px; font-size:12px;">Print Report</button></div>
-    <div class="print-header" style="display:none;"><h2>G.S. GATARE TSS (Code: 250405)</h2><p>Termly Report Card</p></div>
+    <div class="dash-header glass-panel"><h3 style="margin:0;">My Marks</h3></div>
     <div class="glass-panel" style="padding:32px;">
       <table class="data-table">
         <thead><tr><th>Subject</th><th>CAT (30)</th><th>Exam (70)</th><th>Total</th><th>Grade</th></tr></thead>
@@ -779,8 +790,49 @@ async function renderStudentReport() {
   `;
 }
 
+async function renderStudentAttendance() {
+  const atts = (await dbGet('attendance')).filter(a => a.studentId === currentUser.uid);
+  const present = atts.filter(a => a.status === 'Present').length;
+  const rate = atts.length ? Math.round((present / atts.length) * 100) : 100;
+  mainContent.innerHTML = `
+    <div class="dash-header glass-panel"><h3 style="margin:0;">My Attendance</h3></div>
+    <div class="glass-panel" style="padding:32px;">
+      <div class="metric glass-panel" style="margin-bottom:24px; background:rgba(0,0,0,0.2);">
+        <div class="label">Attendance Rate</div>
+        <div class="val" style="color:#4ade80;">${rate}%</div>
+      </div>
+      <table class="data-table">
+        <thead><tr><th>Date</th><th>Status</th></tr></thead>
+        <tbody>${atts.map(a => `<tr><td>${a.date}</td><td><span class="pill ${a.status==='Present'?'success':'danger'}">${a.status}</span></td></tr>`).join('')}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+async function renderStudentFees() {
+  const fees = (await dbGet('fees')).filter(f => f.studentId === currentUser.uid);
+  mainContent.innerHTML = `
+    <div class="dash-header glass-panel"><h3 style="margin:0;">My Fee Status</h3></div>
+    <div class="glass-panel table-wrap" style="padding:24px;">
+      <table class="data-table">
+        <thead><tr><th>Term</th><th>Total Fees</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead>
+        <tbody>${fees.map(f => `<tr><td>${f.term}</td><td>${f.totalFees}</td><td>${f.amountPaid}</td><td>${f.balance}</td><td><span class="pill ${f.status==='Paid'?'success':'danger'}">${f.status}</span></td></tr>`).join('')}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+// ==========================================
+// PARENT VIEWS
+// ==========================================
 async function renderParentDash() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Child's Progress</h3></div><p>Linked child data will appear here.</p>`;
+  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Child's Progress</h3></div><p>Parent Module: View child's marks, attendance, and conduct.</p>`;
+}
+async function renderParentFees() {
+  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Fee Balance</h3></div><p>Parent Module: View fee balances.</p>`;
+}
+async function renderParentComms() {
+  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Contact Teachers</h3></div><p>Parent Module: Message Class Teachers, DOD, or Bursar.</p>`;
 }
 
 // ==========================================
@@ -793,7 +845,7 @@ window.saveGrade = async () => {
   const exam = parseInt(document.getElementById('gradeExam').value);
   const total = cat + exam;
   let grade = total >= 80 ? 'A' : total >= 70 ? 'B' : total >= 60 ? 'C' : 'D';
-  await dbAdd('grades', { studentId: sid, subject: sub, cat, exam, total, grade });
+  await dbAdd('marks', { studentId: sid, subject: sub, cat, exam, total, grade });
   navPortal('teacher-grade', document.querySelector('.portal-sidebar button.active'));
 };
 
