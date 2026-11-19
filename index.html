@@ -509,16 +509,17 @@ document.getElementById("signupForm").onsubmit = async (e) => {
 async function setupAuthListener() {
   if (!firebaseReady) return;
   
-  // Show a loading state (prevents the homepage from flashing)
   portalContainer.classList.add("active");
   publicSite.classList.add("hidden");
   canvas.classList.add("hidden");
-  mainContent.innerHTML = `<div style="padding: 50px; text-align: center;"><h3>Loading your portal...</h3></div>`;
+  mainContent.innerHTML = `<div style="padding: 50px; text-align: center;"><h3>Loading your portal...</h3><p>Verifying credentials...</p></div>`;
 
   fb.onAuthStateChanged(fb.auth, async (user) => {
     if(user) {
       try {
-        const docSnap = await fb.getDoc(fb.doc(fb.db, "users", user.uid));
+        const docRef = fb.doc(fb.db, "users", user.uid);
+        const docSnap = await fb.getDoc(docRef);
+        
         let userData = { 
           uid: user.uid, 
           name: user.displayName || user.email, 
@@ -529,32 +530,34 @@ async function setupAuthListener() {
         };
         
         if(docSnap.exists()) {
+          // Merge existing Firestore data with Auth data
           userData = { ...userData, ...docSnap.data() };
         } else {
-          // If they don't have a document yet, create it
-          await fb.setDoc(fb.doc(fb.db, "users", user.uid), {
+          // First time login! Create their document automatically.
+          console.log("New user detected. Creating profile...");
+          await fb.setDoc(docRef, {
             name: userData.name,
             email: userData.email,
             role: "student",
-            subRole: null
+            subRole: null,
+            children: []
           });
         }
         
-        // This opens the portal
+        // Successfully load the portal
         applySession(userData);
       } catch (error) {
         console.error("Error fetching user data:", error);
-        // If Firestore fails (like Rules blocking it), send back to home
+        alert("Database Error: " + error.message + ". Check your Firestore Rules.");
+        // Only kick them out if there is a real error
         applySession(null);
-        alert("Error loading profile. Check Firestore Rules.");
       }
     } else { 
-      // If not logged in, show homepage
+      // Not logged in
       applySession(null); 
     }
   });
 }
-
 // ==========================================
 // DATABASE OPERATIONS
 // ==========================================
