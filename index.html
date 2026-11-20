@@ -1,1 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Groupe Scolaire Gatare TSS (G.S. Gatare TSS) — Code 250405. Discipline Leads to Success. Pre-Primary, Primary, O'Level, A'Level AH & MS1, TVET AGR & ANH. Gashasha Cell, Gatare Sector, Nyamagabe District, Rwanda." />
+  <meta name="author" content="G.S. Gatare TSS · Engineered by InezaDev" />
+  <meta name="theme-color" content="#0F3D2E" />
+  <title>G.S. Gatare TSS · 250405 · Where Discipline Shapes Tomorrow</title>
 
+  <!-- Favicon (inline SVG crest) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F3D2E'/%3E%3Cpath d='M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z' fill='%23F59E0B'/%3E%3Cpath d='M24 30l6 6 12-12' stroke='%230F3D2E' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/print.css" media="print" />
+</head>
+<body class="site-body">
+
+  <!-- ================= PRELOADER ================= -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader__crest">
+      <svg viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#0F3D2E"/>
+        <path d="M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z" fill="#F59E0B"/>
+        <path d="M24 30l6 6 12-12" stroke="#0F3D2E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="preloader__bar"><span></span></div>
+    <p class="preloader__text">G.S. Gatare TSS · 250405</p>
+  </div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <!-- ================= HEADER ================= -->
+  <header id="siteHeader" class="site-header" role="banner">
+    <div class="container header__inner">
+      <a href="#home" class="brand" aria-label="G.S. Gatare TSS Home">
+        <span class="brand__crest">
+          <svg viewBox="0 0 64 64" width="42" height="42" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#0F3D2E"/>
+            <path d="M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z" fill="#F59E0B"/>
+            <path d="M24 30l6 6 12-12" stroke="#0F3D2E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <strong>G.S. Gatare TSS</strong>
+          <small>Discipline Leads to Success</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#about">About</a></li>
+          <li><a class="nav__link" href="#academics">Academics</a></li>
+          <li><a class="nav__link" href="#programs">Programs</a></li>
+          <li><a class="nav__link" href="#admissions">Admissions</a></li>
+          <li><a class="nav__link" href="#status">Track Status</a></li>
+          <li><a class="nav__link" href="#news">News</a></li>
+          <li><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <i class="fa-solid fa-moon" data-theme-icon></i>
+        </button>
+        <a href="portal/admin/index.html" class="btn btn--ghost hide-sm">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> School Portal
+        </a>
+        <a href="#admissions" class="btn btn--primary">
+          <i class="fa-solid fa-pen-to-square"></i> Apply Online
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul class="mobile-menu__list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+      <li><a href="#status">Track Status</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="portal/admin/index.html" class="mobile-menu__cta">School Portal <i class="fa-solid fa-arrow-right"></i></a></li>
+    </ul>
+  </div>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section id="home" class="hero" aria-labelledby="heroTitle">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="orb orb--1"></span>
+        <span class="orb orb--2"></span>
+        <span class="orb orb--3"></span>
+        <div class="grid-overlay"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="badge-pill" data-aos="fade-down">
+            <span class="dot"></span> School Code <strong>250405</strong> · TVET Accredited
+          </div>
+          <h1 id="heroTitle" class="hero__title" data-aos="fade-up">
+            Where <em>Discipline</em> Shapes Tomorrow
+          </h1>
+          <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="80">
+            A flagship learning community in Nyamagabe District, Rwanda — blending academic
+            excellence with hands-on TVET skills in Agriculture and Animal Husbandry.
+          </p>
+          <div class="hero__cta" data-aos="fade-up" data-aos-delay="160">
+            <a href="#admissions" class="btn btn--primary btn--lg">
+              <i class="fa-solid fa-pen-to-square"></i> Apply Online
+            </a>
+            <a href="portal/admin/index.html" class="btn btn--outline btn--lg">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Enter Portal
+            </a>
+          </div>
+          <ul class="hero__chips" data-aos="fade-up" data-aos-delay="240">
+            <li><i class="fa-solid fa-location-dot"></i> Gashasha Cell · Gatare Sector</li>
+            <li><i class="fa-solid fa-graduation-cap"></i> Pre-Primary → TVET</li>
+            <li><i class="fa-solid fa-shield-halved"></i> Discipline Leads to Success</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual" data-aos="fade-left" data-aos-delay="120">
+          <div class="hero-card glass">
+            <div class="hero-card__top">
+              <span class="hero-card__label">Admissions 2026</span>
+              <span class="status-dot status-dot--live">OPEN</span>
+            </div>
+            <h3>One unified portal.<br/>Every level. Every child.</h3>
+            <div class="hero-card__stats">
+              <div><strong data-counter="1280">0</strong><span>Learners</span></div>
+              <div><strong data-counter="7">0</strong><span>Pathways</span></div>
+              <div><strong data-counter="4">0</strong><span>TVET Trades</span></div>
+            </div>
+            <div class="hero-card__foot">
+              <i class="fa-solid fa-bolt"></i> One-click demo · No card required
+            </div>
+          </div>
+          <div class="floating-pill floating-pill--1 glass"><i class="fa-solid fa-seedling"></i> TVET AGR</div>
+          <div class="floating-pill floating-pill--2 glass"><i class="fa-solid fa-cow"></i> TVET ANH</div>
+        </div>
+      </div>
+
+      <a href="#metrics" class="scroll-cue" aria-label="Scroll to content"><span></span></a>
+    </section>
+
+    <!-- ================= METRICS STRIP ================= -->
+    <section id="metrics" class="metrics" aria-label="School at a glance">
+      <div class="container metrics__grid">
+        <div class="metric" data-aos="fade-up">
+          <div class="metric__icon"><i class="fa-solid fa-users"></i></div>
+          <strong class="metric__num" data-counter="1280">0</strong>
+          <span class="metric__label">Total Learners</span>
+        </div>
+        <div class="metric" data-aos="fade-up" data-aos-delay="80">
+          <div class="metric__icon"><i class="fa-solid fa-route"></i></div>
+          <strong class="metric__num" data-counter="7">0</strong>
+          <span class="metric__label">Academic Pathways</span>
+        </div>
+        <div class="metric" data-aos="fade-up" data-aos-delay="160">
+          <div class="metric__icon"><i class="fa-solid fa-tractor"></i></div>
+          <strong class="metric__num" data-counter="4">0</strong>
+          <span class="metric__label">TVET Programs</span>
+        </div>
+        <div class="metric" data-aos="fade-up" data-aos-delay="240">
+          <div class="metric__icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <strong class="metric__num">100<span>%</span></strong>
+          <span class="metric__label">Digital Portal Access</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="section about" aria-labelledby="aboutTitle">
+      <div class="container about__grid">
+        <div class="about__media" data-aos="fade-right">
+          <div class="about__frame glass">
+            <div class="about__pattern" aria-hidden="true"></div>
+            <div class="about__badge">
+              <i class="fa-solid fa-award"></i>
+              <div>
+                <strong>Accredited</strong>
+                <span>TVET · 250405</span>
+              </div>
+            </div>
+          </div>
+          <div class="about__stat glass">
+            <strong>12+</strong>
+            <span>Years of shaping<br/>Rwandan youth</span>
+          </div>
+        </div>
+
+        <div class="about__content" data-aos="fade-left">
+          <span class="section-eyebrow">About the School</span>
+          <h2 id="aboutTitle" class="section-title">A community built on <em>discipline</em>, purpose &amp; skill.</h2>
+          <p class="section-lead">
+            Groupe Scolaire Gatare TSS is a modern integrated learning institution located in
+            Gashasha Cell, Gatare Sector, Nyamagabe District, Rwanda. From Pre-Primary through
+            A'Level and TVET, we prepare learners for real opportunity — academic, professional
+            and entrepreneurial.
+          </p>
+          <div class="about__points">
+            <div class="point">
+              <i class="fa-solid fa-check"></i>
+              <div><strong>Holistic curriculum</strong><span>Competency-based learning aligned with RBC &amp; REB standards.</span></div>
+            </div>
+            <div class="point">
+              <i class="fa-solid fa-check"></i>
+              <div><strong>TVET-first mindset</strong><span>Hands-on trades in Agriculture &amp; Animal Husbandry.</span></div>
+            </div>
+            <div class="point">
+              <i class="fa-solid fa-check"></i>
+              <div><strong>Digital transparency</strong><span>Live portals for students, parents, teachers &amp; leaders.</span></div>
+            </div>
+          </div>
+          <a href="#programs" class="link-arrow">Explore our programs <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ACADEMIC STRUCTURE ================= -->
+    <section id="academics" class="section academics" aria-labelledby="academicsTitle">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-eyebrow">Academic Structure</span>
+          <h2 id="academicsTitle" class="section-title">Seven pathways. One standard of excellence.</h2>
+          <p class="section-lead">A continuous learning ladder from early childhood to professional TVET qualifications.</p>
+        </header>
+
+        <div class="levels">
+          <article class="level-card" data-aos="fade-up">
+            <span class="level-card__tag">Nursery</span>
+            <i class="fa-solid fa-child-reaching level-card__icon"></i>
+            <h3>Pre-Primary</h3>
+            <p>Play-based foundation, literacy, numeracy and character formation.</p>
+          </article>
+          <article class="level-card" data-aos="fade-up" data-aos-delay="60">
+            <span class="level-card__tag">P1 – P6</span>
+            <i class="fa-solid fa-book-open level-card__icon"></i>
+            <h3>Primary</h3>
+            <p>Competency-based primary education preparing learners for national exams.</p>
+          </article>
+          <article class="level-card" data-aos="fade-up" data-aos-delay="120">
+            <span class="level-card__tag">S1 – S3</span>
+            <i class="fa-solid fa-pen-ruler level-card__icon"></i>
+            <h3>O'Level</h3>
+            <p>Broad lower-secondary foundation with strong sciences and humanities.</p>
+          </article>
+          <article class="level-card" data-aos="fade-up" data-aos-delay="180">
+            <span class="level-card__tag">A'Level</span>
+            <i class="fa-solid fa-globe level-card__icon"></i>
+            <h3>A'Level AH</h3>
+            <p>Arts &amp; Humanities combination for future leaders and educators.</p>
+          </article>
+          <article class="level-card" data-aos="fade-up" data-aos-delay="240">
+            <span class="level-card__tag">A'Level</span>
+            <i class="fa-solid fa-microscope level-card__icon"></i>
+            <h3>A'Level MS1</h3>
+            <p>Math, Physics, Chemistry &amp; Biology pathway to higher education.</p>
+          </article>
+          <article class="level-card" data-aos="fade-up" data-aos-delay="300">
+            <span class="level-card__tag">TVET</span>
+            <i class="fa-solid fa-seedling level-card__icon"></i>
+            <h3>TVET AGR</h3>
+            <p>Agriculture — crop production, soil science and agri-business skills.</p>
+          </article>
+          <article class="level-card" data-aos="fade-up" data-aos-delay="360">
+            <span class="level-card__tag">TVET</span>
+            <i class="fa-solid fa-cow level-card__icon"></i>
+            <h3>TVET ANH</h3>
+            <p>Animal Husbandry — livestock management, health and production.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROGRAMS SHOWCASE ================= -->
+    <section id="programs" class="section programs" aria-labelledby="programsTitle">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-eyebrow">Programs Showcase</span>
+          <h2 id="programsTitle" class="section-title">Trade-ready skills, employer-ready graduates.</h2>
+          <p class="section-lead">Our TVET flagship programs combine theory, practical labs and industry exposure.</p>
+        </header>
+
+        <div class="program-grid">
+          <article class="program-card program-card--agr" data-aos="zoom-in">
+            <div class="program-card__icon"><i class="fa-solid fa-seedling"></i></div>
+            <h3>Agriculture (AGR)</h3>
+            <p>Level 3 &amp; 4 · Crop production, horticulture, soil fertility and farm management.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> Practical farm labs</li>
+              <li><i class="fa-solid fa-check"></i> Agri-business training</li>
+              <li><i class="fa-solid fa-check"></i> Cooperative placement</li>
+            </ul>
+            <button class="btn btn--soft open-program" data-program="TVET AGR">Learn more <i class="fa-solid fa-arrow-right"></i></button>
+          </article>
+
+          <article class="program-card program-card--anh" data-aos="zoom-in" data-aos-delay="80">
+            <div class="program-card__icon"><i class="fa-solid fa-cow"></i></div>
+            <h3>Animal Husbandry (ANH)</h3>
+            <p>Level 3 &amp; 4 · Livestock care, breeding, animal health and dairy production.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> On-campus livestock unit</li>
+              <li><i class="fa-solid fa-check"></i> Veterinary fundamentals</li>
+              <li><i class="fa-solid fa-check"></i> Dairy value chain</li>
+            </ul>
+            <button class="btn btn--soft open-program" data-program="TVET ANH">Learn more <i class="fa-solid fa-arrow-right"></i></button>
+          </article>
+
+          <article class="program-card program-card--ms1" data-aos="zoom-in" data-aos-delay="160">
+            <div class="program-card__icon"><i class="fa-solid fa-microscope"></i></div>
+            <h3>A'Level MS1</h3>
+            <p>Math, Physics, Chemistry &amp; Biology — the gateway to medicine, engineering and research.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> Science labs</li>
+              <li><i class="fa-solid fa-check"></i> National exam prep</li>
+              <li><i class="fa-solid fa-check"></i> University guidance</li>
+            </ul>
+            <button class="btn btn--soft open-program" data-program="A'Level MS1">Learn more <i class="fa-solid fa-arrow-right"></i></button>
+          </article>
+
+          <article class="program-card program-card--ah" data-aos="zoom-in" data-aos-delay="240">
+            <div class="program-card__icon"><i class="fa-solid fa-globe"></i></div>
+            <h3>A'Level AH</h3>
+            <p>Arts &amp; Humanities — critical thinking, languages and social sciences for future leaders.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i> Debate &amp; leadership</li>
+              <li><i class="fa-solid fa-check"></i> Literature &amp; history</li>
+              <li><i class="fa-solid fa-check"></i> Civic engagement</li>
+            </ul>
+            <button class="btn btn--soft open-program" data-program="A'Level AH">Learn more <i class="fa-solid fa-arrow-right"></i></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ADMISSIONS ================= -->
+    <section id="admissions" class="section admissions" aria-labelledby="admissionsTitle">
+      <div class="container admissions__grid">
+        <div class="admissions__intro" data-aos="fade-right">
+          <span class="section-eyebrow">Online Admission Portal</span>
+          <h2 id="admissionsTitle" class="section-title">Apply in minutes.<br/>Track in real time.</h2>
+          <p class="section-lead">
+            Submit your application online, upload the required documents, and receive your
+            unique Application ID instantly — starting from <strong>GSG-2026-1001</strong>.
+          </p>
+          <ol class="steps">
+            <li><span>01</span><div><strong>Fill the form</strong><p>Your details and desired program.</p></div></li>
+            <li><span>02</span><div><strong>Upload documents</strong><p>ID / report card / birth certificate.</p></div></li>
+            <li><span>03</span><div><strong>Get your ID</strong><p>Track admission status anytime.</p></div></li>
+          </ol>
+          <div class="admissions__note glass">
+            <i class="fa-solid fa-shield-halved"></i>
+            <p>Your data is handled securely. Applications are reviewed by the Admissions Committee.</p>
+          </div>
+        </div>
+
+        <form id="admissionForm" class="admission-form glass" data-aos="fade-left" novalidate>
+          <div class="form-head">
+            <h3><i class="fa-solid fa-file-signature"></i> New Application</h3>
+            <span class="form-badge">2026 Intake</span>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span>Full Name *</span>
+              <input type="text" name="fullName" required placeholder="e.g. Aline Uwase" />
+            </label>
+            <label class="field">
+              <span>Date of Birth *</span>
+              <input type="date" name="dob" required />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="field">
+              <span>Gender *</span>
+              <select name="gender" required>
+                <option value="">Select…</option>
+                <option>Female</option>
+                <option>Male</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Phone *</span>
+              <input type="tel" name="phone" required placeholder="07XX XXX XXX" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Email *</span>
+            <input type="email" name="email" required placeholder="you@example.com" />
+          </label>
+
+          <div class="form-row">
+            <label class="field">
+              <span>Level Applying For *</span>
+              <select name="level" id="admissionLevel" required>
+                <option value="">Select level…</option>
+                <option>Pre-Primary</option>
+                <option>Primary</option>
+                <option>O'Level</option>
+                <option>A'Level AH</option>
+                <option>A'Level MS1</option>
+                <option>TVET AGR</option>
+                <option>TVET ANH</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Trade / Program</span>
+              <select name="trade" id="admissionTrade">
+                <option value="">General / N/A</option>
+                <option>Agriculture (AGR)</option>
+                <option>Animal Husbandry (ANH)</option>
+                <option>Math-Physics-Chem-Bio (MS1)</option>
+                <option>Arts &amp; Humanities (AH)</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Address / Sector *</span>
+            <input type="text" name="address" required placeholder="e.g. Gatare Sector, Nyamagabe" />
+          </label>
+
+          <label class="field">
+            <span>Documents (PDF / Image, max 5MB)</span>
+            <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" />
+            <small class="field__hint">Upload report card, ID or birth certificate.</small>
+          </label>
+
+          <label class="check">
+            <input type="checkbox" name="consent" required />
+            <span>I confirm the information provided is accurate and consent to processing.</span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--block btn--lg">
+            <i class="fa-solid fa-paper-plane"></i> Submit Application
+          </button>
+
+          <div id="admissionResult" class="admission-result" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= STATUS CHECKER ================= -->
+    <section id="status" class="section status-check" aria-labelledby="statusTitle">
+      <div class="container status-check__inner glass" data-aos="fade-up">
+        <div class="status-check__copy">
+          <span class="section-eyebrow">Application Status</span>
+          <h2 id="statusTitle" class="section-title">Track your admission in real time.</h2>
+          <p class="section-lead">Enter your Application ID (e.g. <code>GSG-2026-1001</code>) to view the current status of your application.</p>
+        </div>
+        <form id="statusForm" class="status-form">
+          <div class="status-form__input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" name="appId" id="statusAppId" placeholder="GSG-2026-1001" autocomplete="off" required />
+            <button type="submit" class="btn btn--primary">Check Status</button>
+          </div>
+          <div id="statusResult" class="status-result" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= NEWS ================= -->
+    <section id="news" class="section news" aria-labelledby="newsTitle">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-eyebrow">News &amp; Pressroom</span>
+          <h2 id="newsTitle" class="section-title">What's happening at G.S. Gatare TSS</h2>
+          <div class="news-filters" role="tablist" aria-label="News categories">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="Academics">Academics</button>
+            <button class="chip" data-filter="TVET">TVET</button>
+            <button class="chip" data-filter="Events">Events</button>
+            <button class="chip" data-filter="Sports">Sports</button>
+            <button class="chip" data-filter="Announcements">Announcements</button>
+          </div>
+        </header>
+
+        <div class="news-grid" id="newsGrid">
+          <!-- Cards injected by app.js; static fallback below -->
+          <article class="news-card" data-category="TVET" data-aos="fade-up">
+            <div class="news-card__media news-card__media--1"><span class="news-card__cat">TVET</span></div>
+            <div class="news-card__body">
+              <time>12 Feb 2026</time>
+              <h3>TVET AGR learners showcase harvest innovation</h3>
+              <p>Level 4 Agriculture students presented a new crop rotation model to local cooperative leaders.</p>
+              <a href="#" class="link-arrow">Read more <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="news-card" data-category="Academics" data-aos="fade-up" data-aos-delay="80">
+            <div class="news-card__media news-card__media--2"><span class="news-card__cat">Academics</span></div>
+            <div class="news-card__body">
+              <time>05 Feb 2026</time>
+              <h3>MS1 science lab upgrades now live</h3>
+              <p>New microscopy and chemistry equipment strengthens practical exam readiness.</p>
+              <a href="#" class="link-arrow">Read more <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="news-card" data-category="Announcements" data-aos="fade-up" data-aos-delay="160">
+            <div class="news-card__media news-card__media--3"><span class="news-card__cat">Announcements</span></div>
+            <div class="news-card__body">
+              <time>28 Jan 2026</time>
+              <h3>2026 admissions now open</h3>
+              <p>Apply online for Pre-Primary through TVET. Early applications are reviewed first.</p>
+              <a href="#admissions" class="link-arrow">Apply now <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="news-card" data-category="Events" data-aos="fade-up">
+            <div class="news-card__media news-card__media--4"><span class="news-card__cat">Events</span></div>
+            <div class="news-card__body">
+              <time>20 Jan 2026</time>
+              <h3>Parent-Teacher Conference highlights</h3>
+              <p>Over 400 parents joined the termly review on learner progress and conduct.</p>
+              <a href="#" class="link-arrow">Read more <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="news-card" data-category="Sports" data-aos="fade-up" data-aos-delay="80">
+            <div class="news-card__media news-card__media--5"><span class="news-card__cat">Sports</span></div>
+            <div class="news-card__body">
+              <time>15 Jan 2026</time>
+              <h3>Inter-house athletics results</h3>
+              <p>Nyungwe House retained the trophy in a record-breaking season.</p>
+              <a href="#" class="link-arrow">Read more <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section contact" aria-labelledby="contactTitle">
+      <div class="container contact__grid">
+        <div class="contact__info" data-aos="fade-right">
+          <span class="section-eyebrow">Contact</span>
+          <h2 id="contactTitle" class="section-title">Let's talk about your child's future.</h2>
+          <ul class="contact__list">
+            <li><i class="fa-solid fa-location-dot"></i><div><strong>Location</strong><span>Gashasha Cell, Gatare Sector, Nyamagabe District, Rwanda</span></div></li>
+            <li><i class="fa-solid fa-envelope"></i><div><strong>Email</strong><a href="mailto:gsgatare@gmail.com">gsgatare@gmail.com</a></div></li>
+            <li><i class="fa-solid fa-phone"></i><div><strong>Phone</strong><a href="tel:+250785486933">+250 785 486 933</a></div></li>
+            <li><i class="fa-solid fa-hashtag"></i><div><strong>School Code</strong><span>250405</span></div></li>
+          </ul>
+        </div>
+        <form id="contactForm" class="contact-form glass" data-aos="fade-left">
+          <div class="form-row">
+            <label class="field"><span>Name *</span><input type="text" name="name" required placeholder="Your name" /></label>
+            <label class="field"><span>Email *</span><input type="email" name="email" required placeholder="you@example.com" /></label>
+          </div>
+          <label class="field"><span>Subject</span><input type="text" name="subject" placeholder="How can we help?" /></label>
+          <label class="field"><span>Message *</span><textarea name="message" rows="5" required placeholder="Write your message…"></textarea></label>
+          <button type="submit" class="btn btn--primary btn--block btn--lg"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+          <div id="contactResult" class="admission-result" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <div class="brand">
+          <span class="brand__crest">
+            <svg viewBox="0 0 64 64" width="42" height="42" aria-hidden="true">
+              <rect width="64" height="64" rx="14" fill="#0F3D2E"/>
+              <path d="M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z" fill="#F59E0B"/>
+              <path d="M24 30l6 6 12-12" stroke="#0F3D2E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="brand__text"><strong>G.S. Gatare TSS</strong><small>Code 250405</small></span>
+        </div>
+        <p>Discipline Leads to Success. A modern Rwandan learning community in Nyamagabe District.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Portals</h4>
+        <ul>
+          <li><a href="portal/admin/index.html">Admin</a></li>
+          <li><a href="portal/teacher/index.html">Teacher</a></li>
+          <li><a href="portal/student/index.html">Student</a></li>
+          <li><a href="portal/parent/index.html">Parent</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:gsgatare@gmail.com">gsgatare@gmail.com</a></li>
+          <li><a href="tel:+250785486933">+250 785 486 933</a></li>
+          <li>Gatare, Nyamagabe</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <span>© <span id="year"></span> G.S. Gatare TSS · All rights reserved.</span>
+        <span class="footer__credit">
+          <i class="fa-solid fa-code"></i> Engineered by
+          <a href="#" target="_blank" rel="noopener">InezaDev</a> · Custom School Digital Solutions
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Toast container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Program modal -->
+  <div id="programModal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel glass" role="dialog" aria-modal="true" aria-labelledby="programModalTitle">
+      <button class="modal__close" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="programModalTitle">Program</h3>
+      <div id="programModalBody"></div>
+      <a href="#admissions" class="btn btn--primary btn--block" data-close-modal>Apply for this program</a>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Firebase (compat, optional — app works in demo mode without config) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/firebase.js"></script>
+  <script src="assets/js/demo-data.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/admissions.js"></script>
+  <script src="assets/js/notifications.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
