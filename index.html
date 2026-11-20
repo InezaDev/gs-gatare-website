@@ -1,898 +1,801 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Groupe Scolaire Gatare TSS — Where Discipline Shapes Tomorrow</title>
-<meta name="description" content="G.S. Gatare TSS (Code 250405) — Government-Aided Day School in Nyamagabe, Rwanda." />
-<meta name="theme-color" content="#06191a" />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-/* ============================================================
-   DESIGN TOKENS & CORE VARIABLES
-   ============================================================ */
-:root{
-  --navy-deep:#06191a; --navy-soft:#102d2a;
-  --emerald:#28634d; --emerald-light:#3a8a6b;
-  --gold:#e4b85e; --gold-light:#f0d596;
-  --alabaster:#fcfcfb; --cream:#f7f8f4;
-  --text-main:#ffffff; --text-muted:rgba(255,255,255,0.65);
-  --glass-bg:rgba(6, 25, 26, 0.55);
-  --glass-border:rgba(228, 184, 94, 0.2);
-  --glass-shadow:0 25px 50px -12px rgba(0,0,0,0.5);
-  --font-display:"Fraunces", Georgia, serif;
-  --font-body:"Manrope", sans-serif;
-  --ease:cubic-bezier(.22,.61,.36,1);
-}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{margin:0; font-family:var(--font-body); background-color:var(--navy-deep); color:var(--text-main); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
-img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-input,select,textarea{font-family:inherit;font-size:15px}
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;color:var(--alabaster);margin:0}
-h1{font-size:clamp(3rem,6vw,5.5rem);line-height:1.05;letter-spacing:-0.02em}
-h2{font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.1;margin-bottom:20px}
-p{margin:0}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Groupe Scolaire Gatare TSS (G.S. Gatare TSS) - Discipline Leads to Success. Premium TVET & Academic Education in Nyamagabe District, Rwanda. School Code: 250405" />
+  <meta name="keywords" content="G.S. Gatare TSS, Gatare TSS, Rwanda TVET, Nyamagabe school, school management system" />
+  <meta name="author" content="InezaDev" />
+  <meta name="theme-color" content="#0F3D2E" />
 
-#webgl-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; background: radial-gradient(circle at center, #102d2a 0%, #06191a 100%); transition: opacity 0.5s ease; }
-#webgl-canvas.hidden { opacity: 0; }
+  <title>G.S. Gatare TSS | Discipline Leads to Success</title>
 
-.container{max-width:1280px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
-.eyebrow{font-size:13px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:12px}
-.eyebrow::before{content:"";width:30px;height:2px;background:var(--gold)}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
-.glass-panel { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); border-radius: 24px; }
-.tilt-card { transform-style: preserve-3d; transition: transform 0.1s ease-out, box-shadow 0.3s ease; will-change: transform; }
-.tilt-card:hover { box-shadow: 0 30px 60px -12px rgba(228, 184, 94, 0.15), 0 0 20px rgba(228, 184, 94, 0.1); z-index: 10; }
-.tilt-card-inner { transform: translateZ(30px); transition: transform 0.3s ease; }
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/print.css" media="print" />
 
-.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 0; transition: all 0.4s var(--ease); }
-.site-header.scrolled { padding: 10px 0; background: rgba(6, 25, 26, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 16px; text-decoration: none; perspective: 800px; }
-.brand-mark { width: 46px; height: 46px; border-radius: 12px; background: linear-gradient(135deg, var(--emerald), var(--navy-deep)); border: 1px solid var(--gold); display: grid; place-items: center; font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--gold); box-shadow: inset 0 0 10px rgba(228,184,94,0.2), 0 5px 15px rgba(0,0,0,0.5); }
-.brand-text strong { display: block; font-size: 16px; letter-spacing: 0.05em; color: var(--alabaster); }
-.brand-text small { font-size: 11px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
-.nav { display: flex; gap: 8px; perspective: 1000px; }
-.nav a { position: relative; padding: 10px 18px; border-radius: 100px; font-size: 14px; font-weight: 600; color: var(--text-muted); transition: all 0.3s var(--ease); }
-.nav a:hover, .nav a.active { color: var(--gold-light); background: rgba(228, 184, 94, 0.1); transform: translateZ(10px) rotateX(5deg); border: 1px solid rgba(228, 184, 94, 0.3); }
-
-.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.hero-copy h1 em { font-style: italic; color: var(--gold); font-weight: 500; }
-.hero-motto { font-family: var(--font-display); font-size: 1.4rem; font-style: italic; color: var(--emerald-light); margin: 24px 0 32px; display: flex; align-items: center; gap: 16px; }
-.hero-motto::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
-.hero-lede { font-size: 1.1rem; color: var(--text-muted); max-width: 50ch; margin-bottom: 40px; }
-.hero-actions { display: flex; gap: 16px; margin-bottom: 50px; }
-.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 100px; font-weight: 700; font-size: 15px; transition: all 0.3s var(--ease); text-transform: uppercase; letter-spacing: 0.05em; }
-.btn-primary { background: var(--gold); color: var(--navy-deep); box-shadow: 0 10px 30px -10px rgba(228,184,94,0.5); }
-.btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 15px 40px -10px rgba(228,184,94,0.7); }
-.btn-ghost { background: transparent; color: var(--alabaster); border: 1px solid rgba(255,255,255,0.2); }
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold); background: rgba(228,184,94,0.05); }
-.btn-danger { background: #b02a2a; color: #fff; }
-.hero-crest { padding: 40px; border-radius: 30px; text-align: center; position: relative; }
-.crest-badge { position: absolute; padding: 10px 20px; border-radius: 100px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: rgba(6,25,26,0.8); border: 1px solid var(--emerald); backdrop-filter: blur(10px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-.crest-badge.top-right { top: -20px; right: -20px; transform: translateZ(50px); border-color: var(--gold); color: var(--gold); }
-.crest-badge.bottom-left { bottom: -20px; left: -20px; transform: translateZ(40px); }
-.crest-badge .pulse { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; margin-right: 8px; box-shadow: 0 0 10px #4ade80; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
-.hero-crest h3 { font-size: 2.2rem; margin-bottom: 8px; color: var(--gold); }
-
-.section { padding: 120px 0; }
-.section-header { text-align: center; margin-bottom: 60px; display: flex; flex-direction: column; align-items: center; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
-.card { padding: 36px; border-radius: 24px; position: relative; overflow: hidden; }
-.card-icon { width: 50px; height: 50px; border-radius: 14px; background: rgba(228,184,94,0.1); border: 1px solid rgba(228,184,94,0.3); display: grid; place-items: center; color: var(--gold); margin-bottom: 24px; }
-.card-icon svg { width: 24px; height: 24px; stroke-width: 1.5; }
-.card h3 { font-size: 1.5rem; margin-bottom: 12px; color: var(--alabaster); }
-.card p { color: var(--text-muted); font-size: 0.95rem; }
-.tag { display: inline-block; padding: 6px 14px; border-radius: 100px; background: rgba(40,99,77,0.3); border: 1px solid var(--emerald); font-size: 11px; font-weight: 700; letter-spacing: 0.05em; color: #a7f3d0; margin-top: 16px; }
-
-.form-shell { padding: 40px; border-radius: 24px; }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.field { display: flex; flex-direction: column; gap: 8px; }
-.field.full { grid-column: 1 / -1; }
-.field label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); }
-.field input, .field select, .field textarea { padding: 14px 18px; border-radius: 12px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--alabaster); font-size: 15px; transition: all 0.3s; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(228,184,94,0.1); background: rgba(0,0,0,0.4); }
-.form-status { font-size: 13px; padding: 12px; border-radius: 8px; display: none; margin-top: 16px; }
-.form-status.ok { display: block; background: rgba(40,99,77,0.4); border: 1px solid var(--emerald); color: #a7f3d0; }
-.form-status.err { display: block; background: rgba(176,42,42,0.2); border: 1px solid #b02a2a; color: #fca5a5; }
-
-#publicSite { transition: opacity 0.4s ease; }
-#publicSite.hidden { display: none; }
-#portalContainer { position: fixed; inset: 0; z-index: 500; background: var(--navy-deep); display: none; flex-direction: column; overflow-y: auto; }
-#portalContainer.active { display: flex; }
-.portal-header { background: rgba(16, 45, 42, 0.95); border-bottom: 1px solid var(--glass-border); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px); }
-.portal-layout { display: flex; flex: 1; }
-.portal-sidebar { width: 260px; background: rgba(0,0,0,0.3); border-right: 1px solid var(--glass-border); padding: 24px 16px; display: flex; flex-direction: column; gap: 8px; }
-.portal-sidebar button { width: 100%; text-align: left; padding: 14px 20px; border-radius: 12px; font-weight: 600; color: var(--text-muted); transition: all 0.3s; display: flex; align-items: center; gap: 12px; font-size: 14px; }
-.portal-sidebar button.active { background: var(--gold); color: var(--navy-deep); }
-.portal-sidebar button:hover:not(.active) { background: rgba(255,255,255,0.05); color: #fff; }
-.portal-content { flex: 1; padding: 32px; max-width: 1200px; margin: 0 auto; width: 100%; }
-
-.dash-header { display: flex; justify-content: space-between; align-items: center; padding: 24px 32px; border-radius: 20px; margin-bottom: 32px; }
-.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 32px; }
-.metric { padding: 24px; border-radius: 16px; }
-.metric .val { font-size: 2.5rem; font-family: var(--font-display); color: var(--gold); font-weight: 700; line-height: 1; margin-top: 8px; }
-.metric .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
-.data-table { width: 100%; border-collapse: collapse; margin-top: 16px; white-space: nowrap; }
-.data-table th { text-align: left; padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--gold-light); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
-.data-table td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); }
-.pill { padding: 6px 12px; border-radius: 100px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: rgba(228,184,94,0.1); color: var(--gold); }
-.pill.success { background: rgba(74, 222, 128, 0.1); color: #4ade80; }
-.pill.danger { background: rgba(248, 113, 113, 0.1); color: #f87171; }
-.table-wrap { overflow-x: auto; border-radius: 16px; }
-
-.id-card { max-width: 400px; margin: 0 auto; padding: 32px; border-radius: 24px; text-align: center; position: relative; overflow: hidden; border: 2px solid var(--gold); background: linear-gradient(135deg, var(--navy-soft), var(--emerald)); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-.id-card::before { content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(228,184,94,0.1) 0%, transparent 60%); animation: rotate 10s linear infinite; }
-@keyframes rotate { 100% { transform: rotate(360deg); } }
-.id-card .avatar { width: 80px; height: 80px; border-radius: 50%; background: #fff; color: var(--navy-soft); font-size: 32px; display: grid; place-items: center; margin: 0 auto 16px; font-weight: 700; border: 3px solid var(--gold); }
-
-#authModal, .reader-modal, #enrollModal { position: fixed; inset: 0; z-index: 600; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); padding: 24px; }
-#authModal.open, .reader-modal.open, #enrollModal.open { display: flex; }
-.auth-card, .reader-card, .modal-card { width: 100%; max-width: 460px; background: var(--navy-soft); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; box-shadow: var(--glass-shadow); position: relative; }
-.auth-card .close, .reader-close, .modal-close { position: absolute; top: 20px; right: 20px; color: var(--text-muted); cursor: pointer; }
-.google-btn { width: 100%; padding: 14px; border-radius: 12px; background: #fff; color: #000; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px; }
-.auth-tabs { display: flex; gap: 10px; margin-bottom: 24px; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 12px; }
-.auth-tabs button { flex: 1; padding: 10px; border-radius: 8px; font-weight: 700; color: var(--text-muted); }
-.auth-tabs button.active { background: var(--emerald); color: #fff; }
-.auth-form { display: none; flex-direction: column; gap: 16px; }
-.auth-form.active { display: flex; }
-
-.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--ease); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-footer { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-muted); font-size: 14px; }
-
-@media(max-width: 992px) {
-  .hero-grid, .grid-2, .grid-3, .form-grid { grid-template-columns: 1fr; }
-  .nav { display: none; }
-  .portal-layout { flex-direction: column; }
-  .portal-sidebar { width: 100%; flex-direction: row; overflow-x: auto; padding: 16px; border-right: none; border-bottom: 1px solid var(--glass-border); }
-  .portal-sidebar button { white-space: nowrap; width: auto; padding: 10px 16px; }
-  .portal-content { padding: 20px; }
-}
-</style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F3D2E'/%3E%3Ctext x='50' y='68' font-size='48' text-anchor='middle' fill='%23F59E0B' font-family='serif' font-weight='bold'%3EG%3C/text%3E%3C/svg%3E" />
 </head>
-<body>
+<body data-theme="light">
 
-<canvas id="webgl-canvas"></canvas>
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="crest-loader">
+        <span class="crest-letter">G</span>
+      </div>
+      <div class="preloader-bar"><span></span></div>
+      <p class="preloader-text">G.S. Gatare TSS</p>
+    </div>
+  </div>
 
-<main id="publicSite">
+  <!-- ============ STICKY GLASS HEADER ============ -->
   <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a href="#home" class="brand">
-        <div class="brand-mark">GS</div>
+    <div class="header-container">
+      <a href="#home" class="brand" aria-label="G.S. Gatare TSS Home">
+        <div class="brand-crest">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 2L44 10V24C44 36 35 44 24 46C13 44 4 36 4 24V10L24 2Z" fill="#0F3D2E" stroke="#F59E0B" stroke-width="2"/>
+            <path d="M24 8L38 14V24C38 32 32 38 24 40C16 38 10 32 10 24V14L24 8Z" fill="#14532D"/>
+            <text x="24" y="30" text-anchor="middle" font-family="Playfair Display, serif" font-weight="800" font-size="16" fill="#F59E0B">G</text>
+          </svg>
+        </div>
         <div class="brand-text">
-          <small>G.S. Gatare TSS · Code 250405</small>
-          <strong>Gatare Technical Secondary</strong>
+          <span class="brand-name">G.S. Gatare TSS</span>
+          <span class="brand-sub">School Code · 250405</span>
         </div>
       </a>
-      <nav class="nav" id="mainNav">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#academics">Academics</a>
-        <a href="#admissions">Admissions</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#academics" class="nav-link">Academics</a></li>
+          <li><a href="#programs" class="nav-link">Programs</a></li>
+          <li><a href="#news" class="nav-link">News</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
       </nav>
-      <div style="display:flex; gap:12px; align-items:center;">
-        <button class="btn btn-ghost" id="loginBtn" style="padding:10px 20px; font-size:13px;">Sign In</button>
-        <a href="#admissions" class="btn btn-primary" style="padding:10px 20px; font-size:13px;">Apply</a>
+
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#admissions" class="btn btn-outline btn-sm header-apply">
+          <i class="fa-solid fa-pen-to-square"></i> Apply Online
+        </a>
+        <a href="portal/login.html" class="btn btn-primary btn-sm header-portal">
+          <i class="fa-solid fa-right-to-bracket"></i> School Portal
+        </a>
+        <button class="icon-btn mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>
 
+  <!-- ============ HERO SECTION ============ -->
   <section class="hero" id="home">
-    <div class="container hero-grid">
-      <div class="hero-copy reveal">
-        <div class="eyebrow">Gashasha Cell · Nyamagabe</div>
-        <h1>Where discipline <em>shapes</em> tomorrow.</h1>
-        <p class="hero-motto">"Discipline Leads to Success"</p>
-        <p class="hero-lede">A government-aided day school walking with every learner from Pre-Primary foundations through Advanced Level to accredited Technical Secondary Education.</p>
-        <div class="hero-actions">
-          <a href="#academics" class="btn btn-primary">Explore Programs</a>
-          <a href="#admissions" class="btn btn-ghost">Apply Now</a>
+    <div class="hero-bg">
+      <div class="hero-gradient"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge" data-aos="fade-down">
+        <span class="pulse-dot"></span>
+        <span>TVET Accredited · Rwanda TVET Board</span>
+        <span class="badge-divider">|</span>
+        <span class="badge-code">Code: 250405</span>
+      </div>
+
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+        Where <span class="gradient-text">Discipline</span><br/>
+        Shapes Tomorrow
+      </h1>
+
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+        A flagship TVET & academic institution in Nyamagabe District, Rwanda.
+        Combining rigorous academics, hands-on trades, and character formation
+        to prepare tomorrow's skilled professionals.
+      </p>
+
+      <div class="hero-cta" data-aos="fade-up" data-aos-delay="300">
+        <a href="#admissions" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-graduation-cap"></i>
+          Apply for Admission
+        </a>
+        <a href="portal/login.html" class="btn btn-glass btn-lg">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          Access Portal
+        </a>
+      </div>
+
+      <div class="hero-trust" data-aos="fade-up" data-aos-delay="400">
+        <div class="trust-item">
+          <i class="fa-solid fa-certificate"></i>
+          <span>WDA Registered</span>
+        </div>
+        <div class="trust-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Ministry Approved</span>
+        </div>
+        <div class="trust-item">
+          <i class="fa-solid fa-globe"></i>
+          <span>Nationally Recognized</span>
         </div>
       </div>
-      <div class="hero-crest glass-panel tilt-card reveal" style="transform-style: preserve-3d;">
-        <div class="crest-badge top-right">TVET Levels 3–5</div>
-        <div class="crest-badge bottom-left"><span class="pulse"></span> Admissions Open</div>
-        <div class="tilt-card-inner">
-          <h3>G.S. Gatare TSS</h3>
-          <p style="color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase; font-size:12px;">Official Crest</p>
-          <div style="margin-top:30px; border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-            <p style="color:var(--gold); font-weight:700;">School Code: 250405</p>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ============ METRICS STRIP ============ -->
+  <section class="metrics-strip" id="metrics">
+    <div class="metrics-container">
+      <div class="metric-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="metric-icon"><i class="fa-solid fa-users"></i></div>
+        <div class="metric-body">
+          <span class="metric-value" data-count="1240">0</span>
+          <span class="metric-label">Total Learners</span>
+        </div>
+      </div>
+      <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="metric-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="metric-body">
+          <span class="metric-value" data-count="7">0</span>
+          <span class="metric-label">Academic Pathways</span>
+        </div>
+      </div>
+      <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="metric-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <div class="metric-body">
+          <span class="metric-value" data-count="2">0</span>
+          <span class="metric-label">TVET Programs</span>
+        </div>
+      </div>
+      <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="metric-icon"><i class="fa-solid fa-laptop-code"></i></div>
+        <div class="metric-body">
+          <span class="metric-value" data-count="100" data-suffix="%">0</span>
+          <span class="metric-label">Digital Portal Access</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT SECTION ============ -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-eyebrow">About Our School</span>
+        <h2 class="section-title">Excellence Rooted in <span class="gradient-text">Discipline</span></h2>
+        <p class="section-lead">
+          Groupe Scolaire Gatare TSS is a premier educational institution located in
+          Gashasha Cell, Gatare Sector, Nyamagabe District, Rwanda. We are committed
+          to nurturing academically strong, technically skilled, and morally upright
+          citizens who contribute meaningfully to national development.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card" data-aos="fade-right">
+          <div class="about-card-icon"><i class="fa-solid fa-bullseye"></i></div>
+          <h3>Our Mission</h3>
+          <p>
+            To provide quality, competence-based education that integrates academic
+            excellence with practical TVET skills, producing graduates ready for the
+            labor market, higher education, and entrepreneurship.
+          </p>
+        </div>
+        <div class="about-card" data-aos="fade-up">
+          <div class="about-card-icon"><i class="fa-solid fa-eye"></i></div>
+          <h3>Our Vision</h3>
+          <p>
+            To become the leading TVET and academic center of excellence in the
+            Southern Province, recognized for discipline, innovation, and graduate
+            employability.
+          </p>
+        </div>
+        <div class="about-card" data-aos="fade-left">
+          <div class="about-card-icon"><i class="fa-solid fa-heart"></i></div>
+          <h3>Our Values</h3>
+          <p>
+            Discipline · Integrity · Excellence · Respect · Innovation · Community
+            Service. These values guide every learner, teacher, and staff member at
+            G.S. Gatare TSS.
+          </p>
+        </div>
+      </div>
+
+      <div class="motto-banner" data-aos="zoom-in">
+        <div class="motto-inner">
+          <span class="motto-eyebrow">Our Motto</span>
+          <blockquote class="motto-quote">"Discipline Leads to Success"</blockquote>
+          <div class="motto-divider"></div>
+          <p class="motto-desc">
+            Since our founding, this motto has anchored every decision, every classroom,
+            and every graduate of G.S. Gatare TSS.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACADEMIC STRUCTURE ============ -->
+  <section class="academics-section" id="academics">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-eyebrow">Academic Structure</span>
+        <h2 class="section-title">Seven Pathways to <span class="gradient-text">Success</span></h2>
+        <p class="section-lead">
+          From early childhood through advanced TVET, G.S. Gatare TSS offers a
+          complete educational journey under one disciplined roof.
+        </p>
+      </div>
+
+      <div class="level-grid">
+        <div class="level-card" data-aos="fade-up" data-aos-delay="0">
+          <span class="level-num">01</span>
+          <div class="level-icon"><i class="fa-solid fa-child-reaching"></i></div>
+          <h3>Pre-Primary</h3>
+          <p>Nursery & Kindergarten — foundational learning through play, discovery, and character formation.</p>
+        </div>
+        <div class="level-card" data-aos="fade-up" data-aos-delay="50">
+          <span class="level-num">02</span>
+          <div class="level-icon"><i class="fa-solid fa-book-open"></i></div>
+          <h3>Primary</h3>
+          <p>P1 – P6 — Competence-based curriculum building literacy, numeracy, and critical thinking.</p>
+        </div>
+        <div class="level-card" data-aos="fade-up" data-aos-delay="100">
+          <span class="level-num">03</span>
+          <div class="level-icon"><i class="fa-solid fa-flask"></i></div>
+          <h3>O'Level</h3>
+          <p>S1 – S3 — Junior secondary education preparing learners for senior pathways.</p>
+        </div>
+        <div class="level-card" data-aos="fade-up" data-aos-delay="150">
+          <span class="level-num">04</span>
+          <div class="level-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3>A'Level AH</h3>
+          <p>Arts & Humanities — History, Literature, Geography, and Languages for future leaders.</p>
+        </div>
+        <div class="level-card" data-aos="fade-up" data-aos-delay="200">
+          <span class="level-num">05</span>
+          <div class="level-icon"><i class="fa-solid fa-calculator"></i></div>
+          <h3>A'Level MS1</h3>
+          <p>Mathematics, Physics, Chemistry & Biology — preparing future scientists and engineers.</p>
+        </div>
+        <div class="level-card level-card-tvet" data-aos="fade-up" data-aos-delay="250">
+          <span class="level-num">06</span>
+          <div class="level-icon"><i class="fa-solid fa-seedling"></i></div>
+          <h3>TVET AGR</h3>
+          <p>Agriculture (Level 3–4) — hands-on crop and animal production, agribusiness, and modern farming.</p>
+        </div>
+        <div class="level-card level-card-tvet" data-aos="fade-up" data-aos-delay="300">
+          <span class="level-num">07</span>
+          <div class="level-icon"><i class="fa-solid fa-utensils"></i></div>
+          <h3>TVET ANH</h3>
+          <p>Animal Health (Level 3–4) — veterinary assistance, livestock management, and animal welfare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROGRAMS SHOWCASE ============ -->
+  <section class="programs-section" id="programs">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-eyebrow">Programs Showcase</span>
+        <h2 class="section-title">Explore Our <span class="gradient-text">Trades</span></h2>
+        <p class="section-lead">
+          Industry-relevant TVET programs designed with employers, aligned to national
+          competency standards, and delivered by experienced instructors.
+        </p>
+      </div>
+
+      <div class="programs-showcase">
+        <article class="program-feature" data-aos="fade-right">
+          <div class="program-visual program-visual-agr">
+            <i class="fa-solid fa-seedling program-visual-icon"></i>
+            <span class="program-badge">TVET · Level 3 & 4</span>
+          </div>
+          <div class="program-details">
+            <h3>Agriculture (AGR)</h3>
+            <p class="program-tagline">Feed the nation. Grow the future.</p>
+            <p>
+              The Agriculture program equips learners with modern crop production,
+              livestock husbandry, soil management, irrigation, and agribusiness skills.
+              Learners work on real school farms and partner cooperatives across
+              Nyamagabe District.
+            </p>
+            <ul class="program-highlights">
+              <li><i class="fa-solid fa-check"></i> Crop Production & Soil Science</li>
+              <li><i class="fa-solid fa-check"></i> Animal Husbandry & Nutrition</li>
+              <li><i class="fa-solid fa-check"></i> Farm Business Management</li>
+              <li><i class="fa-solid fa-check"></i> Practical Field Attachment</li>
+            </ul>
+            <a href="#admissions" class="btn btn-primary">
+              Apply for AGR <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="program-feature program-feature-reverse" data-aos="fade-left">
+          <div class="program-visual program-visual-anh">
+            <i class="fa-solid fa-paw program-visual-icon"></i>
+            <span class="program-badge">TVET · Level 3 & 4</span>
+          </div>
+          <div class="program-details">
+            <h3>Animal Health (ANH)</h3>
+            <p class="program-tagline">Care for animals. Protect livelihoods.</p>
+            <p>
+              The Animal Health program trains veterinary assistants and livestock
+              health workers. Learners master disease identification, treatment
+              assistance, vaccination campaigns, and farm biosecurity — skills that
+              are in high demand across rural and urban Rwanda.
+            </p>
+            <ul class="program-highlights">
+              <li><i class="fa-solid fa-check"></i> Animal Anatomy & Physiology</li>
+              <li><i class="fa-solid fa-check"></i> Disease Diagnosis & Treatment Support</li>
+              <li><i class="fa-solid fa-check"></i> Vaccination & Biosecurity</li>
+              <li><i class="fa-solid fa-check"></i> Clinical Attachment with Vets</li>
+            </ul>
+            <a href="#admissions" class="btn btn-primary">
+              Apply for ANH <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ADMISSIONS SECTION ============ -->
+  <section class="admissions-section" id="admissions">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-eyebrow">Online Admission Portal</span>
+        <h2 class="section-title">Begin Your <span class="gradient-text">Journey</span></h2>
+        <p class="section-lead">
+          Apply online in minutes. Track your application status in real-time using
+          your unique application ID.
+        </p>
+      </div>
+
+      <div class="admissions-grid">
+        <!-- Application Form -->
+        <div class="admissions-form-card" data-aos="fade-right">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-file-signature"></i> New Application</h3>
+            <p>Fill in the form below to submit your application to G.S. Gatare TSS.</p>
+          </div>
+
+          <form id="applicationForm" class="application-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="appFullName">Full Name <span class="req">*</span></label>
+                <input type="text" id="appFullName" name="fullName" placeholder="e.g. Uwase Diane" required />
+                <span class="form-error" data-error-for="appFullName"></span>
+              </div>
+              <div class="form-group">
+                <label for="appDob">Date of Birth <span class="req">*</span></label>
+                <input type="date" id="appDob" name="dob" required />
+                <span class="form-error" data-error-for="appDob"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="appGender">Gender <span class="req">*</span></label>
+                <select id="appGender" name="gender" required>
+                  <option value="">Select gender</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                </select>
+                <span class="form-error" data-error-for="appGender"></span>
+              </div>
+              <div class="form-group">
+                <label for="appPhone">Phone Number <span class="req">*</span></label>
+                <input type="tel" id="appPhone" name="phone" placeholder="+250 7XX XXX XXX" required />
+                <span class="form-error" data-error-for="appPhone"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="appEmail">Email Address <span class="req">*</span></label>
+              <input type="email" id="appEmail" name="email" placeholder="you@example.com" required />
+              <span class="form-error" data-error-for="appEmail"></span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="appLevel">Applying For <span class="req">*</span></label>
+                <select id="appLevel" name="level" required>
+                  <option value="">Select level</option>
+                  <option value="pre-primary">Pre-Primary</option>
+                  <option value="primary">Primary</option>
+                  <option value="olevel">O'Level</option>
+                  <option value="alevel-ah">A'Level AH</option>
+                  <option value="alevel-ms1">A'Level MS1</option>
+                  <option value="tvet-agr">TVET AGR</option>
+                  <option value="tvet-anh">TVET ANH</option>
+                </select>
+                <span class="form-error" data-error-for="appLevel"></span>
+              </div>
+              <div class="form-group">
+                <label for="appTrade">Trade / Combination</label>
+                <select id="appTrade" name="trade">
+                  <option value="">Select trade (optional)</option>
+                  <option value="agr-l3">AGR Level 3</option>
+                  <option value="agr-l4">AGR Level 4</option>
+                  <option value="anh-l3">ANH Level 3</option>
+                  <option value="anh-l4">ANH Level 4</option>
+                  <option value="ah">Arts & Humanities</option>
+                  <option value="ms1">Mathematics, Physics, Chemistry & Biology</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="appDistrict">District / Sector <span class="req">*</span></label>
+              <input type="text" id="appDistrict" name="district" placeholder="e.g. Nyamagabe / Gatare" required />
+              <span class="form-error" data-error-for="appDistrict"></span>
+            </div>
+
+            <div class="form-group">
+              <label>Documents (Optional)</label>
+              <div class="file-drop" id="fileDrop">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <p>Drag & drop files here or <span class="link">browse</span></p>
+                <span class="file-hint">Accepted: PDF, JPG, PNG (max 5MB each)</span>
+                <input type="file" id="appDocs" name="docs" multiple accept=".pdf,.jpg,.jpeg,.png" hidden />
+              </div>
+              <ul class="file-list" id="fileList"></ul>
+            </div>
+
+            <div class="form-group">
+              <label for="appNotes">Additional Notes</label>
+              <textarea id="appNotes" name="notes" rows="3" placeholder="Any other information we should know..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitApplication">
+              <i class="fa-solid fa-paper-plane"></i>
+              Submit Application
+            </button>
+            <p class="form-footnote">
+              <i class="fa-solid fa-info-circle"></i>
+              After submission, you'll receive a unique Application ID (e.g. GSG-2026-1001)
+            </p>
+          </form>
+        </div>
+
+        <!-- Status Checker -->
+        <div class="status-checker-card" data-aos="fade-left">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-magnifying-glass"></i> Check Application Status</h3>
+            <p>Enter your Application ID to track your admission progress.</p>
+          </div>
+          <form id="statusForm" class="status-form">
+            <div class="form-group">
+              <label for="statusInput">Application ID</label>
+              <div class="input-with-icon">
+                <i class="fa-solid fa-hashtag"></i>
+                <input type="text" id="statusInput" placeholder="GSG-2026-XXXX" autocomplete="off" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa-solid fa-magnifying-glass"></i> Check Status
+            </button>
+          </form>
+
+          <div class="status-result" id="statusResult" hidden></div>
+
+          <div class="status-help">
+            <h4>Application Timeline</h4>
+            <ul class="timeline-compact">
+              <li><span class="dot dot-submitted"></span> Submitted</li>
+              <li><span class="dot dot-review"></span> Under Review</li>
+              <li><span class="dot dot-decision"></span> Decision Made</li>
+              <li><span class="dot dot-approved"></span> Enrolled</li>
+            </ul>
+            <p class="status-help-note">
+              <i class="fa-solid fa-clock"></i>
+              Applications are typically reviewed within 5 working days.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="about">
+  <!-- ============ NEWS & PRESSROOM ============ -->
+  <section class="news-section" id="news">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">About the School</div>
-        <h2>An educational journey grounded in discipline.</h2>
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-eyebrow">News & Pressroom</span>
+        <h2 class="section-title">Latest from <span class="gradient-text">Campus</span></h2>
+        <p class="section-lead">
+          Announcements, achievements, and stories from the G.S. Gatare TSS community.
+        </p>
       </div>
-      <div class="grid-3">
-        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg></div><h3>Our Mission</h3><p>To provide inclusive, disciplined and practical education that prepares every learner for dignified work.</p></div></div>
-        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg></div><h3>Our Vision</h3><p>A flagship technical secondary school where academic rigour produces confident, employable graduates.</p></div></div>
-        <div class="card glass-panel tilt-card reveal"><div class="tilt-card-inner"><div class="card-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div><h3>Core Values</h3><p>Discipline · Integrity · Practical Excellence · Community · Respect for Life & Land.</p></div></div>
+
+      <div class="news-filters" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="academics">Academics</button>
+        <button class="filter-btn" data-filter="tvet">TVET</button>
+        <button class="filter-btn" data-filter="events">Events</button>
+        <button class="filter-btn" data-filter="sports">Sports</button>
+        <button class="filter-btn" data-filter="announcements">Announcements</button>
+      </div>
+
+      <div class="news-grid" id="newsGrid">
+        <article class="news-card" data-category="tvet" data-aos="fade-up">
+          <div class="news-image news-image-tvet">
+            <i class="fa-solid fa-seedling"></i>
+            <span class="news-tag">TVET</span>
+          </div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span><i class="fa-regular fa-calendar"></i> 15 Mar 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+            </div>
+            <h3>AGR Level 4 Learners Win Regional Agribusiness Challenge</h3>
+            <p>Our TVET Agriculture team took first place at the Southern Province Agribusiness Innovation Challenge with a smart irrigation prototype...</p>
+            <a href="#" class="news-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="academics" data-aos="fade-up" data-aos-delay="50">
+          <div class="news-image news-image-academics">
+            <i class="fa-solid fa-trophy"></i>
+            <span class="news-tag">Academics</span>
+          </div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span><i class="fa-regular fa-calendar"></i> 08 Mar 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 3 min read</span>
+            </div>
+            <h3>98.2% Pass Rate in 2025 National Exams</h3>
+            <p>G.S. Gatare TSS celebrates another year of outstanding results with 98.2% of candidates passing the national examinations...</p>
+            <a href="#" class="news-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="events" data-aos="fade-up" data-aos-delay="100">
+          <div class="news-image news-image-events">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span class="news-tag">Events</span>
+          </div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span><i class="fa-regular fa-calendar"></i> 01 Mar 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 2 min read</span>
+            </div>
+            <h3>Annual Discipline Day & Awards Ceremony</h3>
+            <p>Join us for our annual celebration of academic excellence, discipline, and leadership on March 20, 2026...</p>
+            <a href="#" class="news-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="announcements" data-aos="fade-up">
+          <div class="news-image news-image-announce">
+            <i class="fa-solid fa-bullhorn"></i>
+            <span class="news-tag">Announcements</span>
+          </div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span><i class="fa-regular fa-calendar"></i> 25 Feb 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 2 min read</span>
+            </div>
+            <h3>2026 Admissions Now Open — Apply Online</h3>
+            <p>Online applications for the 2026-2027 academic year are now open across all levels. Secure your spot early...</p>
+            <a href="#" class="news-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="sports" data-aos="fade-up" data-aos-delay="50">
+          <div class="news-image news-image-sports">
+            <i class="fa-solid fa-futbol"></i>
+            <span class="news-tag">Sports</span>
+          </div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span><i class="fa-regular fa-calendar"></i> 20 Feb 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 3 min read</span>
+            </div>
+            <h3>Gatare TSS Football Team Reaches District Finals</h3>
+            <p>Our senior boys' football team advanced to the Nyamagabe District finals after a thrilling 2-1 victory...</p>
+            <a href="#" class="news-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="tvet" data-aos="fade-up" data-aos-delay="100">
+          <div class="news-image news-image-tvet">
+            <i class="fa-solid fa-paw"></i>
+            <span class="news-tag">TVET</span>
+          </div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span><i class="fa-regular fa-calendar"></i> 12 Feb 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 4 min read</span>
+            </div>
+            <h3>ANH Learners Complete Community Vaccination Campaign</h3>
+            <p>TVET Animal Health learners supported local veterinarians in vaccinating over 800 livestock across Gatare Sector...</p>
+            <a href="#" class="news-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section" id="admissions">
+  <!-- ============ CONTACT SECTION ============ -->
+  <section class="contact-section" id="contact">
     <div class="container">
-      <div class="section-header reveal"><div class="eyebrow">Online Admissions</div><h2>Apply to G.S. Gatare TSS.</h2></div>
-      <div class="form-shell glass-panel reveal">
-        <form id="admissionForm" novalidate>
-          <div class="form-grid">
-            <div class="field full"><label>Student Full Name</label><input type="text" id="studentName" required placeholder="e.g. Aline Uwase" /></div>
-            <div class="field"><label>Date of Birth</label><input type="date" id="dob" required /></div>
-            <div class="field"><label>Gender</label><select id="gender" required><option value="">Select...</option><option>Female</option><option>Male</option></select></div>
-            <div class="field"><label>Parent/Guardian Name</label><input type="text" id="parentName" required /></div>
-            <div class="field"><label>Parent Telephone</label><input type="tel" id="parentPhone" required /></div>
-            <div class="field"><label>Email Address</label><input type="email" id="email" required /></div>
-            <div class="field"><label>Previous School</label><input type="text" id="previousSchool" required /></div>
-            <div class="field full"><label>Program Choice</label>
-              <select id="program" required>
-                <option value="">Select program...</option>
-                <option>Pre-Primary (PPR)</option><option>Primary (PR)</option><option>Ordinary Level (O'Level)</option>
-                <option>Arts and Humanities (AH)</option><option>Mathematics and Science (MS1)</option>
-                <option>Agriculture (AGR) — TVET L3–L5</option><option>Animal Health (ANH) — TVET L3–L5</option>
-              </select>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <span class="section-eyebrow">Contact Us</span>
+          <h2 class="section-title">Get in <span class="gradient-text">Touch</span></h2>
+          <p class="section-lead">
+            Our admissions team is here to answer your questions and guide you
+            through the enrollment process.
+          </p>
+
+          <ul class="contact-list">
+            <li>
+              <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <strong>Visit Us</strong>
+                <p>Gashasha Cell, Gatare Sector<br/>Nyamagabe District, Rwanda</p>
+              </div>
+            </li>
+            <li>
+              <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <strong>Email Us</strong>
+                <p><a href="mailto:gsgatare@gmail.com">gsgatare@gmail.com</a></p>
+              </div>
+            </li>
+            <li>
+              <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <strong>Call Us</strong>
+                <p><a href="tel:+250785486933">+250 785 486 933</a></p>
+              </div>
+            </li>
+            <li>
+              <div class="contact-icon"><i class="fa-solid fa-hashtag"></i></div>
+              <div>
+                <strong>School Code</strong>
+                <p>250405</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-form-card" data-aos="fade-left">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" placeholder="Full name" required />
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email</label>
+                <input type="email" id="contactEmail" placeholder="you@example.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" placeholder="How can we help?" required />
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" rows="5" placeholder="Your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="brand">
+              <div class="brand-crest">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24 2L44 10V24C44 36 35 44 24 46C13 44 4 36 4 24V10L24 2Z" fill="#0F3D2E" stroke="#F59E0B" stroke-width="2"/>
+                  <text x="24" y="30" text-anchor="middle" font-family="Playfair Display, serif" font-weight="800" font-size="16" fill="#F59E0B">G</text>
+                </svg>
+              </div>
+              <div class="brand-text">
+                <span class="brand-name">G.S. Gatare TSS</span>
+                <span class="brand-sub">Code 250405</span>
+              </div>
+            </div>
+            <p class="footer-desc">
+              Discipline Leads to Success. A flagship TVET and academic institution
+              in Nyamagabe District, Rwanda.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
           </div>
-          <div style="margin-top:24px; display:flex; gap:16px; align-items:center;"><button type="submit" class="btn btn-primary">Submit Application</button><span class="form-status" id="admissionStatus"></span></div>
-        </form>
+
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#academics">Academics</a></li>
+              <li><a href="#programs">Programs</a></li>
+              <li><a href="#news">News</a></li>
+              <li><a href="#admissions">Admissions</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Programs</h4>
+            <ul>
+              <li><a href="#academics">Pre-Primary</a></li>
+              <li><a href="#academics">Primary</a></li>
+              <li><a href="#academics">O'Level</a></li>
+              <li><a href="#academics">A'Level AH / MS1</a></li>
+              <li><a href="#programs">TVET AGR / ANH</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul class="footer-contact">
+              <li><i class="fa-solid fa-location-dot"></i> Gashasha Cell, Gatare Sector, Nyamagabe, Rwanda</li>
+              <li><i class="fa-solid fa-envelope"></i> <a href="mailto:gsgatare@gmail.com">gsgatare@gmail.com</a></li>
+              <li><i class="fa-solid fa-phone"></i> <a href="tel:+250785486933">+250 785 486 933</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      <p>© <span id="year"></span> Groupe Scolaire Gatare TSS · Code 250405</p>
-      <p style="margin-top:8px; font-family:var(--font-display); font-style:italic; color:var(--gold);">Discipline Leads to Success</p>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; <span id="year"></span> Groupe Scolaire Gatare TSS. All rights reserved.</p>
+        <p class="footer-credit">
+          Engineered by <strong>InezaDev</strong> · Custom School Digital Solutions
+        </p>
+      </div>
     </div>
   </footer>
-</main>
 
-<div id="portalContainer">
-  <header class="portal-header">
-    <div style="display:flex; align-items:center; gap:16px;">
-      <div class="brand-mark" style="width:40px; height:40px; font-size:16px;">GS</div>
-      <div>
-        <h2 style="font-size:1.2rem; margin:0;" id="portalWelcome">Portal Dashboard</h2>
-        <p style="font-size:12px; color:var(--gold); margin:0;" id="portalRoleBadge">Role</p>
-      </div>
-    </div>
-    <div style="display:flex; gap:16px; align-items:center;">
-      <button class="btn btn-ghost" style="padding:8px 16px; font-size:12px;" onclick="exitPortal()">← Back to Website</button>
-      <button class="btn btn-danger" style="padding:8px 16px; font-size:12px;" id="portalLogoutBtn">Sign Out</button>
-    </div>
-  </header>
-  
-  <div class="portal-layout">
-    <aside class="portal-sidebar" id="portalSidebar"></aside>
-    <main class="portal-content" id="portalMainContent"></main>
-  </div>
-</div>
+  <!-- ============ BACK TO TOP ============ -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
-<div id="authModal">
-  <div class="auth-card">
-    <button class="close" id="authClose">✕</button>
-    <h3 style="margin-bottom:24px;">Secure Portal Login</h3>
-    <button class="google-btn" id="googleSignIn">
-      <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-      Continue with Google
-    </button>
-    <div style="display:flex; align-items:center; gap:10px; margin:20px 0; color:var(--text-muted); font-size:12px;">
-      <div style="flex:1; height:1px; background:rgba(255,255,255,0.1);"></div> OR <div style="flex:1; height:1px; background:rgba(255,255,255,0.1);"></div>
-    </div>
-    <div class="auth-tabs">
-      <button class="active" onclick="switchAuthTab('signin')">Sign In</button>
-      <button onclick="switchAuthTab('signup')">Register</button>
-    </div>
-    
-    <form id="signinForm" class="auth-form active">
-      <div class="field"><label>Email</label><input type="email" id="signinEmail" required /></div>
-      <div class="field"><label>Password</label><input type="password" id="signinPassword" required /></div>
-      <button type="submit" class="btn btn-primary" style="justify-content:center;">Sign In</button>
-      <span class="form-status" id="signinStatus"></span>
-    </form>
-    <form id="signupForm" class="auth-form">
-      <div class="field"><label>Full Name</label><input type="text" id="signupName" required /></div>
-      <div class="field"><label>Email</label><input type="email" id="signupEmail" required /></div>
-      <div class="field"><label>Password</label><input type="password" id="signupPassword" required minlength="6" /></div>
-      <button type="submit" class="btn btn-primary" style="justify-content:center;">Create Account</button>
-      <span class="form-status" id="signupStatus"></span>
-    </form>
-  </div>
-</div>
+  <!-- ============ TOAST CONTAINER ============ -->
+  <div class="toast-container" id="toastContainer"></div>
 
-<div id="enrollModal">
-  <div class="modal-card">
-    <button class="modal-close" onclick="document.getElementById('enrollModal').classList.remove('open')">✕</button>
-    <h3 style="margin-bottom:20px;">Enroll Applicant</h3>
-    <p style="color:var(--text-muted); font-size:14px; margin-bottom:16px;">Create a portal account for <strong id="enrollStudentName">Applicant</strong>.</p>
-    <div class="field" style="margin-bottom:16px;"><label>Assign Level / Trade</label>
-      <select id="enrollLevel">
-        <option>Primary</option><option>O'Level</option><option>A'Level (AH)</option><option>A'Level (MS1)</option><option>TVET AGR L3</option><option>TVET AGR L4</option><option>TVET ANH L3</option>
-      </select>
-    </div>
-    <button onclick="approveEnrollment()" class="btn btn-primary" style="width:100%; justify-content:center;">Approve & Enroll</button>
-  </div>
-</div>
-
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-  }
-}
-</script>
-<script type="module">
-import * as THREE from 'three';
-const canvas = document.getElementById('webgl-canvas');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
-const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x06191a, 0.015);
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.set(0, 0, 15);
-scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-const keyLight = new THREE.DirectionalLight(0xe4b85e, 2); keyLight.position.set(10, 10, 10); scene.add(keyLight);
-const fillLight = new THREE.DirectionalLight(0x28634d, 1); fillLight.position.set(-10, -5, 5); scene.add(fillLight);
-const goldMat = new THREE.MeshStandardMaterial({ color: 0xe4b85e, metalness: 0.9, roughness: 0.2 });
-const emeraldMat = new THREE.MeshStandardMaterial({ color: 0x28634d, metalness: 0.5, roughness: 0.4 });
-const wireframeMat = new THREE.MeshBasicMaterial({ color: 0xe4b85e, wireframe: true, transparent: true, opacity: 0.3 });
-const worldGroup = new THREE.Group(); scene.add(worldGroup);
-const sculptures = [];
-function createSculpture(name, mesh, position) { mesh.position.copy(position); mesh.userData.basePos = position.clone(); worldGroup.add(mesh); sculptures.push({ name, mesh }); return mesh; }
-const homeGroup = new THREE.Group(); const core = new THREE.Mesh(new THREE.IcosahedronGeometry(2, 1), goldMat); const coreWire = new THREE.Mesh(new THREE.IcosahedronGeometry(2.1, 1), wireframeMat); homeGroup.add(core, coreWire); const ring1 = new THREE.Mesh(new THREE.TorusGeometry(3.5, 0.02, 16, 100), emeraldMat); ring1.rotation.x = Math.PI / 2; const ring2 = new THREE.Mesh(new THREE.TorusGeometry(4.2, 0.02, 16, 100), goldMat); ring2.rotation.y = Math.PI / 3; homeGroup.add(ring1, ring2); createSculpture('home', homeGroup, new THREE.Vector3(0, 0, 0));
-const aboutGroup = new THREE.Group(); const r1 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), emeraldMat); const r2 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), goldMat); const r3 = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.1, 16, 100), emeraldMat); r1.rotation.x = Math.PI / 2; r2.rotation.y = Math.PI / 3; r3.rotation.y = -Math.PI / 3; aboutGroup.add(r1, r2, r3); createSculpture('about', aboutGroup, new THREE.Vector3(-15, -10, -10));
-const acadGroup = new THREE.Group(); for(let i=0; i<3; i++) { const cone = new THREE.Mesh(new THREE.ConeGeometry(1.5, 2, 4), i%2===0 ? emeraldMat : goldMat); cone.position.set((i-1)*3, 0, 0); acadGroup.add(cone); } createSculpture('academics', acadGroup, new THREE.Vector3(15, -10, -10));
-const tvetGroup = new THREE.Group(); const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.5, 0.4, 100, 16), goldMat); const knotWire = new THREE.Mesh(new THREE.TorusKnotGeometry(1.7, 0.45, 100, 16), wireframeMat); tvetGroup.add(knot, knotWire); createSculpture('tvet', tvetGroup, new THREE.Vector3(-15, -20, -20));
-const admGroup = new THREE.Group(); for(let i=0; i<4; i++) { const gate = new THREE.Mesh(new THREE.TorusGeometry(2.5 - i*0.4, 0.05, 16, 100), i%2===0 ? emeraldMat : goldMat); gate.position.z = -i * 1.5; admGroup.add(gate); } createSculpture('admissions', admGroup, new THREE.Vector3(15, -20, -20));
-const newsGroup = new THREE.Group(); const beacon = new THREE.Mesh(new THREE.DodecahedronGeometry(1.5, 0), emeraldMat); const beaconWire = new THREE.Mesh(new THREE.DodecahedronGeometry(2, 0), wireframeMat); newsGroup.add(beacon, beaconWire); createSculpture('news', newsGroup, new THREE.Vector3(-15, -30, -30));
-const contactGroup = new THREE.Group(); const globe = new THREE.Mesh(new THREE.SphereGeometry(2, 32, 16), wireframeMat); const eqRing = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.05, 16, 100), goldMat); eqRing.rotation.x = Math.PI / 2; contactGroup.add(globe, eqRing); createSculpture('contact', contactGroup, new THREE.Vector3(15, -30, -30));
-const views = { home: { pos: new THREE.Vector3(0, 0, 15), look: new THREE.Vector3(0, 0, 0) }, about: { pos: new THREE.Vector3(-15, -10, 0), look: new THREE.Vector3(-15, -10, -10) }, academics: { pos: new THREE.Vector3(15, -10, 0), look: new THREE.Vector3(15, -10, -10) }, tvet: { pos: new THREE.Vector3(-15, -20, -10), look: new THREE.Vector3(-15, -20, -20) }, admissions:{ pos: new THREE.Vector3(15, -20, -10), look: new THREE.Vector3(15, -20, -20) }, news: { pos: new THREE.Vector3(-15, -30, -20), look: new THREE.Vector3(-15, -30, -30) }, contact: { pos: new THREE.Vector3(15, -30, -20), look: new THREE.Vector3(15, -30, -30) } };
-let targetCameraPos = views.home.pos.clone(); let targetLookAt = views.home.look.clone();
-window.navigate3D = (section) => { if(views[section]) { targetCameraPos.copy(views[section].pos); targetLookAt.copy(views[section].look); } };
-const clock = new THREE.Clock();
-function animate() { const delta = clock.getDelta(); const elapsedTime = clock.getElapsedTime(); camera.position.lerp(targetCameraPos, delta * 3); camera.lookAt(targetLookAt); sculptures.forEach(s => { s.mesh.rotation.x = elapsedTime * 0.2; s.mesh.rotation.y = elapsedTime * 0.3; s.mesh.position.y = s.mesh.userData.basePos.y + Math.sin(elapsedTime * 2) * 0.5; }); renderer.render(scene, camera); requestAnimationFrame(animate); } animate();
-window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
-document.querySelectorAll('.tilt-card').forEach(card => { card.addEventListener('mousemove', e => { const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; card.style.transform = `perspective(1000px) rotateX(${((y-rect.height/2)/rect.height)* -10}deg) rotateY(${((x-rect.width/2)/rect.width)* 10}deg) scale3d(1.02, 1.02, 1.02)`; }); card.addEventListener('mouseleave', () => card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)`); });
-const sections = document.querySelectorAll('section[id]'); const navLinks = document.querySelectorAll('.nav a');
-window.addEventListener('scroll', () => { let current = ''; const header = document.getElementById('siteHeader'); if(window.scrollY > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled'); sections.forEach(section => { if(scrollY >= section.offsetTop - 150) current = section.getAttribute('id'); }); navLinks.forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === `#${current}`) link.classList.add('active'); }); if(current && window.navigate3D) window.navigate3D(current); });
-const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 }); document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-
-<script type="module">
-const firebaseConfig = {
-  apiKey: "AIzaSyCk5pHtd2a9P74pVQUd_PIaHvaYVFzqrfw",
-  authDomain: "gs-gatare-portal.firebaseapp.com",
-  projectId: "gs-gatare-portal",
-  storageBucket: "gs-gatare-portal.firebasestorage.app",
-  messagingSenderId: "995142418810",
-  appId: "1:995142418810:web:cf1cb0d971541a362cd6c3"
-};
-
-let firebaseReady = false;
-let fb = null;
-
-async function initFirebase() {
-  try {
-    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js");
-    const authMod = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js");
-    const fireMod = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js");
-    
-    const app = initializeApp(firebaseConfig);
-    fb = { auth: authMod.getAuth(app), db: fireMod.getFirestore(app), ...authMod, ...fireMod };
-authMod.setPersistence(fb.auth, authMod.browserLocalPersistence).catch((error) => {
-  console.error("Persistence error:", error);
-});
-    firebaseReady = true;
-    console.log("Firebase Connected Successfully!");
-  } catch(e) { console.error("Firebase init failed", e); }
-}
-
-let currentUser = null;
-const publicSite = document.getElementById("publicSite");
-const portalContainer = document.getElementById("portalContainer");
-const authModal = document.getElementById("authModal");
-const canvas = document.getElementById("webgl-canvas");
-const sidebar = document.getElementById("portalSidebar");
-const mainContent = document.getElementById("portalMainContent");
-
-document.getElementById("loginBtn").onclick = () => authModal.classList.add("open");
-document.getElementById("authClose").onclick = () => authModal.classList.remove("open");
-document.getElementById("portalLogoutBtn").onclick = () => { 
-  if(firebaseReady) fb.signOut(fb.auth);
-  currentUser = null; 
-  exitPortal(); 
-};
-
-window.switchAuthTab = (tab) => {
-  document.querySelectorAll(".auth-tabs button").forEach(b => b.classList.remove("active"));
-  document.querySelectorAll(".auth-form").forEach(f => f.classList.remove("active"));
-  event.target.classList.add("active");
-  document.getElementById(tab + "Form").classList.add("active");
-};
-
-window.exitPortal = () => {
-  portalContainer.classList.remove("active");
-  publicSite.classList.remove("hidden");
-  canvas.classList.remove("hidden");
-  if(!currentUser) authModal.classList.add("open");
-};
-
-function applySession(user) {
-  currentUser = user;
-  if(user) {
-    publicSite.classList.add("hidden");
-    canvas.classList.add("hidden");
-    portalContainer.classList.add("active");
-    authModal.classList.remove("open");
-    document.getElementById("portalWelcome").textContent = `Welcome, ${user.name || user.email}`;
-    
-    // Set the Badge to show Role and SubRole
-    const subText = user.subRole ? ` (${user.subRole.replace('_', ' ').toUpperCase()})` : '';
-    document.getElementById("portalRoleBadge").textContent = (user.role || 'student').toUpperCase() + subText;
-    
-    renderSidebar();
-  } else {
-    publicSite.classList.remove("hidden");
-    canvas.classList.remove("hidden");
-    portalContainer.classList.remove("active");
-  }
-}
-
-// ==========================================
-// FIREBASE AUTHENTICATION
-// ==========================================
-document.getElementById("googleSignIn").onclick = async () => {
-  if(!firebaseReady) return alert("Firebase is not connected.");
-  try {
-    const provider = new fb.GoogleAuthProvider();
-    await fb.signInWithRedirect(fb.auth, provider);
-  } catch(e) { 
-    alert("Google Sign-In Error: " + e.message); 
-  }
-};
-
-document.getElementById("signinForm").onsubmit = async (e) => {
-  e.preventDefault();
-  if(!firebaseReady) return alert("Firebase is not connected.");
-  
-  const email = document.getElementById("signinEmail").value;
-  const pass = document.getElementById("signinPassword").value;
-  try {
-    await fb.signInWithEmailAndPassword(fb.auth, email, pass);
-  } catch(e) { 
-    document.getElementById("signinStatus").textContent = e.message; 
-    document.getElementById("signinStatus").className = "form-status err";
-  }
-};
-
-document.getElementById("signupForm").onsubmit = async (e) => {
-  e.preventDefault();
-  if(!firebaseReady) return alert("Firebase is not connected.");
-  
-  const name = document.getElementById("signupName").value;
-  const email = document.getElementById("signupEmail").value;
-  const pass = document.getElementById("signupPassword").value;
-  try {
-    const cred = await fb.createUserWithEmailAndPassword(fb.auth, email, pass);
-    await fb.updateProfile(cred.user, { displayName: name });
-    // Default new registrations to "student" role
-    await fb.setDoc(fb.doc(fb.db, "users", cred.user.uid), { 
-      name: name, 
-      email: email, 
-      role: "student", 
-      subRole: null 
-    });
-  } catch(e) { 
-    document.getElementById("signupStatus").textContent = e.message; 
-    document.getElementById("signupStatus").className = "form-status err";
-  }
-};
-async function setupAuthListener() {
-  if (!firebaseReady) return;
-  
-  portalContainer.classList.add("active");
-  publicSite.classList.add("hidden");
-  canvas.classList.add("hidden");
-  mainContent.innerHTML = `<div style="padding: 50px; text-align: center;"><h3>Loading your portal...</h3><p>Verifying credentials...</p></div>`;
-
-  fb.onAuthStateChanged(fb.auth, async (user) => {
-    if(user) {
-      try {
-        const docRef = fb.doc(fb.db, "users", user.uid);
-        const docSnap = await fb.getDoc(docRef);
-        
-        let userData = { 
-          uid: user.uid, 
-          name: user.displayName || user.email, 
-          email: user.email, 
-          role: "student", 
-          subRole: null, 
-          children: [] 
-        };
-        
-        if(docSnap.exists()) {
-          // Merge existing Firestore data with Auth data
-          userData = { ...userData, ...docSnap.data() };
-        } else {
-          // First time login! Create their document automatically.
-          console.log("New user detected. Creating profile...");
-          await fb.setDoc(docRef, {
-            name: userData.name,
-            email: userData.email,
-            role: "student",
-            subRole: null,
-            children: []
-          });
-        }
-        
-        // Successfully load the portal
-        applySession(userData);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        alert("Database Error: " + error.message + ". Check your Firestore Rules.");
-        // Only kick them out if there is a real error
-        applySession(null);
-      }
-    } else { 
-      // Not logged in
-      applySession(null); 
-    }
-  });
-}
-// ==========================================
-// DATABASE OPERATIONS
-// ==========================================
-async function dbGet(collection) {
-  if (!firebaseReady) return [];
-  try {
-    const snap = await fb.getDocs(fb.collection(fb.db, collection));
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
-  } catch (e) { console.error(e); return []; }
-}
-
-async function dbAdd(collection, data) {
-  if (!firebaseReady) return;
-  try { return await fb.addDoc(fb.collection(fb.db, collection), data); } catch (e) { console.error(e); }
-}
-
-async function dbUpdate(collection, id, data) {
-  if (!firebaseReady) return;
-  try { await fb.updateDoc(fb.doc(fb.db, collection, id), data); } catch (e) { console.error(e); }
-}
-
-// ==========================================
-// UI RENDERERS & SIDEBAR ROUTING
-// ==========================================
-function renderSidebar() {
-  let links = [];
-  const role = currentUser.role || 'student';
-  const subRole = currentUser.subRole || '';
-
-  if(role === 'admin') {
-    links.push({ id: 'admin-dash', label: 'Dashboard' });
-    if(subRole === 'headteacher' || subRole === 'secretary') links.push({ id: 'admin-admissions', label: 'Admissions Registry' });
-    if(subRole === 'headteacher' || subRole === 'dos') links.push({ id: 'admin-academics', label: 'Academics & Exams' });
-    if(subRole === 'headteacher' || subRole === 'dod') links.push({ id: 'admin-discipline', label: 'Discipline & Conduct' });
-    if(subRole === 'headteacher' || subRole === 'bursar') links.push({ id: 'admin-fees', label: 'Fees & Bursar' });
-    if(subRole === 'headteacher') links.push({ id: 'admin-users', label: 'Staff & Role Directory' });
-  } else if(role === 'teacher') {
-    if(subRole === 'class_teacher') links.push({ id: 'teacher-class', label: 'My Homeroom Class' });
-    if(subRole === 'subject_teacher' || subRole === 'class_teacher') links.push({ id: 'teacher-grade', label: 'Enter Marks' });
-    if(subRole === 'class_teacher' || subRole === 'subject_teacher') links.push({ id: 'teacher-attend', label: 'Take Attendance' });
-    if(subRole === 'hod') links.push({ id: 'hod-moderation', label: 'HOD Mark Moderation' });
-  } else if(role === 'student') {
-    links = [
-      { id: 'student-id', label: 'Digital ID' },
-      { id: 'student-marks', label: 'My Marks & Rank' },
-      { id: 'student-attend', label: 'My Attendance' },
-      { id: 'student-fees', label: 'Fee Status' }
-    ];
-  } else if(role === 'parent') {
-    links = [
-      { id: 'parent-dash', label: "Child's Progress" },
-      { id: 'parent-fees', label: 'Fee Balance' },
-      { id: 'parent-comms', label: 'Contact Teachers' }
-    ];
-  }
-
-  sidebar.innerHTML = links.map((l, i) => `<button onclick="navPortal('${l.id}', this)" class="${i===0?'active':''}">${l.label}</button>`).join("");
-  if(links.length > 0) navPortal(links[0].id, sidebar.querySelector('button'));
-}
-
-window.navPortal = async (view, btn) => {
-  if(btn) {
-    document.querySelectorAll('.portal-sidebar button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  try {
-    if (view === 'admin-dash') await renderAdminDash();
-    if (view === 'admin-admissions') await renderAdminAdmissions();
-    if (view === 'admin-academics') await renderAdminAcademics();
-    if (view === 'admin-discipline') await renderAdminDiscipline();
-    if (view === 'admin-fees') await renderAdminFees();
-    if (view === 'admin-users') await renderAdminUsers();
-    
-    if (view === 'teacher-class') await renderTeacherClass();
-    if (view === 'teacher-grade') await renderTeacherGradebook();
-    if (view === 'teacher-attend') await renderTeacherAttendance();
-    if (view === 'hod-moderation') await renderHODModeration();
-
-    if (view === 'student-id') await renderStudentID();
-    if (view === 'student-marks') await renderStudentMarks();
-    if (view === 'student-attend') await renderStudentAttendance();
-    if (view === 'student-fees') await renderStudentFees();
-
-    if (view === 'parent-dash') await renderParentDash();
-    if (view === 'parent-fees') await renderParentFees();
-    if (view === 'parent-comms') await renderParentComms();
-  } catch(e) {
-    mainContent.innerHTML = `<div class="glass-panel" style="padding:24px; color:#f87171;">Error: ${e.message}</div>`;
-  }
-};
-
-// ==========================================
-// ADMIN VIEWS
-// ==========================================
-async function renderAdminDash() {
-  const users = await dbGet('users');
-  const apps = await dbGet('admissions');
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">School Overview</h3></div>
-    <div class="metrics">
-      <div class="metric glass-panel"><div class="label">Total Users</div><div class="val">${users.length}</div></div>
-      <div class="metric glass-panel"><div class="label">Pending Apps</div><div class="val">${apps.filter(a=>a.status==='Pending').length}</div></div>
-    </div>
-  `;
-}
-
-async function renderAdminAdmissions() {
-  const apps = await dbGet('admissions');
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Admissions Registry</h3></div>
-    <div class="glass-panel table-wrap" style="padding:24px;">
-      <table class="data-table">
-        <thead><tr><th>Applicant</th><th>Program</th><th>Status</th><th>Action</th></tr></thead>
-        <tbody>
-          ${apps.map(a => `
-            <tr>
-              <td>${a.studentName}</td>
-              <td>${a.program}</td>
-              <td><span class="pill ${a.status==='Admitted'?'success':''}">${a.status || 'Pending'}</span></td>
-              <td>${a.status === 'Pending' ? `<button onclick="openEnroll('${a.id}', '${a.studentName}')" class="btn btn-primary" style="padding:6px 12px; font-size:11px;">Approve</button>` : 'Done'}</td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-    </div>
-  `;
-}
-
-async function renderAdminAcademics() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Academics & Timetables</h3></div><p>DOS Module: Manage curriculum, subject-to-teacher allocations, and exam locks here.</p>`;
-}
-
-async function renderAdminDiscipline() {
-  const logs = await dbGet('discipline');
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Discipline Logs</h3></div>
-    <div class="glass-panel table-wrap" style="padding:24px;">
-      <table class="data-table">
-        <thead><tr><th>Student ID</th><th>Incident</th><th>Severity</th><th>Action Taken</th></tr></thead>
-        <tbody>${logs.map(l => `<tr><td>${l.studentId}</td><td>${l.incident}</td><td>${l.severity}</td><td>${l.action}</td></tr>`).join('')}</tbody>
-      </table>
-    </div>
-  `;
-}
-
-async function renderAdminFees() {
-  const fees = await dbGet('fees');
-  const users = await dbGet('users');
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Bursar Ledger</h3></div>
-    <div class="glass-panel table-wrap" style="padding:24px;">
-      <table class="data-table">
-        <thead><tr><th>Student</th><th>Term</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead>
-        <tbody>
-          ${fees.map(f => { const s = users.find(u => u.uid === f.studentId); return `<tr><td>${s ? s.name : 'Unknown'}</td><td>${f.term}</td><td>${f.totalFees}</td><td>${f.amountPaid}</td><td>${f.balance}</td><td><span class="pill ${f.status==='Paid'?'success':'danger'}">${f.status}</span></td></tr>`; }).join('')}
-        </tbody>
-      </table>
-    </div>
-  `;
-}
-
-async function renderAdminUsers() {
-  const users = await dbGet('users');
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Staff & Role Directory</h3></div>
-    <div class="glass-panel table-wrap" style="padding:24px;">
-      <table class="data-table">
-        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>SubRole</th></tr></thead>
-        <tbody>${users.map(u => `<tr><td>${u.name}</td><td>${u.email}</td><td><span class="pill">${u.role}</span></td><td>${u.subRole || '-'}</td></tr>`).join('')}</tbody>
-      </table>
-    </div>
-  `;
-}
-
-// ==========================================
-// TEACHER VIEWS
-// ==========================================
-async function renderTeacherClass() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">My Homeroom Class</h3></div><p>Class Teacher Module: Manage class roster, behavior, and parent communications.</p>`;
-}
-
-async function renderTeacherGradebook() {
-  const students = (await dbGet('users')).filter(u => u.role === 'student');
-  const grades = await dbGet('marks');
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Subject Marks Entry</h3></div>
-    <div class="glass-panel" style="padding:24px; margin-bottom:24px;">
-      <div class="form-grid">
-        <div class="field"><label>Select Student</label><select id="gradeStudent">${students.map(s => `<option value="${s.uid}">${s.name}</option>`).join('')}</select></div>
-        <div class="field"><label>Subject</label><input type="text" id="gradeSubject" placeholder="e.g. Mathematics" /></div>
-        <div class="field"><label>CAT (out of 30)</label><input type="number" id="gradeCat" value="0" /></div>
-        <div class="field"><label>Exam (out of 70)</label><input type="number" id="gradeExam" value="0" /></div>
-      </div>
-      <button onclick="saveGrade()" class="btn btn-primary" style="margin-top:16px;">Save Mark</button>
-    </div>
-    <div class="glass-panel table-wrap" style="padding:24px;">
-      <table class="data-table"><thead><tr><th>Student ID</th><th>Subject</th><th>CAT</th><th>Exam</th><th>Total</th><th>Grade</th></tr></thead>
-      <tbody>${grades.map(g => `<tr><td>${g.studentId}</td><td>${g.subject}</td><td>${g.cat}</td><td>${g.exam}</td><td>${g.total}</td><td><span class="pill">${g.grade}</span></td></tr>`).join('')}</tbody></table>
-    </div>
-  `;
-}
-
-async function renderTeacherAttendance() {
-  const students = (await dbGet('users')).filter(u => u.role === 'student');
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Daily Attendance</h3></div>
-    <div class="glass-panel" style="padding:24px;">
-      <div class="form-grid">
-        <div class="field"><label>Date</label><input type="date" id="attDate" value="${new Date().toISOString().split('T')[0]}" /></div>
-        <div class="field"><label>Student</label><select id="attStudent">${students.map(s => `<option value="${s.uid}">${s.name}</option>`).join('')}</select></div>
-        <div class="field"><label>Status</label><select id="attStatus"><option>Present</option><option>Absent</option><option>Late</option></select></div>
-      </div>
-      <button onclick="saveAttendance()" class="btn btn-primary" style="margin-top:16px;">Log Attendance</button>
-    </div>
-  `;
-}
-
-async function renderHODModeration() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">HOD Mark Moderation</h3></div><p>Review submitted subject marks before DOS lock here.</p>`;
-}
-
-// ==========================================
-// STUDENT VIEWS
-// ==========================================
-async function renderStudentID() {
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">Digital ID Card</h3></div>
-    <div class="id-card glass-panel">
-      <div class="avatar">${(currentUser.name || 'S').charAt(0)}</div>
-      <h3>${currentUser.name}</h3>
-      <p>${currentUser.email}</p>
-      <div style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.2); padding-top:16px; display:flex; justify-content:space-between;">
-        <span style="font-size:12px; color:var(--text-muted);">School Code</span>
-        <span style="font-weight:700; color:var(--gold);">250405</span>
-      </div>
-    </div>
-  `;
-}
-
-async function renderStudentMarks() {
-  const grades = (await dbGet('marks')).filter(g => g.studentId === currentUser.uid);
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">My Marks</h3></div>
-    <div class="glass-panel" style="padding:32px;">
-      <table class="data-table">
-        <thead><tr><th>Subject</th><th>CAT (30)</th><th>Exam (70)</th><th>Total</th><th>Grade</th></tr></thead>
-        <tbody>${grades.map(g => `<tr><td>${g.subject}</td><td>${g.cat}</td><td>${g.exam}</td><td>${g.total}</td><td><span class="pill">${g.grade}</span></td></tr>`).join('')}</tbody>
-      </table>
-    </div>
-  `;
-}
-
-async function renderStudentAttendance() {
-  const atts = (await dbGet('attendance')).filter(a => a.studentId === currentUser.uid);
-  const present = atts.filter(a => a.status === 'Present').length;
-  const rate = atts.length ? Math.round((present / atts.length) * 100) : 100;
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">My Attendance</h3></div>
-    <div class="glass-panel" style="padding:32px;">
-      <div class="metric glass-panel" style="margin-bottom:24px; background:rgba(0,0,0,0.2);">
-        <div class="label">Attendance Rate</div>
-        <div class="val" style="color:#4ade80;">${rate}%</div>
-      </div>
-      <table class="data-table">
-        <thead><tr><th>Date</th><th>Status</th></tr></thead>
-        <tbody>${atts.map(a => `<tr><td>${a.date}</td><td><span class="pill ${a.status==='Present'?'success':'danger'}">${a.status}</span></td></tr>`).join('')}</tbody>
-      </table>
-    </div>
-  `;
-}
-
-async function renderStudentFees() {
-  const fees = (await dbGet('fees')).filter(f => f.studentId === currentUser.uid);
-  mainContent.innerHTML = `
-    <div class="dash-header glass-panel"><h3 style="margin:0;">My Fee Status</h3></div>
-    <div class="glass-panel table-wrap" style="padding:24px;">
-      <table class="data-table">
-        <thead><tr><th>Term</th><th>Total Fees</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead>
-        <tbody>${fees.map(f => `<tr><td>${f.term}</td><td>${f.totalFees}</td><td>${f.amountPaid}</td><td>${f.balance}</td><td><span class="pill ${f.status==='Paid'?'success':'danger'}">${f.status}</span></td></tr>`).join('')}</tbody>
-      </table>
-    </div>
-  `;
-}
-
-// ==========================================
-// PARENT VIEWS
-// ==========================================
-async function renderParentDash() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Child's Progress</h3></div><p>Parent Module: View child's marks, attendance, and conduct.</p>`;
-}
-async function renderParentFees() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Fee Balance</h3></div><p>Parent Module: View fee balances.</p>`;
-}
-async function renderParentComms() {
-  mainContent.innerHTML = `<div class="dash-header glass-panel"><h3 style="margin:0;">Contact Teachers</h3></div><p>Parent Module: Message Class Teachers, DOD, or Bursar.</p>`;
-}
-
-// ==========================================
-// ACTIONS & INIT
-// ==========================================
-window.saveGrade = async () => {
-  const sid = document.getElementById('gradeStudent').value;
-  const sub = document.getElementById('gradeSubject').value;
-  const cat = parseInt(document.getElementById('gradeCat').value);
-  const exam = parseInt(document.getElementById('gradeExam').value);
-  const total = cat + exam;
-  let grade = total >= 80 ? 'A' : total >= 70 ? 'B' : total >= 60 ? 'C' : 'D';
-  await dbAdd('marks', { studentId: sid, subject: sub, cat, exam, total, grade });
-  navPortal('teacher-grade', document.querySelector('.portal-sidebar button.active'));
-};
-
-window.saveAttendance = async () => {
-  await dbAdd('attendance', { studentId: document.getElementById('attStudent').value, date: document.getElementById('attDate').value, status: document.getElementById('attStatus').value });
-  alert('Attendance saved!');
-};
-
-document.getElementById("admissionForm").onsubmit = async (e) => {
-  e.preventDefault();
-  const data = {
-    studentName: document.getElementById("studentName").value,
-    program: document.getElementById("program").value,
-    email: document.getElementById("email").value,
-    tracking: "GAT-" + Math.random().toString(36).substring(2,8).toUpperCase(),
-    status: "Pending"
-  };
-  await dbAdd('admissions', data);
-  document.getElementById("admissionStatus").textContent = `Success! Tracking Number: ${data.tracking}`;
-  document.getElementById("admissionStatus").className = "form-status ok";
-  e.target.reset();
-};
-
-(async () => {
-  await initFirebase();
-  await setupAuthListener();
-})();
-</script>
+  <!-- ============ SCRIPTS ============ -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>
