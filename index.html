@@ -3,31 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>G.S. Gatare TSS · 250405</title>
+  <title>G.S. Gatare TSS · 250405 · Where Discipline Shapes Tomorrow</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F3D2E'/%3E%3Cpath d='M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z' fill='%23F59E0B'/%3E%3C/svg%3E" />
   
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+  
+  <!-- Icons & Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
-    /* ================= CSS ================= */
+    /* ================= DESIGN SYSTEM ================= */
     :root {
-      --green-900: #0F3D2E; --green-800: #14532D; --amber-500: #F59E0B; --amber-600: #D97706;
-      --bg: #F8FAFC; --bg-elev: #FFFFFF; --ink: #0F172A; --muted: #64748B; --line: #E2E8F0;
-      --shadow: 0 10px 30px rgba(15,23,42,0.08); --radius: 16px;
+      --green-900: #0F3D2E;
+      --green-800: #14532D;
+      --amber-500: #F59E0B;
+      --amber-600: #D97706;
+      --bg: #F8FAFC;
+      --bg-elev: #FFFFFF;
+      --ink: #0F172A;
+      --ink-soft: #334155;
+      --muted: #64748B;
+      --line: #E2E8F0;
+      --shadow-sm: 0 1px 3px rgba(15,23,42,0.08);
+      --shadow-md: 0 4px 6px -1px rgba(15,23,42,0.1), 0 2px 4px -1px rgba(15,23,42,0.06);
+      --shadow-lg: 0 20px 25px -5px rgba(15,23,42,0.1), 0 10px 10px -5px rgba(15,23,42,0.04);
+      --radius: 16px;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.5);
     }
+
     [data-theme="dark"] {
-      --bg: #0B1120; --bg-elev: #1E293B; --ink: #F8FAFC; --muted: #94A3B8; --line: #334155;
-      --shadow: 0 10px 30px rgba(0,0,0,0.5);
+      --bg: #060B14;
+      --bg-elev: #0F172A;
+      --ink: #F8FAFC;
+      --ink-soft: #CBD5E1;
+      --muted: #94A3B8;
+      --line: #1E293B;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.5);
+      --glass-bg: rgba(15, 23, 42, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.1);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-    body { background: var(--bg); color: var(--ink); transition: 0.3s; overflow-x: hidden; line-height: 1.6; }
+    body { background: var(--bg); color: var(--ink); transition: 0.3s ease; overflow-x: hidden; line-height: 1.6; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
-    button { cursor: pointer; font-family: inherit; border: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
     
     /* Utilities */
     .container { width: min(100% - 2rem, 1200px); margin: 0 auto; }
@@ -35,366 +63,476 @@
     .flex { display: flex; gap: 1rem; align-items: center; }
     .flex-between { display: flex; justify-content: space-between; align-items: center; }
     .grid { display: grid; gap: 1.5rem; }
-    .title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; color: var(--green-900); }
-    [data-theme="dark"] .title { color: var(--amber-500); }
     
-    /* Buttons */
-    .btn { padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transition: 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center; }
-    .btn-primary { background: var(--green-900); color: white; }
-    .btn-primary:hover { background: var(--green-800); transform: translateY(-2px); }
-    .btn-outline { background: transparent; border: 1px solid var(--line); color: var(--ink); }
-    .btn-outline:hover { border-color: var(--green-900); color: var(--green-900); }
-    .btn-amber { background: var(--amber-500); color: #0F172A; }
-    .btn-amber:hover { background: var(--amber-600); transform: translateY(-2px); }
-    .btn-block { width: 100%; }
+    /* Typography */
+    h1, h2, h3, h4 { letter-spacing: -0.02em; }
+    .title { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+    .subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 2rem; }
+    .text-gradient { background: linear-gradient(135deg, var(--green-900), var(--amber-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    [data-theme="dark"] .text-gradient { background: linear-gradient(135deg, #4ade80, var(--amber-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-    /* Header */
-    header { background: var(--bg-elev); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; padding: 1rem 0; box-shadow: var(--shadow); }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem; }
-    .logo i { color: var(--amber-500); }
-    nav ul { display: flex; gap: 2rem; font-weight: 500; font-size: 0.9rem; }
-    nav a:hover { color: var(--amber-500); }
+    /* Buttons */
+    .btn { padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .btn-primary { background: var(--green-900); color: white; box-shadow: 0 4px 12px rgba(15, 61, 46, 0.3); }
+    .btn-primary:hover { background: var(--green-800); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15, 61, 46, 0.4); }
+    [data-theme="dark"] .btn-primary { background: var(--amber-500); color: #0F172A; }
+    [data-theme="dark"] .btn-primary:hover { background: var(--amber-600); }
+    .btn-outline { border: 1px solid var(--line); background: var(--bg-elev); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--green-900); color: var(--green-900); }
+    [data-theme="dark"] .btn-outline:hover { border-color: var(--amber-500); color: var(--amber-500); }
+    .btn-block { width: 100%; }
     
+    /* Glassmorphism */
+    .glass { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: var(--radius); box-shadow: var(--shadow-md); }
+
+    /* Public Header */
+    .site-header { position: sticky; top: 0; z-index: 100; padding: 1rem 0; background: var(--glass-bg); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 0.6rem; }
+    .logo svg { width: 35px; height: 35px; }
+    nav ul { display: flex; gap: 2rem; font-weight: 600; font-size: 0.9rem; color: var(--ink-soft); }
+    nav a:hover { color: var(--green-900); }
+    [data-theme="dark"] nav a:hover { color: var(--amber-500); }
+
+    /* Hero Section */
+    .hero { padding: 8rem 0; position: relative; overflow: hidden; background: radial-gradient(circle at 100% 0%, rgba(245,158,11,0.08) 0%, transparent 50%), radial-gradient(circle at 0% 100%, rgba(20,83,45,0.08) 0%, transparent 50%); }
+    .hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; }
+    .hero-title { font-size: 4.5rem; font-family: 'Playfair Display', serif; font-weight: 800; line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -0.03em; }
+    .hero-desc { font-size: 1.2rem; color: var(--muted); max-width: 500px; margin-bottom: 2rem; }
+    .hero-card { padding: 2.5rem; transform: perspective(1000px) rotateY(-5deg); transition: transform 0.5s ease; }
+    .hero-card:hover { transform: perspective(1000px) rotateY(0deg); }
+
+    /* Metrics */
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: -3rem; position: relative; z-index: 10; }
+    .metric-card { background: var(--bg-elev); padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow-lg); text-align: center; border: 1px solid var(--line); }
+    .metric-card h3 { font-size: 2rem; color: var(--green-900); font-weight: 800; }
+    [data-theme="dark"] .metric-card h3 { color: var(--amber-500); }
+    .metric-card p { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
+
     /* Sections */
-    .section { padding: 5rem 0; }
-    .hero { background: linear-gradient(135deg, var(--green-900), var(--green-800)); color: white; padding: 6rem 0; text-align: center; }
-    .hero .title { color: white; font-size: 3.5rem; }
-    .hero p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; max-width: 600px; margin-inline: auto; }
+    .section { padding: 6rem 0; }
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
     
-    /* Cards & Forms */
-    .card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--muted); }
-    .form-group input, .form-group select { width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); outline: none; }
-    .form-group input:focus { border-color: var(--green-900); }
+    /* Cards (Programs, News) */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .modern-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; transition: all 0.3s ease; box-shadow: var(--shadow-sm); }
+    .modern-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--green-800); }
+    .modern-card .icon-box { width: 50px; height: 50px; border-radius: 12px; display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 1.5rem; background: rgba(20,83,45,0.1); color: var(--green-900); }
+    [data-theme="dark"] .modern-card .icon-box { background: rgba(245,158,11,0.1); color: var(--amber-500); }
+
+    /* Footer */
+    footer { background: var(--green-900); color: #CBD5E1; padding: 4rem 0 2rem; margin-top: 4rem; }
+    footer .logo { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 3rem; padding-top: 2rem; text-align: center; font-size: 0.9rem; }
 
     /* Dashboard Layout */
-    .dashboard { display: flex; min-height: 100vh; }
-    .sidebar { width: 250px; background: var(--green-900); color: white; padding: 2rem 1rem; flex-shrink: 0; }
-    .sidebar a { display: block; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.8; cursor: pointer; }
-    .sidebar a:hover, .sidebar a.active { background: rgba(255,255,255,0.1); opacity: 1; }
-    .main-content { flex: 1; padding: 2rem; background: var(--bg); }
-    .dashboard-header { background: var(--bg-elev); padding: 1rem 2rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .dashboard { display: flex; min-height: 100vh; background: var(--bg); }
+    .sidebar { width: 260px; background: var(--green-900); color: white; padding: 2rem 1rem; flex-shrink: 0; display: flex; flex-direction: column; }
+    .sidebar-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2.5rem; padding: 0 1rem; color: white; }
+    .sidebar-logo i { color: var(--amber-500); }
+    .sidebar a { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1rem; border-radius: 10px; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.7); transition: all 0.2s; cursor: pointer; }
+    .sidebar a:hover, .sidebar a.active { background: rgba(255,255,255,0.1); color: white; }
+    .sidebar a.active { border-left: 3px solid var(--amber-500); border-radius: 4px 10px 10px 4px; }
     
-    /* Dashboard Widgets */
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-    .kpi { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; align-items: center; gap: 1rem; }
-    .kpi-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(20,83,45,0.1); color: var(--green-900); display: grid; place-items: center; font-size: 1.5rem; }
-    [data-theme="dark"] .kpi-icon { background: rgba(245,158,11,0.1); color: var(--amber-500); }
-    .kpi-info h3 { font-size: 1.5rem; margin: 0; }
-    .kpi-info p { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; }
+    .main-content { flex: 1; padding: 2rem 3rem; overflow-y: auto; }
+    .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .profile-chip { display: flex; align-items: center; gap: 0.75rem; background: var(--bg-elev); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid var(--line); }
+    .avatar { width: 35px; height: 35px; border-radius: 50%; background: var(--amber-500); color: var(--green-900); display: grid; place-items: center; font-weight: 700; font-size: 0.85rem; }
+
+    /* KPIs & Tables */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .kpi-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; align-items: center; gap: 1rem; box-shadow: var(--shadow-sm); }
+    .kpi-icon { width: 50px; height: 50px; border-radius: 12px; display: grid; place-items: center; font-size: 1.3rem; }
+    .kpi-info h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .kpi-info p { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
     
-    /* Tables */
-    table { width: 100%; border-collapse: collapse; background: var(--bg-elev); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-    th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
-    th { background: rgba(148,163,184,0.1); font-weight: 600; color: var(--muted); }
-    
-    /* Digital ID Card */
-    .id-card { background: linear-gradient(135deg, var(--green-900), var(--green-800)); color: white; border-radius: var(--radius); padding: 1.5rem; width: 300px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-    .id-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(245,158,11,0.2); border-radius: 50%; }
-    .id-card .qr { background: white; padding: 5px; border-radius: 8px; width: 60px; height: 60px; }
+    .table-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .table-header { padding: 1.5rem; border-bottom: 1px solid var(--line); font-weight: 700; font-size: 1.1rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 1rem 1.5rem; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+    th { background: rgba(148,163,184,0.05); font-weight: 600; color: var(--muted); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+    tr:last-child td { border-bottom: none; }
+
+    /* Badges */
+    .badge { padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+    .badge-success { background: rgba(34,197,94,0.15); color: #15803d; }
+    .badge-warning { background: rgba(245,158,11,0.15); color: #b45309; }
+    .badge-danger { background: rgba(239,68,68,0.15); color: #dc2626; }
+
+    /* Digital ID */
+    .id-card { background: linear-gradient(135deg, var(--green-900), var(--green-800)); color: white; border-radius: 20px; padding: 2rem; box-shadow: var(--shadow-lg); position: relative; overflow: hidden; max-width: 350px; }
+    .id-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 180px; height: 180px; background: rgba(245,158,11,0.2); border-radius: 50%; }
+    .id-card .qr { background: white; padding: 5px; border-radius: 8px; width: 65px; height: 65px; }
 
     /* Toast */
-    #toast { position: fixed; top: 20px; right: 20px; padding: 1rem 1.5rem; background: var(--green-900); color: white; border-radius: 8px; box-shadow: var(--shadow); z-index: 9999; transform: translateX(150%); transition: 0.3s; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+    #toast { position: fixed; top: 20px; right: 20px; padding: 1rem 1.5rem; background: var(--green-900); color: white; border-radius: 12px; box-shadow: var(--shadow-lg); z-index: 9999; transform: translateX(150%); transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); display: flex; align-items: center; gap: 0.75rem; font-weight: 600; font-size: 0.9rem; }
     #toast.show { transform: translateX(0); }
 
-    @media (max-width: 768px) {
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-title { font-size: 3rem; }
+      .hero-desc { margin-inline: auto; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
       nav ul { display: none; }
       .dashboard { flex-direction: column; }
-      .sidebar { width: 100%; display: flex; overflow-x: auto; padding: 1rem; }
-      .sidebar a { white-space: nowrap; margin: 0; }
-      .hero .title { font-size: 2.5rem; }
+      .sidebar { width: 100%; padding: 1rem; flex-direction: row; overflow-x: auto; }
+      .sidebar-logo { display: none; }
+      .sidebar a { margin: 0 0.5rem 0 0; white-space: nowrap; }
+      .main-content { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Toast Notification -->
-  <div id="toast">Message</div>
+  <div id="toast"><i class="fa-solid fa-circle-check"></i> <span>Message</span></div>
 
   <!-- ================== PUBLIC WEBSITE ================== -->
   <div id="view-public">
-    <header>
+    <header class="site-header">
       <div class="container flex-between">
-        <div class="logo"><i class="fa-solid fa-shield-halved"></i> G.S. Gatare TSS</div>
+        <div class="logo">
+          <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0F3D2E"/><path d="M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z" fill="#F59E0B"/><path d="M24 30l6 6 12-12" stroke="#0F3D2E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          G.S. Gatare TSS
+        </div>
         <nav>
           <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#programs">Programs</a></li>
             <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
         <div class="flex">
-          <button class="btn btn-outline" onclick="toggleTheme()"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
-          <button class="btn btn-primary" onclick="showLogin()">School Portal</button>
+          <button class="btn btn-outline" onclick="toggleTheme()" style="padding: 0.6rem; border-radius: 50%; width: 42px; height: 42px;"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
+          <button class="btn btn-primary" onclick="showLogin()"><i class="fa-solid fa-arrow-right-to-bracket"></i> School Portal</button>
         </div>
       </div>
     </header>
 
     <section class="hero">
-      <div class="container">
-        <span style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;">SCHOOL CODE 250405</span>
-        <h1 class="title" style="margin-top: 1rem;">Where Discipline Shapes Tomorrow</h1>
-        <p>A flagship learning community in Nyamagabe District, Rwanda — blending academic excellence with hands-on TVET skills.</p>
-        <div class="flex" style="justify-content: center;">
-          <button class="btn btn-amber" onclick="document.getElementById('admissions').scrollIntoView({behavior: 'smooth'})">Apply Online</button>
+      <div class="container hero-inner">
+        <div>
+          <span style="display: inline-block; background: rgba(245,158,11,0.15); color: var(--amber-600); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 1.5rem;">SCHOOL CODE 250405</span>
+          <h1 class="hero-title">Where <span class="text-gradient">Discipline</span> Shapes Tomorrow</h1>
+          <p class="hero-desc">A flagship learning community in Nyamagabe District, Rwanda — blending academic excellence with hands-on TVET skills.</p>
+          <div class="flex" style="gap: 1rem;">
+            <button class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;" onclick="document.getElementById('admissions').scrollIntoView({behavior: 'smooth'})">Apply Online</button>
+            <button class="btn btn-outline" style="padding: 1rem 2rem; font-size: 1.1rem;" onclick="showLogin()">Enter Portal</button>
+          </div>
+        </div>
+        <div class="hero-card glass">
+          <div class="flex-between" style="margin-bottom: 1.5rem;">
+            <span style="font-weight: 700; color: var(--muted); font-size: 0.85rem; letter-spacing: 1px;">ADMISSIONS 2026</span>
+            <span class="badge badge-success">OPEN</span>
+          </div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; line-height: 1.3; margin-bottom: 1.5rem;">One unified portal. Every level. Every child.</h3>
+          <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center; background: rgba(148,163,184,0.1); padding: 1rem; border-radius: 12px;">
+            <div><h4 style="font-size: 1.5rem; color: var(--green-900);">1,280</h4><span style="font-size: 0.7rem; color: var(--muted); font-weight: 700;">LEARNERS</span></div>
+            <div><h4 style="font-size: 1.5rem; color: var(--green-900);">7</h4><span style="font-size: 0.7rem; color: var(--muted); font-weight: 700;">PATHWAYS</span></div>
+            <div><h4 style="font-size: 1.5rem; color: var(--green-900);">4</h4><span style="font-size: 0.7rem; color: var(--muted); font-weight: 700;">TVET TRADES</span></div>
+          </div>
         </div>
       </div>
     </section>
+
+    <div class="container">
+      <div class="metrics">
+        <div class="metric-card"><h3>1,248</h3><p>Total Learners</p></div>
+        <div class="metric-card"><h3>7</h3><p>Academic Pathways</p></div>
+        <div class="metric-card"><h3>4</h3><p>TVET Programs</p></div>
+        <div class="metric-card"><h3>100%</h3><p>Digital Portal Access</p></div>
+      </div>
+    </div>
 
     <section id="programs" class="section container">
-      <h2 class="title" style="text-align: center;">Our Programs</h2>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-        <div class="card">
-          <i class="fa-solid fa-seedling" style="font-size: 2rem; color: var(--green-800); margin-bottom: 1rem;"></i>
-          <h3>TVET Agriculture (AGR)</h3>
-          <p style="color: var(--muted); margin-top: 0.5rem;">Practical farming skills, crop management, and agri-business knowledge.</p>
+      <div class="section-head">
+        <h2 class="title">Trade-ready skills, <span class="text-gradient">employer-ready</span> graduates.</h2>
+        <p class="subtitle">Our TVET flagship programs combine theory, practical labs and industry exposure.</p>
+      </div>
+      <div class="card-grid">
+        <div class="modern-card">
+          <div class="icon-box"><i class="fa-solid fa-seedling"></i></div>
+          <h3>Agriculture (AGR)</h3>
+          <p style="color: var(--muted); margin: 0.5rem 0 1.5rem;">Level 3 & 4 · Crop production, horticulture, soil fertility and farm management.</p>
+          <a href="#" style="color: var(--green-900); font-weight: 700; font-size: 0.9rem;">Learn more <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="card">
-          <i class="fa-solid fa-cow" style="font-size: 2rem; color: var(--amber-600); margin-bottom: 1rem;"></i>
-          <h3>TVET Animal Husbandry (ANH)</h3>
-          <p style="color: var(--muted); margin-top: 0.5rem;">Livestock health, breeding, and dairy production for commercial farming.</p>
+        <div class="modern-card">
+          <div class="icon-box" style="background: rgba(245,158,11,0.1); color: var(--amber-600);"><i class="fa-solid fa-cow"></i></div>
+          <h3>Animal Husbandry (ANH)</h3>
+          <p style="color: var(--muted); margin: 0.5rem 0 1.5rem;">Level 3 & 4 · Livestock care, breeding, animal health and dairy production.</p>
+          <a href="#" style="color: var(--green-900); font-weight: 700; font-size: 0.9rem;">Learn more <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="card">
-          <i class="fa-solid fa-microscope" style="font-size: 2rem; color: #3b82f6; margin-bottom: 1rem;"></i>
+        <div class="modern-card">
+          <div class="icon-box" style="background: rgba(59,130,246,0.1); color: #2563eb;"><i class="fa-solid fa-microscope"></i></div>
           <h3>A'Level MS1</h3>
-          <p style="color: var(--muted); margin-top: 0.5rem;">Math, Physics, Chemistry & Biology. The gateway to medicine and engineering.</p>
+          <p style="color: var(--muted); margin: 0.5rem 0 1.5rem;">Math, Physics, Chemistry & Biology — the gateway to medicine and engineering.</p>
+          <a href="#" style="color: var(--green-900); font-weight: 700; font-size: 0.9rem;">Learn more <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </section>
 
-    <section id="admissions" class="section" style="background: var(--bg-elev);">
+    <section id="admissions" class="section" style="background: var(--bg-elev); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
       <div class="container">
-        <h2 class="title" style="text-align: center;">Online Admission Portal</h2>
-        <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <div class="section-head">
+          <h2 class="title">Online Admission Portal</h2>
+          <p class="subtitle">Submit your application online, upload documents, and receive your unique Application ID instantly.</p>
+        </div>
+        <div class="glass" style="max-width: 600px; margin: 0 auto; padding: 2.5rem;">
           <form id="admissionForm">
             <div class="grid" style="grid-template-columns: 1fr 1fr;">
-              <div class="form-group"><label>Full Name</label><input type="text" id="appName" required></div>
-              <div class="form-group"><label>Phone</label><input type="tel" id="appPhone" required></div>
+              <div><label style="font-size: 0.85rem; font-weight: 600; color: var(--muted);">Full Name *</label><input type="text" id="appName" required style="width: 100%; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);"></div>
+              <div><label style="font-size: 0.85rem; font-weight: 600; color: var(--muted);">Phone *</label><input type="tel" id="appPhone" required style="width: 100%; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);"></div>
             </div>
-            <div class="grid" style="grid-template-columns: 1fr 1fr;">
-              <div class="form-group">
-                <label>Level</label>
-                <select id="appLevel" required>
-                  <option value="TVET AGR">TVET AGR</option>
-                  <option value="TVET ANH">TVET ANH</option>
-                  <option value="A'Level MS1">A'Level MS1</option>
-                  <option value="O'Level">O'Level</option>
+            <div class="grid" style="grid-template-columns: 1fr 1fr; margin-top: 1rem;">
+              <div><label style="font-size: 0.85rem; font-weight: 600; color: var(--muted);">Level *</label>
+                <select id="appLevel" required style="width: 100%; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);">
+                  <option value="TVET AGR">TVET AGR</option><option value="TVET ANH">TVET ANH</option><option value="A'Level MS1">A'Level MS1</option><option value="O'Level">O'Level</option>
                 </select>
               </div>
-              <div class="form-group"><label>Date</label><input type="date" id="appDate" required></div>
+              <div><label style="font-size: 0.85rem; font-weight: 600; color: var(--muted);">Date *</label><input type="date" id="appDate" required style="width: 100%; padding: 0.8rem; margin-top: 0.5rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink);"></div>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.5rem; padding: 1rem;">Submit Application</button>
           </form>
-          <div id="appResult" style="margin-top: 1rem; text-align: center; font-weight: 600; color: var(--green-800);"></div>
+          <div id="appResult" style="margin-top: 1.5rem;"></div>
         </div>
       </div>
     </section>
+
+    <footer id="contact">
+      <div class="container grid" style="grid-template-columns: 2fr 1fr 1fr;">
+        <div>
+          <div class="logo"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#F59E0B"/><path d="M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z" fill="#0F3D2E"/></svg> G.S. Gatare TSS</div>
+          <p style="margin-top: 1rem; font-size: 0.9rem; max-width: 300px;">Discipline Leads to Success. A modern Rwandan learning community in Nyamagabe District.</p>
+        </div>
+        <div>
+          <h4 style="color: white; margin-bottom: 1rem;">Contact</h4>
+          <ul style="font-size: 0.9rem; display: grid; gap: 0.5rem;">
+            <li><i class="fa-solid fa-location-dot"></i> Gashasha Cell, Gatare Sector</li>
+            <li><i class="fa-solid fa-envelope"></i> gsgatare@gmail.com</li>
+            <li><i class="fa-solid fa-phone"></i> +250 785 486 933</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: white; margin-bottom: 1rem;">Quick Links</h4>
+          <ul style="font-size: 0.9rem; display: grid; gap: 0.5rem;">
+            <li><a href="#" style="color: #CBD5E1;">About Us</a></li>
+            <li><a href="#" style="color: #CBD5E1;">Admissions</a></li>
+            <li><a href="#" style="color: #CBD5E1;">School Portal</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        © 2026 G.S. Gatare TSS · Engineered by <strong style="color: var(--amber-500);">InezaDev</strong>
+      </div>
+    </footer>
   </div>
 
   <!-- ================== LOGIN SCREEN ================== -->
-  <div id="view-login" class="hidden section" style="min-height: 100vh; display: grid; place-items: center; background: var(--bg);">
-    <div class="card" style="width: 100%; max-width: 400px;">
-      <div style="text-align: center; margin-bottom: 2rem;">
-        <i class="fa-solid fa-shield-halved" style="font-size: 3rem; color: var(--green-900);"></i>
-        <h2 class="title" style="font-size: 1.5rem; margin-top: 1rem;">School Portal</h2>
-        <p style="color: var(--muted); font-size: 0.9rem;">Select your role to login</p>
+  <div id="view-login" class="hidden" style="min-height: 100vh; display: grid; place-items: center; background: radial-gradient(circle at 50% 50%, var(--bg-elev) 0%, var(--bg) 100%);">
+    <div class="glass" style="width: 100%; max-width: 420px; padding: 3rem; text-align: center; position: relative;">
+      <button onclick="showPublic()" style="position: absolute; top: 1.5rem; left: 1.5rem; color: var(--muted); font-size: 1.2rem;"><i class="fa-solid fa-arrow-left"></i></button>
+      <div style="width: 60px; height: 60px; background: var(--green-900); border-radius: 16px; margin: 0 auto 1.5rem; display: grid; place-items: center;">
+        <i class="fa-solid fa-shield-halved" style="color: var(--amber-500); font-size: 1.8rem;"></i>
       </div>
+      <h2 class="title" style="font-size: 1.8rem;">School Portal</h2>
+      <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem;">Select your role to login via Demo</p>
       
-      <div class="grid" style="gap: 0.75rem;">
-        <button class="btn btn-outline btn-block" onclick="login('admin')"><i class="fa-solid fa-user-tie"></i> Admin Demo</button>
-        <button class="btn btn-outline btn-block" onclick="login('teacher')"><i class="fa-solid fa-chalkboard-user"></i> Teacher Demo</button>
-        <button class="btn btn-outline btn-block" onclick="login('student')"><i class="fa-solid fa-user-graduate"></i> Student Demo</button>
-        <button class="btn btn-outline btn-block" onclick="login('parent')"><i class="fa-solid fa-users"></i> Parent Demo</button>
+      <div class="grid" style="gap: 0.8rem;">
+        <button class="btn btn-outline" style="justify-content: flex-start; padding: 1rem;" onclick="login('admin')"><i class="fa-solid fa-user-tie" style="width: 24px;"></i> Administrator</button>
+        <button class="btn btn-outline" style="justify-content: flex-start; padding: 1rem;" onclick="login('teacher')"><i class="fa-solid fa-chalkboard-user" style="width: 24px;"></i> Teacher</button>
+        <button class="btn btn-outline" style="justify-content: flex-start; padding: 1rem;" onclick="login('student')"><i class="fa-solid fa-user-graduate" style="width: 24px;"></i> Student</button>
+        <button class="btn btn-outline" style="justify-content: flex-start; padding: 1rem;" onclick="login('parent')"><i class="fa-solid fa-users" style="width: 24px;"></i> Parent</button>
       </div>
-      
-      <button class="btn btn-block" style="margin-top: 1rem; color: var(--muted);" onclick="showPublic()">← Back to Website</button>
     </div>
   </div>
 
   <!-- ================== ADMIN DASHBOARD ================== -->
   <div id="view-admin" class="dashboard hidden">
     <aside class="sidebar">
-      <div class="logo" style="color: white; margin-bottom: 2rem;"><i class="fa-solid fa-shield-halved" style="color: var(--amber-500);"></i> Admin Portal</div>
+      <div class="sidebar-logo"><i class="fa-solid fa-shield-halved"></i> Admin Portal</div>
       <a href="#" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-      <a href="#"><i class="fa-solid fa-users"></i> Students</a>
+      <a href="#"><i class="fa-solid fa-users"></i> User Management</a>
       <a href="#"><i class="fa-solid fa-file-signature"></i> Admissions</a>
+      <a href="#"><i class="fa-solid fa-book"></i> Academics</a>
       <a href="#"><i class="fa-solid fa-money-bill"></i> Finance</a>
-      <div style="margin-top: auto; position: absolute; bottom: 2rem; width: 200px;">
-        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()">Logout</button>
+      <div style="margin-top: auto; padding-top: 2rem;">
+        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
       </div>
     </aside>
-    <div style="flex: 1;">
-      <header class="dashboard-header">
-        <h2>Admin Dashboard</h2>
-        <div class="flex"><i class="fa-solid fa-bell"></i> <div class="kpi-icon" style="width: 35px; height: 35px; font-size: 0.8rem;">AD</div></div>
-      </header>
-      <div class="main-content">
-        <div class="kpi-grid">
-          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-users"></i></div><div class="kpi-info"><h3>1,248</h3><p>Total Students</p></div></div>
-          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-chalkboard-user"></i></div><div class="kpi-info"><h3>42</h3><p>Teachers</p></div></div>
-          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-file-signature"></i></div><div class="kpi-info"><h3>156</h3><p>New Applications</p></div></div>
-        </div>
-        
-        <div class="card">
-          <h3 style="margin-bottom: 1rem;">Recent Applications</h3>
-          <table>
-            <thead><tr><th>App ID</th><th>Name</th><th>Level</th><th>Status</th></tr></thead>
-            <tbody id="adminTableBody"></tbody>
-          </table>
-        </div>
+    <main class="main-content">
+      <div class="dash-header">
+        <h2>Dashboard Overview</h2>
+        <div class="profile-chip"><div class="avatar">AD</div><div><strong style="display:block; font-size:0.85rem;">Admin User</strong><span style="font-size:0.75rem; color:var(--muted);">Super Admin</span></div></div>
       </div>
-    </div>
+      
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-icon" style="background: rgba(20,83,45,0.1); color: var(--green-800);"><i class="fa-solid fa-users"></i></div><div class="kpi-info"><h3>1,248</h3><p>Total Students</p></div></div>
+        <div class="kpi-card"><div class="kpi-icon" style="background: rgba(245,158,11,0.1); color: var(--amber-600);"><i class="fa-solid fa-chalkboard-user"></i></div><div class="kpi-info"><h3>42</h3><p>Teachers</p></div></div>
+        <div class="kpi-card"><div class="kpi-icon" style="background: rgba(59,130,246,0.1); color: #2563eb;"><i class="fa-solid fa-file-signature"></i></div><div class="kpi-info"><h3>156</h3><p>Applications</p></div></div>
+        <div class="kpi-card"><div class="kpi-icon" style="background: rgba(34,197,94,0.1); color: #16a34a;"><i class="fa-solid fa-money-check"></i></div><div class="kpi-info"><h3>12.4M</h3><p>Revenue (RWF)</p></div></div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">Recent Applications</div>
+        <table>
+          <thead><tr><th>App ID</th><th>Name</th><th>Level</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="adminTableBody"></tbody>
+        </table>
+      </div>
+    </main>
   </div>
 
   <!-- ================== TEACHER DASHBOARD ================== -->
   <div id="view-teacher" class="dashboard hidden">
     <aside class="sidebar" style="background: var(--green-800);">
-      <div class="logo" style="color: white; margin-bottom: 2rem;"><i class="fa-solid fa-chalkboard-user" style="color: var(--amber-500);"></i> Teacher Portal</div>
+      <div class="sidebar-logo"><i class="fa-solid fa-chalkboard-user"></i> Teacher Portal</div>
       <a href="#" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-      <a href="#"><i class="fa-solid fa-book"></i> Gradebook</a>
+      <a href="#"><i class="fa-solid fa-book-open"></i> Gradebook</a>
       <a href="#"><i class="fa-solid fa-clipboard-user"></i> Attendance</a>
-      <div style="margin-top: auto; position: absolute; bottom: 2rem; width: 200px;">
-        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()">Logout</button>
+      <a href="#"><i class="fa-solid fa-file-lines"></i> Assignments</a>
+      <div style="margin-top: auto; padding-top: 2rem;">
+        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
       </div>
     </aside>
-    <div style="flex: 1;">
-      <header class="dashboard-header">
-        <h2>Teacher Dashboard</h2>
-        <div class="flex"><div class="kpi-icon" style="width: 35px; height: 35px; font-size: 0.8rem;">TM</div></div>
-      </header>
-      <div class="main-content">
-        <div class="kpi-grid">
-          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-users"></i></div><div class="kpi-info"><h3>142</h3><p>My Students</p></div></div>
-          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-book-open"></i></div><div class="kpi-info"><h3>3</h3><p>Classes Today</p></div></div>
-        </div>
-        <div class="card" style="margin-top: 2rem;">
-          <h3>Class Performance (AGR L4)</h3>
-          <canvas id="teacherChart" height="100"></canvas>
-        </div>
+    <main class="main-content">
+      <div class="dash-header">
+        <h2>Welcome, Teacher</h2>
+        <div class="profile-chip"><div class="avatar">MU</div><div><strong style="display:block; font-size:0.85rem;">Marie-Claire U.</strong><span style="font-size:0.75rem; color:var(--muted);">Agriculture Dept</span></div></div>
       </div>
-    </div>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-icon" style="background: rgba(20,83,45,0.1); color: var(--green-800);"><i class="fa-solid fa-users"></i></div><div class="kpi-info"><h3>142</h3><p>My Students</p></div></div>
+        <div class="kpi-card"><div class="kpi-icon" style="background: rgba(245,158,11,0.1); color: var(--amber-600);"><i class="fa-solid fa-book"></i></div><div class="kpi-info"><h3>3</h3><p>Classes Today</p></div></div>
+      </div>
+      <div class="table-card" style="padding: 1.5rem;">
+        <h3 style="margin-bottom: 1rem;">Class Performance (AGR L4)</h3>
+        <div style="height: 300px;"><canvas id="teacherChart"></canvas></div>
+      </div>
+    </main>
   </div>
 
   <!-- ================== STUDENT DASHBOARD ================== -->
   <div id="view-student" class="dashboard hidden">
     <aside class="sidebar" style="background: #1e293b;">
-      <div class="logo" style="color: white; margin-bottom: 2rem;"><i class="fa-solid fa-user-graduate" style="color: var(--amber-500);"></i> Student Portal</div>
+      <div class="sidebar-logo"><i class="fa-solid fa-user-graduate"></i> Student Portal</div>
       <a href="#" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-      <a href="#"><i class="fa-solid fa-id-card"></i> Digital ID</a>
-      <a onclick="printReportCard()"><i class="fa-solid fa-file-invoice"></i> Report Card</a>
-      <div style="margin-top: auto; position: absolute; bottom: 2rem; width: 200px;">
-        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()">Logout</button>
+      <a onclick="printReportCard()"><i class="fa-solid fa-file-invoice"></i> Print Report Card</a>
+      <a href="#"><i class="fa-solid fa-book"></i> Assignments</a>
+      <div style="margin-top: auto; padding-top: 2rem;">
+        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
       </div>
     </aside>
-    <div style="flex: 1;">
-      <header class="dashboard-header">
-        <h2>Student Dashboard</h2>
-        <div class="flex"><div class="kpi-icon" style="width: 35px; height: 35px; font-size: 0.8rem;">ST</div></div>
-      </header>
-      <div class="main-content grid" style="grid-template-columns: 350px 1fr;">
-        
+    <main class="main-content">
+      <div class="dash-header">
+        <h2>My Dashboard</h2>
+        <div class="profile-chip"><div class="avatar">AU</div><div><strong style="display:block; font-size:0.85rem;">Aline Uwase</strong><span style="font-size:0.75rem; color:var(--muted);">TVET AGR L4</span></div></div>
+      </div>
+      
+      <div class="grid" style="grid-template-columns: 350px 1fr; align-items: start;">
         <!-- Digital ID -->
         <div>
-          <h3 style="margin-bottom: 1rem;">Digital ID Card</h3>
+          <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Digital ID Card</h3>
           <div class="id-card">
             <div class="flex" style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1rem;">
               <i class="fa-solid fa-shield-halved" style="font-size: 1.5rem; color: var(--amber-500);"></i>
-              <div><strong style="display: block; line-height: 1;">G.S. GATARE TSS</strong><small style="font-size: 0.7rem; opacity: 0.7;">Code: 250405</small></div>
+              <div><strong style="display: block; line-height: 1; letter-spacing: 0.5px;">G.S. GATARE TSS</strong><small style="font-size: 0.7rem; opacity: 0.7;">Code: 250405</small></div>
             </div>
             <div class="flex">
-              <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.1); border-radius: 12px; display: grid; place-items: center; font-size: 2rem;"><i class="fa-solid fa-user"></i></div>
+              <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.15); border-radius: 12px; display: grid; place-items: center; font-size: 2rem; border: 2px solid rgba(255,255,255,0.3);"><i class="fa-solid fa-user"></i></div>
               <div>
-                <h4 style="font-size: 1.1rem;">Aline Uwase</h4>
-                <p style="font-size: 0.8rem; opacity: 0.8;">TVET AGR L4</p>
-                <p style="font-size: 0.8rem; background: var(--amber-500); color: #000; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 5px;">GSG-2024-045</p>
+                <h4 style="font-size: 1.2rem; font-weight: 700;">Aline Uwase</h4>
+                <p style="font-size: 0.85rem; opacity: 0.8;">TVET AGR L4</p>
+                <p style="font-size: 0.8rem; font-family: monospace; background: rgba(245,158,11,0.2); color: var(--amber-500); padding: 3px 8px; border-radius: 6px; display: inline-block; margin-top: 6px; font-weight: bold;">GSG-2024-045</p>
               </div>
             </div>
             <div class="flex-between" style="margin-top: 1.5rem;">
-              <span style="font-size: 0.7rem; letter-spacing: 1px;">VALID 2025-2026</span>
+              <span style="font-size: 0.7rem; letter-spacing: 1px; opacity: 0.7;">VALID 2025-2026</span>
               <div id="qrcode" class="qr"></div>
             </div>
           </div>
+          <button class="btn btn-primary btn-block" style="margin-top: 1rem;" onclick="window.print()"><i class="fa-solid fa-print"></i> Print ID Card</button>
         </div>
 
         <!-- Grades -->
         <div>
-          <h3 style="margin-bottom: 1rem;">Academic Performance</h3>
-          <table>
-            <thead><tr><th>Subject</th><th>Total</th><th>Grade</th></tr></thead>
-            <tbody id="studentTableBody"></tbody>
-          </table>
+          <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Academic Performance</h3>
+          <div class="table-card">
+            <table>
+              <thead><tr><th>Subject</th><th>Total</th><th>Grade</th></tr></thead>
+              <tbody id="studentTableBody"></tbody>
+            </table>
+          </div>
+          
           <div class="kpi-grid" style="margin-top: 1.5rem;">
-            <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-check"></i></div><div class="kpi-info"><h3>94%</h3><p>Attendance</p></div></div>
-            <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-coins"></i></div><div class="kpi-info"><h3>45,000</h3><p>Fee Balance (RWF)</p></div></div>
+            <div class="kpi-card"><div class="kpi-icon" style="background: rgba(34,197,94,0.1); color: #16a34a;"><i class="fa-solid fa-check"></i></div><div class="kpi-info"><h3>94%</h3><p>Attendance</p></div></div>
+            <div class="kpi-card"><div class="kpi-icon" style="background: rgba(245,158,11,0.1); color: var(--amber-600);"><i class="fa-solid fa-coins"></i></div><div class="kpi-info"><h3>45,000</h3><p>Fee Balance (RWF)</p></div></div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </div>
 
   <!-- ================== PARENT DASHBOARD ================== -->
   <div id="view-parent" class="dashboard hidden">
     <aside class="sidebar" style="background: #1e3a8a;">
-      <div class="logo" style="color: white; margin-bottom: 2rem;"><i class="fa-solid fa-users" style="color: var(--amber-500);"></i> Parent Portal</div>
+      <div class="sidebar-logo"><i class="fa-solid fa-users"></i> Parent Portal</div>
       <a href="#" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-      <a href="#"><i class="fa-solid fa-coins"></i> Fees</a>
-      <a href="#"><i class="fa-solid fa-comments"></i> Messages</a>
-      <div style="margin-top: auto; position: absolute; bottom: 2rem; width: 200px;">
-        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()">Logout</button>
+      <a href="#"><i class="fa-solid fa-chart-line"></i> Academic Progress</a>
+      <a href="#"><i class="fa-solid fa-coins"></i> Fee Statements</a>
+      <div style="margin-top: auto; padding-top: 2rem;">
+        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
       </div>
     </aside>
-    <div style="flex: 1;">
-      <header class="dashboard-header">
+    <main class="main-content">
+      <div class="dash-header">
         <h2>Parent Dashboard</h2>
-        <div class="flex"><div class="kpi-icon" style="width: 35px; height: 35px; font-size: 0.8rem;">PT</div></div>
-      </header>
-      <div class="main-content">
-        <h3 style="margin-bottom: 1rem;">My Children</h3>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-          
-          <div class="card">
-            <div class="flex-between" style="margin-bottom: 1rem;">
-              <div>
-                <h4>Aline Uwase</h4>
-                <p style="font-size: 0.8rem; color: var(--muted);">TVET AGR L4</p>
-              </div>
-              <i class="fa-solid fa-user-graduate" style="font-size: 1.5rem; color: var(--green-800);"></i>
-            </div>
-            <div class="flex-between" style="font-size: 0.85rem; margin-bottom: 1rem; border-top: 1px solid var(--line); padding-top: 1rem;">
-              <span>Attendance: <strong>94%</strong></span>
-              <span>Fees: <strong style="color: var(--amber-600);">Partial</strong></span>
-            </div>
-            <button class="btn btn-primary btn-block" onclick="toast('Viewing Report Card...')">View Report</button>
-          </div>
-
-          <div class="card">
-            <div class="flex-between" style="margin-bottom: 1rem;">
-              <div>
-                <h4>Eric Nshuti</h4>
-                <p style="font-size: 0.8rem; color: var(--muted);">A'Level MS1</p>
-              </div>
-              <i class="fa-solid fa-user-graduate" style="font-size: 1.5rem; color: #3b82f6;"></i>
-            </div>
-            <div class="flex-between" style="font-size: 0.85rem; margin-bottom: 1rem; border-top: 1px solid var(--line); padding-top: 1rem;">
-              <span>Attendance: <strong>98%</strong></span>
-              <span>Fees: <strong style="color: var(--green-800);">Paid</strong></span>
-            </div>
-            <button class="btn btn-primary btn-block" onclick="toast('Viewing Report Card...')">View Report</button>
-          </div>
-
-        </div>
+        <div class="profile-chip"><div class="avatar" style="background:#3b82f6; color:white;">EN</div><div><strong style="display:block; font-size:0.85rem;">Emmanuel N.</strong><span style="font-size:0.75rem; color:var(--muted);">Guardian</span></div></div>
       </div>
-    </div>
+      
+      <h3 style="margin-bottom: 1.5rem; font-size: 1.1rem;">My Children</h3>
+      <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        
+        <div class="modern-card">
+          <div class="flex-between" style="margin-bottom: 1.5rem;">
+            <div>
+              <h4 style="font-size: 1.2rem;">Aline Uwase</h4>
+              <p style="font-size: 0.85rem; color: var(--muted);">TVET AGR L4 · GSG-2024-045</p>
+            </div>
+            <i class="fa-solid fa-user-graduate" style="font-size: 1.8rem; color: var(--green-800);"></i>
+          </div>
+          <div class="flex-between" style="font-size: 0.9rem; margin-bottom: 1.5rem; border-top: 1px solid var(--line); padding-top: 1rem;">
+            <span>Attendance: <strong>94%</strong></span>
+            <span>Fees: <strong style="color: var(--amber-600);">Partial</strong></span>
+          </div>
+          <button class="btn btn-outline btn-block" onclick="toast('Opening report...')">View Report Card</button>
+        </div>
+
+        <div class="modern-card">
+          <div class="flex-between" style="margin-bottom: 1.5rem;">
+            <div>
+              <h4 style="font-size: 1.2rem;">Eric Nshuti</h4>
+              <p style="font-size: 0.85rem; color: var(--muted);">A'Level MS1 · GSG-2024-112</p>
+            </div>
+            <i class="fa-solid fa-user-graduate" style="font-size: 1.8rem; color: #3b82f6;"></i>
+          </div>
+          <div class="flex-between" style="font-size: 0.9rem; margin-bottom: 1.5rem; border-top: 1px solid var(--line); padding-top: 1rem;">
+            <span>Attendance: <strong>98%</strong></span>
+            <span>Fees: <strong style="color: var(--green-800);">Paid</strong></span>
+          </div>
+          <button class="btn btn-outline btn-block" onclick="toast('Opening report...')">View Report Card</button>
+        </div>
+
+      </div>
+    </main>
   </div>
 
   <!-- ================== JAVASCRIPT ================== -->
   <script>
-    // --- Utilities & Data ---
+    // --- Utilities & UI ---
     const $ = (id) => document.getElementById(id);
+    
     const toast = (msg) => {
       const t = $('toast');
-      t.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${msg}`;
+      t.querySelector('span').innerText = msg;
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 3000);
     };
@@ -406,7 +544,7 @@
       $('theme-icon').className = isDark ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
     };
 
-    // --- Navigation & Views ---
+    // --- SPA Navigation ---
     const views = ['public', 'login', 'admin', 'teacher', 'student', 'parent'];
     const showView = (view) => {
       views.forEach(v => $('view-' + v).classList.add('hidden'));
@@ -419,9 +557,7 @@
 
     const login = (role) => {
       showView(role);
-      toast(`Logged in as ${role}`);
-      
-      // Initialize specific dashboards
+      toast(`Logged in as ${role.toUpperCase()}`);
       if(role === 'admin') initAdmin();
       if(role === 'student') initStudent();
       if(role === 'teacher') initTeacher();
@@ -432,64 +568,64 @@
       toast("Logged out successfully");
     };
 
-    // --- Admissions Form ---
+    // --- Public Admission Form ---
     let appCounter = 1000;
     $('admissionForm').addEventListener('submit', (e) => {
       e.preventDefault();
       appCounter++;
       const appId = `GSG-2026-${appCounter}`;
-      const name = $('appName').value;
-      const level = $('appLevel').value;
       
       $('appResult').innerHTML = `
-        <div style="background: #dcfce7; padding: 1rem; border-radius: 8px; color: #166534; margin-top: 1rem;">
-          <p>Application Received!</p>
-          <p style="font-size: 1.2rem; font-family: monospace;">${appId}</p>
+        <div style="background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); padding: 1.5rem; border-radius: 12px; color: #166534; text-align: center;">
+          <p style="font-weight: 600; margin-bottom: 0.5rem;">Application Received Successfully!</p>
+          <p style="font-size: 1.5rem; font-family: monospace; font-weight: 800; letter-spacing: 1px;">${appId}</p>
+          <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.8;">Please save this ID to track your status.</p>
         </div>
       `;
       e.target.reset();
       toast("Application Submitted!");
     });
 
-    // --- Admin Dashboard Data ---
+    // --- Admin Data ---
     const initAdmin = () => {
       const apps = [
-        { id: 'GSG-2026-1001', name: 'Chantal M.', level: 'TVET ANH', status: 'Pending' },
-        { id: 'GSG-2026-1002', name: 'David M.', level: 'MS1', status: 'Approved' },
-        { id: 'GSG-2026-1003', name: 'Alice K.', level: 'O-Level', status: 'Waitlisted' }
+        { id: 'GSG-2026-1001', name: 'Chantal Mutoni', level: 'TVET ANH', status: 'Pending' },
+        { id: 'GSG-2026-1002', name: 'David Mugisha', level: 'MS1', status: 'Approved' },
+        { id: 'GSG-2026-1003', name: 'Alice Kamikazi', level: 'O-Level', status: 'Waitlisted' }
       ];
       $('adminTableBody').innerHTML = apps.map(a => `
         <tr>
           <td><strong>${a.id}</strong></td>
           <td>${a.name}</td>
           <td>${a.level}</td>
-          <td><span style="background: ${a.status === 'Approved' ? '#dcfce7' : '#fef3c7'}; color: ${a.status === 'Approved' ? '#166534' : '#92400e'}; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">${a.status}</span></td>
+          <td><span class="badge ${a.status === 'Approved' ? 'badge-success' : a.status === 'Pending' ? 'badge-warning' : 'badge-danger'}">${a.status}</span></td>
+          <td><button class="btn btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.8rem;" onclick="toast('Reviewing application...')">Review</button></td>
         </tr>
       `).join('');
     };
 
-    // --- Student Dashboard Data & ID ---
+    // --- Student Data & ID ---
     const studentMarks = [
       { sub: 'Crop Production', total: 80, grade: 'A' },
       { sub: 'Soil Science', total: 68, grade: 'C' },
       { sub: 'Agri-Business', total: 72, grade: 'B' },
-      { sub: 'English', total: 63, grade: 'C' }
+      { sub: 'English', total: 63, grade: 'C' },
+      { sub: 'Farm Management', total: 76, grade: 'B' }
     ];
 
     const initStudent = () => {
       $('studentTableBody').innerHTML = studentMarks.map(m => `
         <tr>
-          <td>${m.sub}</td>
+          <td style="font-weight: 500;">${m.sub}</td>
           <td><strong>${m.total}</strong>/100</td>
-          <td><span style="background: ${m.grade === 'A' ? '#dcfce7' : '#e0f2fe'}; color: ${m.grade === 'A' ? '#166534' : '#0369a1'}; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">${m.grade}</span></td>
+          <td><span class="badge ${m.grade === 'A' ? 'badge-success' : m.grade === 'B' ? 'badge-warning' : 'badge-danger'}">${m.grade}</span></td>
         </tr>
       `).join('');
 
-      // Generate QR Code
       $('qrcode').innerHTML = '';
       new QRCode($('qrcode'), {
         text: "GSG-250405-AlineUwase",
-        width: 60, height: 60,
+        width: 65, height: 65,
         colorDark: "#0F3D2E", colorLight: "#ffffff"
       });
     };
@@ -498,20 +634,23 @@
       const printWindow = window.open('', '_blank');
       printWindow.document.write(`
         <html><head><title>Report Card - Aline Uwase</title>
-        <style>body{font-family:sans-serif;padding:40px;color:#000;} table{width:100%;border-collapse:collapse;margin-top:20px;} th,td{border:1px solid #ccc;padding:10px;text-align:left;}</style>
+        <style>body{font-family:'Inter',sans-serif;padding:40px;color:#000;} .header{text-align:center;border-bottom:2px solid #0F3D2E;padding-bottom:20px;margin-bottom:30px;} table{width:100%;border-collapse:collapse;margin-top:20px;} th,td{border:1px solid #ccc;padding:12px;text-align:left;} th{background:#f0f0f0;}</style>
         </head><body>
-        <h2 style="text-align:center;">GROUPE SCOLAIRE GATARE TSS</h2>
-        <p style="text-align:center;">Term 2 Report Card - 2026</p>
+        <div class="header">
+          <h2>GROUPE SCOLAIRE GATARE TSS</h2>
+          <p>Code: 250405 · Nyamagabe District, Rwanda</p>
+          <h3>Term 2 Report Card - 2026</h3>
+        </div>
         <p><strong>Name:</strong> Aline Uwase | <strong>Reg No:</strong> GSG-2024-045 | <strong>Level:</strong> TVET AGR L4</p>
         <table>
           <tr><th>Subject</th><th>Total</th><th>Grade</th></tr>
           ${studentMarks.map(m => `<tr><td>${m.sub}</td><td>${m.total}/100</td><td>${m.grade}</td></tr>`).join('')}
         </table>
-        <p style="margin-top:30px;">Teacher Remarks: Excellent discipline and active in practicals.</p>
+        <p style="margin-top:30px;"><strong>Teacher Remarks:</strong> Excellent discipline and active in practicals.</p>
         <br><br><br>
-        <div style="display:flex;justify-content:space-between;">
-          <div>_____________________<br>Teacher Signature</div>
-          <div>_____________________<br>Headteacher Signature</div>
+        <div style="display:flex;justify-content:space-between;margin-top:50px;">
+          <div style="text-align:center;"><div style="width:200px;border-top:1px solid #000;margin-bottom:5px;"></div>Teacher Signature</div>
+          <div style="text-align:center;"><div style="width:200px;border-top:1px solid #000;margin-bottom:5px;"></div>Headteacher Signature</div>
         </div>
         <script>window.print();</script>
         </body></html>
@@ -519,10 +658,9 @@
       printWindow.document.close();
     };
 
-    // --- Teacher Dashboard Data ---
+    // --- Teacher Chart ---
     const initTeacher = () => {
       const ctx = $('teacherChart').getContext('2d');
-      // Destroy previous chart if it exists (to prevent overlapping on re-login)
       if(window.myChart) window.myChart.destroy();
       
       window.myChart = new Chart(ctx, {
@@ -532,11 +670,17 @@
           datasets: [{
             label: 'Average Grade (%)',
             data: [72, 78, 68, 81],
-            backgroundColor: '#14532D',
-            borderRadius: 6
+            backgroundColor: '#0F3D2E',
+            borderRadius: 8,
+            barThickness: 40
           }]
         },
-        options: { responsive: true, maintainAspectRatio: false }
+        options: { 
+          responsive: true, 
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, max: 100 } }
+        }
       });
     };
   </script>
