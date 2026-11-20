@@ -3,670 +3,542 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Groupe Scolaire Gatare TSS (G.S. Gatare TSS) — Code 250405. Discipline Leads to Success. Pre-Primary, Primary, O'Level, A'Level AH & MS1, TVET AGR & ANH. Gashasha Cell, Gatare Sector, Nyamagabe District, Rwanda." />
-  <meta name="author" content="G.S. Gatare TSS · Engineered by InezaDev" />
-  <meta name="theme-color" content="#0F3D2E" />
-  <title>G.S. Gatare TSS · 250405 · Where Discipline Shapes Tomorrow</title>
-
-  <!-- Favicon (inline SVG crest) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F3D2E'/%3E%3Cpath d='M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z' fill='%23F59E0B'/%3E%3Cpath d='M24 30l6 6 12-12' stroke='%230F3D2E' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet" />
-
-  <!-- Icons -->
+  <title>G.S. Gatare TSS · 250405</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F3D2E'/%3E%3Cpath d='M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z' fill='%23F59E0B'/%3E%3C/svg%3E" />
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <style>
+    /* ================= CSS ================= */
+    :root {
+      --green-900: #0F3D2E; --green-800: #14532D; --amber-500: #F59E0B; --amber-600: #D97706;
+      --bg: #F8FAFC; --bg-elev: #FFFFFF; --ink: #0F172A; --muted: #64748B; --line: #E2E8F0;
+      --shadow: 0 10px 30px rgba(15,23,42,0.08); --radius: 16px;
+    }
+    [data-theme="dark"] {
+      --bg: #0B1120; --bg-elev: #1E293B; --ink: #F8FAFC; --muted: #94A3B8; --line: #334155;
+      --shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: var(--bg); color: var(--ink); transition: 0.3s; overflow-x: hidden; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: inherit; border: none; }
+    
+    /* Utilities */
+    .container { width: min(100% - 2rem, 1200px); margin: 0 auto; }
+    .hidden { display: none !important; }
+    .flex { display: flex; gap: 1rem; align-items: center; }
+    .flex-between { display: flex; justify-content: space-between; align-items: center; }
+    .grid { display: grid; gap: 1.5rem; }
+    .title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; color: var(--green-900); }
+    [data-theme="dark"] .title { color: var(--amber-500); }
+    
+    /* Buttons */
+    .btn { padding: 0.75rem 1.5rem; border-radius: 10px; font-weight: 600; font-size: 0.9rem; transition: 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center; }
+    .btn-primary { background: var(--green-900); color: white; }
+    .btn-primary:hover { background: var(--green-800); transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 1px solid var(--line); color: var(--ink); }
+    .btn-outline:hover { border-color: var(--green-900); color: var(--green-900); }
+    .btn-amber { background: var(--amber-500); color: #0F172A; }
+    .btn-amber:hover { background: var(--amber-600); transform: translateY(-2px); }
+    .btn-block { width: 100%; }
 
-  <!-- App styles -->
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/animations.css" />
-  <link rel="stylesheet" href="assets/css/print.css" media="print" />
+    /* Header */
+    header { background: var(--bg-elev); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; padding: 1rem 0; box-shadow: var(--shadow); }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem; }
+    .logo i { color: var(--amber-500); }
+    nav ul { display: flex; gap: 2rem; font-weight: 500; font-size: 0.9rem; }
+    nav a:hover { color: var(--amber-500); }
+    
+    /* Sections */
+    .section { padding: 5rem 0; }
+    .hero { background: linear-gradient(135deg, var(--green-900), var(--green-800)); color: white; padding: 6rem 0; text-align: center; }
+    .hero .title { color: white; font-size: 3.5rem; }
+    .hero p { font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9; max-width: 600px; margin-inline: auto; }
+    
+    /* Cards & Forms */
+    .card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--muted); }
+    .form-group input, .form-group select { width: 100%; padding: 0.75rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); outline: none; }
+    .form-group input:focus { border-color: var(--green-900); }
+
+    /* Dashboard Layout */
+    .dashboard { display: flex; min-height: 100vh; }
+    .sidebar { width: 250px; background: var(--green-900); color: white; padding: 2rem 1rem; flex-shrink: 0; }
+    .sidebar a { display: block; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.8; cursor: pointer; }
+    .sidebar a:hover, .sidebar a.active { background: rgba(255,255,255,0.1); opacity: 1; }
+    .main-content { flex: 1; padding: 2rem; background: var(--bg); }
+    .dashboard-header { background: var(--bg-elev); padding: 1rem 2rem; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    
+    /* Dashboard Widgets */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    .kpi { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+    .kpi-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(20,83,45,0.1); color: var(--green-900); display: grid; place-items: center; font-size: 1.5rem; }
+    [data-theme="dark"] .kpi-icon { background: rgba(245,158,11,0.1); color: var(--amber-500); }
+    .kpi-info h3 { font-size: 1.5rem; margin: 0; }
+    .kpi-info p { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; }
+    
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; background: var(--bg-elev); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+    th { background: rgba(148,163,184,0.1); font-weight: 600; color: var(--muted); }
+    
+    /* Digital ID Card */
+    .id-card { background: linear-gradient(135deg, var(--green-900), var(--green-800)); color: white; border-radius: var(--radius); padding: 1.5rem; width: 300px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .id-card::before { content: ''; position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(245,158,11,0.2); border-radius: 50%; }
+    .id-card .qr { background: white; padding: 5px; border-radius: 8px; width: 60px; height: 60px; }
+
+    /* Toast */
+    #toast { position: fixed; top: 20px; right: 20px; padding: 1rem 1.5rem; background: var(--green-900); color: white; border-radius: 8px; box-shadow: var(--shadow); z-index: 9999; transform: translateX(150%); transition: 0.3s; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+    #toast.show { transform: translateX(0); }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .dashboard { flex-direction: column; }
+      .sidebar { width: 100%; display: flex; overflow-x: auto; padding: 1rem; }
+      .sidebar a { white-space: nowrap; margin: 0; }
+      .hero .title { font-size: 2.5rem; }
+    }
+  </style>
 </head>
-<body class="site-body">
+<body>
 
-  <!-- ================= PRELOADER ================= -->
-  <div id="preloader" class="preloader" aria-hidden="true">
-    <div class="preloader__crest">
-      <svg viewBox="0 0 64 64" width="52" height="52" aria-hidden="true">
-        <rect width="64" height="64" rx="14" fill="#0F3D2E"/>
-        <path d="M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z" fill="#F59E0B"/>
-        <path d="M24 30l6 6 12-12" stroke="#0F3D2E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </div>
-    <div class="preloader__bar"><span></span></div>
-    <p class="preloader__text">G.S. Gatare TSS · 250405</p>
-  </div>
+  <!-- Toast Notification -->
+  <div id="toast">Message</div>
 
-  <!-- Scroll progress -->
-  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
-
-  <!-- ================= HEADER ================= -->
-  <header id="siteHeader" class="site-header" role="banner">
-    <div class="container header__inner">
-      <a href="#home" class="brand" aria-label="G.S. Gatare TSS Home">
-        <span class="brand__crest">
-          <svg viewBox="0 0 64 64" width="42" height="42" aria-hidden="true">
-            <rect width="64" height="64" rx="14" fill="#0F3D2E"/>
-            <path d="M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z" fill="#F59E0B"/>
-            <path d="M24 30l6 6 12-12" stroke="#0F3D2E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span class="brand__text">
-          <strong>G.S. Gatare TSS</strong>
-          <small>Discipline Leads to Success</small>
-        </span>
-      </a>
-
-      <nav class="nav" id="primaryNav" aria-label="Primary">
-        <ul class="nav__list">
-          <li><a class="nav__link" href="#about">About</a></li>
-          <li><a class="nav__link" href="#academics">Academics</a></li>
-          <li><a class="nav__link" href="#programs">Programs</a></li>
-          <li><a class="nav__link" href="#admissions">Admissions</a></li>
-          <li><a class="nav__link" href="#status">Track Status</a></li>
-          <li><a class="nav__link" href="#news">News</a></li>
-          <li><a class="nav__link" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="header__actions">
-        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
-          <i class="fa-solid fa-moon" data-theme-icon></i>
-        </button>
-        <a href="portal/admin/index.html" class="btn btn--ghost hide-sm">
-          <i class="fa-solid fa-arrow-right-to-bracket"></i> School Portal
-        </a>
-        <a href="#admissions" class="btn btn--primary">
-          <i class="fa-solid fa-pen-to-square"></i> Apply Online
-        </a>
-        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile menu overlay -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <ul class="mobile-menu__list">
-      <li><a href="#about">About</a></li>
-      <li><a href="#academics">Academics</a></li>
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#admissions">Admissions</a></li>
-      <li><a href="#status">Track Status</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="portal/admin/index.html" class="mobile-menu__cta">School Portal <i class="fa-solid fa-arrow-right"></i></a></li>
-    </ul>
-  </div>
-
-  <main id="main">
-
-    <!-- ================= HERO ================= -->
-    <section id="home" class="hero" aria-labelledby="heroTitle">
-      <div class="hero__bg" aria-hidden="true">
-        <span class="orb orb--1"></span>
-        <span class="orb orb--2"></span>
-        <span class="orb orb--3"></span>
-        <div class="grid-overlay"></div>
-      </div>
-
-      <div class="container hero__inner">
-        <div class="hero__content">
-          <div class="badge-pill" data-aos="fade-down">
-            <span class="dot"></span> School Code <strong>250405</strong> · TVET Accredited
-          </div>
-          <h1 id="heroTitle" class="hero__title" data-aos="fade-up">
-            Where <em>Discipline</em> Shapes Tomorrow
-          </h1>
-          <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="80">
-            A flagship learning community in Nyamagabe District, Rwanda — blending academic
-            excellence with hands-on TVET skills in Agriculture and Animal Husbandry.
-          </p>
-          <div class="hero__cta" data-aos="fade-up" data-aos-delay="160">
-            <a href="#admissions" class="btn btn--primary btn--lg">
-              <i class="fa-solid fa-pen-to-square"></i> Apply Online
-            </a>
-            <a href="portal/admin/index.html" class="btn btn--outline btn--lg">
-              <i class="fa-solid fa-arrow-right-to-bracket"></i> Enter Portal
-            </a>
-          </div>
-          <ul class="hero__chips" data-aos="fade-up" data-aos-delay="240">
-            <li><i class="fa-solid fa-location-dot"></i> Gashasha Cell · Gatare Sector</li>
-            <li><i class="fa-solid fa-graduation-cap"></i> Pre-Primary → TVET</li>
-            <li><i class="fa-solid fa-shield-halved"></i> Discipline Leads to Success</li>
+  <!-- ================== PUBLIC WEBSITE ================== -->
+  <div id="view-public">
+    <header>
+      <div class="container flex-between">
+        <div class="logo"><i class="fa-solid fa-shield-halved"></i> G.S. Gatare TSS</div>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#admissions">Admissions</a></li>
           </ul>
-        </div>
-
-        <div class="hero__visual" data-aos="fade-left" data-aos-delay="120">
-          <div class="hero-card glass">
-            <div class="hero-card__top">
-              <span class="hero-card__label">Admissions 2026</span>
-              <span class="status-dot status-dot--live">OPEN</span>
-            </div>
-            <h3>One unified portal.<br/>Every level. Every child.</h3>
-            <div class="hero-card__stats">
-              <div><strong data-counter="1280">0</strong><span>Learners</span></div>
-              <div><strong data-counter="7">0</strong><span>Pathways</span></div>
-              <div><strong data-counter="4">0</strong><span>TVET Trades</span></div>
-            </div>
-            <div class="hero-card__foot">
-              <i class="fa-solid fa-bolt"></i> One-click demo · No card required
-            </div>
-          </div>
-          <div class="floating-pill floating-pill--1 glass"><i class="fa-solid fa-seedling"></i> TVET AGR</div>
-          <div class="floating-pill floating-pill--2 glass"><i class="fa-solid fa-cow"></i> TVET ANH</div>
+        </nav>
+        <div class="flex">
+          <button class="btn btn-outline" onclick="toggleTheme()"><i class="fa-solid fa-moon" id="theme-icon"></i></button>
+          <button class="btn btn-primary" onclick="showLogin()">School Portal</button>
         </div>
       </div>
+    </header>
 
-      <a href="#metrics" class="scroll-cue" aria-label="Scroll to content"><span></span></a>
-    </section>
-
-    <!-- ================= METRICS STRIP ================= -->
-    <section id="metrics" class="metrics" aria-label="School at a glance">
-      <div class="container metrics__grid">
-        <div class="metric" data-aos="fade-up">
-          <div class="metric__icon"><i class="fa-solid fa-users"></i></div>
-          <strong class="metric__num" data-counter="1280">0</strong>
-          <span class="metric__label">Total Learners</span>
-        </div>
-        <div class="metric" data-aos="fade-up" data-aos-delay="80">
-          <div class="metric__icon"><i class="fa-solid fa-route"></i></div>
-          <strong class="metric__num" data-counter="7">0</strong>
-          <span class="metric__label">Academic Pathways</span>
-        </div>
-        <div class="metric" data-aos="fade-up" data-aos-delay="160">
-          <div class="metric__icon"><i class="fa-solid fa-tractor"></i></div>
-          <strong class="metric__num" data-counter="4">0</strong>
-          <span class="metric__label">TVET Programs</span>
-        </div>
-        <div class="metric" data-aos="fade-up" data-aos-delay="240">
-          <div class="metric__icon"><i class="fa-solid fa-laptop-code"></i></div>
-          <strong class="metric__num">100<span>%</span></strong>
-          <span class="metric__label">Digital Portal Access</span>
+    <section class="hero">
+      <div class="container">
+        <span style="background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;">SCHOOL CODE 250405</span>
+        <h1 class="title" style="margin-top: 1rem;">Where Discipline Shapes Tomorrow</h1>
+        <p>A flagship learning community in Nyamagabe District, Rwanda — blending academic excellence with hands-on TVET skills.</p>
+        <div class="flex" style="justify-content: center;">
+          <button class="btn btn-amber" onclick="document.getElementById('admissions').scrollIntoView({behavior: 'smooth'})">Apply Online</button>
         </div>
       </div>
     </section>
 
-    <!-- ================= ABOUT ================= -->
-    <section id="about" class="section about" aria-labelledby="aboutTitle">
-      <div class="container about__grid">
-        <div class="about__media" data-aos="fade-right">
-          <div class="about__frame glass">
-            <div class="about__pattern" aria-hidden="true"></div>
-            <div class="about__badge">
-              <i class="fa-solid fa-award"></i>
+    <section id="programs" class="section container">
+      <h2 class="title" style="text-align: center;">Our Programs</h2>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="card">
+          <i class="fa-solid fa-seedling" style="font-size: 2rem; color: var(--green-800); margin-bottom: 1rem;"></i>
+          <h3>TVET Agriculture (AGR)</h3>
+          <p style="color: var(--muted); margin-top: 0.5rem;">Practical farming skills, crop management, and agri-business knowledge.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-cow" style="font-size: 2rem; color: var(--amber-600); margin-bottom: 1rem;"></i>
+          <h3>TVET Animal Husbandry (ANH)</h3>
+          <p style="color: var(--muted); margin-top: 0.5rem;">Livestock health, breeding, and dairy production for commercial farming.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-microscope" style="font-size: 2rem; color: #3b82f6; margin-bottom: 1rem;"></i>
+          <h3>A'Level MS1</h3>
+          <p style="color: var(--muted); margin-top: 0.5rem;">Math, Physics, Chemistry & Biology. The gateway to medicine and engineering.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="admissions" class="section" style="background: var(--bg-elev);">
+      <div class="container">
+        <h2 class="title" style="text-align: center;">Online Admission Portal</h2>
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
+          <form id="admissionForm">
+            <div class="grid" style="grid-template-columns: 1fr 1fr;">
+              <div class="form-group"><label>Full Name</label><input type="text" id="appName" required></div>
+              <div class="form-group"><label>Phone</label><input type="tel" id="appPhone" required></div>
+            </div>
+            <div class="grid" style="grid-template-columns: 1fr 1fr;">
+              <div class="form-group">
+                <label>Level</label>
+                <select id="appLevel" required>
+                  <option value="TVET AGR">TVET AGR</option>
+                  <option value="TVET ANH">TVET ANH</option>
+                  <option value="A'Level MS1">A'Level MS1</option>
+                  <option value="O'Level">O'Level</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Date</label><input type="date" id="appDate" required></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+          </form>
+          <div id="appResult" style="margin-top: 1rem; text-align: center; font-weight: 600; color: var(--green-800);"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================== LOGIN SCREEN ================== -->
+  <div id="view-login" class="hidden section" style="min-height: 100vh; display: grid; place-items: center; background: var(--bg);">
+    <div class="card" style="width: 100%; max-width: 400px;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <i class="fa-solid fa-shield-halved" style="font-size: 3rem; color: var(--green-900);"></i>
+        <h2 class="title" style="font-size: 1.5rem; margin-top: 1rem;">School Portal</h2>
+        <p style="color: var(--muted); font-size: 0.9rem;">Select your role to login</p>
+      </div>
+      
+      <div class="grid" style="gap: 0.75rem;">
+        <button class="btn btn-outline btn-block" onclick="login('admin')"><i class="fa-solid fa-user-tie"></i> Admin Demo</button>
+        <button class="btn btn-outline btn-block" onclick="login('teacher')"><i class="fa-solid fa-chalkboard-user"></i> Teacher Demo</button>
+        <button class="btn btn-outline btn-block" onclick="login('student')"><i class="fa-solid fa-user-graduate"></i> Student Demo</button>
+        <button class="btn btn-outline btn-block" onclick="login('parent')"><i class="fa-solid fa-users"></i> Parent Demo</button>
+      </div>
+      
+      <button class="btn btn-block" style="margin-top: 1rem; color: var(--muted);" onclick="showPublic()">← Back to Website</button>
+    </div>
+  </div>
+
+  <!-- ================== ADMIN DASHBOARD ================== -->
+  <div id="view-admin" class="dashboard hidden">
+    <aside class="sidebar">
+      <div class="logo" style="color: white; margin-bottom: 2rem;"><i class="fa-solid fa-shield-halved" style="color: var(--amber-500);"></i> Admin Portal</div>
+      <a href="#" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="#"><i class="fa-solid fa-users"></i> Students</a>
+      <a href="#"><i class="fa-solid fa-file-signature"></i> Admissions</a>
+      <a href="#"><i class="fa-solid fa-money-bill"></i> Finance</a>
+      <div style="margin-top: auto; position: absolute; bottom: 2rem; width: 200px;">
+        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+    <div style="flex: 1;">
+      <header class="dashboard-header">
+        <h2>Admin Dashboard</h2>
+        <div class="flex"><i class="fa-solid fa-bell"></i> <div class="kpi-icon" style="width: 35px; height: 35px; font-size: 0.8rem;">AD</div></div>
+      </header>
+      <div class="main-content">
+        <div class="kpi-grid">
+          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-users"></i></div><div class="kpi-info"><h3>1,248</h3><p>Total Students</p></div></div>
+          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-chalkboard-user"></i></div><div class="kpi-info"><h3>42</h3><p>Teachers</p></div></div>
+          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-file-signature"></i></div><div class="kpi-info"><h3>156</h3><p>New Applications</p></div></div>
+        </div>
+        
+        <div class="card">
+          <h3 style="margin-bottom: 1rem;">Recent Applications</h3>
+          <table>
+            <thead><tr><th>App ID</th><th>Name</th><th>Level</th><th>Status</th></tr></thead>
+            <tbody id="adminTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== TEACHER DASHBOARD ================== -->
+  <div id="view-teacher" class="dashboard hidden">
+    <aside class="sidebar" style="background: var(--green-800);">
+      <div class="logo" style="color: white; margin-bottom: 2rem;"><i class="fa-solid fa-chalkboard-user" style="color: var(--amber-500);"></i> Teacher Portal</div>
+      <a href="#" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="#"><i class="fa-solid fa-book"></i> Gradebook</a>
+      <a href="#"><i class="fa-solid fa-clipboard-user"></i> Attendance</a>
+      <div style="margin-top: auto; position: absolute; bottom: 2rem; width: 200px;">
+        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+    <div style="flex: 1;">
+      <header class="dashboard-header">
+        <h2>Teacher Dashboard</h2>
+        <div class="flex"><div class="kpi-icon" style="width: 35px; height: 35px; font-size: 0.8rem;">TM</div></div>
+      </header>
+      <div class="main-content">
+        <div class="kpi-grid">
+          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-users"></i></div><div class="kpi-info"><h3>142</h3><p>My Students</p></div></div>
+          <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-book-open"></i></div><div class="kpi-info"><h3>3</h3><p>Classes Today</p></div></div>
+        </div>
+        <div class="card" style="margin-top: 2rem;">
+          <h3>Class Performance (AGR L4)</h3>
+          <canvas id="teacherChart" height="100"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== STUDENT DASHBOARD ================== -->
+  <div id="view-student" class="dashboard hidden">
+    <aside class="sidebar" style="background: #1e293b;">
+      <div class="logo" style="color: white; margin-bottom: 2rem;"><i class="fa-solid fa-user-graduate" style="color: var(--amber-500);"></i> Student Portal</div>
+      <a href="#" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="#"><i class="fa-solid fa-id-card"></i> Digital ID</a>
+      <a onclick="printReportCard()"><i class="fa-solid fa-file-invoice"></i> Report Card</a>
+      <div style="margin-top: auto; position: absolute; bottom: 2rem; width: 200px;">
+        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+    <div style="flex: 1;">
+      <header class="dashboard-header">
+        <h2>Student Dashboard</h2>
+        <div class="flex"><div class="kpi-icon" style="width: 35px; height: 35px; font-size: 0.8rem;">ST</div></div>
+      </header>
+      <div class="main-content grid" style="grid-template-columns: 350px 1fr;">
+        
+        <!-- Digital ID -->
+        <div>
+          <h3 style="margin-bottom: 1rem;">Digital ID Card</h3>
+          <div class="id-card">
+            <div class="flex" style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1rem;">
+              <i class="fa-solid fa-shield-halved" style="font-size: 1.5rem; color: var(--amber-500);"></i>
+              <div><strong style="display: block; line-height: 1;">G.S. GATARE TSS</strong><small style="font-size: 0.7rem; opacity: 0.7;">Code: 250405</small></div>
+            </div>
+            <div class="flex">
+              <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.1); border-radius: 12px; display: grid; place-items: center; font-size: 2rem;"><i class="fa-solid fa-user"></i></div>
               <div>
-                <strong>Accredited</strong>
-                <span>TVET · 250405</span>
+                <h4 style="font-size: 1.1rem;">Aline Uwase</h4>
+                <p style="font-size: 0.8rem; opacity: 0.8;">TVET AGR L4</p>
+                <p style="font-size: 0.8rem; background: var(--amber-500); color: #000; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 5px;">GSG-2024-045</p>
               </div>
             </div>
-          </div>
-          <div class="about__stat glass">
-            <strong>12+</strong>
-            <span>Years of shaping<br/>Rwandan youth</span>
-          </div>
-        </div>
-
-        <div class="about__content" data-aos="fade-left">
-          <span class="section-eyebrow">About the School</span>
-          <h2 id="aboutTitle" class="section-title">A community built on <em>discipline</em>, purpose &amp; skill.</h2>
-          <p class="section-lead">
-            Groupe Scolaire Gatare TSS is a modern integrated learning institution located in
-            Gashasha Cell, Gatare Sector, Nyamagabe District, Rwanda. From Pre-Primary through
-            A'Level and TVET, we prepare learners for real opportunity — academic, professional
-            and entrepreneurial.
-          </p>
-          <div class="about__points">
-            <div class="point">
-              <i class="fa-solid fa-check"></i>
-              <div><strong>Holistic curriculum</strong><span>Competency-based learning aligned with RBC &amp; REB standards.</span></div>
-            </div>
-            <div class="point">
-              <i class="fa-solid fa-check"></i>
-              <div><strong>TVET-first mindset</strong><span>Hands-on trades in Agriculture &amp; Animal Husbandry.</span></div>
-            </div>
-            <div class="point">
-              <i class="fa-solid fa-check"></i>
-              <div><strong>Digital transparency</strong><span>Live portals for students, parents, teachers &amp; leaders.</span></div>
+            <div class="flex-between" style="margin-top: 1.5rem;">
+              <span style="font-size: 0.7rem; letter-spacing: 1px;">VALID 2025-2026</span>
+              <div id="qrcode" class="qr"></div>
             </div>
           </div>
-          <a href="#programs" class="link-arrow">Explore our programs <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= ACADEMIC STRUCTURE ================= -->
-    <section id="academics" class="section academics" aria-labelledby="academicsTitle">
-      <div class="container">
-        <header class="section-head">
-          <span class="section-eyebrow">Academic Structure</span>
-          <h2 id="academicsTitle" class="section-title">Seven pathways. One standard of excellence.</h2>
-          <p class="section-lead">A continuous learning ladder from early childhood to professional TVET qualifications.</p>
-        </header>
-
-        <div class="levels">
-          <article class="level-card" data-aos="fade-up">
-            <span class="level-card__tag">Nursery</span>
-            <i class="fa-solid fa-child-reaching level-card__icon"></i>
-            <h3>Pre-Primary</h3>
-            <p>Play-based foundation, literacy, numeracy and character formation.</p>
-          </article>
-          <article class="level-card" data-aos="fade-up" data-aos-delay="60">
-            <span class="level-card__tag">P1 – P6</span>
-            <i class="fa-solid fa-book-open level-card__icon"></i>
-            <h3>Primary</h3>
-            <p>Competency-based primary education preparing learners for national exams.</p>
-          </article>
-          <article class="level-card" data-aos="fade-up" data-aos-delay="120">
-            <span class="level-card__tag">S1 – S3</span>
-            <i class="fa-solid fa-pen-ruler level-card__icon"></i>
-            <h3>O'Level</h3>
-            <p>Broad lower-secondary foundation with strong sciences and humanities.</p>
-          </article>
-          <article class="level-card" data-aos="fade-up" data-aos-delay="180">
-            <span class="level-card__tag">A'Level</span>
-            <i class="fa-solid fa-globe level-card__icon"></i>
-            <h3>A'Level AH</h3>
-            <p>Arts &amp; Humanities combination for future leaders and educators.</p>
-          </article>
-          <article class="level-card" data-aos="fade-up" data-aos-delay="240">
-            <span class="level-card__tag">A'Level</span>
-            <i class="fa-solid fa-microscope level-card__icon"></i>
-            <h3>A'Level MS1</h3>
-            <p>Math, Physics, Chemistry &amp; Biology pathway to higher education.</p>
-          </article>
-          <article class="level-card" data-aos="fade-up" data-aos-delay="300">
-            <span class="level-card__tag">TVET</span>
-            <i class="fa-solid fa-seedling level-card__icon"></i>
-            <h3>TVET AGR</h3>
-            <p>Agriculture — crop production, soil science and agri-business skills.</p>
-          </article>
-          <article class="level-card" data-aos="fade-up" data-aos-delay="360">
-            <span class="level-card__tag">TVET</span>
-            <i class="fa-solid fa-cow level-card__icon"></i>
-            <h3>TVET ANH</h3>
-            <p>Animal Husbandry — livestock management, health and production.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= PROGRAMS SHOWCASE ================= -->
-    <section id="programs" class="section programs" aria-labelledby="programsTitle">
-      <div class="container">
-        <header class="section-head">
-          <span class="section-eyebrow">Programs Showcase</span>
-          <h2 id="programsTitle" class="section-title">Trade-ready skills, employer-ready graduates.</h2>
-          <p class="section-lead">Our TVET flagship programs combine theory, practical labs and industry exposure.</p>
-        </header>
-
-        <div class="program-grid">
-          <article class="program-card program-card--agr" data-aos="zoom-in">
-            <div class="program-card__icon"><i class="fa-solid fa-seedling"></i></div>
-            <h3>Agriculture (AGR)</h3>
-            <p>Level 3 &amp; 4 · Crop production, horticulture, soil fertility and farm management.</p>
-            <ul>
-              <li><i class="fa-solid fa-check"></i> Practical farm labs</li>
-              <li><i class="fa-solid fa-check"></i> Agri-business training</li>
-              <li><i class="fa-solid fa-check"></i> Cooperative placement</li>
-            </ul>
-            <button class="btn btn--soft open-program" data-program="TVET AGR">Learn more <i class="fa-solid fa-arrow-right"></i></button>
-          </article>
-
-          <article class="program-card program-card--anh" data-aos="zoom-in" data-aos-delay="80">
-            <div class="program-card__icon"><i class="fa-solid fa-cow"></i></div>
-            <h3>Animal Husbandry (ANH)</h3>
-            <p>Level 3 &amp; 4 · Livestock care, breeding, animal health and dairy production.</p>
-            <ul>
-              <li><i class="fa-solid fa-check"></i> On-campus livestock unit</li>
-              <li><i class="fa-solid fa-check"></i> Veterinary fundamentals</li>
-              <li><i class="fa-solid fa-check"></i> Dairy value chain</li>
-            </ul>
-            <button class="btn btn--soft open-program" data-program="TVET ANH">Learn more <i class="fa-solid fa-arrow-right"></i></button>
-          </article>
-
-          <article class="program-card program-card--ms1" data-aos="zoom-in" data-aos-delay="160">
-            <div class="program-card__icon"><i class="fa-solid fa-microscope"></i></div>
-            <h3>A'Level MS1</h3>
-            <p>Math, Physics, Chemistry &amp; Biology — the gateway to medicine, engineering and research.</p>
-            <ul>
-              <li><i class="fa-solid fa-check"></i> Science labs</li>
-              <li><i class="fa-solid fa-check"></i> National exam prep</li>
-              <li><i class="fa-solid fa-check"></i> University guidance</li>
-            </ul>
-            <button class="btn btn--soft open-program" data-program="A'Level MS1">Learn more <i class="fa-solid fa-arrow-right"></i></button>
-          </article>
-
-          <article class="program-card program-card--ah" data-aos="zoom-in" data-aos-delay="240">
-            <div class="program-card__icon"><i class="fa-solid fa-globe"></i></div>
-            <h3>A'Level AH</h3>
-            <p>Arts &amp; Humanities — critical thinking, languages and social sciences for future leaders.</p>
-            <ul>
-              <li><i class="fa-solid fa-check"></i> Debate &amp; leadership</li>
-              <li><i class="fa-solid fa-check"></i> Literature &amp; history</li>
-              <li><i class="fa-solid fa-check"></i> Civic engagement</li>
-            </ul>
-            <button class="btn btn--soft open-program" data-program="A'Level AH">Learn more <i class="fa-solid fa-arrow-right"></i></button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= ADMISSIONS ================= -->
-    <section id="admissions" class="section admissions" aria-labelledby="admissionsTitle">
-      <div class="container admissions__grid">
-        <div class="admissions__intro" data-aos="fade-right">
-          <span class="section-eyebrow">Online Admission Portal</span>
-          <h2 id="admissionsTitle" class="section-title">Apply in minutes.<br/>Track in real time.</h2>
-          <p class="section-lead">
-            Submit your application online, upload the required documents, and receive your
-            unique Application ID instantly — starting from <strong>GSG-2026-1001</strong>.
-          </p>
-          <ol class="steps">
-            <li><span>01</span><div><strong>Fill the form</strong><p>Your details and desired program.</p></div></li>
-            <li><span>02</span><div><strong>Upload documents</strong><p>ID / report card / birth certificate.</p></div></li>
-            <li><span>03</span><div><strong>Get your ID</strong><p>Track admission status anytime.</p></div></li>
-          </ol>
-          <div class="admissions__note glass">
-            <i class="fa-solid fa-shield-halved"></i>
-            <p>Your data is handled securely. Applications are reviewed by the Admissions Committee.</p>
-          </div>
         </div>
 
-        <form id="admissionForm" class="admission-form glass" data-aos="fade-left" novalidate>
-          <div class="form-head">
-            <h3><i class="fa-solid fa-file-signature"></i> New Application</h3>
-            <span class="form-badge">2026 Intake</span>
+        <!-- Grades -->
+        <div>
+          <h3 style="margin-bottom: 1rem;">Academic Performance</h3>
+          <table>
+            <thead><tr><th>Subject</th><th>Total</th><th>Grade</th></tr></thead>
+            <tbody id="studentTableBody"></tbody>
+          </table>
+          <div class="kpi-grid" style="margin-top: 1.5rem;">
+            <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-check"></i></div><div class="kpi-info"><h3>94%</h3><p>Attendance</p></div></div>
+            <div class="kpi"><div class="kpi-icon"><i class="fa-solid fa-coins"></i></div><div class="kpi-info"><h3>45,000</h3><p>Fee Balance (RWF)</p></div></div>
           </div>
-
-          <div class="form-row">
-            <label class="field">
-              <span>Full Name *</span>
-              <input type="text" name="fullName" required placeholder="e.g. Aline Uwase" />
-            </label>
-            <label class="field">
-              <span>Date of Birth *</span>
-              <input type="date" name="dob" required />
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label class="field">
-              <span>Gender *</span>
-              <select name="gender" required>
-                <option value="">Select…</option>
-                <option>Female</option>
-                <option>Male</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>Phone *</span>
-              <input type="tel" name="phone" required placeholder="07XX XXX XXX" />
-            </label>
-          </div>
-
-          <label class="field">
-            <span>Email *</span>
-            <input type="email" name="email" required placeholder="you@example.com" />
-          </label>
-
-          <div class="form-row">
-            <label class="field">
-              <span>Level Applying For *</span>
-              <select name="level" id="admissionLevel" required>
-                <option value="">Select level…</option>
-                <option>Pre-Primary</option>
-                <option>Primary</option>
-                <option>O'Level</option>
-                <option>A'Level AH</option>
-                <option>A'Level MS1</option>
-                <option>TVET AGR</option>
-                <option>TVET ANH</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>Trade / Program</span>
-              <select name="trade" id="admissionTrade">
-                <option value="">General / N/A</option>
-                <option>Agriculture (AGR)</option>
-                <option>Animal Husbandry (ANH)</option>
-                <option>Math-Physics-Chem-Bio (MS1)</option>
-                <option>Arts &amp; Humanities (AH)</option>
-              </select>
-            </label>
-          </div>
-
-          <label class="field">
-            <span>Address / Sector *</span>
-            <input type="text" name="address" required placeholder="e.g. Gatare Sector, Nyamagabe" />
-          </label>
-
-          <label class="field">
-            <span>Documents (PDF / Image, max 5MB)</span>
-            <input type="file" name="documents" accept=".pdf,.jpg,.jpeg,.png" />
-            <small class="field__hint">Upload report card, ID or birth certificate.</small>
-          </label>
-
-          <label class="check">
-            <input type="checkbox" name="consent" required />
-            <span>I confirm the information provided is accurate and consent to processing.</span>
-          </label>
-
-          <button type="submit" class="btn btn--primary btn--block btn--lg">
-            <i class="fa-solid fa-paper-plane"></i> Submit Application
-          </button>
-
-          <div id="admissionResult" class="admission-result" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-    </section>
-
-    <!-- ================= STATUS CHECKER ================= -->
-    <section id="status" class="section status-check" aria-labelledby="statusTitle">
-      <div class="container status-check__inner glass" data-aos="fade-up">
-        <div class="status-check__copy">
-          <span class="section-eyebrow">Application Status</span>
-          <h2 id="statusTitle" class="section-title">Track your admission in real time.</h2>
-          <p class="section-lead">Enter your Application ID (e.g. <code>GSG-2026-1001</code>) to view the current status of your application.</p>
-        </div>
-        <form id="statusForm" class="status-form">
-          <div class="status-form__input">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" name="appId" id="statusAppId" placeholder="GSG-2026-1001" autocomplete="off" required />
-            <button type="submit" class="btn btn--primary">Check Status</button>
-          </div>
-          <div id="statusResult" class="status-result" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-    </section>
-
-    <!-- ================= NEWS ================= -->
-    <section id="news" class="section news" aria-labelledby="newsTitle">
-      <div class="container">
-        <header class="section-head">
-          <span class="section-eyebrow">News &amp; Pressroom</span>
-          <h2 id="newsTitle" class="section-title">What's happening at G.S. Gatare TSS</h2>
-          <div class="news-filters" role="tablist" aria-label="News categories">
-            <button class="chip is-active" data-filter="all">All</button>
-            <button class="chip" data-filter="Academics">Academics</button>
-            <button class="chip" data-filter="TVET">TVET</button>
-            <button class="chip" data-filter="Events">Events</button>
-            <button class="chip" data-filter="Sports">Sports</button>
-            <button class="chip" data-filter="Announcements">Announcements</button>
-          </div>
-        </header>
-
-        <div class="news-grid" id="newsGrid">
-          <!-- Cards injected by app.js; static fallback below -->
-          <article class="news-card" data-category="TVET" data-aos="fade-up">
-            <div class="news-card__media news-card__media--1"><span class="news-card__cat">TVET</span></div>
-            <div class="news-card__body">
-              <time>12 Feb 2026</time>
-              <h3>TVET AGR learners showcase harvest innovation</h3>
-              <p>Level 4 Agriculture students presented a new crop rotation model to local cooperative leaders.</p>
-              <a href="#" class="link-arrow">Read more <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </article>
-          <article class="news-card" data-category="Academics" data-aos="fade-up" data-aos-delay="80">
-            <div class="news-card__media news-card__media--2"><span class="news-card__cat">Academics</span></div>
-            <div class="news-card__body">
-              <time>05 Feb 2026</time>
-              <h3>MS1 science lab upgrades now live</h3>
-              <p>New microscopy and chemistry equipment strengthens practical exam readiness.</p>
-              <a href="#" class="link-arrow">Read more <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </article>
-          <article class="news-card" data-category="Announcements" data-aos="fade-up" data-aos-delay="160">
-            <div class="news-card__media news-card__media--3"><span class="news-card__cat">Announcements</span></div>
-            <div class="news-card__body">
-              <time>28 Jan 2026</time>
-              <h3>2026 admissions now open</h3>
-              <p>Apply online for Pre-Primary through TVET. Early applications are reviewed first.</p>
-              <a href="#admissions" class="link-arrow">Apply now <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </article>
-          <article class="news-card" data-category="Events" data-aos="fade-up">
-            <div class="news-card__media news-card__media--4"><span class="news-card__cat">Events</span></div>
-            <div class="news-card__body">
-              <time>20 Jan 2026</time>
-              <h3>Parent-Teacher Conference highlights</h3>
-              <p>Over 400 parents joined the termly review on learner progress and conduct.</p>
-              <a href="#" class="link-arrow">Read more <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </article>
-          <article class="news-card" data-category="Sports" data-aos="fade-up" data-aos-delay="80">
-            <div class="news-card__media news-card__media--5"><span class="news-card__cat">Sports</span></div>
-            <div class="news-card__body">
-              <time>15 Jan 2026</time>
-              <h3>Inter-house athletics results</h3>
-              <p>Nyungwe House retained the trophy in a record-breaking season.</p>
-              <a href="#" class="link-arrow">Read more <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-          </article>
         </div>
       </div>
-    </section>
-
-    <!-- ================= CONTACT ================= -->
-    <section id="contact" class="section contact" aria-labelledby="contactTitle">
-      <div class="container contact__grid">
-        <div class="contact__info" data-aos="fade-right">
-          <span class="section-eyebrow">Contact</span>
-          <h2 id="contactTitle" class="section-title">Let's talk about your child's future.</h2>
-          <ul class="contact__list">
-            <li><i class="fa-solid fa-location-dot"></i><div><strong>Location</strong><span>Gashasha Cell, Gatare Sector, Nyamagabe District, Rwanda</span></div></li>
-            <li><i class="fa-solid fa-envelope"></i><div><strong>Email</strong><a href="mailto:gsgatare@gmail.com">gsgatare@gmail.com</a></div></li>
-            <li><i class="fa-solid fa-phone"></i><div><strong>Phone</strong><a href="tel:+250785486933">+250 785 486 933</a></div></li>
-            <li><i class="fa-solid fa-hashtag"></i><div><strong>School Code</strong><span>250405</span></div></li>
-          </ul>
-        </div>
-        <form id="contactForm" class="contact-form glass" data-aos="fade-left">
-          <div class="form-row">
-            <label class="field"><span>Name *</span><input type="text" name="name" required placeholder="Your name" /></label>
-            <label class="field"><span>Email *</span><input type="email" name="email" required placeholder="you@example.com" /></label>
-          </div>
-          <label class="field"><span>Subject</span><input type="text" name="subject" placeholder="How can we help?" /></label>
-          <label class="field"><span>Message *</span><textarea name="message" rows="5" required placeholder="Write your message…"></textarea></label>
-          <button type="submit" class="btn btn--primary btn--block btn--lg"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
-          <div id="contactResult" class="admission-result" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <div class="brand">
-          <span class="brand__crest">
-            <svg viewBox="0 0 64 64" width="42" height="42" aria-hidden="true">
-              <rect width="64" height="64" rx="14" fill="#0F3D2E"/>
-              <path d="M32 12l16 6v12c0 10-7 17-16 22-9-5-16-12-16-22V18l16-6z" fill="#F59E0B"/>
-              <path d="M24 30l6 6 12-12" stroke="#0F3D2E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <span class="brand__text"><strong>G.S. Gatare TSS</strong><small>Code 250405</small></span>
-        </div>
-        <p>Discipline Leads to Success. A modern Rwandan learning community in Nyamagabe District.</p>
-      </div>
-      <div class="footer__col">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#academics">Academics</a></li>
-          <li><a href="#programs">Programs</a></li>
-          <li><a href="#admissions">Admissions</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h4>Portals</h4>
-        <ul>
-          <li><a href="portal/admin/index.html">Admin</a></li>
-          <li><a href="portal/teacher/index.html">Teacher</a></li>
-          <li><a href="portal/student/index.html">Student</a></li>
-          <li><a href="portal/parent/index.html">Parent</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:gsgatare@gmail.com">gsgatare@gmail.com</a></li>
-          <li><a href="tel:+250785486933">+250 785 486 933</a></li>
-          <li>Gatare, Nyamagabe</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container footer__bottom-inner">
-        <span>© <span id="year"></span> G.S. Gatare TSS · All rights reserved.</span>
-        <span class="footer__credit">
-          <i class="fa-solid fa-code"></i> Engineered by
-          <a href="#" target="_blank" rel="noopener">InezaDev</a> · Custom School Digital Solutions
-        </span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to top -->
-  <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
-
-  <!-- Toast container -->
-  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
-
-  <!-- Program modal -->
-  <div id="programModal" class="modal" aria-hidden="true">
-    <div class="modal__backdrop" data-close-modal></div>
-    <div class="modal__panel glass" role="dialog" aria-modal="true" aria-labelledby="programModalTitle">
-      <button class="modal__close" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-      <h3 id="programModalTitle">Program</h3>
-      <div id="programModalBody"></div>
-      <a href="#admissions" class="btn btn--primary btn--block" data-close-modal>Apply for this program</a>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- ================== PARENT DASHBOARD ================== -->
+  <div id="view-parent" class="dashboard hidden">
+    <aside class="sidebar" style="background: #1e3a8a;">
+      <div class="logo" style="color: white; margin-bottom: 2rem;"><i class="fa-solid fa-users" style="color: var(--amber-500);"></i> Parent Portal</div>
+      <a href="#" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="#"><i class="fa-solid fa-coins"></i> Fees</a>
+      <a href="#"><i class="fa-solid fa-comments"></i> Messages</a>
+      <div style="margin-top: auto; position: absolute; bottom: 2rem; width: 200px;">
+        <button class="btn btn-outline btn-block" style="color: white; border-color: rgba(255,255,255,0.2);" onclick="logout()">Logout</button>
+      </div>
+    </aside>
+    <div style="flex: 1;">
+      <header class="dashboard-header">
+        <h2>Parent Dashboard</h2>
+        <div class="flex"><div class="kpi-icon" style="width: 35px; height: 35px; font-size: 0.8rem;">PT</div></div>
+      </header>
+      <div class="main-content">
+        <h3 style="margin-bottom: 1rem;">My Children</h3>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          
+          <div class="card">
+            <div class="flex-between" style="margin-bottom: 1rem;">
+              <div>
+                <h4>Aline Uwase</h4>
+                <p style="font-size: 0.8rem; color: var(--muted);">TVET AGR L4</p>
+              </div>
+              <i class="fa-solid fa-user-graduate" style="font-size: 1.5rem; color: var(--green-800);"></i>
+            </div>
+            <div class="flex-between" style="font-size: 0.85rem; margin-bottom: 1rem; border-top: 1px solid var(--line); padding-top: 1rem;">
+              <span>Attendance: <strong>94%</strong></span>
+              <span>Fees: <strong style="color: var(--amber-600);">Partial</strong></span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="toast('Viewing Report Card...')">View Report</button>
+          </div>
 
-  <!-- Firebase (compat, optional — app works in demo mode without config) -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+          <div class="card">
+            <div class="flex-between" style="margin-bottom: 1rem;">
+              <div>
+                <h4>Eric Nshuti</h4>
+                <p style="font-size: 0.8rem; color: var(--muted);">A'Level MS1</p>
+              </div>
+              <i class="fa-solid fa-user-graduate" style="font-size: 1.5rem; color: #3b82f6;"></i>
+            </div>
+            <div class="flex-between" style="font-size: 0.85rem; margin-bottom: 1rem; border-top: 1px solid var(--line); padding-top: 1rem;">
+              <span>Attendance: <strong>98%</strong></span>
+              <span>Fees: <strong style="color: var(--green-800);">Paid</strong></span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="toast('Viewing Report Card...')">View Report</button>
+          </div>
 
-  <script src="assets/js/utils.js"></script>
-  <script src="assets/js/firebase.js"></script>
-  <script src="assets/js/demo-data.js"></script>
-  <script src="assets/js/auth.js"></script>
-  <script src="assets/js/admissions.js"></script>
-  <script src="assets/js/notifications.js"></script>
-  <script src="assets/js/app.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================== JAVASCRIPT ================== -->
+  <script>
+    // --- Utilities & Data ---
+    const $ = (id) => document.getElementById(id);
+    const toast = (msg) => {
+      const t = $('toast');
+      t.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${msg}`;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    };
+
+    const toggleTheme = () => {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      $('theme-icon').className = isDark ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+    };
+
+    // --- Navigation & Views ---
+    const views = ['public', 'login', 'admin', 'teacher', 'student', 'parent'];
+    const showView = (view) => {
+      views.forEach(v => $('view-' + v).classList.add('hidden'));
+      $('view-' + view).classList.remove('hidden');
+      window.scrollTo(0,0);
+    };
+
+    const showLogin = () => showView('login');
+    const showPublic = () => showView('public');
+
+    const login = (role) => {
+      showView(role);
+      toast(`Logged in as ${role}`);
+      
+      // Initialize specific dashboards
+      if(role === 'admin') initAdmin();
+      if(role === 'student') initStudent();
+      if(role === 'teacher') initTeacher();
+    };
+
+    const logout = () => {
+      showView('public');
+      toast("Logged out successfully");
+    };
+
+    // --- Admissions Form ---
+    let appCounter = 1000;
+    $('admissionForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      appCounter++;
+      const appId = `GSG-2026-${appCounter}`;
+      const name = $('appName').value;
+      const level = $('appLevel').value;
+      
+      $('appResult').innerHTML = `
+        <div style="background: #dcfce7; padding: 1rem; border-radius: 8px; color: #166534; margin-top: 1rem;">
+          <p>Application Received!</p>
+          <p style="font-size: 1.2rem; font-family: monospace;">${appId}</p>
+        </div>
+      `;
+      e.target.reset();
+      toast("Application Submitted!");
+    });
+
+    // --- Admin Dashboard Data ---
+    const initAdmin = () => {
+      const apps = [
+        { id: 'GSG-2026-1001', name: 'Chantal M.', level: 'TVET ANH', status: 'Pending' },
+        { id: 'GSG-2026-1002', name: 'David M.', level: 'MS1', status: 'Approved' },
+        { id: 'GSG-2026-1003', name: 'Alice K.', level: 'O-Level', status: 'Waitlisted' }
+      ];
+      $('adminTableBody').innerHTML = apps.map(a => `
+        <tr>
+          <td><strong>${a.id}</strong></td>
+          <td>${a.name}</td>
+          <td>${a.level}</td>
+          <td><span style="background: ${a.status === 'Approved' ? '#dcfce7' : '#fef3c7'}; color: ${a.status === 'Approved' ? '#166534' : '#92400e'}; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">${a.status}</span></td>
+        </tr>
+      `).join('');
+    };
+
+    // --- Student Dashboard Data & ID ---
+    const studentMarks = [
+      { sub: 'Crop Production', total: 80, grade: 'A' },
+      { sub: 'Soil Science', total: 68, grade: 'C' },
+      { sub: 'Agri-Business', total: 72, grade: 'B' },
+      { sub: 'English', total: 63, grade: 'C' }
+    ];
+
+    const initStudent = () => {
+      $('studentTableBody').innerHTML = studentMarks.map(m => `
+        <tr>
+          <td>${m.sub}</td>
+          <td><strong>${m.total}</strong>/100</td>
+          <td><span style="background: ${m.grade === 'A' ? '#dcfce7' : '#e0f2fe'}; color: ${m.grade === 'A' ? '#166534' : '#0369a1'}; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">${m.grade}</span></td>
+        </tr>
+      `).join('');
+
+      // Generate QR Code
+      $('qrcode').innerHTML = '';
+      new QRCode($('qrcode'), {
+        text: "GSG-250405-AlineUwase",
+        width: 60, height: 60,
+        colorDark: "#0F3D2E", colorLight: "#ffffff"
+      });
+    };
+
+    const printReportCard = () => {
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(`
+        <html><head><title>Report Card - Aline Uwase</title>
+        <style>body{font-family:sans-serif;padding:40px;color:#000;} table{width:100%;border-collapse:collapse;margin-top:20px;} th,td{border:1px solid #ccc;padding:10px;text-align:left;}</style>
+        </head><body>
+        <h2 style="text-align:center;">GROUPE SCOLAIRE GATARE TSS</h2>
+        <p style="text-align:center;">Term 2 Report Card - 2026</p>
+        <p><strong>Name:</strong> Aline Uwase | <strong>Reg No:</strong> GSG-2024-045 | <strong>Level:</strong> TVET AGR L4</p>
+        <table>
+          <tr><th>Subject</th><th>Total</th><th>Grade</th></tr>
+          ${studentMarks.map(m => `<tr><td>${m.sub}</td><td>${m.total}/100</td><td>${m.grade}</td></tr>`).join('')}
+        </table>
+        <p style="margin-top:30px;">Teacher Remarks: Excellent discipline and active in practicals.</p>
+        <br><br><br>
+        <div style="display:flex;justify-content:space-between;">
+          <div>_____________________<br>Teacher Signature</div>
+          <div>_____________________<br>Headteacher Signature</div>
+        </div>
+        <script>window.print();</script>
+        </body></html>
+      `);
+      printWindow.document.close();
+    };
+
+    // --- Teacher Dashboard Data ---
+    const initTeacher = () => {
+      const ctx = $('teacherChart').getContext('2d');
+      // Destroy previous chart if it exists (to prevent overlapping on re-login)
+      if(window.myChart) window.myChart.destroy();
+      
+      window.myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['AGR L3', 'AGR L4', 'ANH L3', 'ANH L4'],
+          datasets: [{
+            label: 'Average Grade (%)',
+            data: [72, 78, 68, 81],
+            backgroundColor: '#14532D',
+            borderRadius: 6
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+    };
+  </script>
 </body>
 </html>
