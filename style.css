@@ -1,1 +1,706 @@
+const STORAGE_KEY = "gs_gatare_250405_state_v1";
 
+const DEMO_ACCOUNTS = {
+  admin: {
+    email: "headteacher@gsgatare.rw",
+    password: "Admin123",
+    name: "Headteacher (Admin)",
+    role: "admin"
+  },
+  teacher: {
+    email: "teacher@gsgatare.rw",
+    password: "Teacher123",
+    name: "Jean Claude Ndayishimiye",
+    role: "teacher"
+  },
+  student: {
+    email: "student@gsgatare.rw",
+    password: "Student123",
+    name: "Eric Niyonsaba",
+    role: "student",
+    regNo: "GSG-2026-001"
+  },
+  parent: {
+    email: "parent@gsgatare.rw",
+    password: "Parent123",
+    name: "Mukandayisenga Alice",
+    role: "parent",
+    children: ["GSG-2026-001", "GSG-2026-002"]
+  }
+};
+
+const PROGRAMS = [
+  {
+    tag: "Foundational",
+    title: "Pre-Primary & Primary",
+    desc: "Nurturing early literacy, numeracy, discipline, and foundational learning habits in a supportive environment."
+  },
+  {
+    tag: "Secondary",
+    title: "O'Level & A'Level (AH & MS1)",
+    desc: "Rigorous secondary preparation across Arts & Humanities (AH) and Mathematics, Sciences & ICT (MS1)."
+  },
+  {
+    tag: "TVET",
+    title: "TVET AGR & TVET ANH",
+    desc: "Hands-on technical training in Agriculture (AGR) and Animal Health (ANH) aligned with practical competencies."
+  }
+];
+
+const NEWS_ITEMS = [
+  {
+    date: "Term 1 • 2026",
+    title: "Admissions Open for Academic & TVET Tracks",
+    summary: "Prospective learners can submit applications online and track approval status using their GSG tracking ID."
+  },
+  {
+    date: "TVET Workshop",
+    title: "Practical Fieldwork in Agriculture & Animal Health",
+    summary: "TVET AGR and ANH learners are completing hands-on soil, crop, and livestock health assessments."
+  },
+  {
+    date: "School Code 250405",
+    title: "Unified Portal Rollout for Staff, Students & Parents",
+    summary: "Teachers can record marks while students and parents review report progress and fee balances."
+  }
+];
+
+function createDefaultState() {
+  return {
+    theme: "light",
+    selectedRole: null,
+    sessionUser: null,
+    parentSelectedChild: "GSG-2026-001",
+    admissions: [
+      {
+        id: "GSG-2026-1001",
+        name: "Samuel Niyibizi",
+        program: "TVET AGR",
+        phone: "+250 788 112 233",
+        previousSchool: "Gatare Primary",
+        status: "Pending"
+      },
+      {
+        id: "GSG-2026-1002",
+        name: "Olive Mukankusi",
+        program: "A'Level AH",
+        phone: "+250 788 445 566",
+        previousSchool: "Kigali Secondary",
+        status: "Approved"
+      }
+    ],
+    students: [
+      {
+        regNo: "GSG-2026-001",
+        name: "Eric Niyonsaba",
+        program: "TVET AGR L4",
+        attendance: "96%",
+        feesTotal: 120000,
+        feesPaid: 95000,
+        marks: {
+          "Crop Production": 84,
+          "Soil Science": 79,
+          "Entrepreneurship": 88
+        }
+      },
+      {
+        regNo: "GSG-2026-002",
+        name: "Aline Mukamana",
+        program: "TVET ANH L3",
+        attendance: "94%",
+        feesTotal: 120000,
+        feesPaid: 120000,
+        marks: {
+          "Animal Anatomy": 86,
+          "Veterinary Hygiene": 91,
+          "Livestock Nutrition": 82
+        }
+      },
+      {
+        regNo: "GSG-2026-003",
+        name: "Patrick Habimana",
+        program: "A'Level MS1",
+        attendance: "91%",
+        feesTotal: 140000,
+        feesPaid: 70000,
+        marks: {
+          "Mathematics": 78,
+          "Physics": 75,
+          "Computer Science": 89
+        }
+      },
+      {
+        regNo: "GSG-2026-004",
+        name: "Claudine Uwase",
+        program: "A'Level AH",
+        attendance: "97%",
+        feesTotal: 140000,
+        feesPaid: 140000,
+        marks: {
+          "History": 87,
+          "Geography": 85,
+          "Literature": 90
+        }
+      }
+    ]
+  };
+}
+
+let state = loadState();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return createDefaultState();
+    return { ...createDefaultState(), ...JSON.parse(raw) };
+  } catch {
+    return createDefaultState();
+  }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2800);
+}
+
+function scrollToSection(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+}
+
+function applyTheme(theme) {
+  state.theme = theme;
+  document.documentElement.setAttribute("data-theme", theme);
+  const btn = document.getElementById("themeToggle");
+  btn.textContent = theme === "dark" ? "☀️ Light" : "🌙 Dark";
+  saveState();
+}
+
+function generateAdmissionId() {
+  const year = new Date().getFullYear();
+  let id = "";
+  do {
+    const num = Math.floor(1000 + Math.random() * 9000);
+    id = `GSG-${year}-${num}`;
+  } while (state.admissions.some((a) => a.id === id));
+  return id;
+}
+
+function renderPrograms() {
+  const grid = document.getElementById("programsGrid");
+  grid.innerHTML = PROGRAMS.map(
+    (p) => `
+      <article class="card">
+        <span class="program-tag">${p.tag}</span>
+        <h3>${p.title}</h3>
+        <p class="muted mt-2">${p.desc}</p>
+      </article>
+    `
+  ).join("");
+}
+
+function renderNews() {
+  const grid = document.getElementById("newsGrid");
+  grid.innerHTML = NEWS_ITEMS.map(
+    (n) => `
+      <article class="card">
+        <small class="eyebrow">${n.date}</small>
+        <h3>${n.title}</h3>
+        <p class="muted mt-2">${n.summary}</p>
+      </article>
+    `
+  ).join("");
+}
+
+function renderAdmissionsTable() {
+  const tbody = document.getElementById("recentAdmissionsBody");
+  document.getElementById("statStudents").textContent = String(state.students.length);
+
+  tbody.innerHTML = state.admissions
+    .slice()
+    .reverse()
+    .map(
+      (item) => `
+        <tr>
+          <td><code>${item.id}</code></td>
+          <td>${escapeHtml(item.name)}</td>
+          <td>${escapeHtml(item.program)}</td>
+          <td><span class="status-badge status-${item.status}">${item.status}</span></td>
+        </tr>
+      `
+    )
+    .join("");
+}
+
+function formatApplicationCard(app) {
+  return `
+    <div>
+      <strong>${escapeHtml(app.name)}</strong> — <code>${app.id}</code><br />
+      <span>Program: <b>${escapeHtml(app.program)}</b></span> •
+      <span>Status: <span class="status-badge status-${app.status}">${app.status}</span></span>
+    </div>
+  `;
+}
+
+function lookupApplication(rawId) {
+  const cleanId = rawId.trim().toUpperCase();
+  return state.admissions.find((a) => a.id.toUpperCase() === cleanId) || null;
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+/* ---------------- PORTAL LOGIC ---------------- */
+function openPortal(role) {
+  state.selectedRole = role;
+  saveState();
+
+  document.querySelectorAll(".role-card").forEach((card) => {
+    card.classList.toggle("active", card.dataset.role === role);
+  });
+
+  const workspace = document.getElementById("portalWorkspace");
+  workspace.classList.remove("hidden");
+  workspace.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+  const roleTitleMap = {
+    admin: "Admin Portal",
+    teacher: "Teacher Portal",
+    student: "Student Portal",
+    parent: "Parent Portal"
+  };
+
+  document.getElementById("activePortalBadge").textContent = role.toUpperCase();
+  document.getElementById("activePortalTitle").textContent = roleTitleMap[role];
+  document.getElementById("loginRoleLabel").textContent = roleTitleMap[role];
+
+  if (state.sessionUser && state.sessionUser.role === role) {
+    showAuthenticatedDashboard();
+  } else {
+    state.sessionUser = null;
+    saveState();
+    document.getElementById("activeSessionUser").textContent = "Not signed in";
+    document.getElementById("portalLoginBox").classList.remove("hidden");
+    document.getElementById("portalDashboard").classList.add("hidden");
+    fillDemoCredentials(role);
+  }
+}
+
+function fillDemoCredentials(role) {
+  const account = DEMO_ACCOUNTS[role];
+  if (!account) return;
+  document.getElementById("loginEmail").value = account.email;
+  document.getElementById("loginPassword").value = account.password;
+}
+
+function showAuthenticatedDashboard() {
+  const user = state.sessionUser;
+  document.getElementById("activeSessionUser").textContent = `Signed in as ${user.name} (${user.email})`;
+  document.getElementById("portalLoginBox").classList.add("hidden");
+  document.getElementById("portalDashboard").classList.remove("hidden");
+
+  if (user.role === "admin") renderAdminView();
+  if (user.role === "teacher") renderTeacherView();
+  if (user.role === "student") renderStudentView(user.regNo || "GSG-2026-001");
+  if (user.role === "parent") renderParentView();
+}
+
+function renderAdminView() {
+  const pendingCount = state.admissions.filter((a) => a.status === "Pending").length;
+  const approvedCount = state.admissions.filter((a) => a.status === "Approved").length;
+  const totalCollected = state.students.reduce((sum, s) => sum + s.feesPaid, 0);
+
+  document.getElementById("portalKpis").innerHTML = `
+    <div class="kpi-card"><span>Registered Students</span><strong>${state.students.length}</strong></div>
+    <div class="kpi-card"><span>Pending Admissions</span><strong>${pendingCount}</strong></div>
+    <div class="kpi-card"><span>Approved Admissions</span><strong>${approvedCount}</strong></div>
+    <div class="kpi-card"><span>Fees Collected (RWF)</span><strong>${totalCollected.toLocaleString()}</strong></div>
+  `;
+
+  document.getElementById("portalBody").innerHTML = `
+    <div class="card">
+      <h4>Admissions Approval Pipeline</h4>
+      <p class="muted mt-1">Approving an application creates a student record automatically.</p>
+      <div class="table-wrap mt-3">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Applicant</th>
+              <th>Program</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${state.admissions
+              .map(
+                (app) => `
+                  <tr>
+                    <td><code>${app.id}</code></td>
+                    <td>${escapeHtml(app.name)}</td>
+                    <td>${escapeHtml(app.program)}</td>
+                    <td><span class="status-badge status-${app.status}">${app.status}</span></td>
+                    <td>
+                      ${
+                        app.status === "Pending"
+                          ? `<button type="button" class="btn btn-sm btn-success" onclick="approveAdmission('${app.id}')">Approve</button>`
+                          : `<span class="muted">Enrolled</span>`
+                      }
+                    </td>
+                  </tr>
+                `
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function approveAdmission(id) {
+  const app = state.admissions.find((a) => a.id === id);
+  if (!app || app.status === "Approved") return;
+
+  app.status = "Approved";
+  const nextNum = String(state.students.length + 1).padStart(3, "0");
+  const newRegNo = `GSG-${new Date().getFullYear()}-${nextNum}`;
+
+  state.students.push({
+    regNo: newRegNo,
+    name: app.name,
+    program: app.program,
+    attendance: "95%",
+    feesTotal: 120000,
+    feesPaid: 0,
+    marks: {
+      "Core Module 1": 75,
+      "Core Module 2": 80
+    }
+  });
+
+  saveState();
+  renderAdmissionsTable();
+  renderAdminView();
+  showToast(`Approved ${app.name} (${newRegNo})`);
+}
+
+function renderTeacherView() {
+  const firstStudent = state.students[0];
+  const subjects = Object.keys(firstStudent.marks);
+
+  document.getElementById("portalKpis").innerHTML = `
+    <div class="kpi-card"><span>Assigned Students</span><strong>${state.students.length}</strong></div>
+    <div class="kpi-card"><span>Subjects Tracked</span><strong>${subjects.length}</strong></div>
+    <div class="kpi-card"><span>Avg. Attendance</span><strong>94.5%</strong></div>
+    <div class="kpi-card"><span>Term Status</span><strong>Open</strong></div>
+  `;
+
+  document.getElementById("portalBody").innerHTML = `
+    <div class="card">
+      <h4>Record Student Marks</h4>
+      <form id="marksForm" class="grid-2-tight mt-3">
+        <div class="field">
+          <label for="markStudentSelect">Student</label>
+          <select id="markStudentSelect">
+            ${state.students
+              .map((s) => `<option value="${s.regNo}">${escapeHtml(s.name)} (${s.regNo})</option>`)
+              .join("")}
+          </select>
+        </div>
+        <div class="field">
+          <label for="markSubjectInput">Subject / Module</label>
+          <input type="text" id="markSubjectInput" value="Crop Production" required />
+        </div>
+        <div class="field">
+          <label for="markScoreInput">Score (0 - 100)</label>
+          <input type="number" id="markScoreInput" min="0" max="100" value="85" required />
+        </div>
+        <div class="field" style="justify-content: flex-end;">
+          <button type="submit" class="btn btn-primary">Save Mark</button>
+        </div>
+      </form>
+
+      <div class="table-wrap mt-4">
+        <table>
+          <thead>
+            <tr>
+              <th>Reg No</th>
+              <th>Student</th>
+              <th>Program</th>
+              <th>Marks Breakdown</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${state.students
+              .map(
+                (s) => `
+                  <tr>
+                    <td><code>${s.regNo}</code></td>
+                    <td>${escapeHtml(s.name)}</td>
+                    <td>${escapeHtml(s.program)}</td>
+                    <td>${Object.entries(s.marks)
+                      .map(([sub, val]) => `${escapeHtml(sub)}: <b>${val}%</b>`)
+                      .join(" • ")}</td>
+                  </tr>
+                `
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("marksForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const regNo = document.getElementById("markStudentSelect").value;
+    const subject = document.getElementById("markSubjectInput").value.trim();
+    const score = Number(document.getElementById("markScoreInput").value);
+    const student = state.students.find((s) => s.regNo === regNo);
+    if (!student || !subject || Number.isNaN(score)) return;
+
+    student.marks[subject] = Math.max(0, Math.min(100, score));
+    saveState();
+    renderTeacherView();
+    showToast(`Saved ${subject}: ${student.marks[subject]}% for ${student.name}`);
+  });
+}
+
+function renderStudentView(regNo) {
+  const student = state.students.find((s) => s.regNo === regNo) || state.students[0];
+  const values = Object.values(student.marks);
+  const avg = values.length
+    ? Math.round(values.reduce((a, b) => a + b, 0) / values.length)
+    : 0;
+  const balance = Math.max(0, student.feesTotal - student.feesPaid);
+
+  document.getElementById("portalKpis").innerHTML = `
+    <div class="kpi-card"><span>Registration No</span><strong>${student.regNo}</strong></div>
+    <div class="kpi-card"><span>Average Score</span><strong>${avg}%</strong></div>
+    <div class="kpi-card"><span>Attendance</span><strong>${student.attendance}</strong></div>
+    <div class="kpi-card"><span>Fee Balance</span><strong>${balance.toLocaleString()} RWF</strong></div>
+  `;
+
+  document.getElementById("portalBody").innerHTML = `
+    <div class="grid-2">
+      <div class="card">
+        <h4>Academic Report (${escapeHtml(student.name)})</h4>
+        <p class="muted mt-1">Program: ${escapeHtml(student.program)}</p>
+        <div class="table-wrap mt-3">
+          <table>
+            <thead>
+              <tr><th>Subject</th><th>Score</th></tr>
+            </thead>
+            <tbody>
+              ${Object.entries(student.marks)
+                .map(([sub, val]) => `<tr><td>${escapeHtml(sub)}</td><td><b>${val}%</b></td></tr>`)
+                .join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Fee Statement</h4>
+        <p class="mt-3">Total Fees: <b>${student.feesTotal.toLocaleString()} RWF</b></p>
+        <p class="mt-2">Amount Paid: <b>${student.feesPaid.toLocaleString()} RWF</b></p>
+        <p class="mt-2">Remaining Balance: <b>${balance.toLocaleString()} RWF</b></p>
+        <button type="button" class="btn btn-sm btn-ghost mt-4" onclick="window.print()">Print Statement</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderParentView() {
+  const childrenIds = DEMO_ACCOUNTS.parent.children;
+  const activeId = childrenIds.includes(state.parentSelectedChild)
+    ? state.parentSelectedChild
+    : childrenIds[0];
+  const child = state.students.find((s) => s.regNo === activeId) || state.students[0];
+  const balance = Math.max(0, child.feesTotal - child.feesPaid);
+  const status = balance === 0 ? "Paid" : child.feesPaid > 0 ? "Partial" : "Unpaid";
+
+  document.getElementById("portalKpis").innerHTML = `
+    <div class="kpi-card"><span>Selected Child</span><strong>${child.name.split(" ")[0]}</strong></div>
+    <div class="kpi-card"><span>Program</span><strong>${child.program}</strong></div>
+    <div class="kpi-card"><span>Attendance</span><strong>${child.attendance}</strong></div>
+    <div class="kpi-card"><span>Fee Status</span><strong>${status}</strong></div>
+  `;
+
+  document.getElementById("portalBody").innerHTML = `
+    <div class="card">
+      <h4>Switch Linked Child</h4>
+      <div class="child-switcher mt-2">
+        ${childrenIds
+          .map((id) => {
+            const st = state.students.find((s) => s.regNo === id);
+            if (!st) return "";
+            const isSelected = st.regNo === child.regNo;
+            return `<button type="button" class="btn btn-sm ${isSelected ? "btn-primary" : "btn-ghost"}" onclick="selectParentChild('${st.regNo}')">${escapeHtml(st.name)} (${st.regNo})</button>`;
+          })
+          .join("")}
+      </div>
+
+      <div class="grid-2 mt-4">
+        <div>
+          <h4>Marks Summary</h4>
+          <ul class="mt-2" style="list-style:none; display:flex; flex-direction:column; gap:8px;">
+            ${Object.entries(child.marks)
+              .map(([sub, val]) => `<li>${escapeHtml(sub)}: <b>${val}%</b></li>`)
+              .join("")}
+          </ul>
+        </div>
+        <div>
+          <h4>Fee Balance</h4>
+          <p class="mt-2">Paid: <b>${child.feesPaid.toLocaleString()} RWF</b> / ${child.feesTotal.toLocaleString()} RWF</p>
+          <p class="mt-1">Balance Due: <b>${balance.toLocaleString()} RWF</b></p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function selectParentChild(regNo) {
+  state.parentSelectedChild = regNo;
+  saveState();
+  renderParentView();
+}
+
+/* ---------------- EVENT WIRING ---------------- */
+document.addEventListener("DOMContentLoaded", () => {
+  applyTheme(state.theme);
+  renderPrograms();
+  renderNews();
+  renderAdmissionsTable();
+
+  if (state.admissions.length > 0) {
+    document.getElementById("fullTrackOutput").innerHTML = formatApplicationCard(state.admissions[0]);
+  }
+
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    applyTheme(state.theme === "dark" ? "light" : "dark");
+  });
+
+  document.getElementById("hamburgerBtn").addEventListener("click", () => {
+    document.getElementById("navLinks").classList.toggle("open");
+  });
+
+  document.querySelectorAll("#navLinks a").forEach((link) => {
+    link.addEventListener("click", () => {
+      document.getElementById("navLinks").classList.remove("open");
+    });
+  });
+
+  // Admission Form Submit
+  document.getElementById("admissionForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("applicantName").value.trim();
+    const program = document.getElementById("applicantProgram").value;
+    const phone = document.getElementById("guardianPhone").value.trim();
+    const previousSchool = document.getElementById("previousSchool").value.trim();
+    if (!name || !phone || !previousSchool) return;
+
+    const newApp = {
+      id: generateAdmissionId(),
+      name,
+      program,
+      phone,
+      previousSchool,
+      status: "Pending"
+    };
+
+    state.admissions.push(newApp);
+    saveState();
+    renderAdmissionsTable();
+
+    document.getElementById("applicationResult").innerHTML = `
+      <div class="tracker-box">
+        <strong>Application Submitted!</strong><br />
+        Tracking ID: <code>${newApp.id}</code> • Status: <span class="status-badge status-Pending">Pending</span>
+      </div>
+    `;
+    document.getElementById("quickTrackInput").value = newApp.id;
+    document.getElementById("fullTrackInput").value = newApp.id;
+    document.getElementById("fullTrackOutput").innerHTML = formatApplicationCard(newApp);
+    e.target.reset();
+    showToast(`Application ${newApp.id} created`);
+  });
+
+  // Quick Tracker
+  document.getElementById("quickTrackForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const id = document.getElementById("quickTrackInput").value;
+    const found = lookupApplication(id);
+    document.getElementById("quickTrackResult").innerHTML = found
+      ? formatApplicationCard(found)
+      : `<span class="muted">No application found for <code>${escapeHtml(id)}</code>.</span>`;
+  });
+
+  // Full Tracker
+  document.getElementById("fullTrackForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const id = document.getElementById("fullTrackInput").value;
+    const found = lookupApplication(id);
+    document.getElementById("fullTrackOutput").innerHTML = found
+      ? formatApplicationCard(found)
+      : `<span class="muted">No application found for <code>${escapeHtml(id)}</code>.</span>`;
+  });
+
+  // Portal Login & Controls
+  document.getElementById("demoFillBtn").addEventListener("click", () => {
+    if (state.selectedRole) {
+      fillDemoCredentials(state.selectedRole);
+      showToast("Demo credentials filled");
+    }
+  });
+
+  document.getElementById("portalLoginForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const role = state.selectedRole;
+    const account = DEMO_ACCOUNTS[role];
+    const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+    const password = document.getElementById("loginPassword").value;
+
+    if (account && email === account.email.toLowerCase() && password === account.password) {
+      state.sessionUser = { ...account };
+      saveState();
+      showAuthenticatedDashboard();
+      showToast(`Signed in to ${role.toUpperCase()} portal`);
+    } else {
+      showToast("Invalid credentials — click 'Fill Demo Account'");
+    }
+  });
+
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    state.sessionUser = null;
+    saveState();
+    if (state.selectedRole) openPortal(state.selectedRole);
+    showToast("Signed out");
+  });
+
+  document.getElementById("resetDemoBtn").addEventListener("click", () => {
+    localStorage.removeItem(STORAGE_KEY);
+    state = createDefaultState();
+    saveState();
+    applyTheme(state.theme);
+    renderAdmissionsTable();
+    document.getElementById("portalWorkspace").classList.add("hidden");
+    showToast("Demo data reset to defaults");
+  });
+});
